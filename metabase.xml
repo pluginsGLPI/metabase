@@ -66,11 +66,16 @@ Il permet actuellement de:
          <tag>Data-vizualisation</tag>
          <tag>Business-intelligence</tag>
          <tag>Dashboard</tag>
+         <tag>Statistics</tag>
+         <tag>Central</tag>
       </en>
       <fr>
-         <tag>rapport</tag>
+         <tag>rapports</tag>
          <tag>Visualisation de données</tag>
          <tag>Tableau-de-bord</tag>
+         <tag>Graphiques</tag>
+         <tag>Statistiques</tag>
+         <tag>Central</tag>
       </fr>
    </tags>
    <screenshots>
