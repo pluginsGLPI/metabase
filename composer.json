@@ -1,0 +1,14 @@
+{
+    "require-dev": {
+        "glpi-project/tools": "^0.1"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "lcobucci/jwt": "^3.2"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    }
+}

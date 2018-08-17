@@ -1,0 +1,134 @@
+{
+   "name": "Inventaire",
+   "description": null,
+   "collection": "Inventaire",
+   "reports": {
+      "inventory_ordinateurs_par_statut": {
+         "col": 0,
+         "row": 0,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      },
+      "inventory_ordinateurs_par_fabricant": {
+         "col": 0,
+         "row": 4,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      },
+      "inventory_ordinateurs_date_de_creation": {
+         "col": 10,
+         "row": 0,
+         "sizeX": 6,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      },
+      "inventory_ordinateurs_par_entite": {
+         "col": 5,
+         "row": 0,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      },
+      "inventory_ordinateurs_par_os": {
+         "col": 5,
+         "row": 4,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      },
+      "inventory_fusion_logs": {
+         "col": 10,
+         "row": 4,
+         "sizeX": 6,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "date_creation": "glpi_computers.date_creation",
+            "date_mod": "glpi_computers.date_mod",
+            "entities": "glpi_entities.completename",
+            "states": "glpi_states.completename",
+            "computertypes": "glpi_computertypes.name",
+            "locations": "glpi_locations.completename",
+            "manufacturers": "glpi_manufacturers.name"
+         }
+      }
+   },
+   "parameters": [
+      {
+         "name": "Date de création",
+         "slug": "date_creation",
+         "type": "date/all-options"
+      },
+      {
+         "name": "Date de modification",
+         "slug": "date_mod",
+         "type": "date/all-options"
+      },
+      {
+         "name": "Entités",
+         "slug": "entities",
+         "type": "category"
+      },
+      {
+         "name": "states",
+         "slug": "states",
+         "type": "category"
+      },
+      {
+         "name": "Types d'ordinateurs",
+         "slug": "computertypes",
+         "type": "category"
+      },
+      {
+         "name": "Lieux",
+         "slug": "locations",
+         "type": "category"
+      },
+      {
+         "name": "Fabricants",
+         "slug": "manufacturers",
+         "type": "category"
+      }
+   ]
+}

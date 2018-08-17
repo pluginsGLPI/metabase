@@ -1,0 +1,81 @@
+{
+   "name": "Helpdesk",
+   "description": null,
+   "collection": "Helpdesk",
+   "reports": {
+      "helpdesk_ticket_status": {
+         "col": 5,
+         "row": 0,
+         "sizeX": 8,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "itilcategories": "glpi_itilcategories.completename",
+            "entities": "glpi_entities.completename",
+            "date_creation": "glpi_tickets.date",
+            "type": "glpi_tickets.type"
+         }
+      },
+      "helpdesk_top_itilcategories": {
+         "col": 0,
+         "row": 0,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "itilcategories": "glpi_itilcategories.completename",
+            "entities": "glpi_entities.completename",
+            "date_creation": "glpi_tickets.date",
+            "type": "glpi_tickets.type"
+         }
+      },
+      "helpdesk_top_requesters": {
+         "col": 0,
+         "row": 4,
+         "sizeX": 5,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "itilcategories": "glpi_itilcategories.completename",
+            "entities": "glpi_entities.completename",
+            "date_creation": "glpi_tickets.date",
+            "type": "glpi_tickets.type"
+         }
+      },
+      "helpdesk_ticket_evolution": {
+         "col": 5,
+         "row": 4,
+         "sizeX": 8,
+         "sizeY": 4,
+         "parameter_mappings": {
+            "itilcategories": "glpi_itilcategories.completename",
+            "entities": "glpi_entities.completename",
+            "date_creation": "glpi_tickets.date",
+            "type": "glpi_tickets.type"
+         }
+      }
+   },
+   "parameters": [
+      {
+         "default": "",
+         "name": "Catégories",
+         "slug": "itilcategories",
+         "type": "category"
+      },
+      {
+         "default": "",
+         "name": "Entités",
+         "slug": "entities",
+         "type": "category"
+      },
+      {
+         "default": "thisyear",
+         "name": "Date de création",
+         "slug": "date_creation",
+         "type": "date/all-options"
+      },
+      {
+         "default": "",
+         "name": "Type",
+         "slug": "type",
+         "type": "category"
+      }
+   ]
+}
