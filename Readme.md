@@ -2,7 +2,7 @@
 
 ![metabase illustration](https://www.metabase.com/images/dashboard.png)
 
-This plugin ease integration of GLPI with [Metabase](https://www.metabase.com/)
+This plugin eases integration of GLPI with [Metabase](https://www.metabase.com/)
 It actually permits to:
 - [X] Connect to Metabase API.
 - [X] Push database configuration or use existing configured db in metabase.
@@ -15,7 +15,7 @@ It actually permits to:
 - [X] import existing questions/dashboards/collection from metabase and save them as json
 - [ ] Check sync status
 
-[Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, aditionnal service like support for installation, question and dashboard conception.
+[Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, aditionnal services like support for installation, questions and dashboards conception.
 
 **[Contact Teclib'](https://services.glpi-network.com/)** for more information.
 
