@@ -14,14 +14,14 @@ This plugin eases integration of GLPI with [Metabase](https://www.metabase.com/)
 
 It currently permits to: 
 
-* [X] Connect to Metabase API.
-* [X] Push database configuration or use existing configured db in Metabase.
-* [X] Push GLPI foreign keys in Metabase datamodel
-* [X] Push GLPI enumeration (tickets impacts/urgency/priority/types) in metabase datamodel
-* [X] Push questions, collections and dashboards (if exists).
-* [X] Integrate Metabase dashboards into GLPI (on Central).
-* [X] Manage profiles (dashboards publication)
-* [X] import existing questions/dashboards/collection from Metabase and save them as json
+* Connect to Metabase API.
+* Push database configuration or use existing configured db in Metabase.
+* Push GLPI foreign keys in Metabase datamodel
+* Push GLPI enumeration (tickets impacts/urgency/priority/types) in metabase datamodel
+* Push questions, collections and dashboards (if exists).
+* Integrate Metabase dashboards into GLPI (on Central).
+* Manage profiles (dashboards publication)
+* import existing questions/dashboards/collection from Metabase and save them as json
 
 [Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, additional services like support for installation, questions and dashboards conception.
          </en>
@@ -30,14 +30,14 @@ Ce plugin facilite l'intégration de GLPI avec [Metabase](https://www.metabase.c
 
 Il permet actuellement de: 
 
-* [X] Se connecter à l'API de Metabase.
-* [X] Pousser la configuration de la base de données ou d'utiliser une base de données configurée dans Metabase.
-* [X] Pousser les clefs étrangère dans le modèle de données de Metabase
-* [X] Pousser les énumérations (champs impact/urgence/priorité/type des tickets) dans le modèle de données
-* [X] Pousser les questions, collections et tableaux de bords (si ils existent)
-* [X] Intégrer les tableaux de bord de Metabase dans GLPI (sur la page centrale)
-* [X] Gérer les profils (publication des tableaux de bord)
-* [X] Importer les questions, collections et tableaux de bord existant depuis Metabase et les enregistrer au format JSON
+* Se connecter à l'API de Metabase.
+* Pousser la configuration de la base de données ou d'utiliser une base de données configurée dans Metabase.
+* Pousser les clefs étrangère dans le modèle de données de Metabase
+* Pousser les énumérations (champs impact/urgence/priorité/type des tickets) dans le modèle de données
+* Pousser les questions, collections et tableaux de bords (si ils existent)
+* Intégrer les tableaux de bord de Metabase dans GLPI (sur la page centrale)
+* Gérer les profils (publication des tableaux de bord)
+* Importer les questions, collections et tableaux de bord existant depuis Metabase et les enregistrer au format JSON
 
 [Teclib'](http://www.teclib-group.com/) fournit avec la distribution [GLPI Network](https://services.glpi-network.com/) des services additionnels comme du support pour l'installation, de la conception de questions et tableaux de bord.
          </fr>
