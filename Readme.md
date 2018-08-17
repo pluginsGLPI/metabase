@@ -16,7 +16,11 @@ It currently permits to:
 
 [Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, additional services like support for installation, questions and dashboards conception.
 
-**[Contact Teclib'](https://services.glpi-network.com/)** for more information.
+**[Contact Teclib'](https://services.glpi-network.com/)** for more information. 
+
+---
+
+Also, you can help us translate the plugin on [Transifex service](https://www.transifex.com/teclib/glpi-plugin-metabase/).
 
 ## Installation
 
