@@ -1,0 +1,78 @@
+<root>
+   <name>Metabase</name>
+   <key>metabase</key>
+   <state>stable</state>
+   <logo>https://raw.githubusercontent.com/pluginsGLPI/metabase/master/logo.png</logo>
+   <description>
+      <short>
+         <en>This plugin eases integration of GLPI with Metabase</en>
+         <fr>Ce plugin facilite l'intégration de GLPI avec Metabase</fr>
+      </short>
+      <long>
+         <en>
+This plugin eases integration of GLPI with [Metabase](https://www.metabase.com/).
+It currently permits to:
+- [X] Connect to Metabase API.
+- [X] Push database configuration or use existing configured db in Metabase.
+- [X] Push GLPI foreign keys in Metabase datamodel
+- [X] Push GLPI enumeration (tickets impacts/urgency/priority/types) in metabase datamodel
+- [X] Push questions, collections and dashboards (if exists).
+- [X] Integrate Metabase dashboards into GLPI (on Central).
+- [X] Manage profiles (dashboards publication)
+- [X] import existing questions/dashboards/collection from Metabase and save them as json
+
+[Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, additional services like support for installation, questions and dashboards conception.
+         </en>
+         <fr>
+Ce plugin facilite l'intégration de GLPI avec [Metabase](https://www.metabase.com/).
+Il permet actuellement de:
+- [X] Se connecter à l'API de Metabase.
+- [X] Pousser la configuration de la base de données ou d'utiliser une base de données configurée dans Metabase.
+- [X] Pousser les clefs étrangère dans le modèle de données de Metabase
+- [X] Pousser les énumérations (champs impact/urgence/priorité/type des tickets) dans le modèle de données
+- [X] Pousser les questions, collections et tableaux de bords (si ils existent)
+- [X] Intégrer les tableaux de bord de Metabase dans GLPI (sur la page centrale)
+- [X] Gérer les profils (publication des tableaux de bord)
+- [X] Importer les questions, collections et tableaux de bord existant depuis Metabase et les enregistrer au format JSON
+
+[Teclib'](http://www.teclib-group.com/) fournit avec la distribution [GLPI Network](https://services.glpi-network.com/) des services additionnels comme du support pour l'installation, de la conception de questions et tableaux de bord.
+         </fr>
+      </long>
+   </description>
+   <homepage>https://github.com/pluginsGLPI/metabase</homepage>
+   <download>https://github.com/pluginsGLPI/metabase/releases</download>
+   <issues>https://github.com/pluginsGLPI/metabase/issues</issues>
+   <readme>https://github.com/pluginsGLPI/metabase/blob/master/Readme.md</readme>
+   <authors>
+      <author>Teclib'</author>
+   </authors>
+   <versions>
+      <version>
+         <num>0.8.0</num>
+         <compatibility>9.3</compatibility>
+      </version>
+   </versions>
+   <langs>
+      <lang>en_GB</lang>
+   </langs>
+   <license>AGPLv3</license>
+   <tags>
+      <en>
+         <tag>Reporting</tag>
+         <tag>Data-vizualisation</tag>
+         <tag>Business-intelligence</tag>
+         <tag>Dashboard</tag>
+      </en>
+      <fr>
+         <tag>rapport</tag>
+         <tag>Visualisation de données</tag>
+         <tag>Tableau-de-bord</tag>
+      </fr>
+   </tags>
+   <screenshots>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/metabase/master/screenshots/teclib_helpdesk.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/metabase/master/screenshots/teclib_assets.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/metabase/master/screenshots/configuration.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/metabase/master/screenshots/central.png</screenshot>
+   </screenshots>
+</root>

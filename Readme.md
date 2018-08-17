@@ -2,20 +2,19 @@
 
 ![metabase illustration](https://www.metabase.com/images/dashboard.png)
 
-This plugin eases integration of GLPI with [Metabase](https://www.metabase.com/)
-It actually permits to:
+This plugin eases integration of GLPI with [Metabase](https://www.metabase.com/).
+It currently permits to:
 - [X] Connect to Metabase API.
-- [X] Push database configuration or use existing configured db in metabase.
-- [X] Push GLPI foreign keys in metabase datamodel
-- [X] Push GLPI enumeration (tickets impacts/urgency/priority/types) in metabase datamodel
-- [X] Push questions and collections (if exists).
-- [X] Push dashboards (if exists).
+- [X] Push database configuration or use existing configured db in Metabase.
+- [X] Push GLPI foreign keys in Metabase datamodel
+- [X] Push GLPI enumeration (tickets impacts/urgency/priority/types) in Metabase datamodel
+- [X] Push questions, collections and dashboards (if exists).
 - [X] Integrate Metabase dashboards into GLPI (on Central).
 - [X] Profiles management (dashboards publication)
 - [X] import existing questions/dashboards/collection from metabase and save them as json
 - [ ] Check sync status
 
-[Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, aditionnal services like support for installation, questions and dashboards conception.
+[Teclib'](http://www.teclib-group.com/) provides with [GLPI Network](https://services.glpi-network.com/) distribution, additional services like support for installation, questions and dashboards conception.
 
 **[Contact Teclib'](https://services.glpi-network.com/)** for more information.
 
