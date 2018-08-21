@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr ""
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
-msgstr ""
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr ""
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr ""
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr ""
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr ""
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr ""
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr ""
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
 msgstr ""
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
@@ -114,42 +75,81 @@ msgstr ""
 msgid "Last Error"
 msgstr ""
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr ""
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr ""
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr ""
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr ""
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr ""
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr ""
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr ""
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr ""
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr ""
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
+msgstr ""
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr ""
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr ""
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr ""
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr ""
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr ""
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr ""
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+
+#: setup.php:149
+msgid "Installed / not configured"
 msgstr ""

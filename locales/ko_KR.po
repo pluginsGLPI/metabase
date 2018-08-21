@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SeongHyeon Cho <jaymz9634@gmail.com>, 2018\n"
 "Language-Team: Korean (Korea) (https://www.transifex.com/teclib/teams/28042/ko_KR/)\n"
@@ -18,48 +18,9 @@ msgstr ""
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "설치됨 / 구성안됨"
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "잘못된 요청."
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: 로그인"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: 현재 사용자 얻기"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: 사용자 얻기"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: 데이터베이스 얻기"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: GLPI 데이터베이스 얻기"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "자동-생성된 GLPI  데이터베이스가 없습니다"
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "대시보드 %s에 대한 삽입된 보기 활성화에 실패했습니다."
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr "동작 시간 만료로 메타베이스에 대한 질의가 실패했습니다. 아마 플러그인 구성에서 시간 만료 값을 증가해야 할 겁니다."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -115,42 +76,81 @@ msgstr "API 상태"
 msgid "Last Error"
 msgstr "최근 오류"
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr "동작(들)"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr "이전에 저장된 데이터베이스가 더 이상 존재하지 않습니다."
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr "로컬 메타베이스에 GLPI 데이터베이스 생성"
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr "또는 기존 데이터베이스에 설정:"
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr "데이터베이스 설정"
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr "메타베이스의 보고서 및 대시보드 푸쉬"
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr "메타베이스에 데이터모델 (재)생성"
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr "메타베이스에서 질문 추출:"
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr "메타베이스에서 대시보드 추출:"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "메타베이스 대시보드"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: 로그인"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: 현재 사용자 얻기"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: 사용자 얻기"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: 데이터베이스 얻기"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: GLPI 데이터베이스 얻기"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "자동-생성된 GLPI  데이터베이스가 없습니다"
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "대시보드 %s에 대한 삽입된 보기 활성화에 실패했습니다."
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr "동작 시간 만료로 메타베이스에 대한 질의가 실패했습니다. 아마 플러그인 구성에서 시간 만료 값을 증가해야 할 겁니다."
+
+#: setup.php:149
+msgid "Installed / not configured"
+msgstr "설치됨 / 구성안됨"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Markku Vepsä, 2018\n"
 "Language-Team: Finnish (Finland) (https://www.transifex.com/teclib/teams/28042/fi_FI/)\n"
@@ -18,51 +18,9 @@ msgstr ""
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Asennettu / ei määritetty"
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "Virheellinen pyyntö."
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: kirjautuminen"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: nouda nykyinen käyttäjä"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: nouda käyttäjät"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: nouda tietokannat"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: nouda GLPI tietoanta"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "Automaattisesti generoitua GLPI-tietokantaa ei löytynyt"
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"Sulautetun näytön käyttöönottaminen epäonnistui hallintapaneelissa %s."
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
-"tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -121,42 +79,84 @@ msgstr "API:n tila"
 msgid "Last Error"
 msgstr "Viimeisin virhe"
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr "Toimet"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr "TAI aseta olemassa olevaan tietokantaan:"
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr "Aseta tietokanta"
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr "Luo uudelleen Metabse-tietomalli "
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr "Poimi kysymyksiä Metabasesta:"
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr "Poimi hallintapaneeleita Metabasesta:"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase-hallintapaneeli"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: kirjautuminen"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: nouda nykyinen käyttäjä"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: nouda käyttäjät"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: nouda tietokannat"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: nouda GLPI tietoanta"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "Automaattisesti generoitua GLPI-tietokantaa ei löytynyt"
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"Sulautetun näytön käyttöönottaminen epäonnistui hallintapaneelissa %s."
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
+"tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."
+
+#: setup.php:149
+msgid "Installed / not configured"
+msgstr "Asennettu / ei määritetty"

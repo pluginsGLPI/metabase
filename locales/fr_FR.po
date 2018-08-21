@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: alexandre delaunay <delaunay.alexandre@gmail.com>, 2018\n"
 "Language-Team: French (France) (https://www.transifex.com/teclib/teams/28042/fr_FR/)\n"
@@ -18,52 +18,9 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Installé / Non-configuré"
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "Requête invalide"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API : connexion"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API : obtention du l'utilisateur courant"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API : obtention des utilisateurs"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API : obtention des bases de données"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API : obtention de la base de données de GLPI"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "Aucune base de données GLPI auto-générée trouvée"
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"L'activation de l'intégration de l'affichage a échoué pour le tableau de "
-"bord %s."
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
-"pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -123,42 +80,85 @@ msgstr "Status de l'API"
 msgid "Last Error"
 msgstr "Dernière erreur"
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr "Action(s)"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr "La base de données précédemment stockée n'existe plus."
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr "Créer la base de données de GLPI dans la Metabase local"
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr "Ou définir une base de données existante :"
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr "Définir la base de donnée"
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr "Pousser les rapports et tableaux de bords dans Metabase"
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Re)générer le modèle de données dans Metabase"
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr "Extraire les question depuis Metabase : "
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr "Extraire les tableaux de bords depuis Metabase : "
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Tableau de bord Metabase"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API : connexion"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API : obtention du l'utilisateur courant"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API : obtention des utilisateurs"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API : obtention des bases de données"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API : obtention de la base de données de GLPI"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "Aucune base de données GLPI auto-générée trouvée"
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"L'activation de l'intégration de l'affichage a échoué pour le tableau de "
+"bord %s."
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
+"pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
+
+#: setup.php:149
+msgid "Installed / not configured"
+msgstr "Installé / Non-configuré"

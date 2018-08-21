@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2018\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/teclib/teams/28042/tr_TR/)\n"
@@ -18,50 +18,9 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Kurulmuş / yapılandırılmamış"
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "İstek geçersiz."
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: oturum açma"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: geçerli kullanıcıyı al"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: kullanıcıları al"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: veritabanlarını al"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: GLPI veritabanını al"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "Otomatik olarak üretilmiş bir GLPI veritabanı bulunamadı"
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Uygulama eki "
-"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -119,42 +78,83 @@ msgstr "API durumu"
 msgid "Last Error"
 msgstr "Son Hata"
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr "İşlemler"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr "Daha önce kaydedilmiş veritabanı artık yok."
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr "Yerel Metabase üzerinde GLPI veritabanı oluşturun"
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr "YA DA var olan bir veritabanı ayarlayın"
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr "Veritabanı ayarla"
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr "Rapor ve panoları Metabase üzerine gönder"
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr "Metabase veri modelini (yeniden) oluştur"
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr "Metabase üzerinden soruları ayıkla:"
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr "Metabase üzerinden panoları ayıkla:"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase panosu"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: oturum açma"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: geçerli kullanıcıyı al"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: kullanıcıları al"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: veritabanlarını al"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: GLPI veritabanını al"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "Otomatik olarak üretilmiş bir GLPI veritabanı bulunamadı"
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Uygulama eki "
+"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
+
+#: setup.php:149
+msgid "Installed / not configured"
+msgstr "Kurulmuş / yapılandırılmamış"
