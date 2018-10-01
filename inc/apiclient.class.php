@@ -288,6 +288,14 @@ class PluginMetabaseAPIClient extends CommonGLPI {
    }
 
    function setFieldCustomMapping($field_id, $label = "") {
+
+      $data = $this->httpQuery("/api/field/$field_id", [
+         'json' => [
+            'special_type'       => 'type/Category',
+            'has_field_values'   => 'list',
+         ]
+      ], 'PUT');
+
       $data = $this->httpQuery("/api/field/$field_id/dimension", [
          'json' => [
             'human_readable_field_id' => null,
