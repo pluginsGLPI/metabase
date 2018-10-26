@@ -288,6 +288,14 @@ class PluginMetabaseAPIClient extends CommonGLPI {
    }
 
    function setFieldCustomMapping($field_id, $label = "") {
+
+      $data = $this->httpQuery("/api/field/$field_id", [
+         'json' => [
+            'special_type'       => 'type/Category',
+            'has_field_values'   => 'list',
+         ]
+      ], 'PUT');
+
       $data = $this->httpQuery("/api/field/$field_id/dimension", [
          'json' => [
             'human_readable_field_id' => null,
@@ -517,7 +525,7 @@ class PluginMetabaseAPIClient extends CommonGLPI {
       unset($params['database_id']);
       unset($params['sql']);
 
-      if ($card_id = $this->retrieveCard($card_name)) {
+      if ($card_id = $this->retrieveCard($card_name, $params['collection_id'])) {
          $params['original_card_id'] = $card_id;
          // update existing
          $data = $this->httpQuery("card/$card_id", [
@@ -543,8 +551,8 @@ class PluginMetabaseAPIClient extends CommonGLPI {
       return $this->httpQuery("card/$card_id");
    }
 
-   function retrieveCard($card_name) {
-      if (($cards = $this->getCards()) !== false) {
+   function retrieveCard($card_name, $collection_id) {
+      if (($cards = $this->getCards($collection_id)) !== false) {
          $cards = array_column($cards, 'id', 'name');
 
          if (isset($cards[$card_name])) {

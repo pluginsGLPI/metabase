@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 15:40+0200\n"
-"PO-Revision-Date: 2018-08-17 15:40+0200\n"
+"POT-Creation-Date: 2018-08-21 15:02+0000\n"
+"PO-Revision-Date: 2018-08-21 15:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,50 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Installed / not configured"
-
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "Invalid request."
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: login"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: get current user"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: get users"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: get databases"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: get GLPI database"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "No auto-generated GLPI database found"
-
-#: inc/apiclient.class.php:618
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Enabling embedded display fails for dashboard %s."
-
-#: inc/apiclient.class.php:792
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -118,42 +77,83 @@ msgstr "API status"
 msgid "Last Error"
 msgstr "Last Error"
 
-#: inc/config.class.php:180
+#: inc/config.class.php:182
 msgid "Action(s)"
 msgstr "Action(s)"
 
-#: inc/config.class.php:189
+#: inc/config.class.php:191
 msgid "Previously stored database is not existing anymore."
 msgstr "Previously stored database is not existing anymore."
 
-#: inc/config.class.php:191
+#: inc/config.class.php:193
 msgid "Create GLPI database in local Metabase"
 msgstr "Create GLPI database in local Metabase"
 
-#: inc/config.class.php:197
+#: inc/config.class.php:199
 msgid "OR set an existing database: "
 msgstr "OR set an existing database: "
 
-#: inc/config.class.php:201
+#: inc/config.class.php:203
 msgid "Set database"
 msgstr "Set database"
 
-#: inc/config.class.php:209
+#: inc/config.class.php:211
 msgid "Push reports and dashboards in Metabase"
 msgstr "Push reports and dashboards in Metabase"
 
-#: inc/config.class.php:214
+#: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Re)generate datamodel in Metabase"
 
-#: inc/config.class.php:230
+#: inc/config.class.php:232
 msgid "Extract questions from metabase:"
 msgstr "Extract questions from metabase:"
 
-#: inc/config.class.php:258
+#: inc/config.class.php:260
 msgid "Extract dashboards from metabase:"
 msgstr "Extract dashboards from metabase:"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase dashboard"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: login"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: get current user"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: get users"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: get databases"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: get GLPI database"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "No auto-generated GLPI database found"
+
+#: inc/apiclient.class.php:618
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "Enabling embedded display fails for dashboard %s."
+
+#: inc/apiclient.class.php:792
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+
+#: setup.php:149
+msgid "Installed / not configured"
+msgstr "Installed / not configured"
