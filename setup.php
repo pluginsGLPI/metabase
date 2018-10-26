@@ -26,7 +26,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_METABASE_VERSION', '0.8.0');
+define('PLUGIN_METABASE_VERSION', '0.8.1');
 
 // Minimal GLPI version, inclusive
 define("PLUGIN_METABASE_MIN_GLPI", "9.2");
