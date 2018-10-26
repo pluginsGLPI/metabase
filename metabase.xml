@@ -52,8 +52,14 @@ Il permet actuellement de:
    </authors>
    <versions>
       <version>
+         <num>0.8.1</num>
+         <compatibility>9.3</compatibility>
+         <compatibility>9.2</compatibility>
+      </version>
+      <version>
          <num>0.8.0</num>
          <compatibility>9.3</compatibility>
+         <compatibility>9.2</compatibility>
       </version>
    </versions>
    <langs>
