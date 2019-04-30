@@ -529,11 +529,13 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          $params['original_card_id'] = $card_id;
          // update existing
          $data = $this->httpQuery("card/$card_id", [
+            'timeout' => $this->api_config['timeout'],
             'json' => $params
          ], 'PUT');
       } else {
          // create new
          $data = $this->httpQuery('card', [
+            'timeout' => $this->api_config['timeout'],
             'json' => $params
          ], 'POST');
       }
