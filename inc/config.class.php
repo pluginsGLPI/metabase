@@ -438,7 +438,7 @@ class PluginMetabaseConfig extends Config {
       $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
       $success = true;
       foreach ($iterator as $file) {
-         if ($file->isFile()) {
+         if ($file->isFile() && 'json' === $file->getExtension()) {
             $json = file_get_contents($file->getPathname());
             if (($report_array = json_decode($json, true))) {
                $_SESSION['metabase'][$session_key][$file->getBasename(".json")] = $report_array;
