@@ -516,10 +516,10 @@ class PluginMetabaseConfig extends Config {
          'sql'                    => $card['dataset_query']['native']['query'],
       ];
 
-      foreach ($card['dataset_query']['native']['template_tags'] as $tag_name => $tag) {
+      foreach ($card['dataset_query']['native']['template-tags'] as $tag_name => $tag) {
          $extract['template_tags'][$tag_name] = [
             'type'         => $tag['type'],
-            'display_name' => $tag['display_name'],
+            'display_name' => $tag['display-name'],
          ];
 
          if (isset($tag['default'])) {
@@ -530,8 +530,8 @@ class PluginMetabaseConfig extends Config {
             $extract['template_tags'][$tag_name]['required'] = (bool) $tag['required'];
          }
 
-         if (isset($tag['widget_type'])) {
-            $extract['template_tags'][$tag_name]['widget_type'] = $tag['widget_type'];
+         if (isset($tag['widget-type'])) {
+            $extract['template_tags'][$tag_name]['widget_type'] = $tag['widget-type'];
          }
 
          if (isset($tag['dimension'][1])) {
