@@ -589,7 +589,7 @@ class PluginMetabaseConfig extends Config {
                foreach ($card['parameter_mappings'] as $mapping) {
                   $mapping_key = $mapping['target'][1][1];
                   $field_id    = $card['card']['dataset_query']
-                                      ['native']['template_tags']
+                                      ['native']['template-tags']
                                       [$mapping_key]['dimension'][1];
                   $field_name  = array_search($field_id, $_SESSION['metabase']['fields']);
                   if ($field_name !== false) {
