@@ -21,7 +21,7 @@ $(function() {
       $('<div>').dialog({
          modal: true,
          open: function (){
-            $(this).load('../plugins/metabase/ajax/extract_json.php', {
+            $(this).load(CFG_GLPI.root_doc + '/plugins/metabase/ajax/extract_json.php', {
                'id': id,
                'type': type
             });
