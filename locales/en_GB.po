@@ -1,14 +1,14 @@
 # English translations for PACKAGE package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2018.
+# Automatically generated, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 15:02+0000\n"
-"PO-Revision-Date: 2018-08-21 15:02+0000\n"
+"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"PO-Revision-Date: 2019-06-11 09:45+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -20,6 +20,26 @@ msgstr ""
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "Invalid request."
+
+#: front/collections.php:5
+msgid "Metabase collections"
+msgstr "Metabase collections"
+
+#: front/collections.php:15
+msgid "Reports and dashboards specifications"
+msgstr "Reports and dashboards specifications"
+
+#: front/collections.php:31
+msgid "Extract questions from metabase:"
+msgstr "Extract questions from metabase:"
+
+#: front/collections.php:59
+msgid "Extract dashboards from metabase:"
+msgstr "Extract dashboards from metabase:"
+
+#: front/collections.php:71
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr "Unable to access Metabase data. Please check plugin configuration."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -105,13 +125,9 @@ msgstr "Push reports and dashboards in Metabase"
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Re)generate datamodel in Metabase"
 
-#: inc/config.class.php:232
-msgid "Extract questions from metabase:"
-msgstr "Extract questions from metabase:"
-
-#: inc/config.class.php:260
-msgid "Extract dashboards from metabase:"
-msgstr "Extract dashboards from metabase:"
+#: inc/config.class.php:221
+msgid "Show reports and dashboards specifications"
+msgstr "Show reports and dashboards specifications"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
@@ -141,12 +157,12 @@ msgstr "API: get GLPI database"
 msgid "No auto-generated GLPI database found"
 msgstr "No auto-generated GLPI database found"
 
-#: inc/apiclient.class.php:618
+#: inc/apiclient.class.php:628
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Enabling embedded display fails for dashboard %s."
 
-#: inc/apiclient.class.php:792
+#: inc/apiclient.class.php:802
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"

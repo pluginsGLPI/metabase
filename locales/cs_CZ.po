@@ -3,17 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 15:02+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/teclib/teams/28042/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
@@ -21,6 +24,26 @@ msgstr ""
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
 msgstr "Neplatný požadavek."
+
+#: front/collections.php:5
+msgid "Metabase collections"
+msgstr ""
+
+#: front/collections.php:15
+msgid "Reports and dashboards specifications"
+msgstr ""
+
+#: front/collections.php:31
+msgid "Extract questions from metabase:"
+msgstr "Vytáhnout dotazy z metabase:"
+
+#: front/collections.php:59
+msgid "Extract dashboards from metabase:"
+msgstr "Vytáhnout přehledy z metabase:"
+
+#: front/collections.php:71
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -106,13 +129,9 @@ msgstr "Odeslat výkazy a přehledy do Metabase"
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(znovu)vytvořit datový model v Metabase"
 
-#: inc/config.class.php:232
-msgid "Extract questions from metabase:"
-msgstr "Vytáhnout dotazy z metabase:"
-
-#: inc/config.class.php:260
-msgid "Extract dashboards from metabase:"
-msgstr "Vytáhnout přehledy z metabase:"
+#: inc/config.class.php:221
+msgid "Show reports and dashboards specifications"
+msgstr ""
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
@@ -142,12 +161,12 @@ msgstr "API: získat GLPI databázi"
 msgid "No auto-generated GLPI database found"
 msgstr "Nenalezena žádná automaticky vytvořená GLPI databáze"
 
-#: inc/apiclient.class.php:618
+#: inc/apiclient.class.php:628
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Zapnutí vestavěného zobrazení se pro nástěnku %s nezdařilo."
 
-#: inc/apiclient.class.php:792
+#: inc/apiclient.class.php:802
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"

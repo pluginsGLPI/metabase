@@ -217,57 +217,9 @@ class PluginMetabaseConfig extends Config {
                'name' => 'push_datamodel'
             ]);
 
-            $collections = $apiclient->getCollections();
-            if ($collections !== false
-                && count($collections)) {
-
-               if (!isset($_SESSION['metabase']['tables'])
-                   || !isset($_SESSION['metabase']['fields'])
-                   || !count($_SESSION['metabase']['tables'])
-                   || !count($_SESSION['metabase']['fields'])) {
-                  $current_config = self::getConfig();
-                  self::loadTablesAndFields($current_config['glpi_db_id']);
-               }
-
-               echo "<h3>".__("Extract questions from metabase:", 'metabase')."</h3>";
-               echo "<ul class='metabase_collection_list'>";
-               foreach ($collections as $collection) {
-                  $collection_cards = $apiclient->getCards($collection['id']);
-                  if ($collection_cards !== false
-                      && count($collection_cards)) {
-                     echo "<li><label>".$collection['name']."</label>";
-                     echo "<ul class='extract_list'>";
-                     foreach ($collection_cards as $card) {
-                        if ($card['query_type'] === "native") {
-                           echo "<li><a href='#'
-                                        class='extract'
-                                        data-id='".$card['id']."' data-type='question'>".
-                                    $card['name'].
-                                "</a></li>";
-                        }
-                     }
-                     echo "</ul>";
-                     echo "</li>";
-                  }
-               }
-               echo "</ul>";
-            }
-
-            $dashboards = $apiclient->getDashboards();
-            if ($dashboards !== false
-                && count($dashboards)) {
-               self::loadReports();
-               echo "<h3>".__("Extract dashboards from metabase:", 'metabase')."</h3>";
-               echo "<ul class='extract_list extract_dashboards'>";
-               foreach ($dashboards as $dashboard) {
-                  echo "<li><a href='#'
-                               class='extract'
-                               data-id='".$dashboard['id']."' data-type='dashboard'>".
-                           $dashboard['name'].
-                       "</a></li>";
-               }
-               echo "</ul>";
-            }
+            echo '<a href="' . $CFG_GLPI["root_doc"] . '/plugins/metabase/front/collections.php" class="vsubmit">'
+               . __('Show reports and dashboards specifications', 'metabase')
+               . '</a>';
          }
 
          Html::closeForm();
@@ -486,7 +438,7 @@ class PluginMetabaseConfig extends Config {
       $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
       $success = true;
       foreach ($iterator as $file) {
-         if ($file->isFile()) {
+         if ($file->isFile() && 'json' === $file->getExtension()) {
             $json = file_get_contents($file->getPathname());
             if (($report_array = json_decode($json, true))) {
                $_SESSION['metabase'][$session_key][$file->getBasename(".json")] = $report_array;
@@ -516,10 +468,10 @@ class PluginMetabaseConfig extends Config {
          'sql'                    => $card['dataset_query']['native']['query'],
       ];
 
-      foreach ($card['dataset_query']['native']['template_tags'] as $tag_name => $tag) {
+      foreach ($card['dataset_query']['native']['template-tags'] as $tag_name => $tag) {
          $extract['template_tags'][$tag_name] = [
             'type'         => $tag['type'],
-            'display_name' => $tag['display_name'],
+            'display_name' => $tag['display-name'],
          ];
 
          if (isset($tag['default'])) {
@@ -530,8 +482,8 @@ class PluginMetabaseConfig extends Config {
             $extract['template_tags'][$tag_name]['required'] = (bool) $tag['required'];
          }
 
-         if (isset($tag['widget_type'])) {
-            $extract['template_tags'][$tag_name]['widget_type'] = $tag['widget_type'];
+         if (isset($tag['widget-type'])) {
+            $extract['template_tags'][$tag_name]['widget_type'] = $tag['widget-type'];
          }
 
          if (isset($tag['dimension'][1])) {
@@ -589,7 +541,7 @@ class PluginMetabaseConfig extends Config {
                foreach ($card['parameter_mappings'] as $mapping) {
                   $mapping_key = $mapping['target'][1][1];
                   $field_id    = $card['card']['dataset_query']
-                                      ['native']['template_tags']
+                                      ['native']['template-tags']
                                       [$mapping_key]['dimension'][1];
                   $field_name  = array_search($field_id, $_SESSION['metabase']['fields']);
                   if ($field_name !== false) {
