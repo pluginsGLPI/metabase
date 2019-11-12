@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"POT-Creation-Date: 2019-11-12 09:53+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Haider Ilich López Areiza <hlopez@itsoluciones.com.co>, 2019\n"
 "Language-Team: Spanish (Colombia) (https://www.transifex.com/teclib/teams/28042/es_CO/)\n"
@@ -27,11 +27,11 @@ msgstr "Respuesta invalida."
 
 #: front/collections.php:5
 msgid "Metabase collections"
-msgstr ""
+msgstr "Colecciones de metabase"
 
 #: front/collections.php:15
 msgid "Reports and dashboards specifications"
-msgstr ""
+msgstr "Especificaciones de informes y cuadros de mando"
 
 #: front/collections.php:31
 msgid "Extract questions from metabase:"
@@ -44,6 +44,8 @@ msgstr "Extraer tableros desde la metabase:"
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+"No se puede acceder a los datos de la metabase. Verifique la configuración "
+"del complemento."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -131,7 +133,7 @@ msgstr "(Re)generar modelo de datos en metabase"
 
 #: inc/config.class.php:221
 msgid "Show reports and dashboards specifications"
-msgstr ""
+msgstr "Mostrar informes y especificaciones de paneles"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"

@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"POT-Creation-Date: 2019-11-12 09:53+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/teclib/teams/28042/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,11 +27,11 @@ msgstr "Neplatný požadavek."
 
 #: front/collections.php:5
 msgid "Metabase collections"
-msgstr ""
+msgstr "Metabase sbírky"
 
 #: front/collections.php:15
 msgid "Reports and dashboards specifications"
-msgstr ""
+msgstr "Specifikace výkazů a přehledů"
 
 #: front/collections.php:31
 msgid "Extract questions from metabase:"
@@ -44,6 +44,8 @@ msgstr "Vytáhnout přehledy z metabase:"
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+"Nedaří se přistupovat k datům Metabase. Zkontrolujte nastavení zásuvného "
+"modulu."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -131,7 +133,7 @@ msgstr "(znovu)vytvořit datový model v Metabase"
 
 #: inc/config.class.php:221
 msgid "Show reports and dashboards specifications"
-msgstr ""
+msgstr "Zobrazit specifikace výkazů a přehledů"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
