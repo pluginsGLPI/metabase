@@ -26,15 +26,15 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_METABASE_VERSION', '1.0.0');
+define('PLUGIN_METABASE_VERSION', '1.1.0');
 
 // Minimal GLPI version, inclusive
-define("PLUGIN_METABASE_MIN_GLPI", "9.2");
+define("PLUGIN_METABASE_MIN_GLPI", "9.5");
 // Maximum GLPI version, exclusive
-define("PLUGIN_METABASE_MAX_GLPI", "9.5");
+define("PLUGIN_METABASE_MAX_GLPI", "9.6");
 
 if (!defined("PLUGINMETABASE_DIR")) {
-   define("PLUGINMETABASE_DIR", GLPI_ROOT . "/plugins/metabase");
+   define("PLUGINMETABASE_DIR", __DIR__);
 }
 if (!defined("PLUGINMETABASE_REPORTS_DIR")) {
    define("PLUGINMETABASE_REPORTS_DIR", PLUGINMETABASE_DIR."/reports");
@@ -61,7 +61,7 @@ function plugin_init_metabase() {
    $plugin = new Plugin();
    if (!$plugin->isInstalled('metabase')
        || !$plugin->isActivated('metabase')
-       || !Session::getLoginUserID() ) {
+       || !Session::getLoginUserID()) {
       return true;
    }
 
@@ -78,6 +78,9 @@ function plugin_init_metabase() {
    // css & js
    $PLUGIN_HOOKS['add_css']['metabase'] = 'metabase.css';
    $PLUGIN_HOOKS['add_javascript']['metabase'] = 'metabase.js';
+
+   // Encryption
+   $PLUGIN_HOOKS['secured_configs']['metabase'] = ['password'];
 }
 
 
@@ -98,59 +101,10 @@ function plugin_version_metabase() {
          'glpi' => [
             'min' => PLUGIN_METABASE_MIN_GLPI,
             'max' => PLUGIN_METABASE_MAX_GLPI,
-            'dev' => true, //Required to allow 9.2-dev
          ]
       ]
    ];
 }
-
-/**
- * Check pre-requisites before install
- * OPTIONNAL, but recommanded
- *
- * @return boolean
- */
-function plugin_metabase_check_prerequisites() {
-
-   //Version check is not done by core in GLPI < 9.2 but has to be delegated to core in GLPI >= 9.2.
-   if (!method_exists('Plugin', 'checkGlpiVersion')) {
-      $version = preg_replace('/^((\d+\.?)+).*$/', '$1', GLPI_VERSION);
-      $matchMinGlpiReq = version_compare($version, PLUGIN_METABASE_MIN_GLPI, '>=');
-      $matchMaxGlpiReq = version_compare($version, PLUGIN_METABASE_MAX_GLPI, '<');
-
-      if (!$matchMinGlpiReq || !$matchMaxGlpiReq) {
-         echo vsprintf(
-            'This plugin requires GLPI >= %1$s and < %2$s.',
-            [
-               PLUGIN_METABASE_MIN_GLPI,
-               PLUGIN_METABASE_MAX_GLPI,
-            ]
-         );
-         return false;
-      }
-   }
-
-   return true;
-}
-
-/**
- * Check configuration process
- *
- * @param boolean $verbose Whether to display message on failure. Defaults to false
- *
- * @return boolean
- */
-function plugin_metabase_check_config($verbose = false) {
-   if (true) { // Your configuration check
-      return true;
-   }
-
-   if ($verbose) {
-      echo __('Installed / not configured', 'metabase');
-   }
-   return false;
-}
-
 
 function plugin_metabase_recursive_remove_empty($haystack) {
    foreach ($haystack as $key => $value) {

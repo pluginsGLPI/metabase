@@ -56,7 +56,7 @@ class PluginMetabaseAPIClient extends CommonGLPI {
       $data = $this->httpQuery('session', [
          'json' => [
             'username' => $this->api_config['username'],
-            'password' => Toolbox::decrypt($this->api_config['password'], GLPIKEY),
+            'password' => Toolbox::sodiumDecrypt($this->api_config['password']),
          ]
       ], 'POST');
 

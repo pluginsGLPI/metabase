@@ -18,10 +18,10 @@ $(function() {
    $(document).on("click", "a.extract", function() {
       var id = $(this).data('id');
       var type = $(this).data('type');
-      $('<div>').dialog({
+      $('<div></div>').dialog({
          modal: true,
          open: function (){
-            $(this).load(CFG_GLPI.root_doc + '/plugins/metabase/ajax/extract_json.php', {
+            $(this).load(CFG_GLPI.root_doc + '/' + GLPI_PLUGINS_PATH.metabase + '/ajax/extract_json.php', {
                'id': id,
                'type': type
             });
