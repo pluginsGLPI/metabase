@@ -95,8 +95,8 @@ function plugin_version_metabase() {
       'name'           => 'metabase',
       'version'        => PLUGIN_METABASE_VERSION,
       'author'         => '<a href="http://www.teclib.com">Teclib\'</a>',
-      'license'        => '',
-      'homepage'       => '',
+      'license'        => 'GPLv2+',
+      'homepage'       => 'https://github.com/pluginsGLPI/metabase',
       'requirements'   => [
          'glpi' => [
             'min' => PLUGIN_METABASE_MIN_GLPI,
