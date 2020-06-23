@@ -1,14 +1,14 @@
 # English translations for PACKAGE package.
-# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2019.
+# Automatically generated, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-12 09:53+0000\n"
-"PO-Revision-Date: 2019-11-12 09:53+0000\n"
+"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"PO-Revision-Date: 2020-07-03 19:24+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -16,10 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: front/profileright.form.php:13 front/profileright.form.php:40
-msgid "Invalid request."
-msgstr "Invalid request."
 
 #: front/collections.php:5
 msgid "Metabase collections"
@@ -40,6 +36,47 @@ msgstr "Extract dashboards from metabase:"
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "Unable to access Metabase data. Please check plugin configuration."
+
+#: front/profileright.form.php:13 front/profileright.form.php:40
+msgid "Invalid request."
+msgstr "Invalid request."
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: login"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: get current user"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: get users"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: get databases"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: get GLPI database"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "No auto-generated GLPI database found"
+
+#: inc/apiclient.class.php:628
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "Enabling embedded display fails for dashboard %s."
+
+#: inc/apiclient.class.php:802
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -132,44 +169,3 @@ msgstr "Show reports and dashboards specifications"
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase dashboard"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: login"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: get current user"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: get users"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: get databases"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: get GLPI database"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "No auto-generated GLPI database found"
-
-#: inc/apiclient.class.php:628
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Enabling embedded display fails for dashboard %s."
-
-#: inc/apiclient.class.php:802
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Installed / not configured"

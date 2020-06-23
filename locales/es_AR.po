@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-12 09:53+0000\n"
+"POT-Creation-Date: 2020-07-03 19:24+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Emiliano Cagliari <thelordbat@gmail.com>, 2018\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/teclib/teams/28042/es_AR/)\n"
@@ -20,10 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_AR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: front/profileright.form.php:13 front/profileright.form.php:40
-msgid "Invalid request."
-msgstr "Solicitud No Valida"
 
 #: front/collections.php:5
 msgid "Metabase collections"
@@ -44,6 +40,49 @@ msgstr "Extrae los paneles de la metabase:"
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+
+#: front/profileright.form.php:13 front/profileright.form.php:40
+msgid "Invalid request."
+msgstr "Solicitud No Valida"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: inicio de sesión"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: obtener usuario actual"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: obtener usuarios"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: obtener bases de datos"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: obtener base de datos GLPI"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "No se encontró una base de datos GLPI autogenerada"
+
+#: inc/apiclient.class.php:628
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"La habilitación de la visualización incrustada falla para el tablero %s."
+
+#: inc/apiclient.class.php:802
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"La consulta a metabase falló debido a que se agotó el tiempo de espera de la"
+" operación. Tal vez debería aumentar el valor de tiempo de espera en la "
+"configuración del complemento"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -136,46 +175,3 @@ msgstr ""
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Panel Metabase"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: inicio de sesión"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: obtener usuario actual"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: obtener usuarios"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: obtener bases de datos"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: obtener base de datos GLPI"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "No se encontró una base de datos GLPI autogenerada"
-
-#: inc/apiclient.class.php:628
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"La habilitación de la visualización incrustada falla para el tablero %s."
-
-#: inc/apiclient.class.php:802
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"La consulta a metabase falló debido a que se agotó el tiempo de espera de la"
-" operación. Tal vez debería aumentar el valor de tiempo de espera en la "
-"configuración del complemento"
-
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Instalado / No Configurado"
