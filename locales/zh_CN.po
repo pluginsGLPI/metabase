@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-12 09:53+0000\n"
+"POT-Creation-Date: 2020-07-03 19:24+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 李赋 <fu792659@163.com>, 2018\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -21,10 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: front/profileright.form.php:13 front/profileright.form.php:40
-msgid "Invalid request."
-msgstr "无效请求。 "
 
 #: front/collections.php:5
 msgid "Metabase collections"
@@ -45,6 +41,45 @@ msgstr "从Metabase中提取仪表板："
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+
+#: front/profileright.form.php:13 front/profileright.form.php:40
+msgid "Invalid request."
+msgstr "无效请求。 "
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API：登录"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API：获取当前用户"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API：获取用户"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API：获取数据库"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API：获取GLPI数据库"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "未找到自动生成的GLPI数据库"
+
+#: inc/apiclient.class.php:628
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "仪表板启用嵌入式显示失败%s"
+
+#: inc/apiclient.class.php:802
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -135,42 +170,3 @@ msgstr ""
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase仪表盘"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API：登录"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API：获取当前用户"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API：获取用户"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API：获取数据库"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API：获取GLPI数据库"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "未找到自动生成的GLPI数据库"
-
-#: inc/apiclient.class.php:628
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "仪表板启用嵌入式显示失败%s"
-
-#: inc/apiclient.class.php:802
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
-
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "已安装 / 未配置"
