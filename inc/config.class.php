@@ -217,7 +217,7 @@ class PluginMetabaseConfig extends Config {
                'name' => 'push_datamodel'
             ]);
 
-            echo '<a href="' . $CFG_GLPI["root_doc"] . '/plugins/metabase/front/collections.php" class="vsubmit">'
+            echo '<a href="' . Plugin::getWebDir('metabase') . '/front/collections.php" class="vsubmit">'
                . __('Show reports and dashboards specifications', 'metabase')
                . '</a>';
          }
@@ -690,7 +690,7 @@ class PluginMetabaseConfig extends Config {
          if (empty($input["password"])) {
             unset($input["password"]);
          } else {
-            $input["password"] = Toolbox::encrypt(stripslashes($input["password"]), GLPIKEY);
+            $input["password"] = Toolbox::sodiumEncrypt(stripslashes($input["password"]));
 
             // Remove existing metabase session token to force reconnection
             unset($_SESSION['metabase']['session_token']);
@@ -709,19 +709,27 @@ class PluginMetabaseConfig extends Config {
    static function install(Migration $migration) {
       $current_config = self::getConfig();
 
-      // Encrypt password if previously stored without encryption
-      if (!array_key_exists('is_password_encrypted', $current_config) || !$current_config['is_password_encrypted']) {
+      // Encrypt password with sodium if previously stored without sodium encryption
+      if (!array_key_exists('is_password_sodium_encrypted', $current_config) || !$current_config['is_password_sodium_encrypted']) {
          if (!empty($current_config['password'])) {
+            if (array_key_exists('is_password_random_encrypted', $current_config) && $current_config['is_password_random_encrypted']) {
+               // Decrypt using randomized key
+               $current_config['password'] = Toolbox::decrypt($current_config['password']);
+            } else if (array_key_exists('is_password_encrypted', $current_config) && $current_config['is_password_encrypted']) {
+               // Decrypt using GLPIKEY
+               $current_config['password'] = Toolbox::decrypt($current_config['password'], GLPIKEY);
+            }
             Config::setConfigurationValues(
                'plugin:metabase',
                [
-                  'password' => Toolbox::encrypt($current_config['password'], GLPIKEY),
+                  'password' => Toolbox::sodiumEncrypt($current_config['password']),
                ]
             );
          }
 
          // Add flag in config to prevent re-encrypt
-         Config::setConfigurationValues('plugin:metabase', ['is_password_encrypted' => 1]);
+         Config::setConfigurationValues('plugin:metabase', ['is_password_sodium_encrypted' => 1]);
+         Config::deleteConfigurationValues('plugin:metabase', ['is_password_encrypted', 'is_password_random_encrypted']);
       }
 
       // fill config table with default values if missing

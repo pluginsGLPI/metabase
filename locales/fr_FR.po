@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"POT-Creation-Date: 2020-07-03 19:24+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: alexandre delaunay <delaunay.alexandre@gmail.com>, 2018\n"
 "Language-Team: French (France) (https://www.transifex.com/teclib/teams/28042/fr_FR/)\n"
@@ -20,10 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: front/profileright.form.php:13 front/profileright.form.php:40
-msgid "Invalid request."
-msgstr "Requête invalide"
 
 #: front/collections.php:5
 msgid "Metabase collections"
@@ -44,6 +40,49 @@ msgstr "Extraire les tableaux de bords depuis Metabase : "
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+
+#: front/profileright.form.php:13 front/profileright.form.php:40
+msgid "Invalid request."
+msgstr "Requête invalide"
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API : connexion"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API : obtention du l'utilisateur courant"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API : obtention des utilisateurs"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API : obtention des bases de données"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API : obtention de la base de données de GLPI"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "Aucune base de données GLPI auto-générée trouvée"
+
+#: inc/apiclient.class.php:628
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"L'activation de l'intégration de l'affichage a échoué pour le tableau de "
+"bord %s."
+
+#: inc/apiclient.class.php:802
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
+"pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -138,46 +177,3 @@ msgstr ""
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Tableau de bord Metabase"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API : connexion"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API : obtention du l'utilisateur courant"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API : obtention des utilisateurs"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API : obtention des bases de données"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API : obtention de la base de données de GLPI"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "Aucune base de données GLPI auto-générée trouvée"
-
-#: inc/apiclient.class.php:628
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"L'activation de l'intégration de l'affichage a échoué pour le tableau de "
-"bord %s."
-
-#: inc/apiclient.class.php:802
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
-"pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
-
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Installé / Non-configuré"

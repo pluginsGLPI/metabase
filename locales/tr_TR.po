@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2018
+# Kaya Zeren <kayazeren@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-11 09:45+0000\n"
+"POT-Creation-Date: 2020-07-03 19:24+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2018\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2019\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/teclib/teams/28042/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,17 +21,13 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: front/profileright.form.php:13 front/profileright.form.php:40
-msgid "Invalid request."
-msgstr "İstek geçersiz."
-
 #: front/collections.php:5
 msgid "Metabase collections"
-msgstr ""
+msgstr "Metabase derlemeleri"
 
 #: front/collections.php:15
 msgid "Reports and dashboards specifications"
-msgstr ""
+msgstr "Raporların ve panoların özellikleri"
 
 #: front/collections.php:31
 msgid "Extract questions from metabase:"
@@ -44,6 +40,49 @@ msgstr "Metabase üzerinden panoları ayıkla:"
 #: front/collections.php:71
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+"Metabase verilerine erişilemiyor. Lütfen uygulama eki yapılandırmasını "
+"denetleyin."
+
+#: front/profileright.form.php:13 front/profileright.form.php:40
+msgid "Invalid request."
+msgstr "İstek geçersiz."
+
+#: inc/apiclient.class.php:30
+msgid "API: login"
+msgstr "API: oturum açma"
+
+#: inc/apiclient.class.php:32
+msgid "API: get current user"
+msgstr "API: geçerli kullanıcıyı al"
+
+#: inc/apiclient.class.php:34
+msgid "API: get users"
+msgstr "API: kullanıcıları al"
+
+#: inc/apiclient.class.php:36
+msgid "API: get databases"
+msgstr "API: veritabanlarını al"
+
+#: inc/apiclient.class.php:38
+msgid "API: get GLPI database"
+msgstr "API: GLPI veritabanını al"
+
+#: inc/apiclient.class.php:149
+msgid "No auto-generated GLPI database found"
+msgstr "Otomatik olarak üretilmiş bir GLPI veritabanı bulunamadı"
+
+#: inc/apiclient.class.php:628
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
+
+#: inc/apiclient.class.php:802
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Uygulama eki "
+"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
 
 #: inc/profileright.class.php:20 inc/config.class.php:10
 msgid "Metabase"
@@ -131,49 +170,8 @@ msgstr "Metabase veri modelini (yeniden) oluştur"
 
 #: inc/config.class.php:221
 msgid "Show reports and dashboards specifications"
-msgstr ""
+msgstr "Raporların ve panoların özelliklerini görüntüle"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
 msgstr "Metabase panosu"
-
-#: inc/apiclient.class.php:30
-msgid "API: login"
-msgstr "API: oturum açma"
-
-#: inc/apiclient.class.php:32
-msgid "API: get current user"
-msgstr "API: geçerli kullanıcıyı al"
-
-#: inc/apiclient.class.php:34
-msgid "API: get users"
-msgstr "API: kullanıcıları al"
-
-#: inc/apiclient.class.php:36
-msgid "API: get databases"
-msgstr "API: veritabanlarını al"
-
-#: inc/apiclient.class.php:38
-msgid "API: get GLPI database"
-msgstr "API: GLPI veritabanını al"
-
-#: inc/apiclient.class.php:149
-msgid "No auto-generated GLPI database found"
-msgstr "Otomatik olarak üretilmiş bir GLPI veritabanı bulunamadı"
-
-#: inc/apiclient.class.php:628
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
-
-#: inc/apiclient.class.php:802
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Uygulama eki "
-"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
-
-#: setup.php:149
-msgid "Installed / not configured"
-msgstr "Kurulmuş / yapılandırılmamış"

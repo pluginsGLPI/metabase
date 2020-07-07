@@ -1,20 +1,24 @@
-# English translations for PACKAGE package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2020.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Shawn Long <webaccounts@kkg.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-03 19:24+0000\n"
-"PO-Revision-Date: 2020-07-03 19:24+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: en_GB\n"
+"PO-Revision-Date: 2018-08-17 13:43+0000\n"
+"Last-Translator: Shawn Long <webaccounts@kkg.org>, 2019\n"
+"Language-Team: English (United States) (https://www.transifex.com/teclib/teams/28042/en_US/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: front/collections.php:5
@@ -23,7 +27,7 @@ msgstr "Metabase collections"
 
 #: front/collections.php:15
 msgid "Reports and dashboards specifications"
-msgstr "Reports and dashboards specifications"
+msgstr "Reports and dashboard specifications"
 
 #: front/collections.php:31
 msgid "Extract questions from metabase:"
@@ -39,7 +43,7 @@ msgstr "Unable to access Metabase data. Please check plugin configuration."
 
 #: front/profileright.form.php:13 front/profileright.form.php:40
 msgid "Invalid request."
-msgstr "Invalid request."
+msgstr "Invalid Request."
 
 #: inc/apiclient.class.php:30
 msgid "API: login"
@@ -112,15 +116,15 @@ msgstr "Metabase embedded token (to display dashboard in GLPI)"
 
 #: inc/config.class.php:116
 msgid "Metabase url"
-msgstr "Metabase url"
+msgstr "Metabase URL"
 
 #: inc/config.class.php:117
 msgid ""
-"You may want to have a different dashboard url (with https for example) than "
-"the host (used to push the data) "
+"You may want to have a different dashboard url (with https for example) than"
+" the host (used to push the data) "
 msgstr ""
-"You may want to have a different dashboard url (with https for example) than "
-"the host (used to push the data) "
+"You may want to have a different dashboard URL (with https for example) than"
+" the host (used to push the data) "
 
 #: inc/config.class.php:127
 msgid "Timeout for sending data (in seconds)"
@@ -128,7 +132,7 @@ msgstr "Timeout for sending data (in seconds)"
 
 #: inc/config.class.php:148
 msgid "API status"
-msgstr "API status"
+msgstr "API Status"
 
 #: inc/config.class.php:167
 msgid "Last Error"
@@ -160,11 +164,11 @@ msgstr "Push reports and dashboards in Metabase"
 
 #: inc/config.class.php:216
 msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)generate datamodel in Metabase"
+msgstr "(Re)generate data model in Metabase"
 
 #: inc/config.class.php:221
 msgid "Show reports and dashboards specifications"
-msgstr "Show reports and dashboards specifications"
+msgstr "Show report and dashboard specifications"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
