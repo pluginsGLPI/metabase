@@ -71,6 +71,7 @@ function plugin_init_metabase() {
 
    // add dashboards
    Plugin::registerClass('PluginMetabaseDashboard', ['addtabon' => 'Central']);
+   $PLUGIN_HOOKS['helpdesk_menu_entry']['metabase'] = '/front/selfservice.php';
 
    // profile rights management
    Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
