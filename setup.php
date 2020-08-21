@@ -26,7 +26,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_METABASE_VERSION', '1.1.0');
+define('PLUGIN_METABASE_VERSION', '1.2.0');
 
 // Minimal GLPI version, inclusive
 define("PLUGIN_METABASE_MIN_GLPI", "9.5");
@@ -71,6 +71,7 @@ function plugin_init_metabase() {
 
    // add dashboards
    Plugin::registerClass('PluginMetabaseDashboard', ['addtabon' => 'Central']);
+   $PLUGIN_HOOKS['helpdesk_menu_entry']['metabase'] = '/front/selfservice.php';
 
    // profile rights management
    Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
