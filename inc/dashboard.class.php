@@ -60,7 +60,7 @@ class PluginMetabaseDashboard extends CommonDBTM {
     *
     * @return void
     */
-   static function showForCentral(Central $item, $withtemplate = 0) {
+   static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false) {
 
       $apiclient = new PluginMetabaseAPIClient();
 
@@ -95,7 +95,7 @@ class PluginMetabaseDashboard extends CommonDBTM {
          'current_dashboard',
          array_combine(array_column($dashboards, 'id'), array_column($dashboards, 'name')),
          [
-            'on_change' => 'reloadTab("uuid=" + $(this).val());',
+            'on_change' => ($is_helpdesk) ? 'location.href = location.origin+location.pathname+"?uuid="+$(this).val()' : 'reloadTab("uuid=" + $(this).val());',
             'value'     => $currentUuid
          ]
       );
