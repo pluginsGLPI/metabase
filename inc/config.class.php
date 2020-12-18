@@ -690,7 +690,10 @@ class PluginMetabaseConfig extends Config {
          if (empty($input["password"])) {
             unset($input["password"]);
          } else {
-            $input["password"] = Toolbox::sodiumEncrypt(stripslashes($input["password"]));
+            if (version_compare(GLPI_VERSION, '9.5.3', '<')) {
+               // Since GLPI 9.5.3, encrypt is done by GLPI core config class.
+               $input["password"] = Toolbox::sodiumEncrypt($input["password"]);
+            }
 
             // Remove existing metabase session token to force reconnection
             unset($_SESSION['metabase']['session_token']);
@@ -719,10 +722,13 @@ class PluginMetabaseConfig extends Config {
                // Decrypt using GLPIKEY
                $current_config['password'] = Toolbox::decrypt($current_config['password'], GLPIKEY);
             }
+            $password = version_compare(GLPI_VERSION, '9.5.3', '>=')
+               ? $current_config['password'] // Since GLPI 9.5.3, encrypt is done by GLPI core config class
+               : Toolbox::sodiumEncrypt($current_config['password']);
             Config::setConfigurationValues(
                'plugin:metabase',
                [
-                  'password' => Toolbox::sodiumEncrypt($current_config['password']),
+                  'password' => $password,
                ]
             );
          }
