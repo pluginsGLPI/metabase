@@ -170,8 +170,6 @@ class PluginMetabaseConfig extends Config {
             } else {
                Html::printCleanArray($error);
             }
-
-            echo "<p><strong>".GLPINetwork::getErrorMessage()."</strong></p>";
          }
 
          echo "<div id='actions'>";
