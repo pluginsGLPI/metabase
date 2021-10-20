@@ -127,8 +127,7 @@ msgid ""
 " the host (used to push the data) "
 msgstr ""
 "Vous voudrez peut être avoir une url différente pour les tableaux de bord "
-"(avec https par exemple) que celle de l'hôte (utilisée pour pousser les "
-"données)"
+"(avec https par exemple) que celle du champ hôte (utilisée pour pousser les données)"
 
 #: inc/config.class.php:127
 msgid "Timeout for sending data (in seconds)"
