@@ -114,7 +114,7 @@ class PluginMetabaseConfig extends Config {
 
       echo self::showField([
          'label' => __("Metabase url", 'metabase'),
-         'help' => __("You may want to have a different dashboard url (with https for example) than the host (used to push the data) ", 'metabase'),
+         'help' => __s("You may want to have a different dashboard url (with https for example) than the host (used to push the data) ", 'metabase'),
          'attrs' => [
             'name'  => 'metabase_url',
             'value'       => $current_config['metabase_url'],
