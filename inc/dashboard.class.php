@@ -102,14 +102,16 @@ class PluginMetabaseDashboard extends CommonDBTM {
 
       $config = PluginMetabaseConfig::getConfig();
 
-      $signer = new Lcobucci\JWT\Signer\Hmac\Sha256();
-      $token = (new Lcobucci\JWT\Builder())
-          ->set('resource', [
+      $signer_config = Lcobucci\JWT\Configuration::forSymmetricSigner(
+         new Lcobucci\JWT\Signer\Hmac\Sha256(),
+         Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token'])
+      );
+      $token = $signer_config->builder()
+          ->withClaim('resource', [
               'dashboard' => (int) $currentUuid
           ])
-          ->set('params', new stdClass())
-          ->sign($signer, $config['embedded_token'])
-          ->getToken();
+          ->withClaim('params', new stdClass())
+          ->getToken($signer_config->signer(), $signer_config->signingKey());
 
       $url = rtrim($config['metabase_url'], '/');
       echo "<iframe src='$url/embed/dashboard/{$token}#bordered=false'
