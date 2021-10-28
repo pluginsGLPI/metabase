@@ -5,15 +5,16 @@
 # 
 # Translators:
 # alexandre delaunay <delaunay.alexandre@gmail.com>, 2018
+# Stanislas <skita@teclib.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: alexandre delaunay <delaunay.alexandre@gmail.com>, 2018\n"
+"Last-Translator: Stanislas <skita@teclib.com>, 2021\n"
 "Language-Team: French (France) (https://www.transifex.com/teclib/teams/28042/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -142,35 +143,35 @@ msgstr "Status de l'API"
 msgid "Last Error"
 msgstr "Dernière erreur"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr "Action(s)"
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "La base de données précédemment stockée n'existe plus."
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "Créer la base de données de GLPI dans la Metabase local"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "Ou définir une base de données existante :"
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "Définir la base de donnée"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "Pousser les rapports et tableaux de bords dans Metabase"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Re)générer le modèle de données dans Metabase"
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
 msgstr ""
 

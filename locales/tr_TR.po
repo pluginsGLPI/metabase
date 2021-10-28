@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2019\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/teclib/teams/28042/tr_TR/)\n"
@@ -140,35 +140,35 @@ msgstr "API durumu"
 msgid "Last Error"
 msgstr "Son Hata"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr "İşlemler"
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "Daha önce kaydedilmiş veritabanı artık yok."
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "Yerel Metabase üzerinde GLPI veritabanı oluşturun"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "YA DA var olan bir veritabanı ayarlayın"
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "Veritabanı ayarla"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "Rapor ve panoları Metabase üzerine gönder"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "Metabase veri modelini (yeniden) oluştur"
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
 msgstr "Raporların ve panoların özelliklerini görüntüle"
 

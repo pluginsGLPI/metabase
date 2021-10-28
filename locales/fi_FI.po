@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Markku Vepsä, 2018\n"
 "Language-Team: Finnish (Finland) (https://www.transifex.com/teclib/teams/28042/fi_FI/)\n"
@@ -140,35 +140,35 @@ msgstr "API:n tila"
 msgid "Last Error"
 msgstr "Viimeisin virhe"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr "Toimet"
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "TAI aseta olemassa olevaan tietokantaan:"
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "Aseta tietokanta"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "Luo uudelleen Metabse-tietomalli "
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
 msgstr ""
 

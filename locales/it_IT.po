@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Emanuele Trotta <emanuele.trotta@axians.it>, 2020\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/teclib/teams/28042/it_IT/)\n"
@@ -143,35 +143,35 @@ msgstr "Stato API"
 msgid "Last Error"
 msgstr "Ultimo Errore"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr "Azione(i)"
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "Il database memorizzato in precedenza non esiste più."
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "Crea database GLPI in metabase locale"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "OPPURE imposta un database esistente:"
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "Imposta database"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "Esegui il push di report e dashboard in Metabase"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Ri)genera datamodel in Metabase"
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
 msgstr "Mostra le specifiche di report e dashboard"
 

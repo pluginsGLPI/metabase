@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 李赋 <fu792659@163.com>, 2018\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -135,35 +135,35 @@ msgstr "API 状态"
 msgid "Last Error"
 msgstr "上次错误"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr ""
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "以前存储的数据库不存在。"
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "在本地Metabase创建GLPI数据库"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "或者设置现有数据库："
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "设置数据库"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "在Metabase中推送报告和仪表盘"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "（重新）在Metabase中生成数据模型"
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
 msgstr ""
 
