@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 19:24+0000\n"
+"POT-Creation-Date: 2021-10-28 09:43+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: milotype <mail@milotype.de>, 2020\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -72,7 +72,7 @@ msgstr "Nema automatki generirane GLPI baze podataka"
 #: inc/apiclient.class.php:628
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Aktiviranje ugrađenog prikaza ne uspijeva za preglednu ploču %s."
+msgstr "Aktiviranje ugrađenog prikaza ne uspijeva za nadzornu ploču %s."
 
 #: inc/apiclient.class.php:802
 msgid ""
@@ -112,7 +112,7 @@ msgstr "korisničko ime (metabase administrator)"
 
 #: inc/config.class.php:106
 msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Ugrađeni Metabase token (za prikaz pregledne ploče u GLPI-u)"
+msgstr "Ugrađeni Metabase token (za prikaz nadzorne ploče u GLPI-u)"
 
 #: inc/config.class.php:116
 msgid "Metabase url"
@@ -138,38 +138,38 @@ msgstr "Stanje API-a"
 msgid "Last Error"
 msgstr "Zadnja greška"
 
-#: inc/config.class.php:182
+#: inc/config.class.php:180
 msgid "Action(s)"
 msgstr "Radnje"
 
-#: inc/config.class.php:191
+#: inc/config.class.php:189
 msgid "Previously stored database is not existing anymore."
 msgstr "Prethodno spremljena baza podataka više ne postoji."
 
-#: inc/config.class.php:193
+#: inc/config.class.php:191
 msgid "Create GLPI database in local Metabase"
 msgstr "Stvori GLPI bazu podataka u lokalnoj Metabase bazi podataka"
 
-#: inc/config.class.php:199
+#: inc/config.class.php:197
 msgid "OR set an existing database: "
 msgstr "ILI postavi jednu postojeću bazu podataka: "
 
-#: inc/config.class.php:203
+#: inc/config.class.php:201
 msgid "Set database"
 msgstr "Postavi bazu podataka"
 
-#: inc/config.class.php:211
+#: inc/config.class.php:209
 msgid "Push reports and dashboards in Metabase"
 msgstr "Šalji izvještaje i pregledne ploče u Metabase"
 
-#: inc/config.class.php:216
+#: inc/config.class.php:214
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Ponovo) generiraj datotečni model u Metabaseu"
 
-#: inc/config.class.php:221
+#: inc/config.class.php:219
 msgid "Show reports and dashboards specifications"
-msgstr "Prikaži specifikacije za izvještaje i preglednu ploču"
+msgstr "Prikaži specifikacije za izvještaje i nadzorne ploče"
 
 #: inc/dashboard.class.php:15
 msgid "Metabase dashboard"
-msgstr "Metabase pregledna ploča"
+msgstr "Metabase nadzorna ploča"
