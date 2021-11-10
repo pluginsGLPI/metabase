@@ -32,10 +32,10 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access this file directly");
 }
 
-use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Message;
 
 class PluginMetabaseAPIClient extends CommonGLPI {
    private $api_config      = [];
@@ -84,7 +84,7 @@ class PluginMetabaseAPIClient extends CommonGLPI {
       $data = $this->httpQuery('session', [
          'json' => [
             'username' => $this->api_config['username'],
-            'password' => Toolbox::sodiumDecrypt($this->api_config['password']),
+            'password' => (new GLPIKey())->decrypt($this->api_config['password']),
          ]
       ], 'POST');
 
@@ -817,11 +817,11 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          ];
 
          if ($e instanceof RequestException) {
-            $this->last_error['request'] = Psr7\str($e->getRequest());
+            $this->last_error['request'] = Message::toString($e->getRequest());
 
             if ($e->hasResponse()) {
                $response = $e->getResponse();
-               $this->last_error['response'] = Psr7\str($response);
+               $this->last_error['response'] = Message::toString($response);
 
                // session with metabase ko, unset our token
                if ($response->getStatusCode() == 401) {

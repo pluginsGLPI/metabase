@@ -31,9 +31,9 @@
 define('PLUGIN_METABASE_VERSION', '1.2.4');
 
 // Minimal GLPI version, inclusive
-define("PLUGIN_METABASE_MIN_GLPI", "9.5");
+define("PLUGIN_METABASE_MIN_GLPI", "10.0.0");
 // Maximum GLPI version, exclusive
-define("PLUGIN_METABASE_MAX_GLPI", "9.6");
+define("PLUGIN_METABASE_MAX_GLPI", "10.0.99");
 
 if (!defined("PLUGINMETABASE_DIR")) {
    define("PLUGINMETABASE_DIR", __DIR__);
