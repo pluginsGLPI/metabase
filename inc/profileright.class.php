@@ -111,9 +111,15 @@ class PluginMetabaseProfileright extends CommonDBTM {
       if (Session::haveRight('profile', UPDATE)) {
          echo '<tr class="tab_bg_4">';
          echo '<td colspan="2" class="center">';
-         echo '<button type="submit" name="set_rights_to_all" value="1">' . __('Allow access to all', 'metabase') . '</button>';
+         echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
+            . "<i class='ti ti-check'></i>"
+            . "<span>" . __('Allow access to all', 'metabase') . "</span>"
+            . '</button>';
          echo ' &nbsp; ';
-         echo '<button type="submit" name="set_rights_to_all" value="0">' . __('Disallow access to all', 'metabase') . '</button>';
+         echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
+            . "<i class='ti ti-forbid'></i>"
+            . "<span>" . __('Disallow access to all', 'metabase') . "</span>"
+            . '</button>';
          echo '</td>';
          echo '</tr>';
       }
@@ -141,7 +147,11 @@ class PluginMetabaseProfileright extends CommonDBTM {
       if (Session::haveRight('profile', UPDATE)) {
          echo '<tr class="tab_bg_4">';
          echo '<td colspan="2" class="center">';
-         echo '<input type="submit" name="update" value="' . _sx('button', 'Save') . '" class="submit" />';
+         echo Html::submit(_sx('button', 'Save'), [
+             'name'  => 'update',
+             'icon'  => 'ti ti-device-floppy',
+             'class' => 'btn btn-primary',
+         ]);
          echo '</td>';
          echo '</tr>';
       }
@@ -173,7 +183,7 @@ class PluginMetabaseProfileright extends CommonDBTM {
          ]
       );
 
-      while ($right = $iterator->next()) {
+      foreach ($iterator as $right) {
          if ($right['rights'] & READ) {
             return true;
          }
@@ -267,19 +277,23 @@ class PluginMetabaseProfileright extends CommonDBTM {
 
       global $DB;
 
+      $default_charset = DBConnection::getDefaultCharset();
+      $default_collation = DBConnection::getDefaultCollation();
+      $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
+
       $table = self::getTable();
 
       if (!$DB->tableExists($table)) {
          $migration->displayMessage("Installing $table");
 
          $query = "CREATE TABLE IF NOT EXISTS `$table` (
-                     `id` int(11) NOT NULL AUTO_INCREMENT,
-                     `profiles_id` int(11) NOT NULL,
-                     `dashboard_uuid` int(11) NOT NULL,
-                     `rights` int(11) NOT NULL,
+                     `id` int {$default_key_sign} NOT NULL AUTO_INCREMENT,
+                     `profiles_id` int {$default_key_sign} NOT NULL,
+                     `dashboard_uuid` int NOT NULL,
+                     `rights` int NOT NULL,
                      PRIMARY KEY (`id`),
                      UNIQUE `profiles_id_dashboard_uuid` (`profiles_id`, `dashboard_uuid`)
-                  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+                  ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
          $DB->query($query) or die($DB->error());
       }
    }

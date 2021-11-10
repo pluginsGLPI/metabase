@@ -46,16 +46,13 @@ $(function() {
    $(document).on("click", "a.extract", function() {
       var id = $(this).data('id');
       var type = $(this).data('type');
-      $('<div></div>').dialog({
-         modal: true,
-         open: function (){
-            $(this).load(CFG_GLPI.root_doc + '/' + GLPI_PLUGINS_PATH.metabase + '/ajax/extract_json.php', {
-               'id': id,
-               'type': type
-            });
-         },
-         height: 800,
-         width: '80%'
+      glpi_ajax_dialog({
+         dialogclass: 'modal-lg',
+         url: CFG_GLPI.root_doc + '/' + GLPI_PLUGINS_PATH.metabase + '/ajax/extract_json.php',
+         params: {
+            id: id,
+            type: type
+         }
       });
    });
 });

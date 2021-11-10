@@ -165,7 +165,9 @@ class PluginMetabaseConfig extends Config {
          echo Html::hidden('config_class', ['value' => __CLASS__]);
          echo Html::hidden('config_context', ['value' => 'plugin:metabase']);
          echo Html::submit(_sx('button', 'Save'), [
-            'name' => 'update'
+            'class' => 'btn btn-primary',
+            'icon'  => 'ti ti-device-floppy',
+            'name'  => 'update'
          ]);
       }
       echo "</div>";
@@ -206,6 +208,7 @@ class PluginMetabaseConfig extends Config {
          }
 
          echo "<h1>".__("Action(s)", 'metabase')."</h1>";
+         echo "<div class='btn-group-vertical'>";
 
          // If session is OK but database cannot be found, it has been probably deleted on metabase side
          $previousDbNotFound = $current_config['glpi_db_id'] != 0
@@ -217,7 +220,9 @@ class PluginMetabaseConfig extends Config {
                echo '<p><strong>' . __('Previously stored database is not existing anymore.', 'metabase') . '</strong></p>';
             }
             echo Html::submit(__("Create GLPI database in local Metabase", 'metabase'), [
-               'name' => 'create_database'
+               'name'  => 'create_database',
+               'icon'  => 'ti ti-database',
+               'class' => 'btn btn-outline-secondary',
             ]);
 
             $databases = $apiclient->getDatabases();
@@ -227,7 +232,9 @@ class PluginMetabaseConfig extends Config {
                Dropdown::showFromArray('db_id', array_column($databases['data'], 'name', 'id'));
 
                echo Html::submit(__("Set database", 'metabase'), [
-                  'name' => 'set_database'
+                  'name'  => 'set_database',
+                  'icon'  => 'ti ti-database-export',
+                  'class' => 'btn btn-outline-secondary',
                ]);
             }
          } else if ($apiclient->checkSession()) {
@@ -235,19 +242,25 @@ class PluginMetabaseConfig extends Config {
 
             if ($current_config['datamodel_done']) {
                echo Html::submit(__("Push reports and dashboards in Metabase", 'metabase'), [
-                  'name' => 'push_json'
+                  'name'  => 'push_json',
+                  'icon'  => 'ti ti-cloud-upload',
+                  'class' => 'btn btn-outline-secondary',
                ]);
             }
 
             echo Html::submit(__("(Re)generate datamodel in Metabase", 'metabase'), [
-               'name' => 'push_datamodel'
+               'name'  => 'push_datamodel',
+               'icon'  => 'ti ti-relation-one-to-many',
+               'class' => 'btn btn-outline-secondary',
             ]);
 
-            echo '<a href="' . Plugin::getWebDir('metabase') . '/front/collections.php" class="vsubmit">'
-               . __('Show reports and dashboards specifications', 'metabase')
+            echo '<a href="' . Plugin::getWebDir('metabase') . '/front/collections.php" class="btn btn-outline-secondary">'
+               . "<i class='ti ti-chart-infographic'></i>"
+               . "<span>" . __('Show reports and dashboards specifications', 'metabase') . "</span>"
                . '</a>';
          }
 
+         echo "</div>"; // .btn-group-vertical
          Html::closeForm();
          echo "</div>"; // #actions
 
@@ -623,7 +636,7 @@ class PluginMetabaseConfig extends Config {
             'placeholder' => '',
             'style'       => 'width:50%;',
             'id'          => "metabaseconfig_field_$rand",
-            'class'       => 'metabase_input',
+            'class'       => 'metabase_input form-control',
             'required'    => 'required',
             'on_change'   => ''
          ]
@@ -716,11 +729,6 @@ class PluginMetabaseConfig extends Config {
          if (empty($input["password"])) {
             unset($input["password"]);
          } else {
-            if (version_compare(GLPI_VERSION, '9.5.3', '<')) {
-               // Since GLPI 9.5.3, encrypt is done by GLPI core config class.
-               $input["password"] = Toolbox::sodiumEncrypt($input["password"]);
-            }
-
             // Remove existing metabase session token to force reconnection
             unset($_SESSION['metabase']['session_token']);
          }
@@ -740,21 +748,19 @@ class PluginMetabaseConfig extends Config {
 
       // Encrypt password with sodium if previously stored without sodium encryption
       if (!array_key_exists('is_password_sodium_encrypted', $current_config) || !$current_config['is_password_sodium_encrypted']) {
-         if (!empty($current_config['password'])) {
+          if (!empty($current_config['password'])) {
+            $key = new GLPIKey();
             if (array_key_exists('is_password_random_encrypted', $current_config) && $current_config['is_password_random_encrypted']) {
                // Decrypt using randomized key
-               $current_config['password'] = Toolbox::decrypt($current_config['password']);
+               $current_config['password'] = $key->decryptUsingLegacyKey($current_config['password'], $key->getLegacyKey());
             } else if (array_key_exists('is_password_encrypted', $current_config) && $current_config['is_password_encrypted']) {
                // Decrypt using GLPIKEY
-               $current_config['password'] = Toolbox::decrypt($current_config['password'], GLPIKEY);
+               $current_config['password'] = $key->decryptUsingLegacyKey($current_config['password'], GLPIKEY);
             }
-            $password = version_compare(GLPI_VERSION, '9.5.3', '>=')
-               ? $current_config['password'] // Since GLPI 9.5.3, encrypt is done by GLPI core config class
-               : Toolbox::sodiumEncrypt($current_config['password']);
             Config::setConfigurationValues(
                'plugin:metabase',
                [
-                  'password' => $password,
+                  'password' => $current_config['password'],
                ]
             );
          }

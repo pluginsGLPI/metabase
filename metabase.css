@@ -49,26 +49,15 @@
 .metabase_field {
    margin: 10px 0 35px 0;
    position: relative;
-   height: 20px;
+   height: 35px;
    text-align: left;
 }
 
 .metabase_field .metabase_input,
 .metabase_field .select2-container {
-   /*position: absolute;*/
-   top: 0;
-   left: 10px;
-   border-radius: 0;
-   left: 0;
-   z-index: 10;
-   height: 25px;
-   padding: 0 5px;
+   display: inline-block;
 }
-.metabase_field .metabase_input {
-   background-color: transparent;
-   border: 0 solid #CCC;
-   border-bottom-width: 2px;
-}
+
 .metabase_field .select2-container {
    padding: inherit;
 }
@@ -116,7 +105,7 @@
 .metabase_field .metabase_input:focus ~ .metabase_label,
 .metabase_field .metabase_input:required:not(:valid) ~ .metabase_label,
 .metabase_field .metabase_input:valid ~ .metabase_label {
-   top: -15px;
+   top: -20px;
 }
 .metabase_field .metabase_input:focus ~ .metabase_label {
    color: #5897fb;
