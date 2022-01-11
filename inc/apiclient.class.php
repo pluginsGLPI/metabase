@@ -187,7 +187,9 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          return false;
       }
 
-      $data = $this->httpQuery("database/$db_id/metadata");
+      $data = $this->httpQuery("database/$db_id/metadata", [
+        'timeout' => $this->api_config['timeout']
+      ]);
 
       return $data;
    }
