@@ -140,7 +140,7 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          return false;
       }
 
-      foreach ($databases as $database) {
+      foreach ($databases['data'] as $database) {
          if ($database['name'] == 'GLPI (plugin auto-generated)') {
             return $database;
          }
