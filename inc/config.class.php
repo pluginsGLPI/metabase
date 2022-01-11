@@ -193,10 +193,10 @@ class PluginMetabaseConfig extends Config {
             ]);
 
             $databases = $apiclient->getDatabases();
-            if (is_array($databases) && count($databases) > 0) {
+            if (is_array($databases) && array_key_exists('data', $databases) && count($databases['data']) > 0) {
                echo __("OR set an existing database: ", 'metabase');
 
-               Dropdown::showFromArray('db_id', array_column($databases, 'name', 'id'));
+               Dropdown::showFromArray('db_id', array_column($databases['data'], 'name', 'id'));
 
                echo Html::submit(__("Set database", 'metabase'), [
                   'name' => 'set_database'
