@@ -650,7 +650,7 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          return false;
       }
 
-      $enabled = $this->httpQuery('setting/enable-embedding', [
+      $this->httpQuery('setting/enable-embedding', [
          'json' => [
             'default'        => false,
             'description'    => "Enable admins to create embeddable code for Questions and Dashboards?",
@@ -662,7 +662,10 @@ class PluginMetabaseAPIClient extends CommonGLPI {
          ]
       ], 'PUT');
 
-      return $enabled;
+      // get metabase session to check if embedding enabled
+      $session = $this->httpQuery('session/properties');
+
+      return $session['enable-embedding'] ?? false;
    }
 
    /**
