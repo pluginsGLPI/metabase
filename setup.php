@@ -74,6 +74,7 @@ function plugin_init_metabase() {
    // add dashboards
    Plugin::registerClass('PluginMetabaseDashboard', ['addtabon' => 'Central']);
    $PLUGIN_HOOKS['helpdesk_menu_entry']['metabase'] = '/front/selfservice.php';
+   $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['metabase'] = 'ti ti-chart-bar';
 
    // profile rights management
    Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
@@ -95,7 +96,7 @@ function plugin_init_metabase() {
  */
 function plugin_version_metabase() {
    return [
-      'name'           => 'metabase',
+      'name'           => 'Metabase',
       'version'        => PLUGIN_METABASE_VERSION,
       'author'         => '<a href="http://www.teclib.com">Teclib\'</a>',
       'license'        => 'GPLv2+',
