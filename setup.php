@@ -60,10 +60,7 @@ function plugin_init_metabase() {
    include_once(PLUGINMETABASE_DIR . "/vendor/autoload.php");
 
    // don't load hooks if plugin not enabled (or glpi not logged)
-   $plugin = new Plugin();
-   if (!$plugin->isInstalled('metabase')
-       || !$plugin->isActivated('metabase')
-       || !Session::getLoginUserID()) {
+   if (!Plugin::isPluginActive('metabase') || !Session::getLoginUserID()) {
       return true;
    }
 
