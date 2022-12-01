@@ -142,7 +142,7 @@ class PluginMetabaseDashboard extends CommonDBTM {
           ->getToken($signer_config->signer(), $signer_config->signingKey());
 
       $url = rtrim($config['metabase_url'], '/');
-      echo "<iframe src='$url/embed/dashboard/{$token}#bordered=false'
+      echo "<iframe src='$url/embed/dashboard/{$token->toString()}#bordered=false'
                     id='metabase_iframe'
                     allowtransparency></iframe>";
    }
