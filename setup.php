@@ -70,8 +70,17 @@ function plugin_init_metabase() {
 
    // add dashboards
    Plugin::registerClass('PluginMetabaseDashboard', ['addtabon' => 'Central']);
-   $PLUGIN_HOOKS['helpdesk_menu_entry']['metabase'] = '/front/selfservice.php';
-   $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['metabase'] = 'ti ti-chart-bar';
+
+   //display helpdesk menu if self-service and if is able to view at least one dashboard.
+   if (
+      $_SESSION['glpiactiveprofile']['interface'] == 'helpdesk'
+      && PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])
+      )
+   {
+      $PLUGIN_HOOKS['helpdesk_menu_entry']['metabase'] = '/front/selfservice.php';
+      $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['metabase'] = 'ti ti-chart-bar';
+   }
+
 
    // profile rights management
    Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
