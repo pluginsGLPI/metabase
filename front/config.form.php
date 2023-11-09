@@ -44,5 +44,6 @@ if (isset($_REQUEST["create_database"])) {
     PluginMetabaseConfig::createDataModel((int) $_REQUEST['glpi_db_id']);
     Html::back();
 } else {
+    /** @var array $CFG_GLPI */
     Html::redirect($CFG_GLPI["root_doc"] . "/front/config.form.php?forcetab=PluginMetabaseConfig\$1");
 }

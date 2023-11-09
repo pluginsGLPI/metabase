@@ -69,16 +69,9 @@ class PluginMetabaseProfileright extends CommonDBTM
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
-        switch ($item->getType()) {
-            case Profile::class:
-                if (!Session::haveRight('profile', READ)) {
-                    break;
-                }
-
-                $profileright = new self();
-                $profileright->showForm($item->fields['id']);
-
-                break;
+        if ($item instanceof self && Session::haveRight('profile', READ)) {
+            $profileright = new self();
+            $profileright->showForm($item->fields['id']);
         }
 
         return true;
@@ -169,7 +162,6 @@ class PluginMetabaseProfileright extends CommonDBTM
     * Check if profile is able to view at least one dashboard.
     *
     * @param integer $profileId
-    * @param integer $dashboardUuid
     *
     * @return boolean
     */
@@ -313,7 +305,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     */
     public static function uninstall()
     {
-        /** @var DBMysql $DB */
+        /** @var DBmysql $DB */
         global $DB;
 
         $DB->query('DROP TABLE IF EXISTS `' . self::getTable() . '`');

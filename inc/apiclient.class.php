@@ -288,7 +288,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return isset($data['status']) && $data['status'] === "success";
     }
 
-    public function setITILStatusMapping(CommonItilObject $item)
+    public function setITILStatusMapping(CommonITILObject $item)
     {
         $statuses = $item::getAllStatusArray();
         $statuses_topush = [];
@@ -306,7 +306,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return isset($data['status']) && $data['status'] === "success";
     }
 
-    public function setITILMatrixMapping(CommonItilObject $item)
+    public function setITILMatrixMapping(CommonITILObject $item)
     {
         $table = $item::getTable();
         foreach (['urgency', 'impact', 'priority'] as $matrix_field) {
