@@ -10,7 +10,8 @@
         "squizlabs/php_codesniffer": "^3.7"
     },
     "provide": {
-        "guzzlehttp/guzzle": "*"
+        "guzzlehttp/guzzle": "*",
+        "ext-sodium": "*"
     },
     "config": {
         "optimize-autoloader": true,
