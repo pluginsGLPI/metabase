@@ -53,6 +53,7 @@ if (!defined("PLUGINMETABASE_DASHBOARDS_DIR")) {
  */
 function plugin_init_metabase()
 {
+    /** @var array $PLUGIN_HOOKS */
     global $PLUGIN_HOOKS;
 
     $PLUGIN_HOOKS['csrf_compliant']['metabase'] = true;
@@ -136,6 +137,7 @@ function plugin_metabase_recursive_remove_empty($haystack)
 
 function metabaseGetIdByField($itemtype = "", $field = "", $value = "")
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     $query = "SELECT `id`

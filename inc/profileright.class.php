@@ -175,7 +175,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     */
     public static function canProfileViewDashboards($profileId)
     {
-
+        /** @var DBmysql $DB */
         global $DB;
 
         $iterator = $DB->request(
@@ -282,7 +282,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     */
     public static function install(Migration $migration)
     {
-
+        /** @var DBmysql $DB */
         global $DB;
 
         $default_charset = DBConnection::getDefaultCharset();
@@ -313,7 +313,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     */
     public static function uninstall()
     {
-
+        /** @var DBMysql $DB */
         global $DB;
 
         $DB->query('DROP TABLE IF EXISTS `' . self::getTable() . '`');

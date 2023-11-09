@@ -73,6 +73,7 @@ class PluginMetabaseConfig extends Config
 
     public static function showForConfig(Config $config, $withtemplate = 0)
     {
+        /** @var array $CFG_GLPI */
         global $CFG_GLPI;
 
         if (!self::canView()) {
@@ -298,7 +299,7 @@ class PluginMetabaseConfig extends Config
 
     public static function setExistingDatabase($db_id)
     {
-        return Config::setConfigurationValues('plugin:metabase', [
+        Config::setConfigurationValues('plugin:metabase', [
             'glpi_db_id' => $db_id
         ]);
     }
@@ -826,6 +827,8 @@ class PluginMetabaseConfig extends Config
                 Config::setConfigurationValues('plugin:metabase', [$key => $value]);
             }
         }
+
+        return true;
     }
 
    /**

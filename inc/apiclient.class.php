@@ -192,6 +192,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
     public function createGlpiDatabase()
     {
+        /** @var DBmysql $DB */
         global $DB;
 
         if (($data = $this->getGlpiDatabase()) === false) {
@@ -805,6 +806,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     */
     public function httpQuery($resource = '', $params = [], $method = 'GET')
     {
+        /** @var array $CFG_GLPI */
         global $CFG_GLPI;
 
        // declare default params
