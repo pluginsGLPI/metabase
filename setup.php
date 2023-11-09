@@ -63,7 +63,7 @@ function plugin_init_metabase()
 
    // don't load hooks if plugin not enabled (or glpi not logged)
     if (!Plugin::isPluginActive('metabase') || !Session::getLoginUserID()) {
-        return true;
+        return;
     }
 
    // config page

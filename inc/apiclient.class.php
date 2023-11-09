@@ -76,7 +76,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     * Attempt an http connection on metabase api
     * if suceed, set auth_token private properties
     *
-    * @return array data returned by the api
+    * @return bool
     */
     public function connect()
     {
@@ -738,7 +738,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
    /**
     * Destroy session on metabase api (auth endpoint)
     *
-    * @return array data returned by the api
+    * @return bool
     */
     public function disconnect()
     {
@@ -802,7 +802,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *                             - json (array) array to pass into the body chich will be json_encoded
     *                             - json (headers) http headers
     * @param  string $method   Http verb (ex: GET, POST, etc)
-    * @return array  data returned by the api
+    * @return array|false  data returned by the api
     */
     public function httpQuery($resource = '', $params = [], $method = 'GET')
     {

@@ -83,13 +83,13 @@ class PluginMetabaseProfileright extends CommonDBTM
     * @param integer $id Profile id
     * @param array $options
     *
-    * @return void
+    * @return bool
     */
     public function showForm($id, $options = [])
     {
 
         if (!Session::haveRight('profile', READ)) {
-            return;
+            return false;
         }
 
         echo '<form method="post" action="' . self::getFormURL() . '">';
@@ -156,6 +156,8 @@ class PluginMetabaseProfileright extends CommonDBTM
         echo '</div>';
 
         Html::closeForm();
+
+        return true;
     }
 
    /**
@@ -194,11 +196,10 @@ class PluginMetabaseProfileright extends CommonDBTM
     * @param integer $profileId
     * @param integer $dashboardUuid
     *
-    * @return boolean
+    * @return integer
     */
     public static function canProfileViewDashboard($profileId, $dashboardUuid)
     {
-
         return self::getProfileRightForDashboard($profileId, $dashboardUuid) & READ;
     }
 
