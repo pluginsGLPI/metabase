@@ -43,7 +43,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     private $current_port    = 0;
     private $last_error      = [];
 
-    function __construct()
+    public function __construct()
     {
        // retrieve plugin config
         $this->api_config = PluginMetabaseConfig::getConfig();
@@ -55,7 +55,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return array of [label -> boolean]
     */
-    function status()
+    public function status()
     {
         return [
             __("API: login", 'metabase')
@@ -78,7 +78,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return array data returned by the api
     */
-    function connect()
+    public function connect()
     {
         if (isset($_SESSION['metabase']['session_token'])) {
             return true;
@@ -101,7 +101,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return ($data !== false && count($data) > 0);
     }
 
-    function checkSession()
+    public function checkSession()
     {
        // do a simple query
         $this->getCurrentUser(true);
@@ -122,7 +122,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
-    function getCurrentUser($skip_session_check = false)
+    public function getCurrentUser($skip_session_check = false)
     {
         if (
             !$skip_session_check
@@ -136,7 +136,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getUsers()
+    public function getUsers()
     {
         if (!$this->checkSession()) {
             return false;
@@ -147,7 +147,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getDatabases()
+    public function getDatabases()
     {
         if (!$this->checkSession()) {
             return false;
@@ -158,7 +158,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getDatabase($db_id = 0)
+    public function getDatabase($db_id = 0)
     {
         if (!$this->checkSession()) {
             return false;
@@ -169,7 +169,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getGlpiDatabase()
+    public function getGlpiDatabase()
     {
        // we already have stored the id of glpi database
         if (($db_id = $this->api_config['glpi_db_id']) != 0) {
@@ -190,7 +190,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
-    function createGlpiDatabase()
+    public function createGlpiDatabase()
     {
         global $DB;
 
@@ -223,7 +223,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getDatabaseMetadata($db_id = 0)
+    public function getDatabaseMetadata($db_id = 0)
     {
         if (!$this->checkSession()) {
             return false;
@@ -236,7 +236,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function createForeignKey($f_id_src = 0, $f_id_trgt = 0)
+    public function createForeignKey($f_id_src = 0, $f_id_trgt = 0)
     {
         if (!$this->checkSession()) {
             return false;
@@ -252,7 +252,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function setItiObjectHardcodedMapping()
+    public function setItiObjectHardcodedMapping()
     {
         if (!isset($_SESSION['metabase']['fields'])) {
             return false;
@@ -272,7 +272,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     }
 
 
-    function setTicketTypeMapping()
+    public function setTicketTypeMapping()
     {
         $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
         $this->setFieldCustomMapping($field_id, __("Type"));
@@ -287,7 +287,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return isset($data['status']) && $data['status'] === "success";
     }
 
-    function setITILStatusMapping(CommonItilObject $item)
+    public function setITILStatusMapping(CommonItilObject $item)
     {
         $statuses = $item::getAllStatusArray();
         $statuses_topush = [];
@@ -305,7 +305,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return isset($data['status']) && $data['status'] === "success";
     }
 
-    function setITILMatrixMapping(CommonItilObject $item)
+    public function setITILMatrixMapping(CommonItilObject $item)
     {
         $table = $item::getTable();
         foreach (['urgency', 'impact', 'priority'] as $matrix_field) {
@@ -338,7 +338,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return true;
     }
 
-    function setFieldCustomMapping($field_id, $label = "")
+    public function setFieldCustomMapping($field_id, $label = "")
     {
 
         $data = $this->httpQuery("/api/field/$field_id", [
@@ -357,7 +357,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         ], 'POST');
     }
 
-    function createOrGetCollection($collection_name, $params = [])
+    public function createOrGetCollection($collection_name, $params = [])
     {
         $default_params = [
             'color'       => '#000000',
@@ -382,7 +382,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
          : false;
     }
 
-    function retrieveCollection($collection_name)
+    public function retrieveCollection($collection_name)
     {
         if (($collections = $this->getCollections()) !== false) {
             $collections = array_column($collections, 'id', 'name');
@@ -395,7 +395,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
-    function getCollections()
+    public function getCollections()
     {
         if (!$this->checkSession()) {
             return false;
@@ -404,7 +404,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $this->httpQuery('collection');
     }
 
-    function createOrGetDashboard($dashboard_name, &$params = [])
+    public function createOrGetDashboard($dashboard_name, &$params = [])
     {
         $default_params = [
             'name'        => $dashboard_name,
@@ -443,7 +443,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
          : false;
     }
 
-    function setDashboardCards($dashboard_id, $params)
+    public function setDashboardCards($dashboard_id, $params)
     {
         if ($cards = $this->getDashboardCards($dashboard_id)) {
            // delete old cards
@@ -483,7 +483,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
          : false;
     }
 
-    function retrieveDashboard($dashboard_name)
+    public function retrieveDashboard($dashboard_name)
     {
         if (($dashboards = $this->getDashboards()) !== false) {
             $dashboards = array_column($dashboards, 'id', 'name');
@@ -496,7 +496,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
-    function getDashboard($dashboard_id)
+    public function getDashboard($dashboard_id)
     {
         if (!$this->checkSession()) {
             return false;
@@ -505,7 +505,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $this->httpQuery("dashboard/$dashboard_id");
     }
 
-    function getDashboards()
+    public function getDashboards()
     {
         if (!$this->checkSession()) {
             return false;
@@ -516,7 +516,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-    function getDashboardCards($id)
+    public function getDashboardCards($id)
     {
         $data = $this->httpQuery("dashboard/$id", [], 'GET');
 
@@ -525,7 +525,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
          : false;
     }
 
-    function createOrUpdateCard($card_name, $params = [])
+    public function createOrUpdateCard($card_name, $params = [])
     {
         $default_params = [
             'name'                   => $card_name,
@@ -608,7 +608,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
          : false;
     }
 
-    function getCard($card_id)
+    public function getCard($card_id)
     {
         if (!$this->checkSession()) {
             return false;
@@ -617,7 +617,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $this->httpQuery("card/$card_id");
     }
 
-    function retrieveCard($card_name, $collection_id)
+    public function retrieveCard($card_name, $collection_id)
     {
         if (($cards = $this->getCards($collection_id)) !== false) {
             $cards = array_column($cards, 'id', 'name');
@@ -637,7 +637,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return boolean|array Array of cards, false if an error occurs.
     */
-    function getCards($collection_id = null)
+    public function getCards($collection_id = null)
     {
         if (!$this->checkSession()) {
             return false;
@@ -667,7 +667,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     * @param integer[] $uuids
     * @return boolean
     */
-    function enableDashboardsEmbeddedDisplay($uuids)
+    public function enableDashboardsEmbeddedDisplay($uuids)
     {
         if (!$this->checkSession()) {
             return false;
@@ -710,7 +710,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return boolean
     */
-    function enableEmbedding()
+    public function enableEmbedding()
     {
         if (!$this->checkSession()) {
             return false;
@@ -739,7 +739,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return array data returned by the api
     */
-    function disconnect()
+    public function disconnect()
     {
         if (!isset($_SESSION['metabase']['session_token'])) {
             return true;
@@ -760,7 +760,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
    /**
     * format of metabase uuid in string lenght, separated by -
     */
-    function generateUuid($specs = [8, 4, 4, 4, 12])
+    public function generateUuid($specs = [8, 4, 4, 4, 12])
     {
         $uuid = "";
         foreach ($specs as $nb) {
@@ -775,7 +775,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return string the uri
     */
-    function getAPIBaseUri()
+    public function getAPIBaseUri()
     {
         $url = trim($this->api_config['host'], '/');
         if (!empty($this->api_config['port'])) {
@@ -803,7 +803,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     * @param  string $method   Http verb (ex: GET, POST, etc)
     * @return array  data returned by the api
     */
-    function httpQuery($resource = '', $params = [], $method = 'GET')
+    public function httpQuery($resource = '', $params = [], $method = 'GET')
     {
         global $CFG_GLPI;
 
@@ -920,7 +920,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     *
     * @return array the error
     */
-    function getLastError()
+    public function getLastError()
     {
         return $this->last_error;
     }

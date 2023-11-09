@@ -34,7 +34,7 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginMetabaseConfig extends Config
 {
-    static function getTypeName($nb = 0)
+    public static function getTypeName($nb = 0)
     {
         return __('Metabase', 'metabase');
     }
@@ -44,12 +44,12 @@ class PluginMetabaseConfig extends Config
     *
     * @return array config with keys => values
     */
-    static function getConfig()
+    public static function getConfig()
     {
         return Config::getConfigurationValues('plugin:metabase');
     }
 
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         switch ($item->getType()) {
             case "Config":
@@ -58,7 +58,7 @@ class PluginMetabaseConfig extends Config
         return '';
     }
 
-    static function displayTabContentForItem(
+    public static function displayTabContentForItem(
         CommonGLPI $item,
         $tabnum = 1,
         $withtemplate = 0
@@ -71,7 +71,7 @@ class PluginMetabaseConfig extends Config
         return true;
     }
 
-    static function showForConfig(Config $config, $withtemplate = 0)
+    public static function showForConfig(Config $config, $withtemplate = 0)
     {
         global $CFG_GLPI;
 
@@ -273,7 +273,7 @@ class PluginMetabaseConfig extends Config
         echo "</div>"; // .metabase_config
     }
 
-    static function createGLPIDatabase()
+    public static function createGLPIDatabase()
     {
         $apiclient = new PluginMetabaseAPIClient();
 
@@ -296,14 +296,14 @@ class PluginMetabaseConfig extends Config
         return false;
     }
 
-    static function setExistingDatabase($db_id)
+    public static function setExistingDatabase($db_id)
     {
         return Config::setConfigurationValues('plugin:metabase', [
             'glpi_db_id' => $db_id
         ]);
     }
 
-    static function createDataModel($db_id)
+    public static function createDataModel($db_id)
     {
         $api = new PluginMetabaseAPIClient();
         self::loadTablesAndFields($db_id);
@@ -345,7 +345,7 @@ class PluginMetabaseConfig extends Config
         return true;
     }
 
-    static function loadTablesAndFields($db_id)
+    public static function loadTablesAndFields($db_id)
     {
         $api = new PluginMetabaseAPIClient();
         $metadata = $api->getDatabaseMetadata($db_id);
@@ -374,7 +374,7 @@ class PluginMetabaseConfig extends Config
         $_SESSION['metabase']['fields'] = $fields;
     }
 
-    static function pushReports()
+    public static function pushReports()
     {
         $current_config = self::getConfig();
         self::loadReports();
@@ -415,7 +415,7 @@ class PluginMetabaseConfig extends Config
         Session::addMessageAfterRedirect("questions created: $rep_counts");
     }
 
-    static function pushDashboards()
+    public static function pushDashboards()
     {
         self::loadDashboards();
         $api = new PluginMetabaseAPIClient();
@@ -483,17 +483,17 @@ class PluginMetabaseConfig extends Config
         Session::addMessageAfterRedirect("Dashboards created: $dsh_count");
     }
 
-    static function loadReports()
+    public static function loadReports()
     {
         return self::loadDir(PLUGINMETABASE_REPORTS_DIR, 'reports');
     }
 
-    static function loadDashboards()
+    public static function loadDashboards()
     {
         return self::loadDir(PLUGINMETABASE_DASHBOARDS_DIR, 'dashboards');
     }
 
-    static function loadDir($path = '', $session_key = '')
+    public static function loadDir($path = '', $session_key = '')
     {
         $_SESSION['metabase'][$session_key] = [];
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
@@ -516,7 +516,7 @@ class PluginMetabaseConfig extends Config
         return $success;
     }
 
-    static function displayQuestionJson($question_id)
+    public static function displayQuestionJson($question_id)
     {
         $apiclient = new PluginMetabaseAPIClient();
         $card      = $apiclient->getCard($question_id);
@@ -559,7 +559,7 @@ class PluginMetabaseConfig extends Config
         self::displayPrettyJson($extract);
     }
 
-    static function displayDashboardJson($dashboard_id)
+    public static function displayDashboardJson($dashboard_id)
     {
         $apiclient = new PluginMetabaseAPIClient();
         $dashboard = $apiclient->getDashboard($dashboard_id);
@@ -624,7 +624,7 @@ class PluginMetabaseConfig extends Config
         Html::printCleanArray($dashboard);
     }
 
-    static function displayPrettyJson($array = [])
+    public static function displayPrettyJson($array = [])
     {
         echo Html::css("lib/prism/prism.css");
         echo Html::script("lib/prism/prism.js");
@@ -655,7 +655,7 @@ class PluginMetabaseConfig extends Config
     *                            - attrs, an array containing html attributes
     * @return string the html
     */
-    static function showField($options = [])
+    public static function showField($options = [])
     {
         $rand            = mt_rand();
         $default_options = [
@@ -733,7 +733,7 @@ class PluginMetabaseConfig extends Config
     * @param  boolean $with_api also check api status
     * @return boolean
     */
-    static function isValid($with_api = false)
+    public static function isValid($with_api = false)
     {
         $current_config = self::getConfig();
         $valid_config =  (!empty($current_config['host'])
@@ -778,7 +778,7 @@ class PluginMetabaseConfig extends Config
     * @param Migration $migration
     * @return boolean True on success
     */
-    static function install(Migration $migration)
+    public static function install(Migration $migration)
     {
         $current_config = self::getConfig();
 
@@ -833,7 +833,7 @@ class PluginMetabaseConfig extends Config
     *
     * @return boolean True on success
     */
-    static function uninstall()
+    public static function uninstall()
     {
         $config = new Config();
         $config->deleteByCriteria(['context' => 'plugin:metabase']);

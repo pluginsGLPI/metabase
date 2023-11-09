@@ -37,13 +37,13 @@ class PluginMetabaseProfileright extends CommonDBTM
    /**
     * Necessary right to edit the rights of this plugin.
     */
-    static $rightname = 'profile';
+    public static $rightname = 'profile';
 
    /**
     * {@inheritDoc}
     * @see CommonGLPI::getTypeName()
     */
-    static function getTypeName($nb = 0)
+    public static function getTypeName($nb = 0)
     {
 
         return __('Metabase', 'metabase');
@@ -53,7 +53,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     * {@inheritDoc}
     * @see CommonGLPI::getTabNameForItem()
     */
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
         if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
@@ -66,7 +66,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     * {@inheritDoc}
     * @see CommonGLPI::displayTabContentForItem()
     */
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
         switch ($item->getType()) {
@@ -92,7 +92,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return void
     */
-    function showForm($id, $options = [])
+    public function showForm($id, $options = [])
     {
 
         if (!Session::haveRight('profile', READ)) {
@@ -173,7 +173,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return boolean
     */
-    static function canProfileViewDashboards($profileId)
+    public static function canProfileViewDashboards($profileId)
     {
 
         global $DB;
@@ -204,7 +204,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return boolean
     */
-    static function canProfileViewDashboard($profileId, $dashboardUuid)
+    public static function canProfileViewDashboard($profileId, $dashboardUuid)
     {
 
         return self::getProfileRightForDashboard($profileId, $dashboardUuid) & READ;
@@ -243,7 +243,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return void
     */
-    static function setDashboardRightsForProfile($profileId, $dashboardUuid, $rights)
+    public static function setDashboardRightsForProfile($profileId, $dashboardUuid, $rights)
     {
 
         $profileRight = new self();
@@ -280,7 +280,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return void
     */
-    static function install(Migration $migration)
+    public static function install(Migration $migration)
     {
 
         global $DB;
@@ -311,7 +311,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     *
     * @return void
     */
-    static function uninstall()
+    public static function uninstall()
     {
 
         global $DB;

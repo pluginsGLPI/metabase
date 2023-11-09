@@ -38,7 +38,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     * {@inheritDoc}
     * @see CommonGLPI::getTypeName()
     */
-    static function getTypeName($nb = 0)
+    public static function getTypeName($nb = 0)
     {
 
         return __('Metabase dashboard', 'metabase');
@@ -48,7 +48,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     * {@inheritDoc}
     * @see CommonGLPI::getTabNameForItem()
     */
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
         switch ($item->getType()) {
@@ -66,7 +66,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     * {@inheritDoc}
     * @see CommonGLPI::displayTabContentForItem()
     */
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
         switch ($item->getType()) {
@@ -89,7 +89,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     *
     * @return void
     */
-    static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false)
+    public static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false)
     {
 
         $apiclient = new PluginMetabaseAPIClient();
