@@ -33,25 +33,26 @@
  *
  * @return boolean
  */
-function plugin_metabase_install() {
-   $version   = plugin_version_metabase();
-   $migration = new Migration($version['version']);
+function plugin_metabase_install()
+{
+    $version   = plugin_version_metabase();
+    $migration = new Migration($version['version']);
 
    // Parse inc directory
-   foreach (glob(dirname(__FILE__).'/inc/*') as $filepath) {
-      // Load *.class.php files and get the class name
-      if (preg_match("/inc.(.+)\.class.php$/", $filepath, $matches)) {
-         $classname = 'PluginMetabase' . ucfirst($matches[1]);
-         include_once($filepath);
-         // If the install method exists, load it
-         if (method_exists($classname, 'install')) {
-            $classname::install($migration);
-         }
-      }
-   }
-   $migration->executeMigration();
+    foreach (glob(dirname(__FILE__) . '/inc/*') as $filepath) {
+       // Load *.class.php files and get the class name
+        if (preg_match("/inc.(.+)\.class.php$/", $filepath, $matches)) {
+            $classname = 'PluginMetabase' . ucfirst($matches[1]);
+            include_once($filepath);
+           // If the install method exists, load it
+            if (method_exists($classname, 'install')) {
+                $classname::install($migration);
+            }
+        }
+    }
+    $migration->executeMigration();
 
-   return true;
+    return true;
 }
 
 /**
@@ -59,18 +60,19 @@ function plugin_metabase_install() {
  *
  * @return boolean
  */
-function plugin_metabase_uninstall() {
+function plugin_metabase_uninstall()
+{
    // Parse inc directory
-   foreach (glob(dirname(__FILE__).'/inc/*') as $filepath) {
-      // Load *.class.php files and get the class name
-      if (preg_match("/inc.(.+)\.class.php/", $filepath, $matches)) {
-         $classname = 'PluginMetabase' . ucfirst($matches[1]);
-         include_once($filepath);
-         // If the install method exists, load it
-         if (method_exists($classname, 'uninstall')) {
-            $classname::uninstall();
-         }
-      }
-   }
-   return true;
+    foreach (glob(dirname(__FILE__) . '/inc/*') as $filepath) {
+       // Load *.class.php files and get the class name
+        if (preg_match("/inc.(.+)\.class.php/", $filepath, $matches)) {
+            $classname = 'PluginMetabase' . ucfirst($matches[1]);
+            include_once($filepath);
+           // If the install method exists, load it
+            if (method_exists($classname, 'uninstall')) {
+                $classname::uninstall();
+            }
+        }
+    }
+    return true;
 }
