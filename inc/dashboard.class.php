@@ -69,8 +69,8 @@ class PluginMetabaseDashboard extends CommonDBTM
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
-        switch ($item->getType()) {
-            case "Central":
+        switch (get_class($item)) {
+            case Central::class:
                 if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
                     self::showForCentral($item, $withtemplate);
                 }

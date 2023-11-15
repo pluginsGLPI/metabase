@@ -63,8 +63,8 @@ class PluginMetabaseConfig extends Config
         $tabnum = 1,
         $withtemplate = 0
     ) {
-        switch ($item->getType()) {
-            case "Config":
+        switch (get_class($item)) {
+            case Config::class:
                 return self::showForConfig($item, $withtemplate);
         }
 

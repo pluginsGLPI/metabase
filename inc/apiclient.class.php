@@ -40,7 +40,6 @@ use GuzzleHttp\Psr7\Message;
 class PluginMetabaseAPIClient extends CommonGLPI
 {
     private $api_config      = [];
-    private $current_port    = 0;
     private $last_error      = [];
 
     public function __construct()
