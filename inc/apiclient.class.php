@@ -29,7 +29,7 @@
  */
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access this file directly");
+    die("Sorry. You can't access this file directly");
 }
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -37,15 +37,16 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 
-class PluginMetabaseAPIClient extends CommonGLPI {
-   private $api_config      = [];
-   private $current_port    = 0;
-   private $last_error      = [];
+class PluginMetabaseAPIClient extends CommonGLPI
+{
+    private $api_config      = [];
+    private $last_error      = [];
 
-   function __construct() {
-      // retrieve plugin config
-      $this->api_config = PluginMetabaseConfig::getConfig();
-   }
+    public function __construct()
+    {
+       // retrieve plugin config
+        $this->api_config = PluginMetabaseConfig::getConfig();
+    }
 
 
    /**
@@ -53,547 +54,581 @@ class PluginMetabaseAPIClient extends CommonGLPI {
     *
     * @return array of [label -> boolean]
     */
-   function status() {
-      return [
-         __("API: login", 'metabase')
+    public function status()
+    {
+        return [
+            __("API: login", 'metabase')
             => $this->connect(),
-         __("API: get current user", 'metabase')
+            __("API: get current user", 'metabase')
             => $this->getCurrentUser() !== false,
-         __("API: get users", 'metabase')
+            __("API: get users", 'metabase')
             => $this->getUsers() !== false,
-         __("API: get databases", 'metabase')
+            __("API: get databases", 'metabase')
             => $this->getDatabases() !== false,
-         __("API: get GLPI database", 'metabase')
+            __("API: get GLPI database", 'metabase')
             => $this->getGlpiDatabase() !== false,
-      ];
-   }
+        ];
+    }
 
 
    /**
     * Attempt an http connection on metabase api
     * if suceed, set auth_token private properties
     *
-    * @return array data returned by the api
+    * @return bool
     */
-   function connect() {
-      if (isset($_SESSION['metabase']['session_token'])) {
-         return true;
-      }
+    public function connect()
+    {
+        if (isset($_SESSION['metabase']['session_token'])) {
+            return true;
+        }
 
-      // send connect with http query
-      $data = $this->httpQuery('session', [
-         'json' => [
-            'username' => $this->api_config['username'],
-            'password' => (new GLPIKey())->decrypt($this->api_config['password']),
-         ]
-      ], 'POST');
-
-      if (is_array($data)) {
-         if (isset($data['id'])) {
-            $_SESSION['metabase']['session_token'] = $data['id'];
-         }
-      }
-
-      return ($data !== false && count($data) > 0);
-   }
-
-   function checkSession() {
-      // do a simple query
-      $this->getCurrentUser(true);
-
-      // check session token, if set, we still have a valid token
-      if (isset($_SESSION['metabase']['session_token'])) {
-         return true;
-      }
-
-      // so reconnect
-      $this->connect();
-
-      // check again session token, if set, we now have a valid token
-      if (isset($_SESSION['metabase']['session_token'])) {
-         return true;
-      }
-
-      return false;
-   }
-
-   function getCurrentUser($skip_session_check = false) {
-      if (!$skip_session_check
-          && !$this->checkSession()) {
-         return false;
-      }
-
-      $data = $this->httpQuery('user/current');
-
-      return $data;
-   }
-
-   function getUsers() {
-      if (!$this->checkSession()) {
-         return false;
-      }
-
-      $data = $this->httpQuery('user');
-
-      return $data;
-   }
-
-   function getDatabases() {
-      if (!$this->checkSession()) {
-         return false;
-      }
-
-      $data = $this->httpQuery('database');
-
-      return $data;
-   }
-
-   function getDatabase($db_id = 0) {
-      if (!$this->checkSession()) {
-         return false;
-      }
-
-      $data = $this->httpQuery("database/$db_id");
-
-      return $data;
-   }
-
-   function getGlpiDatabase() {
-      // we already have stored the id of glpi database
-      if (($db_id = $this->api_config['glpi_db_id']) != 0) {
-         return $this->getDatabase($db_id);
-      }
-
-      if (($databases = $this->getDatabases()) === false) {
-         return false;
-      }
-
-      foreach ($databases['data'] as $database) {
-         if ($database['name'] == 'GLPI (plugin auto-generated)') {
-            return $database;
-         }
-      }
-
-      $this->last_error[] = __("No auto-generated GLPI database found", 'metabase');
-      return false;
-   }
-
-   function createGlpiDatabase() {
-      global $DB;
-
-      if (($data = $this->getGlpiDatabase()) === false) {
-         // try to switch to slave db
-         DBConnection::switchToSlave();
-
-         // post conf for the glpi database
-         $data = $this->httpQuery('database', [
-            'timeout' => $this->api_config['timeout'],
-            'json'    => [
-               'name'         => 'GLPI (plugin auto-generated)',
-               'engine'       => 'mysql',
-               'is_full_sync' => true,
-               'details'       => [
-                  'host'        => $DB->dbhost,
-                  'port'        => 3306,
-                  'dbname'      => $DB->dbdefault,
-                  'user'        => $DB->dbuser,
-                  'password'    => $DB->dbpassword,
-                  'tunnel-port' => 22,
-               ],
+       // send connect with http query
+        $data = $this->httpQuery('session', [
+            'json' => [
+                'username' => $this->api_config['username'],
+                'password' => (new GLPIKey())->decrypt($this->api_config['password']),
             ]
-         ], 'POST');
+        ], 'POST');
 
-         // switch back to master
-         DBConnection::switchToMaster();
-      }
+        if (is_array($data)) {
+            if (isset($data['id'])) {
+                $_SESSION['metabase']['session_token'] = $data['id'];
+            }
+        }
 
-      return $data;
-   }
+        return ($data !== false && count($data) > 0);
+    }
 
-   function getDatabaseMetadata($db_id = 0) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function checkSession()
+    {
+       // do a simple query
+        $this->getCurrentUser(true);
 
-      $data = $this->httpQuery("database/$db_id/metadata", [
-        'timeout' => $this->api_config['timeout']
-      ]);
+       // check session token, if set, we still have a valid token
+        if (isset($_SESSION['metabase']['session_token'])) {
+            return true;
+        }
 
-      return $data;
-   }
+       // so reconnect
+        $this->connect();
 
-   function createForeignKey($f_id_src = 0, $f_id_trgt = 0) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+       // check again session token, if set, we now have a valid token
+        if (isset($_SESSION['metabase']['session_token'])) {
+            return true;
+        }
 
-      $data = $this->httpQuery("/api/field/$f_id_src", [
-         'json' => [
-            'special_type'       => "type/FK",
-            'fk_target_field_id' => $f_id_trgt,
-         ]
-      ], 'PUT');
+        return false;
+    }
 
-      return $data;
-   }
+    public function getCurrentUser($skip_session_check = false)
+    {
+        if (
+            !$skip_session_check
+            && !$this->checkSession()
+        ) {
+            return false;
+        }
 
-   function setItiObjectHardcodedMapping() {
-      if (!isset($_SESSION['metabase']['fields'])) {
-         return false;
-      }
+        $data = $this->httpQuery('user/current');
 
-      $ticket  = new Ticket;
-      $problem = new Problem;
-      $change  = new Change;
+        return $data;
+    }
 
-      return $this->setTicketTypeMapping()
+    public function getUsers()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery('user');
+
+        return $data;
+    }
+
+    public function getDatabases()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery('database');
+
+        return $data;
+    }
+
+    public function getDatabase($db_id = 0)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery("database/$db_id");
+
+        return $data;
+    }
+
+    public function getGlpiDatabase()
+    {
+       // we already have stored the id of glpi database
+        if (($db_id = $this->api_config['glpi_db_id']) != 0) {
+            return $this->getDatabase($db_id);
+        }
+
+        if (($databases = $this->getDatabases()) === false) {
+            return false;
+        }
+
+        foreach ($databases['data'] as $database) {
+            if ($database['name'] == 'GLPI (plugin auto-generated)') {
+                return $database;
+            }
+        }
+
+        $this->last_error[] = __("No auto-generated GLPI database found", 'metabase');
+        return false;
+    }
+
+    public function createGlpiDatabase()
+    {
+        /** @var DBmysql $DB */
+        global $DB;
+
+        if (($data = $this->getGlpiDatabase()) === false) {
+           // try to switch to slave db
+            DBConnection::switchToSlave();
+
+           // post conf for the glpi database
+            $data = $this->httpQuery('database', [
+                'timeout' => $this->api_config['timeout'],
+                'json'    => [
+                    'name'         => 'GLPI (plugin auto-generated)',
+                    'engine'       => 'mysql',
+                    'is_full_sync' => true,
+                    'details'       => [
+                        'host'        => $DB->dbhost,
+                        'port'        => 3306,
+                        'dbname'      => $DB->dbdefault,
+                        'user'        => $DB->dbuser,
+                        'password'    => $DB->dbpassword,
+                        'tunnel-port' => 22,
+                    ],
+                ]
+            ], 'POST');
+
+           // switch back to master
+            DBConnection::switchToMaster();
+        }
+
+        return $data;
+    }
+
+    public function getDatabaseMetadata($db_id = 0)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery("database/$db_id/metadata", [
+            'timeout' => $this->api_config['timeout']
+        ]);
+
+        return $data;
+    }
+
+    public function createForeignKey($f_id_src = 0, $f_id_trgt = 0)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery("/api/field/$f_id_src", [
+            'json' => [
+                'special_type'       => "type/FK",
+                'fk_target_field_id' => $f_id_trgt,
+            ]
+        ], 'PUT');
+
+        return $data;
+    }
+
+    public function setItiObjectHardcodedMapping()
+    {
+        if (!isset($_SESSION['metabase']['fields'])) {
+            return false;
+        }
+
+        $ticket  = new Ticket();
+        $problem = new Problem();
+        $change  = new Change();
+
+        return $this->setTicketTypeMapping()
           && $this->setITILStatusMapping($ticket)
           && $this->setITILMatrixMapping($ticket)
           && $this->setITILStatusMapping($problem)
           && $this->setITILMatrixMapping($problem)
           && $this->setITILStatusMapping($change)
           && $this->setITILMatrixMapping($change);
-   }
+    }
 
 
-   function setTicketTypeMapping() {
-      $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
-      $this->setFieldCustomMapping($field_id, __("Type"));
-      $data = $this->httpQuery("/api/field/$field_id/values", [
-         'json' => [
-            'values' => [
-               [Ticket::INCIDENT_TYPE, __("Incident")],
-               [Ticket::DEMAND_TYPE, __("Request")]
-            ],
-         ]
-      ], 'POST');
-      return isset($data['status']) && $data['status'] === "success";
-   }
-
-   function setITILStatusMapping(CommonItilObject $item) {
-      $statuses = $item::getAllStatusArray();
-      $statuses_topush = [];
-      foreach ($statuses as $key => $label) {
-         $statuses_topush[] = [$key, $label];
-      }
-      $table = $item::getTable();
-      $field_id = $_SESSION['metabase']['fields']["$table.status"];
-      $this->setFieldCustomMapping($field_id, __("Status"));
-      $data = $this->httpQuery("/api/field/$field_id/values", [
-         'json' => [
-            'values' => $statuses_topush,
-         ]
-      ], 'POST');
-      return isset($data['status']) && $data['status'] === "success";
-   }
-
-   function setITILMatrixMapping(CommonItilObject $item) {
-      $table = $item::getTable();
-      foreach (['urgency', 'impact', 'priority'] as $matrix_field) {
-         $field_id = $_SESSION['metabase']['fields']["$table.$matrix_field"];
-         $this->setFieldCustomMapping($field_id, __(mb_convert_case($matrix_field, MB_CASE_TITLE)));
-         $data_topush = [
-            [5, _x($matrix_field, 'Very high')],
-            [4, _x($matrix_field, 'High')],
-            [3, _x($matrix_field, 'Medium')],
-            [2, _x($matrix_field, 'Low')],
-            [1, _x($matrix_field, 'Very low')],
-         ];
-         if ($matrix_field === 'priority') {
-            array_unshift($data_topush, [6, _x($matrix_field, 'Major')]);
-         }
-         $data = $this->httpQuery("/api/field/$field_id/values", [
+    public function setTicketTypeMapping()
+    {
+        $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
+        $this->setFieldCustomMapping($field_id, __("Type"));
+        $data = $this->httpQuery("/api/field/$field_id/values", [
             'json' => [
-               'values' => $data_topush
+                'values' => [
+                    [Ticket::INCIDENT_TYPE, __("Incident")],
+                    [Ticket::DEMAND_TYPE, __("Request")]
+                ],
             ]
-         ], 'POST');
+        ], 'POST');
+        return isset($data['status']) && $data['status'] === "success";
+    }
 
-         if (!isset($data['status'])
-             || $data['status'] !== "success") {
-            return false;
-         }
-      }
+    public function setITILStatusMapping(CommonITILObject $item)
+    {
+        $statuses = $item::getAllStatusArray();
+        $statuses_topush = [];
+        foreach ($statuses as $key => $label) {
+            $statuses_topush[] = [$key, $label];
+        }
+        $table = $item::getTable();
+        $field_id = $_SESSION['metabase']['fields']["$table.status"];
+        $this->setFieldCustomMapping($field_id, __("Status"));
+        $data = $this->httpQuery("/api/field/$field_id/values", [
+            'json' => [
+                'values' => $statuses_topush,
+            ]
+        ], 'POST');
+        return isset($data['status']) && $data['status'] === "success";
+    }
 
-      return true;
-   }
-
-   function setFieldCustomMapping($field_id, $label = "") {
-
-      $data = $this->httpQuery("/api/field/$field_id", [
-         'json' => [
-            'special_type'       => 'type/Category',
-            'has_field_values'   => 'list',
-         ]
-      ], 'PUT');
-
-      $data = $this->httpQuery("/api/field/$field_id/dimension", [
-         'json' => [
-            'human_readable_field_id' => null,
-            'type'                    => 'internal',
-            'name'                    => $label
-         ]
-      ], 'POST');
-   }
-
-   function createOrGetCollection($collection_name, $params = []) {
-      $default_params = [
-         'color'       => '#000000',
-         'description' => 'auto-generated by GLPI'
-      ];
-      $params = array_merge($default_params, $params);
-
-      if ($collection_id = $this->retrieveCollection($collection_name)) {
-         return $collection_id;
-      }
-
-      $data = $this->httpQuery('collection', [
-         'json' => [
-            'name'        => $collection_name,
-            'color'       => $params['color'],
-            'description' => $params['description'],
-         ]
-      ], 'POST');
-
-      return isset($data['id'])
-         ? $data['id']
-         : false;
-   }
-
-   function retrieveCollection($collection_name) {
-      if (($collections = $this->getCollections()) !== false) {
-         $collections = array_column($collections, 'id', 'name');
-
-         if (isset($collections[$collection_name])) {
-            return $collections[$collection_name];
-         }
-      }
-
-      return false;
-   }
-
-   function getCollections() {
-      if (!$this->checkSession()) {
-         return false;
-      }
-
-      return $this->httpQuery('collection');
-   }
-
-   function createOrGetDashboard($dashboard_name, &$params = []) {
-      $default_params = [
-         'name'        => $dashboard_name,
-         'description' => '',
-         'parameters'  => [],
-      ];
-      $params = array_merge($default_params, $params);
-
-      if (isset($params['parameters'])) {
-         foreach ($params['parameters'] as  &$parameter) {
-            if (!isset($parameter['id'])) {
-               $parameter['id'] = $this->generateUuid([8]);
+    public function setITILMatrixMapping(CommonITILObject $item)
+    {
+        $table = $item::getTable();
+        foreach (['urgency', 'impact', 'priority'] as $matrix_field) {
+            $field_id = $_SESSION['metabase']['fields']["$table.$matrix_field"];
+            $this->setFieldCustomMapping($field_id, __(mb_convert_case($matrix_field, MB_CASE_TITLE)));
+            $data_topush = [
+                [5, _x($matrix_field, 'Very high')],
+                [4, _x($matrix_field, 'High')],
+                [3, _x($matrix_field, 'Medium')],
+                [2, _x($matrix_field, 'Low')],
+                [1, _x($matrix_field, 'Very low')],
+            ];
+            if ($matrix_field === 'priority') {
+                array_unshift($data_topush, [6, _x($matrix_field, 'Major')]);
             }
-         }
-      }
+            $data = $this->httpQuery("/api/field/$field_id/values", [
+                'json' => [
+                    'values' => $data_topush
+                ]
+            ], 'POST');
 
-      $send_params = $params;
-      unset($send_params['reports']);
+            if (
+                !isset($data['status'])
+                || $data['status'] !== "success"
+            ) {
+                 return false;
+            }
+        }
 
-      if ($id = $this->retrieveDashboard($dashboard_name)) {
-         // update existing
-         $data = $this->httpQuery("dashboard/$id", [
-            'timeout' => $this->api_config['timeout'],
-            'json'    => $send_params
-         ], 'PUT');
-      } else {
-         // create new
-         $data = $this->httpQuery('dashboard', [
-            'timeout' => $this->api_config['timeout'],
-            'json'    => $send_params
-         ], 'POST');
-      }
+        return true;
+    }
 
-      return isset($data['id'])
+    public function setFieldCustomMapping($field_id, $label = "")
+    {
+
+        $data = $this->httpQuery("/api/field/$field_id", [
+            'json' => [
+                'special_type'       => 'type/Category',
+                'has_field_values'   => 'list',
+            ]
+        ], 'PUT');
+
+        $data = $this->httpQuery("/api/field/$field_id/dimension", [
+            'json' => [
+                'human_readable_field_id' => null,
+                'type'                    => 'internal',
+                'name'                    => $label
+            ]
+        ], 'POST');
+    }
+
+    public function createOrGetCollection($collection_name, $params = [])
+    {
+        $default_params = [
+            'color'       => '#000000',
+            'description' => 'auto-generated by GLPI'
+        ];
+        $params = array_merge($default_params, $params);
+
+        if ($collection_id = $this->retrieveCollection($collection_name)) {
+            return $collection_id;
+        }
+
+        $data = $this->httpQuery('collection', [
+            'json' => [
+                'name'        => $collection_name,
+                'color'       => $params['color'],
+                'description' => $params['description'],
+            ]
+        ], 'POST');
+
+        return isset($data['id'])
          ? $data['id']
          : false;
-   }
+    }
 
-   function setDashboardCards($dashboard_id, $params) {
-      if ($cards = $this->getDashboardCards($dashboard_id)) {
+    public function retrieveCollection($collection_name)
+    {
+        if (($collections = $this->getCollections()) !== false) {
+            $collections = array_column($collections, 'id', 'name');
 
-         // delete old cards
-         foreach ($cards as $card) {
-            $this->httpQuery("dashboard/$dashboard_id/cards", [
-               'query' => [
-                  'dashcardId' => $card['id']
-               ]
-            ], 'DELETE');
-         }
-      }
+            if (isset($collections[$collection_name])) {
+                return $collections[$collection_name];
+            }
+        }
 
-      // (re)create dashboard-cards
-      foreach ($params['cards'] as $c_index => &$card) {
-         // create card
-         $c_params = [
-            'cardId' => $card['card_id']
-         ];
-         $c_data = $this->httpQuery("dashboard/$dashboard_id/cards", [
-            'timeout' => $this->api_config['timeout'],
-            'json'    => $c_params
-         ], 'POST');
+        return false;
+    }
 
-         $card['id'] = isset($c_data['id'])
-            ? $c_data['id']
-            : false;
-      };
+    public function getCollections()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      // append cards to dashboard
-      $data = $this->httpQuery("dashboard/$dashboard_id/cards", [
-         'timeout' => $this->api_config['timeout'],
-         'json'    => $params
-      ], 'PUT');
+        return $this->httpQuery('collection');
+    }
 
-      return isset($data['id'])
+    public function createOrGetDashboard($dashboard_name, &$params = [])
+    {
+        $default_params = [
+            'name'        => $dashboard_name,
+            'description' => '',
+            'parameters'  => [],
+        ];
+        $params = array_merge($default_params, $params);
+
+        if (isset($params['parameters'])) {
+            foreach ($params['parameters'] as &$parameter) {
+                if (!isset($parameter['id'])) {
+                    $parameter['id'] = $this->generateUuid([8]);
+                }
+            }
+        }
+
+        $send_params = $params;
+        unset($send_params['reports']);
+
+        if ($id = $this->retrieveDashboard($dashboard_name)) {
+           // update existing
+            $data = $this->httpQuery("dashboard/$id", [
+                'timeout' => $this->api_config['timeout'],
+                'json'    => $send_params
+            ], 'PUT');
+        } else {
+           // create new
+            $data = $this->httpQuery('dashboard', [
+                'timeout' => $this->api_config['timeout'],
+                'json'    => $send_params
+            ], 'POST');
+        }
+
+        return isset($data['id'])
          ? $data['id']
          : false;
-   }
+    }
 
-   function retrieveDashboard($dashboard_name) {
-      if (($dashboards = $this->getDashboards()) !== false) {
-         $dashboards = array_column($dashboards, 'id', 'name');
+    public function setDashboardCards($dashboard_id, $params)
+    {
+        if ($cards = $this->getDashboardCards($dashboard_id)) {
+           // delete old cards
+            foreach ($cards as $card) {
+                $this->httpQuery("dashboard/$dashboard_id/cards", [
+                    'query' => [
+                        'dashcardId' => $card['id']
+                    ]
+                ], 'DELETE');
+            }
+        }
 
-         if (isset($dashboards[$dashboard_name])) {
-            return $dashboards[$dashboard_name];
-         }
-      }
+       // (re)create dashboard-cards
+        foreach ($params['cards'] as $c_index => &$card) {
+           // create card
+            $c_params = [
+                'cardId' => $card['card_id']
+            ];
+            $c_data = $this->httpQuery("dashboard/$dashboard_id/cards", [
+                'timeout' => $this->api_config['timeout'],
+                'json'    => $c_params
+            ], 'POST');
 
-      return false;
-   }
+            $card['id'] = isset($c_data['id'])
+             ? $c_data['id']
+             : false;
+        };
 
-   function getDashboard($dashboard_id) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+       // append cards to dashboard
+        $data = $this->httpQuery("dashboard/$dashboard_id/cards", [
+            'timeout' => $this->api_config['timeout'],
+            'json'    => $params
+        ], 'PUT');
 
-      return $this->httpQuery("dashboard/$dashboard_id");
-   }
+        return isset($data['id'])
+         ? $data['id']
+         : false;
+    }
 
-   function getDashboards() {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function retrieveDashboard($dashboard_name)
+    {
+        if (($dashboards = $this->getDashboards()) !== false) {
+            $dashboards = array_column($dashboards, 'id', 'name');
 
-      $data = $this->httpQuery('dashboard');
+            if (isset($dashboards[$dashboard_name])) {
+                return $dashboards[$dashboard_name];
+            }
+        }
 
-      return $data;
-   }
+        return false;
+    }
 
-   function getDashboardCards($id) {
-      $data = $this->httpQuery("dashboard/$id", [], 'GET');
+    public function getDashboard($dashboard_id)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      return isset($data['ordered_cards'])
+        return $this->httpQuery("dashboard/$dashboard_id");
+    }
+
+    public function getDashboards()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery('dashboard');
+
+        return $data;
+    }
+
+    public function getDashboardCards($id)
+    {
+        $data = $this->httpQuery("dashboard/$id", [], 'GET');
+
+        return isset($data['ordered_cards'])
          ? $data['ordered_cards']
          : false;
-   }
+    }
 
-   function createOrUpdateCard($card_name, $params = []) {
-      $default_params = [
-         'name'                   => $card_name,
-         'sql'                    => '',
-         'database_id'            => null,
-         'collection_id'          => null,
-         'visualization_settings' => [],
-         'description'            => 'auto-generated by GLPI',
-         'display'                => 'pie',
-         'template_tags'          => [],
-      ];
-      $params = array_merge($default_params, $params);
+    public function createOrUpdateCard($card_name, $params = [])
+    {
+        $default_params = [
+            'name'                   => $card_name,
+            'sql'                    => '',
+            'database_id'            => null,
+            'collection_id'          => null,
+            'visualization_settings' => [],
+            'description'            => 'auto-generated by GLPI',
+            'display'                => 'pie',
+            'template_tags'          => [],
+        ];
+        $params = array_merge($default_params, $params);
 
-      // check visualization_settings (must be a map)
-      if (count($params['visualization_settings']) == 0) {
-         $params['visualization_settings'] =  [
-            '_glpi_forcemap' => true,
-         ];
-      }
-
-      // prepare tags
-      $templates_tags = [];
-      foreach ($params['template_tags'] as $t_name => $tag) {
-         $templates_tags[$t_name] = [
-            'id'           => $this->generateUuid(),
-            'display_name' => $t_name,
-            'name'         => $t_name,
-            'type'         => $tag['type'],
-         ];
-
-         if (isset($tag['widget_type'])) {
-            $templates_tags[$t_name]['widget_type'] = $tag['widget_type'];
-         }
-
-         if (isset($tag['default'])) {
-            $templates_tags[$t_name]['default'] = $tag['default'];
-         }
-
-         if ($tag['type'] == "dimension"
-             && isset($_SESSION['metabase']['fields'][$tag['field']])) {
-            $templates_tags[$t_name]['dimension'] = [
-               "field-id",
-               $_SESSION['metabase']['fields'][$tag['field']]
+       // check visualization_settings (must be a map)
+        if (count($params['visualization_settings']) == 0) {
+            $params['visualization_settings'] =  [
+                '_glpi_forcemap' => true,
             ];
-         }
-      }
-      unset($params['template_tags']);
+        }
 
-      // prepare query post
-      $params['dataset_query'] = [
-         'database' => (int) $params['database_id'],
-         'type'     => 'native',
-         'native'   => [
-            'query'         => $params['sql'],
-            'template_tags' => $templates_tags
-         ]
-      ];
-      unset($params['database_id']);
-      unset($params['sql']);
+       // prepare tags
+        $templates_tags = [];
+        foreach ($params['template_tags'] as $t_name => $tag) {
+            $templates_tags[$t_name] = [
+                'id'           => $this->generateUuid(),
+                'display_name' => $t_name,
+                'name'         => $t_name,
+                'type'         => $tag['type'],
+            ];
 
-      if ($card_id = $this->retrieveCard($card_name, $params['collection_id'])) {
-         $params['original_card_id'] = $card_id;
-         // update existing
-         $data = $this->httpQuery("card/$card_id", [
-            'timeout' => $this->api_config['timeout'],
-            'json' => $params
-         ], 'PUT');
-      } else {
-         // create new
-         $data = $this->httpQuery('card', [
-            'timeout' => $this->api_config['timeout'],
-            'json' => $params
-         ], 'POST');
-      }
+            if (isset($tag['widget_type'])) {
+                $templates_tags[$t_name]['widget_type'] = $tag['widget_type'];
+            }
 
-      return isset($data['id'])
+            if (isset($tag['default'])) {
+                $templates_tags[$t_name]['default'] = $tag['default'];
+            }
+
+            if (
+                $tag['type'] == "dimension"
+                && isset($_SESSION['metabase']['fields'][$tag['field']])
+            ) {
+                $templates_tags[$t_name]['dimension'] = [
+                    "field-id",
+                    $_SESSION['metabase']['fields'][$tag['field']]
+                ];
+            }
+        }
+        unset($params['template_tags']);
+
+       // prepare query post
+        $params['dataset_query'] = [
+            'database' => (int) $params['database_id'],
+            'type'     => 'native',
+            'native'   => [
+                'query'         => $params['sql'],
+                'template_tags' => $templates_tags
+            ]
+        ];
+        unset($params['database_id']);
+        unset($params['sql']);
+
+        if ($card_id = $this->retrieveCard($card_name, $params['collection_id'])) {
+            $params['original_card_id'] = $card_id;
+           // update existing
+            $data = $this->httpQuery("card/$card_id", [
+                'timeout' => $this->api_config['timeout'],
+                'json' => $params
+            ], 'PUT');
+        } else {
+           // create new
+            $data = $this->httpQuery('card', [
+                'timeout' => $this->api_config['timeout'],
+                'json' => $params
+            ], 'POST');
+        }
+
+        return isset($data['id'])
          ? $data['id']
          : false;
-   }
+    }
 
-   function getCard($card_id) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function getCard($card_id)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      return $this->httpQuery("card/$card_id");
-   }
+        return $this->httpQuery("card/$card_id");
+    }
 
-   function retrieveCard($card_name, $collection_id) {
-      if (($cards = $this->getCards($collection_id)) !== false) {
-         $cards = array_column($cards, 'id', 'name');
+    public function retrieveCard($card_name, $collection_id)
+    {
+        if (($cards = $this->getCards($collection_id)) !== false) {
+            $cards = array_column($cards, 'id', 'name');
 
-         if (isset($cards[$card_name])) {
-            return $cards[$card_name];
-         }
-      }
+            if (isset($cards[$card_name])) {
+                return $cards[$card_name];
+            }
+        }
 
-      return false;
-   }
+        return false;
+    }
 
    /**
     * Get cards.
@@ -602,28 +637,29 @@ class PluginMetabaseAPIClient extends CommonGLPI {
     *
     * @return boolean|array Array of cards, false if an error occurs.
     */
-   function getCards($collection_id = null) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function getCards($collection_id = null)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      $cards = $this->httpQuery('card');
+        $cards = $this->httpQuery('card');
 
-      if (!is_array($cards)) {
-         return $cards;
-      }
+        if (!is_array($cards)) {
+            return $cards;
+        }
 
-      $cards = array_filter(
-         $cards,
-         function ($card) use ($collection_id) {
-            return is_array($card)
-               && array_key_exists('collection_id', $card)
-               && $collection_id === $card['collection_id'];
-         }
-      );
+        $cards = array_filter(
+            $cards,
+            function ($card) use ($collection_id) {
+                return is_array($card)
+                  && array_key_exists('collection_id', $card)
+                  && $collection_id === $card['collection_id'];
+            }
+        );
 
-      return $cards;
-   }
+        return $cards;
+    }
 
    /**
     * Enable embedded display on given dashboards.
@@ -631,118 +667,123 @@ class PluginMetabaseAPIClient extends CommonGLPI {
     * @param integer[] $uuids
     * @return boolean
     */
-   function enableDashboardsEmbeddedDisplay($uuids) {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function enableDashboardsEmbeddedDisplay($uuids)
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      if (!$this->enableEmbedding()) {
-         return false;
-      }
+        if (!$this->enableEmbedding()) {
+            return false;
+        }
 
-      foreach ($this->getDashboards() as $dashboard) {
-         if (in_array($dashboard['id'], $uuids) && !$dashboard['enable_embedding']) {
-            $result = $this->httpQuery(
-               'dashboard/' . $dashboard['id'],
-               [
-                  'json' => [
-                     'enable_embedding' => true
-                  ]
-               ],
-               'PUT'
-            );
+        foreach ($this->getDashboards() as $dashboard) {
+            if (in_array($dashboard['id'], $uuids) && !$dashboard['enable_embedding']) {
+                $result = $this->httpQuery(
+                    'dashboard/' . $dashboard['id'],
+                    [
+                        'json' => [
+                            'enable_embedding' => true
+                        ]
+                    ],
+                    'PUT'
+                );
 
-            if (false === $result) {
-               Session::addMessageAfterRedirect(
-                  sprintf(
-                     __('Enabling embedded display fails for dashboard %s.', 'metabase'),
-                     $dashboard['name']
-                  ),
-                  true,
-                  ERROR
-               );
+                if (false === $result) {
+                     Session::addMessageAfterRedirect(
+                         sprintf(
+                             __('Enabling embedded display fails for dashboard %s.', 'metabase'),
+                             $dashboard['name']
+                         ),
+                         true,
+                         ERROR
+                     );
+                }
             }
-         }
-      }
+        }
 
-      return true;
-   }
+        return true;
+    }
 
    /**
     * Defines enable-embedding setting to true.
     *
     * @return boolean
     */
-   function enableEmbedding() {
-      if (!$this->checkSession()) {
-         return false;
-      }
+    public function enableEmbedding()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
 
-      $this->httpQuery('setting/enable-embedding', [
-         'json' => [
-            'default'        => false,
-            'description'    => "Enable admins to create embeddable code for Questions and Dashboards?",
-            'env_name'       => "MB_ENABLE_EMBEDDING",
-            'is_env_setting' => false,
-            'originalValue'  => null,
-            'placeholder'    => false,
-            'value'          => true,
-         ]
-      ], 'PUT');
+        $this->httpQuery('setting/enable-embedding', [
+            'json' => [
+                'default'        => false,
+                'description'    => "Enable admins to create embeddable code for Questions and Dashboards?",
+                'env_name'       => "MB_ENABLE_EMBEDDING",
+                'is_env_setting' => false,
+                'originalValue'  => null,
+                'placeholder'    => false,
+                'value'          => true,
+            ]
+        ], 'PUT');
 
-      // get metabase session to check if embedding enabled
-      $session = $this->httpQuery('session/properties');
+       // get metabase session to check if embedding enabled
+        $session = $this->httpQuery('session/properties');
 
-      return $session['enable-embedding'] ?? false;
-   }
+        return $session['enable-embedding'] ?? false;
+    }
 
    /**
     * Destroy session on metabase api (auth endpoint)
     *
-    * @return array data returned by the api
+    * @return bool
     */
-   function disconnect() {
-      if (!isset($_SESSION['metabase']['session_token'])) {
-         return true;
-      }
+    public function disconnect()
+    {
+        if (!isset($_SESSION['metabase']['session_token'])) {
+            return true;
+        }
 
-      // send disconnect with http query
-      $data = $this->httpQuery('session', [
-         'json' => [
-            'session_id' => $_SESSION['metabase']['session_token'],
-         ]
-      ], 'DELETE');
+       // send disconnect with http query
+        $data = $this->httpQuery('session', [
+            'json' => [
+                'session_id' => $_SESSION['metabase']['session_token'],
+            ]
+        ], 'DELETE');
 
-      unset($_SESSION['metabase']['session_token']);
+        unset($_SESSION['metabase']['session_token']);
 
-      return $data !== false;
-   }
+        return $data !== false;
+    }
 
    /**
     * format of metabase uuid in string lenght, separated by -
     */
-   function generateUuid($specs = [8, 4, 4, 4, 12]) {
-      $uuid = "";
-      foreach ($specs as $nb) {
-         $uuid .= substr(uniqid(), -$nb)."-";
-      }
+    public function generateUuid($specs = [8, 4, 4, 4, 12])
+    {
+        $uuid = "";
+        foreach ($specs as $nb) {
+            $uuid .= substr(uniqid(), -$nb) . "-";
+        }
 
-      return trim($uuid, '-');
-   }
+        return trim($uuid, '-');
+    }
 
    /**
     * Return the metabase API base uri constructed from config
     *
     * @return string the uri
     */
-   function getAPIBaseUri() {
-      $url = trim($this->api_config['host'], '/');
-      if (!empty($this->api_config['port'])) {
-         $url.= ":{$this->api_config['port']}";
-      }
-      $url.= "/api/";
-      return $url;
-   }
+    public function getAPIBaseUri()
+    {
+        $url = trim($this->api_config['host'], '/');
+        if (!empty($this->api_config['port'])) {
+            $url .= ":{$this->api_config['port']}";
+        }
+        $url .= "/api/";
+        return $url;
+    }
 
    /**
     * Send an http query to the metabase api
@@ -760,118 +801,128 @@ class PluginMetabaseAPIClient extends CommonGLPI {
     *                             - json (array) array to pass into the body chich will be json_encoded
     *                             - json (headers) http headers
     * @param  string $method   Http verb (ex: GET, POST, etc)
-    * @return array  data returned by the api
+    * @return array|false  data returned by the api
     */
-   function httpQuery($resource = '', $params = [], $method = 'GET') {
-      global $CFG_GLPI;
+    public function httpQuery($resource = '', $params = [], $method = 'GET')
+    {
+        /** @var array $CFG_GLPI */
+        global $CFG_GLPI;
 
-      // declare default params
-      $default_params = [
-         '_with_metadata'  => false,
-         'allow_redirects' => false,
-         'timeout'         => 5,
-         'connect_timeout' => 2,
-         'debug'           => false,
-         'verify'          => false,
-         'query'           => [], // url parameter
-         'body'            => '', // raw data to send in body
-         'json'            => [], // json data to send
-         'headers'         => ['content-type'  => 'application/json',
-                               'Accept'        => 'application/json'],
-      ];
-      // if connected, append auth token
-      if (isset($_SESSION['metabase']['session_token'])) {
-         $default_params['headers']['X-Metabase-Session'] = $_SESSION['metabase']['session_token'];
-      }
-      // append proxy params if exists
-      if (!empty($CFG_GLPI['proxy_name'])
-          && $this->api_config['use_proxy']) {
-         $proxy = $CFG_GLPI['proxy_user'].
-                  ":".$CFG_GLPI['proxy_passwd'].
-                  "@".preg_replace('#https?://#', '', $CFG_GLPI['proxy_name']).
-                  ":".$CFG_GLPI['proxy_port'];
+       // declare default params
+        $default_params = [
+            '_with_metadata'  => false,
+            'allow_redirects' => false,
+            'timeout'         => 5,
+            'connect_timeout' => 2,
+            'debug'           => false,
+            'verify'          => false,
+            'query'           => [], // url parameter
+            'body'            => '', // raw data to send in body
+            'json'            => [], // json data to send
+            'headers'         => ['content-type'  => 'application/json',
+                'Accept'        => 'application/json'
+            ],
+        ];
+       // if connected, append auth token
+        if (isset($_SESSION['metabase']['session_token'])) {
+            $default_params['headers']['X-Metabase-Session'] = $_SESSION['metabase']['session_token'];
+        }
+       // append proxy params if exists
+        if (
+            !empty($CFG_GLPI['proxy_name'])
+            && $this->api_config['use_proxy']
+        ) {
+            $proxy = $CFG_GLPI['proxy_user'] .
+                  ":" . $CFG_GLPI['proxy_passwd'] .
+                  "@" . preg_replace('#https?://#', '', $CFG_GLPI['proxy_name']) .
+                  ":" . $CFG_GLPI['proxy_port'];
 
-         $default_params['proxy'] = [
-            'http'  => "tcp://$proxy",
-            'https' => "tcp://$proxy",
-         ];
-      }
-      // merge default params
-      $params = array_replace_recursive($default_params, $params);
-      //remove empty values
-      $params = plugin_metabase_recursive_remove_empty($params);
+            $default_params['proxy'] = [
+                'http'  => "tcp://$proxy",
+                'https' => "tcp://$proxy",
+            ];
+        }
+       // merge default params
+        $params = array_replace_recursive($default_params, $params);
+       //remove empty values
+        $params = plugin_metabase_recursive_remove_empty($params);
 
-      // init guzzle
-      $http_client = new GuzzleHttp\Client(['base_uri' => $this->getAPIBaseUri()]);
+       // init guzzle
+        $http_client = new GuzzleHttp\Client(['base_uri' => $this->getAPIBaseUri()]);
 
-      // send http request
-      try {
-         $response = $http_client->request($method,
-                                           $resource,
-                                           $params);
-      } catch (GuzzleException $e) {
-         $this->last_error = [
-            'title'     => "Metabase API error",
-            'exception' => $e->getMessage(),
-            'params'    => $params,
-         ];
+       // send http request
+        try {
+            $response = $http_client->request(
+                $method,
+                $resource,
+                $params
+            );
+        } catch (GuzzleException $e) {
+            $this->last_error = [
+                'title'     => "Metabase API error",
+                'exception' => $e->getMessage(),
+                'params'    => $params,
+            ];
 
-         if ($e instanceof RequestException) {
-            $this->last_error['request'] = Message::toString($e->getRequest());
+            if ($e instanceof RequestException) {
+                $this->last_error['request'] = Message::toString($e->getRequest());
 
-            if ($e->hasResponse()) {
-               $response = $e->getResponse();
-               $this->last_error['response'] = Message::toString($response);
+                if ($e->hasResponse()) {
+                    $response = $e->getResponse();
+                    $this->last_error['response'] = Message::toString($response);
 
-               // session with metabase ko, unset our token
-               if ($response->getStatusCode() == 401) {
-                  unset($_SESSION['metabase']['session_token']);
-               }
+                   // session with metabase ko, unset our token
+                    if ($response->getStatusCode() == 401) {
+                        unset($_SESSION['metabase']['session_token']);
+                    }
+                }
             }
-         }
 
-         if ($e instanceof ConnectException) {
-            Session::addMessageAfterRedirect(
-               __("Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration", 'metabase'),
-               true, ERROR);
-         }
+            if ($e instanceof ConnectException) {
+                Session::addMessageAfterRedirect(
+                    __("Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration", 'metabase'),
+                    true,
+                    ERROR
+                );
+            }
 
-         if ($_SESSION['glpi_use_mode'] == Session::DEBUG_MODE) {
-            Toolbox::backtrace();
-            Toolbox::logDebug($this->last_error);
-         }
-         return false;
-      }
+            if ($_SESSION['glpi_use_mode'] == Session::DEBUG_MODE) {
+                Toolbox::backtrace();
+                Toolbox::logDebug($this->last_error);
+            }
+            return false;
+        }
 
-      // parse http response
-      $http_code     = $response->getStatusCode();
-      $headers       = $response->getHeaders();
+       // parse http response
+        $http_code     = $response->getStatusCode();
+        $headers       = $response->getHeaders();
 
-      // check http errors
-      if (intval($http_code) > 400) {
-         // we have an error if http code is greater than 400
-         return false;
-      }
+       // check http errors
+        if (intval($http_code) > 400) {
+           // we have an error if http code is greater than 400
+            return false;
+        }
 
-      // cast body as string, guzzle return strems
-      $json = (string) $response->getBody();
-      $data = json_decode($json, true);
+       // cast body as string, guzzle return strems
+        $json = (string) $response->getBody();
+        $data = json_decode($json, true);
 
-      //append metadata
-      if ($params['_with_metadata']) {
-         $data['_headers']   = $headers;
-         $data['_http_code'] = $http_code;
-      }
+       //append metadata
+        if ($params['_with_metadata']) {
+            $data['_headers']   = $headers;
+            $data['_http_code'] = $http_code;
+        }
 
-      return $data;
-   }
+        return $data;
+    }
 
    /**
     * Return the error encountered with an http query
     *
     * @return array the error
     */
-   function getLastError() {
-      return $this->last_error;
-   }
+    public function getLastError()
+    {
+        return $this->last_error;
+    }
 }

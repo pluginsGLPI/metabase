@@ -29,56 +29,57 @@
  */
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
-class PluginMetabaseDashboard extends CommonDBTM {
-
+class PluginMetabaseDashboard extends CommonDBTM
+{
    /**
     * {@inheritDoc}
     * @see CommonGLPI::getTypeName()
     */
-   static function getTypeName($nb = 0) {
+    public static function getTypeName($nb = 0)
+    {
 
-      return __('Metabase dashboard', 'metabase');
-   }
+        return __('Metabase dashboard', 'metabase');
+    }
 
    /**
     * {@inheritDoc}
     * @see CommonGLPI::getTabNameForItem()
     */
-   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    {
 
-      switch ($item->getType()) {
-         case "Central":
+        switch ($item->getType()) {
+            case "Central":
+                if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
+                    return self::createTabEntry(self::getTypeName());
+                }
 
-            if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
-               return self::createTabEntry(self::getTypeName());
-            }
-
-            break;
-      }
-      return '';
-   }
+                break;
+        }
+        return '';
+    }
 
    /**
     * {@inheritDoc}
     * @see CommonGLPI::displayTabContentForItem()
     */
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    {
 
-      switch ($item->getType()) {
-         case "Central":
+        switch (get_class($item)) {
+            case Central::class:
+                if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
+                    self::showForCentral($item, $withtemplate);
+                }
 
-            if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
-               self::showForCentral($item, $withtemplate);
-            }
+                break;
+        }
 
-            break;
-      }
-
-      return true;
-   }
+        return true;
+    }
 
    /**
     * Display central tab.
@@ -88,62 +89,63 @@ class PluginMetabaseDashboard extends CommonDBTM {
     *
     * @return void
     */
-   static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false) {
+    public static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false)
+    {
 
-      $apiclient = new PluginMetabaseAPIClient();
+        $apiclient = new PluginMetabaseAPIClient();
 
-      $currentUuid = isset($_GET['uuid']) ? $_GET['uuid'] : null;
+        $currentUuid = isset($_GET['uuid']) ? $_GET['uuid'] : null;
 
-      $dashboards = $apiclient->getDashboards();
-      if (is_array($dashboards)) {
-         $dashboards = array_filter(
-            $dashboards,
-            function ($dashboard) {
-               $isEmbeddingEnabled = $dashboard['enable_embedding'];
-               $canView = PluginMetabaseProfileright::canProfileViewDashboard(
-                     $_SESSION['glpiactiveprofile']['id'],
-                     $dashboard['id']
-               );
+        $dashboards = $apiclient->getDashboards();
+        if (is_array($dashboards)) {
+            $dashboards = array_filter(
+                $dashboards,
+                function ($dashboard) {
+                    $isEmbeddingEnabled = $dashboard['enable_embedding'];
+                    $canView = PluginMetabaseProfileright::canProfileViewDashboard(
+                        $_SESSION['glpiactiveprofile']['id'],
+                        $dashboard['id']
+                    );
 
-               return $isEmbeddingEnabled && $canView;
-            }
-         );
-      }
+                    return $isEmbeddingEnabled && $canView;
+                }
+            );
+        }
 
-      if (empty($dashboards)) {
-         return;
-      }
+        if (empty($dashboards)) {
+            return;
+        }
 
-      if (null === $currentUuid) {
-         $firstDashboard = current($dashboards);
-         $currentUuid = $firstDashboard['id'];
-      }
+        if (null === $currentUuid) {
+            $firstDashboard = current($dashboards);
+            $currentUuid = $firstDashboard['id'];
+        }
 
-      Dropdown::showFromArray(
-         'current_dashboard',
-         array_combine(array_column($dashboards, 'id'), array_column($dashboards, 'name')),
-         [
-            'on_change' => ($is_helpdesk) ? 'location.href = location.origin+location.pathname+"?uuid="+$(this).val()' : 'reloadTab("uuid=" + $(this).val());',
-            'value'     => $currentUuid
-         ]
-      );
+        Dropdown::showFromArray(
+            'current_dashboard',
+            array_combine(array_column($dashboards, 'id'), array_column($dashboards, 'name')),
+            [
+                'on_change' => ($is_helpdesk) ? 'location.href = location.origin+location.pathname+"?uuid="+$(this).val()' : 'reloadTab("uuid=" + $(this).val());',
+                'value'     => $currentUuid
+            ]
+        );
 
-      $config = PluginMetabaseConfig::getConfig();
+        $config = PluginMetabaseConfig::getConfig();
 
-      $signer_config = Lcobucci\JWT\Configuration::forSymmetricSigner(
-         new Lcobucci\JWT\Signer\Hmac\Sha256(),
-         Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token'])
-      );
-      $token = $signer_config->builder()
+        $signer_config = Lcobucci\JWT\Configuration::forSymmetricSigner(
+            new Lcobucci\JWT\Signer\Hmac\Sha256(),
+            Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token'])
+        );
+        $token = $signer_config->builder()
           ->withClaim('resource', [
               'dashboard' => (int) $currentUuid
           ])
           ->withClaim('params', new stdClass())
           ->getToken($signer_config->signer(), $signer_config->signingKey());
 
-      $url = rtrim($config['metabase_url'], '/');
-      echo "<iframe src='$url/embed/dashboard/{$token->toString()}#bordered=false'
+        $url = rtrim($config['metabase_url'], '/');
+        echo "<iframe src='$url/embed/dashboard/{$token->toString()}#bordered=false'
                     id='metabase_iframe'
                     allowtransparency></iframe>";
-   }
+    }
 }
