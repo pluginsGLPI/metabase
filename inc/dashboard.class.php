@@ -34,41 +34,39 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginMetabaseDashboard extends CommonDBTM
 {
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::getTypeName()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::getTypeName()
+     */
     public static function getTypeName($nb = 0)
     {
-
         return __('Metabase dashboard', 'metabase');
     }
 
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::getTabNameForItem()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::getTabNameForItem()
+     */
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-
         switch ($item->getType()) {
-            case "Central":
+            case 'Central':
                 if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
                     return self::createTabEntry(self::getTypeName());
                 }
 
                 break;
         }
+
         return '';
     }
 
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::displayTabContentForItem()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::displayTabContentForItem()
+     */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-
         switch (get_class($item)) {
             case Central::class:
                 if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
@@ -81,17 +79,16 @@ class PluginMetabaseDashboard extends CommonDBTM
         return true;
     }
 
-   /**
-    * Display central tab.
-    *
-    * @param Central $item
-    * @param number $withtemplate
-    *
-    * @return void
-    */
+    /**
+     * Display central tab.
+     *
+     * @param Central $item
+     * @param number $withtemplate
+     *
+     * @return void
+     */
     public static function showForCentral(Central $item, $withtemplate = 0, $is_helpdesk = false)
     {
-
         $apiclient = new PluginMetabaseAPIClient();
 
         $currentUuid = isset($_GET['uuid']) ? $_GET['uuid'] : null;
@@ -102,13 +99,13 @@ class PluginMetabaseDashboard extends CommonDBTM
                 $dashboards,
                 function ($dashboard) {
                     $isEmbeddingEnabled = $dashboard['enable_embedding'];
-                    $canView = PluginMetabaseProfileright::canProfileViewDashboard(
+                    $canView            = PluginMetabaseProfileright::canProfileViewDashboard(
                         $_SESSION['glpiactiveprofile']['id'],
-                        $dashboard['id']
+                        $dashboard['id'],
                     );
 
                     return $isEmbeddingEnabled && $canView;
-                }
+                },
             );
         }
 
@@ -118,7 +115,7 @@ class PluginMetabaseDashboard extends CommonDBTM
 
         if (null === $currentUuid) {
             $firstDashboard = current($dashboards);
-            $currentUuid = $firstDashboard['id'];
+            $currentUuid    = $firstDashboard['id'];
         }
 
         Dropdown::showFromArray(
@@ -126,19 +123,19 @@ class PluginMetabaseDashboard extends CommonDBTM
             array_combine(array_column($dashboards, 'id'), array_column($dashboards, 'name')),
             [
                 'on_change' => ($is_helpdesk) ? 'location.href = location.origin+location.pathname+"?uuid="+$(this).val()' : 'reloadTab("uuid=" + $(this).val());',
-                'value'     => $currentUuid
-            ]
+                'value'     => $currentUuid,
+            ],
         );
 
         $config = PluginMetabaseConfig::getConfig();
 
         $signer_config = Lcobucci\JWT\Configuration::forSymmetricSigner(
             new Lcobucci\JWT\Signer\Hmac\Sha256(),
-            Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token'])
+            Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token']),
         );
         $token = $signer_config->builder()
           ->withClaim('resource', [
-              'dashboard' => (int) $currentUuid
+              'dashboard' => (int) $currentUuid,
           ])
           ->withClaim('params', new stdClass())
           ->getToken($signer_config->signer(), $signer_config->signingKey());

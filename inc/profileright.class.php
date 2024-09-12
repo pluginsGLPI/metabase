@@ -34,41 +34,39 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginMetabaseProfileright extends CommonDBTM
 {
-   /**
-    * Necessary right to edit the rights of this plugin.
-    */
+    /**
+     * Necessary right to edit the rights of this plugin.
+     */
     public static $rightname = 'profile';
 
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::getTypeName()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::getTypeName()
+     */
     public static function getTypeName($nb = 0)
     {
-
         return __('Metabase', 'metabase');
     }
 
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::getTabNameForItem()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::getTabNameForItem()
+     */
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-
         if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
             return self::createTabEntry(self::getTypeName());
         }
+
         return '';
     }
 
-   /**
-    * {@inheritDoc}
-    * @see CommonGLPI::displayTabContentForItem()
-    */
+    /**
+     * {@inheritDoc}
+     * @see CommonGLPI::displayTabContentForItem()
+     */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-
         if ($item instanceof self && Session::haveRight('profile', READ)) {
             $profileright = new self();
             $profileright->showForm($item->fields['id']);
@@ -77,17 +75,16 @@ class PluginMetabaseProfileright extends CommonDBTM
         return true;
     }
 
-   /**
-    * Display profile rights form.
-    *
-    * @param integer $id Profile id
-    * @param array $options
-    *
-    * @return bool
-    */
+    /**
+     * Display profile rights form.
+     *
+     * @param integer $id Profile id
+     * @param array $options
+     *
+     * @return bool
+     */
     public function showForm($id, $options = [])
     {
-
         if (!Session::haveRight('profile', READ)) {
             return false;
         }
@@ -98,7 +95,7 @@ class PluginMetabaseProfileright extends CommonDBTM
 
         echo '<tr class="headerRow"><th colspan="2">' . self::getTypeName() . '</th></tr>';
 
-        Plugin::doHook("pre_item_form", ['item' => $this, 'options' => &$options]);
+        Plugin::doHook('pre_item_form', ['item' => $this, 'options' => &$options]);
 
         echo '<tr><th colspan="2">' . __('Rights management', 'metabase') . '</th></tr>';
 
@@ -109,18 +106,18 @@ class PluginMetabaseProfileright extends CommonDBTM
             echo '<td colspan="2" class="center">';
             echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
             . "<i class='ti ti-check'></i>"
-            . "<span>" . __('Allow access to all', 'metabase') . "</span>"
+            . '<span>' . __('Allow access to all', 'metabase') . '</span>'
             . '</button>';
             echo ' &nbsp; ';
             echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
             . "<i class='ti ti-forbid'></i>"
-            . "<span>" . __('Disallow access to all', 'metabase') . "</span>"
+            . '<span>' . __('Disallow access to all', 'metabase') . '</span>'
             . '</button>';
             echo '</td>';
             echo '</tr>';
         }
 
-        $apiclient = new PluginMetabaseAPIClient();
+        $apiclient  = new PluginMetabaseAPIClient();
         $dashboards = $apiclient->getDashboards();
 
         foreach ($dashboards as $dashboard) {
@@ -134,7 +131,7 @@ class PluginMetabaseProfileright extends CommonDBTM
                     'nonone'  => 0,
                     'noread'  => 0,
                     'nowrite' => 1,
-                ]
+                ],
             );
             echo '</td>';
             echo '</tr>';
@@ -160,13 +157,13 @@ class PluginMetabaseProfileright extends CommonDBTM
         return true;
     }
 
-   /**
-    * Check if profile is able to view at least one dashboard.
-    *
-    * @param integer $profileId
-    *
-    * @return boolean
-    */
+    /**
+     * Check if profile is able to view at least one dashboard.
+     *
+     * @param integer $profileId
+     *
+     * @return boolean
+     */
     public static function canProfileViewDashboards($profileId)
     {
         /** @var DBmysql $DB */
@@ -177,8 +174,8 @@ class PluginMetabaseProfileright extends CommonDBTM
                 'FROM'  => self::getTable(),
                 'WHERE' => [
                     'profiles_id' => $profileId,
-                ]
-            ]
+                ],
+            ],
         );
 
         foreach ($iterator as $right) {
@@ -190,30 +187,29 @@ class PluginMetabaseProfileright extends CommonDBTM
         return false;
     }
 
-   /**
-    * Check if profile is able to view given dashboard.
-    *
-    * @param integer $profileId
-    * @param integer $dashboardUuid
-    *
-    * @return integer
-    */
+    /**
+     * Check if profile is able to view given dashboard.
+     *
+     * @param integer $profileId
+     * @param integer $dashboardUuid
+     *
+     * @return integer
+     */
     public static function canProfileViewDashboard($profileId, $dashboardUuid)
     {
         return self::getProfileRightForDashboard($profileId, $dashboardUuid) & READ;
     }
 
-   /**
-    * Returns profile rights for given dashboard.
-    *
-    * @param integer $profileId
-    * @param integer $dashboardUuid
-    *
-    * @return integer
-    */
+    /**
+     * Returns profile rights for given dashboard.
+     *
+     * @param integer $profileId
+     * @param integer $dashboardUuid
+     *
+     * @return integer
+     */
     private static function getProfileRightForDashboard($profileId, $dashboardUuid)
     {
-
         $rightCriteria = [
             'profiles_id'    => $profileId,
             'dashboard_uuid' => $dashboardUuid,
@@ -227,25 +223,24 @@ class PluginMetabaseProfileright extends CommonDBTM
         return 0;
     }
 
-   /**
-    * Defines profile rights for dashboard.
-    *
-    * @param integer $profileId
-    * @param integer $dashboardUuid
-    * @param integer $rights
-    *
-    * @return void
-    */
+    /**
+     * Defines profile rights for dashboard.
+     *
+     * @param integer $profileId
+     * @param integer $dashboardUuid
+     * @param integer $rights
+     *
+     * @return void
+     */
     public static function setDashboardRightsForProfile($profileId, $dashboardUuid, $rights)
     {
-
         $profileRight = new self();
 
         $rightsExists = $profileRight->getFromDBByCrit(
             [
-                'profiles_id' => $profileId,
-                'dashboard_uuid' => $dashboardUuid
-            ]
+                'profiles_id'    => $profileId,
+                'dashboard_uuid' => $dashboardUuid,
+            ],
         );
 
         if ($rightsExists) {
@@ -253,7 +248,7 @@ class PluginMetabaseProfileright extends CommonDBTM
                 [
                     'id'     => $profileRight->fields['id'],
                     'rights' => $rights,
-                ]
+                ],
             );
         } else {
             $profileRight->add(
@@ -261,26 +256,26 @@ class PluginMetabaseProfileright extends CommonDBTM
                     'profiles_id'    => $profileId,
                     'dashboard_uuid' => $dashboardUuid,
                     'rights'         => $rights,
-                ]
+                ],
             );
         }
     }
 
-   /**
-    * Install profiles database.
-    *
-    * @param Migration $migration
-    *
-    * @return void
-    */
+    /**
+     * Install profiles database.
+     *
+     * @param Migration $migration
+     *
+     * @return void
+     */
     public static function install(Migration $migration)
     {
         /** @var DBmysql $DB */
         global $DB;
 
-        $default_charset = DBConnection::getDefaultCharset();
+        $default_charset   = DBConnection::getDefaultCharset();
         $default_collation = DBConnection::getDefaultCollation();
-        $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
 
         $table = self::getTable();
 
@@ -299,11 +294,11 @@ class PluginMetabaseProfileright extends CommonDBTM
         }
     }
 
-   /**
-    * Uninstall profiles database.
-    *
-    * @return void
-    */
+    /**
+     * Uninstall profiles database.
+     *
+     * @return void
+     */
     public static function uninstall()
     {
         /** @var DBmysql $DB */
