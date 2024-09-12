@@ -39,56 +39,54 @@ use GuzzleHttp\Psr7\Message;
 
 class PluginMetabaseAPIClient extends CommonGLPI
 {
-    private $api_config      = [];
-    private $last_error      = [];
+    private $api_config = [];
+    private $last_error = [];
 
     public function __construct()
     {
-       // retrieve plugin config
+        // retrieve plugin config
         $this->api_config = PluginMetabaseConfig::getConfig();
     }
 
-
-   /**
-    * Check with metabase API the mandatory actions
-    *
-    * @return array of [label -> boolean]
-    */
+    /**
+     * Check with metabase API the mandatory actions
+     *
+     * @return array of [label -> boolean]
+     */
     public function status()
     {
         return [
-            __("API: login", 'metabase')
+            __('API: login', 'metabase')
             => $this->connect(),
-            __("API: get current user", 'metabase')
+            __('API: get current user', 'metabase')
             => $this->getCurrentUser() !== false,
-            __("API: get users", 'metabase')
+            __('API: get users', 'metabase')
             => $this->getUsers() !== false,
-            __("API: get databases", 'metabase')
+            __('API: get databases', 'metabase')
             => $this->getDatabases() !== false,
-            __("API: get GLPI database", 'metabase')
+            __('API: get GLPI database', 'metabase')
             => $this->getGlpiDatabase() !== false,
         ];
     }
 
-
-   /**
-    * Attempt an http connection on metabase api
-    * if suceed, set auth_token private properties
-    *
-    * @return bool
-    */
+    /**
+     * Attempt an http connection on metabase api
+     * if suceed, set auth_token private properties
+     *
+     * @return bool
+     */
     public function connect()
     {
         if (isset($_SESSION['metabase']['session_token'])) {
             return true;
         }
 
-       // send connect with http query
+        // send connect with http query
         $data = $this->httpQuery('session', [
             'json' => [
                 'username' => $this->api_config['username'],
                 'password' => (new GLPIKey())->decrypt($this->api_config['password']),
-            ]
+            ],
         ], 'POST');
 
         if (is_array($data)) {
@@ -102,18 +100,18 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
     public function checkSession()
     {
-       // do a simple query
+        // do a simple query
         $this->getCurrentUser(true);
 
-       // check session token, if set, we still have a valid token
+        // check session token, if set, we still have a valid token
         if (isset($_SESSION['metabase']['session_token'])) {
             return true;
         }
 
-       // so reconnect
+        // so reconnect
         $this->connect();
 
-       // check again session token, if set, we now have a valid token
+        // check again session token, if set, we now have a valid token
         if (isset($_SESSION['metabase']['session_token'])) {
             return true;
         }
@@ -170,7 +168,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
     public function getGlpiDatabase()
     {
-       // we already have stored the id of glpi database
+        // we already have stored the id of glpi database
         if (($db_id = $this->api_config['glpi_db_id']) != 0) {
             return $this->getDatabase($db_id);
         }
@@ -185,7 +183,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
             }
         }
 
-        $this->last_error[] = __("No auto-generated GLPI database found", 'metabase');
+        $this->last_error[] = __('No auto-generated GLPI database found', 'metabase');
+
         return false;
     }
 
@@ -195,17 +194,17 @@ class PluginMetabaseAPIClient extends CommonGLPI
         global $DB;
 
         if (($data = $this->getGlpiDatabase()) === false) {
-           // try to switch to slave db
+            // try to switch to slave db
             DBConnection::switchToSlave();
 
-           // post conf for the glpi database
+            // post conf for the glpi database
             $data = $this->httpQuery('database', [
                 'timeout' => $this->api_config['timeout'],
                 'json'    => [
                     'name'         => 'GLPI (plugin auto-generated)',
                     'engine'       => 'mysql',
                     'is_full_sync' => true,
-                    'details'       => [
+                    'details'      => [
                         'host'        => $DB->dbhost,
                         'port'        => 3306,
                         'dbname'      => $DB->dbdefault,
@@ -213,10 +212,10 @@ class PluginMetabaseAPIClient extends CommonGLPI
                         'password'    => $DB->dbpassword,
                         'tunnel-port' => 22,
                     ],
-                ]
+                ],
             ], 'POST');
 
-           // switch back to master
+            // switch back to master
             DBConnection::switchToMaster();
         }
 
@@ -230,7 +229,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         }
 
         $data = $this->httpQuery("database/$db_id/metadata", [
-            'timeout' => $this->api_config['timeout']
+            'timeout' => $this->api_config['timeout'],
         ]);
 
         return $data;
@@ -244,9 +243,9 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         $data = $this->httpQuery("/api/field/$f_id_src", [
             'json' => [
-                'special_type'       => "type/FK",
+                'special_type'       => 'type/FK',
                 'fk_target_field_id' => $f_id_trgt,
-            ]
+            ],
         ], 'PUT');
 
         return $data;
@@ -271,38 +270,39 @@ class PluginMetabaseAPIClient extends CommonGLPI
           && $this->setITILMatrixMapping($change);
     }
 
-
     public function setTicketTypeMapping()
     {
         $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
-        $this->setFieldCustomMapping($field_id, __("Type"));
+        $this->setFieldCustomMapping($field_id, __('Type'));
         $data = $this->httpQuery("/api/field/$field_id/values", [
             'json' => [
                 'values' => [
-                    [Ticket::INCIDENT_TYPE, __("Incident")],
-                    [Ticket::DEMAND_TYPE, __("Request")]
+                    [Ticket::INCIDENT_TYPE, __('Incident')],
+                    [Ticket::DEMAND_TYPE, __('Request')],
                 ],
-            ]
+            ],
         ], 'POST');
-        return isset($data['status']) && $data['status'] === "success";
+
+        return isset($data['status']) && $data['status'] === 'success';
     }
 
     public function setITILStatusMapping(CommonITILObject $item)
     {
-        $statuses = $item::getAllStatusArray();
+        $statuses        = $item::getAllStatusArray();
         $statuses_topush = [];
         foreach ($statuses as $key => $label) {
             $statuses_topush[] = [$key, $label];
         }
-        $table = $item::getTable();
+        $table    = $item::getTable();
         $field_id = $_SESSION['metabase']['fields']["$table.status"];
-        $this->setFieldCustomMapping($field_id, __("Status"));
+        $this->setFieldCustomMapping($field_id, __('Status'));
         $data = $this->httpQuery("/api/field/$field_id/values", [
             'json' => [
                 'values' => $statuses_topush,
-            ]
+            ],
         ], 'POST');
-        return isset($data['status']) && $data['status'] === "success";
+
+        return isset($data['status']) && $data['status'] === 'success';
     }
 
     public function setITILMatrixMapping(CommonITILObject $item)
@@ -323,37 +323,36 @@ class PluginMetabaseAPIClient extends CommonGLPI
             }
             $data = $this->httpQuery("/api/field/$field_id/values", [
                 'json' => [
-                    'values' => $data_topush
-                ]
+                    'values' => $data_topush,
+                ],
             ], 'POST');
 
             if (
                 !isset($data['status'])
-                || $data['status'] !== "success"
+                || $data['status'] !== 'success'
             ) {
-                 return false;
+                return false;
             }
         }
 
         return true;
     }
 
-    public function setFieldCustomMapping($field_id, $label = "")
+    public function setFieldCustomMapping($field_id, $label = '')
     {
-
         $data = $this->httpQuery("/api/field/$field_id", [
             'json' => [
-                'special_type'       => 'type/Category',
-                'has_field_values'   => 'list',
-            ]
+                'special_type'     => 'type/Category',
+                'has_field_values' => 'list',
+            ],
         ], 'PUT');
 
         $data = $this->httpQuery("/api/field/$field_id/dimension", [
             'json' => [
                 'human_readable_field_id' => null,
                 'type'                    => 'internal',
-                'name'                    => $label
-            ]
+                'name'                    => $label,
+            ],
         ], 'POST');
     }
 
@@ -361,7 +360,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     {
         $default_params = [
             'color'       => '#000000',
-            'description' => 'auto-generated by GLPI'
+            'description' => 'auto-generated by GLPI',
         ];
         $params = array_merge($default_params, $params);
 
@@ -374,7 +373,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 'name'        => $collection_name,
                 'color'       => $params['color'],
                 'description' => $params['description'],
-            ]
+            ],
         ], 'POST');
 
         return isset($data['id'])
@@ -425,16 +424,16 @@ class PluginMetabaseAPIClient extends CommonGLPI
         unset($send_params['reports']);
 
         if ($id = $this->retrieveDashboard($dashboard_name)) {
-           // update existing
+            // update existing
             $data = $this->httpQuery("dashboard/$id", [
                 'timeout' => $this->api_config['timeout'],
-                'json'    => $send_params
+                'json'    => $send_params,
             ], 'PUT');
         } else {
-           // create new
+            // create new
             $data = $this->httpQuery('dashboard', [
                 'timeout' => $this->api_config['timeout'],
-                'json'    => $send_params
+                'json'    => $send_params,
             ], 'POST');
         }
 
@@ -446,25 +445,25 @@ class PluginMetabaseAPIClient extends CommonGLPI
     public function setDashboardCards($dashboard_id, $params)
     {
         if ($cards = $this->getDashboardCards($dashboard_id)) {
-           // delete old cards
+            // delete old cards
             foreach ($cards as $card) {
                 $this->httpQuery("dashboard/$dashboard_id/cards", [
                     'query' => [
-                        'dashcardId' => $card['id']
-                    ]
+                        'dashcardId' => $card['id'],
+                    ],
                 ], 'DELETE');
             }
         }
 
-       // (re)create dashboard-cards
+        // (re)create dashboard-cards
         foreach ($params['cards'] as $c_index => &$card) {
-           // create card
+            // create card
             $c_params = [
-                'cardId' => $card['card_id']
+                'cardId' => $card['card_id'],
             ];
             $c_data = $this->httpQuery("dashboard/$dashboard_id/cards", [
                 'timeout' => $this->api_config['timeout'],
-                'json'    => $c_params
+                'json'    => $c_params,
             ], 'POST');
 
             $card['id'] = isset($c_data['id'])
@@ -472,10 +471,10 @@ class PluginMetabaseAPIClient extends CommonGLPI
              : false;
         };
 
-       // append cards to dashboard
+        // append cards to dashboard
         $data = $this->httpQuery("dashboard/$dashboard_id/cards", [
             'timeout' => $this->api_config['timeout'],
-            'json'    => $params
+            'json'    => $params,
         ], 'PUT');
 
         return isset($data['id'])
@@ -539,14 +538,14 @@ class PluginMetabaseAPIClient extends CommonGLPI
         ];
         $params = array_merge($default_params, $params);
 
-       // check visualization_settings (must be a map)
+        // check visualization_settings (must be a map)
         if (count($params['visualization_settings']) == 0) {
-            $params['visualization_settings'] =  [
+            $params['visualization_settings'] = [
                 '_glpi_forcemap' => true,
             ];
         }
 
-       // prepare tags
+        // prepare tags
         $templates_tags = [];
         foreach ($params['template_tags'] as $t_name => $tag) {
             $templates_tags[$t_name] = [
@@ -565,41 +564,41 @@ class PluginMetabaseAPIClient extends CommonGLPI
             }
 
             if (
-                $tag['type'] == "dimension"
+                $tag['type'] == 'dimension'
                 && isset($_SESSION['metabase']['fields'][$tag['field']])
             ) {
                 $templates_tags[$t_name]['dimension'] = [
-                    "field-id",
-                    $_SESSION['metabase']['fields'][$tag['field']]
+                    'field-id',
+                    $_SESSION['metabase']['fields'][$tag['field']],
                 ];
             }
         }
         unset($params['template_tags']);
 
-       // prepare query post
+        // prepare query post
         $params['dataset_query'] = [
             'database' => (int) $params['database_id'],
             'type'     => 'native',
             'native'   => [
                 'query'         => $params['sql'],
-                'template_tags' => $templates_tags
-            ]
+                'template_tags' => $templates_tags,
+            ],
         ];
         unset($params['database_id']);
         unset($params['sql']);
 
         if ($card_id = $this->retrieveCard($card_name, $params['collection_id'])) {
             $params['original_card_id'] = $card_id;
-           // update existing
+            // update existing
             $data = $this->httpQuery("card/$card_id", [
                 'timeout' => $this->api_config['timeout'],
-                'json' => $params
+                'json'    => $params,
             ], 'PUT');
         } else {
-           // create new
+            // create new
             $data = $this->httpQuery('card', [
                 'timeout' => $this->api_config['timeout'],
-                'json' => $params
+                'json'    => $params,
             ], 'POST');
         }
 
@@ -630,13 +629,13 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
-   /**
-    * Get cards.
-    *
-    * @param integer $collection_id
-    *
-    * @return boolean|array Array of cards, false if an error occurs.
-    */
+    /**
+     * Get cards.
+     *
+     * @param integer $collection_id
+     *
+     * @return boolean|array Array of cards, false if an error occurs.
+     */
     public function getCards($collection_id = null)
     {
         if (!$this->checkSession()) {
@@ -655,18 +654,18 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 return is_array($card)
                   && array_key_exists('collection_id', $card)
                   && $collection_id === $card['collection_id'];
-            }
+            },
         );
 
         return $cards;
     }
 
-   /**
-    * Enable embedded display on given dashboards.
-    *
-    * @param integer[] $uuids
-    * @return boolean
-    */
+    /**
+     * Enable embedded display on given dashboards.
+     *
+     * @param integer[] $uuids
+     * @return boolean
+     */
     public function enableDashboardsEmbeddedDisplay($uuids)
     {
         if (!$this->checkSession()) {
@@ -683,21 +682,21 @@ class PluginMetabaseAPIClient extends CommonGLPI
                     'dashboard/' . $dashboard['id'],
                     [
                         'json' => [
-                            'enable_embedding' => true
-                        ]
+                            'enable_embedding' => true,
+                        ],
                     ],
-                    'PUT'
+                    'PUT',
                 );
 
                 if (false === $result) {
-                     Session::addMessageAfterRedirect(
-                         sprintf(
-                             __('Enabling embedded display fails for dashboard %s.', 'metabase'),
-                             $dashboard['name']
-                         ),
-                         true,
-                         ERROR
-                     );
+                    Session::addMessageAfterRedirect(
+                        sprintf(
+                            __('Enabling embedded display fails for dashboard %s.', 'metabase'),
+                            $dashboard['name'],
+                        ),
+                        true,
+                        ERROR,
+                    );
                 }
             }
         }
@@ -705,11 +704,11 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return true;
     }
 
-   /**
-    * Defines enable-embedding setting to true.
-    *
-    * @return boolean
-    */
+    /**
+     * Defines enable-embedding setting to true.
+     *
+     * @return boolean
+     */
     public function enableEmbedding()
     {
         if (!$this->checkSession()) {
@@ -719,37 +718,37 @@ class PluginMetabaseAPIClient extends CommonGLPI
         $this->httpQuery('setting/enable-embedding', [
             'json' => [
                 'default'        => false,
-                'description'    => "Enable admins to create embeddable code for Questions and Dashboards?",
-                'env_name'       => "MB_ENABLE_EMBEDDING",
+                'description'    => 'Enable admins to create embeddable code for Questions and Dashboards?',
+                'env_name'       => 'MB_ENABLE_EMBEDDING',
                 'is_env_setting' => false,
                 'originalValue'  => null,
                 'placeholder'    => false,
                 'value'          => true,
-            ]
+            ],
         ], 'PUT');
 
-       // get metabase session to check if embedding enabled
+        // get metabase session to check if embedding enabled
         $session = $this->httpQuery('session/properties');
 
         return $session['enable-embedding'] ?? false;
     }
 
-   /**
-    * Destroy session on metabase api (auth endpoint)
-    *
-    * @return bool
-    */
+    /**
+     * Destroy session on metabase api (auth endpoint)
+     *
+     * @return bool
+     */
     public function disconnect()
     {
         if (!isset($_SESSION['metabase']['session_token'])) {
             return true;
         }
 
-       // send disconnect with http query
+        // send disconnect with http query
         $data = $this->httpQuery('session', [
             'json' => [
                 'session_id' => $_SESSION['metabase']['session_token'],
-            ]
+            ],
         ], 'DELETE');
 
         unset($_SESSION['metabase']['session_token']);
@@ -757,58 +756,59 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data !== false;
     }
 
-   /**
-    * format of metabase uuid in string lenght, separated by -
-    */
+    /**
+     * format of metabase uuid in string lenght, separated by -
+     */
     public function generateUuid($specs = [8, 4, 4, 4, 12])
     {
-        $uuid = "";
+        $uuid = '';
         foreach ($specs as $nb) {
-            $uuid .= substr(uniqid(), -$nb) . "-";
+            $uuid .= substr(uniqid(), -$nb) . '-';
         }
 
         return trim($uuid, '-');
     }
 
-   /**
-    * Return the metabase API base uri constructed from config
-    *
-    * @return string the uri
-    */
+    /**
+     * Return the metabase API base uri constructed from config
+     *
+     * @return string the uri
+     */
     public function getAPIBaseUri()
     {
         $url = trim($this->api_config['host'], '/');
         if (!empty($this->api_config['port'])) {
             $url .= ":{$this->api_config['port']}";
         }
-        $url .= "/api/";
+        $url .= '/api/';
+
         return $url;
     }
 
-   /**
-    * Send an http query to the metabase api
-    *
-    * @param  string $resource the endpoint to use
-    * @param  array  $params   an array containg these possible options:
-    *                             - _with_metadata (bool, default false)
-    *                             - allow_redirects (bool, default false)
-    *                             - timeout (int, default 5)
-    *                             - connect_timeout (int, default 2)
-    *                             - debug (bool, default false)
-    *                             - verify (bool, default based on plugin config), check ssl certificate
-    *                             - query (array) url parameters
-    *                             - body (string) raw data to send in body
-    *                             - json (array) array to pass into the body chich will be json_encoded
-    *                             - json (headers) http headers
-    * @param  string $method   Http verb (ex: GET, POST, etc)
-    * @return array|false  data returned by the api
-    */
+    /**
+     * Send an http query to the metabase api
+     *
+     * @param  string $resource the endpoint to use
+     * @param  array  $params   an array containg these possible options:
+     *                             - _with_metadata (bool, default false)
+     *                             - allow_redirects (bool, default false)
+     *                             - timeout (int, default 5)
+     *                             - connect_timeout (int, default 2)
+     *                             - debug (bool, default false)
+     *                             - verify (bool, default based on plugin config), check ssl certificate
+     *                             - query (array) url parameters
+     *                             - body (string) raw data to send in body
+     *                             - json (array) array to pass into the body chich will be json_encoded
+     *                             - json (headers) http headers
+     * @param  string $method   Http verb (ex: GET, POST, etc)
+     * @return array|false  data returned by the api
+     */
     public function httpQuery($resource = '', $params = [], $method = 'GET')
     {
         /** @var array $CFG_GLPI */
         global $CFG_GLPI;
 
-       // declare default params
+        // declare default params
         $default_params = [
             '_with_metadata'  => false,
             'allow_redirects' => false,
@@ -819,47 +819,47 @@ class PluginMetabaseAPIClient extends CommonGLPI
             'query'           => [], // url parameter
             'body'            => '', // raw data to send in body
             'json'            => [], // json data to send
-            'headers'         => ['content-type'  => 'application/json',
-                'Accept'        => 'application/json'
+            'headers'         => ['content-type' => 'application/json',
+                'Accept'                         => 'application/json',
             ],
         ];
-       // if connected, append auth token
+        // if connected, append auth token
         if (isset($_SESSION['metabase']['session_token'])) {
             $default_params['headers']['X-Metabase-Session'] = $_SESSION['metabase']['session_token'];
         }
-       // append proxy params if exists
+        // append proxy params if exists
         if (
             !empty($CFG_GLPI['proxy_name'])
             && $this->api_config['use_proxy']
         ) {
             $proxy = $CFG_GLPI['proxy_user'] .
-                  ":" . $CFG_GLPI['proxy_passwd'] .
-                  "@" . preg_replace('#https?://#', '', $CFG_GLPI['proxy_name']) .
-                  ":" . $CFG_GLPI['proxy_port'];
+                  ':' . $CFG_GLPI['proxy_passwd'] .
+                  '@' . preg_replace('#https?://#', '', $CFG_GLPI['proxy_name']) .
+                  ':' . $CFG_GLPI['proxy_port'];
 
             $default_params['proxy'] = [
                 'http'  => "tcp://$proxy",
                 'https' => "tcp://$proxy",
             ];
         }
-       // merge default params
+        // merge default params
         $params = array_replace_recursive($default_params, $params);
-       //remove empty values
+        //remove empty values
         $params = plugin_metabase_recursive_remove_empty($params);
 
-       // init guzzle
+        // init guzzle
         $http_client = new GuzzleHttp\Client(['base_uri' => $this->getAPIBaseUri()]);
 
-       // send http request
+        // send http request
         try {
             $response = $http_client->request(
                 $method,
                 $resource,
-                $params
+                $params,
             );
         } catch (GuzzleException $e) {
             $this->last_error = [
-                'title'     => "Metabase API error",
+                'title'     => 'Metabase API error',
                 'exception' => $e->getMessage(),
                 'params'    => $params,
             ];
@@ -868,10 +868,10 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 $this->last_error['request'] = Message::toString($e->getRequest());
 
                 if ($e->hasResponse()) {
-                    $response = $e->getResponse();
+                    $response                     = $e->getResponse();
                     $this->last_error['response'] = Message::toString($response);
 
-                   // session with metabase ko, unset our token
+                    // session with metabase ko, unset our token
                     if ($response->getStatusCode() == 401) {
                         unset($_SESSION['metabase']['session_token']);
                     }
@@ -880,9 +880,9 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
             if ($e instanceof ConnectException) {
                 Session::addMessageAfterRedirect(
-                    __("Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration", 'metabase'),
+                    __('Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration', 'metabase'),
                     true,
-                    ERROR
+                    ERROR,
                 );
             }
 
@@ -890,24 +890,25 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 Toolbox::backtrace();
                 Toolbox::logDebug($this->last_error);
             }
+
             return false;
         }
 
-       // parse http response
-        $http_code     = $response->getStatusCode();
-        $headers       = $response->getHeaders();
+        // parse http response
+        $http_code = $response->getStatusCode();
+        $headers   = $response->getHeaders();
 
-       // check http errors
+        // check http errors
         if (intval($http_code) > 400) {
-           // we have an error if http code is greater than 400
+            // we have an error if http code is greater than 400
             return false;
         }
 
-       // cast body as string, guzzle return strems
+        // cast body as string, guzzle return strems
         $json = (string) $response->getBody();
         $data = json_decode($json, true);
 
-       //append metadata
+        //append metadata
         if ($params['_with_metadata']) {
             $data['_headers']   = $headers;
             $data['_http_code'] = $http_code;
@@ -916,11 +917,11 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return $data;
     }
 
-   /**
-    * Return the error encountered with an http query
-    *
-    * @return array the error
-    */
+    /**
+     * Return the error encountered with an http query
+     *
+     * @return array the error
+     */
     public function getLastError()
     {
         return $this->last_error;

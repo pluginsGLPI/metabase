@@ -39,11 +39,11 @@ class PluginMetabaseConfig extends Config
         return __('Metabase', 'metabase');
     }
 
-   /**
-    * Return the current config of the plugin store in the glpi config table
-    *
-    * @return array config with keys => values
-    */
+    /**
+     * Return the current config of the plugin store in the glpi config table
+     *
+     * @return array config with keys => values
+     */
     public static function getConfig()
     {
         return Config::getConfigurationValues('plugin:metabase');
@@ -52,9 +52,10 @@ class PluginMetabaseConfig extends Config
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         switch ($item->getType()) {
-            case "Config":
+            case 'Config':
                 return self::createTabEntry(self::getTypeName());
         }
+
         return '';
     }
 
@@ -83,89 +84,89 @@ class PluginMetabaseConfig extends Config
         $current_config = self::getConfig();
         $canedit        = Session::haveRight(self::$rightname, UPDATE);
         echo "<div class='metabase_config'>";
-        echo "<h1>" . __("Configuration of Metabase integration") . "</h1>";
+        echo '<h1>' . __('Configuration of Metabase integration') . '</h1>';
 
         if ($canedit) {
-            echo "<form name='form' action='" . Toolbox::getItemTypeFormURL("Config") . "' method='post'>";
+            echo "<form name='form' action='" . Toolbox::getItemTypeFormURL('Config') . "' method='post'>";
         }
 
         echo "<div id='base_config' class='metabase_config_block'>";
         echo self::showField([
-            'label' => __("Metabase host", 'metabase'),
+            'label' => __('Metabase host', 'metabase'),
             'attrs' => [
-                'name'  => 'host',
+                'name'        => 'host',
                 'value'       => $current_config['host'],
                 'placeholder' => '127.0.0.1',
-            ]
+            ],
         ]);
         echo self::showField([
-            'label' => __("Metabase port", 'metabase'),
+            'label' => __('Metabase port', 'metabase'),
             'attrs' => [
-                'name'  => 'port',
+                'name'        => 'port',
                 'value'       => $current_config['port'],
                 'required'    => false,
                 'placeholder' => '3000',
-            ]
+            ],
         ]);
         echo self::showField([
-            'label' => __("username (metabase admin)", 'metabase'),
+            'label' => __('username (metabase admin)', 'metabase'),
             'attrs' => [
                 'name'  => 'username',
                 'value' => $current_config['username'],
                 'style' => 'width:200px;',
-            ]
+            ],
         ]);
         if (!empty($CFG_GLPI['proxy_name'])) {
             echo self::showField([
-                'label'     =>      __("Use proxy"),
+                'label'     => __('Use proxy'),
                 'inputtype' => 'yesno',
-                'attrs'     =>      [
+                'attrs'     => [
                     'name'  => 'use_proxy',
                     'value' => $current_config['use_proxy'],
                     'style' => 'width:200px;',
-                ]
+                ],
             ]);
         }
         echo self::showField([
             'inputtype' => 'password',
-            'label'     => __("password"),
+            'label'     => __('password'),
             'attrs'     => [
                 'name'     => 'password',
                 'value'    => '',
                 'style'    => 'width:200px;',
                 'required' => false,
-            ]
+            ],
         ]);
 
         echo self::showField([
-            'label' => __("Metabase embedded token (to display dashboard in GLPI)", 'metabase'),
+            'label' => __('Metabase embedded token (to display dashboard in GLPI)', 'metabase'),
             'attrs' => [
-                'name'  => 'embedded_token',
+                'name'        => 'embedded_token',
                 'value'       => $current_config['embedded_token'],
                 'placeholder' => '',
-                'required'    => false
-            ]
+                'required'    => false,
+            ],
         ]);
 
         echo self::showField([
-            'label' => __("Metabase url", 'metabase'),
-            'help' => __s("You may want to have a different dashboard url (with https for example) than the host (used to push the data) ", 'metabase'),
+            'label' => __('Metabase url', 'metabase'),
+            'help'  => __s('You may want to have a different dashboard url (with https for example) than the host (used to push the data) ', 'metabase'),
             'attrs' => [
-                'name'  => 'metabase_url',
+                'name'        => 'metabase_url',
                 'value'       => $current_config['metabase_url'],
                 'placeholder' => 'http(s)://...',
-            ]
+            ],
         ]);
 
         echo self::showField([
             'inputtype' => 'number',
-            'label'     => __("Timeout for sending data (in seconds)", 'metabase'),
+            'label'     => __('Timeout for sending data (in seconds)', 'metabase'),
             'attrs'     => [
-                'name'   => 'timeout',
+                'name'        => 'timeout',
                 'value'       => $current_config['timeout'],
                 'placeholder' => '',
-                'required'    => false
-            ]
+                'required'    => false,
+            ],
         ]);
 
         if ($canedit) {
@@ -174,34 +175,34 @@ class PluginMetabaseConfig extends Config
             echo Html::submit(_sx('button', 'Save'), [
                 'class' => 'btn btn-primary',
                 'icon'  => 'ti ti-device-floppy',
-                'name'  => 'update'
+                'name'  => 'update',
             ]);
         }
-        echo "</div>";
+        echo '</div>';
 
         Html::closeForm();
 
         if (self::isValid()) {
-            echo "<h1>" . __("API status", 'metabase') . "</h1>";
-            $apiclient    = new PluginMetabaseAPIClient();
-            $all_status   = $apiclient->status();
+            echo '<h1>' . __('API status', 'metabase') . '</h1>';
+            $apiclient  = new PluginMetabaseAPIClient();
+            $all_status = $apiclient->status();
 
-            echo "<ul>";
+            echo '<ul>';
             foreach ($all_status as $status_label => $status) {
-                $color_png = "greenbutton.png";
+                $color_png = 'greenbutton.png';
                 if (!$status) {
-                    $color_png = "redbutton.png";
+                    $color_png = 'redbutton.png';
                 }
-                echo "<li>";
+                echo '<li>';
                 echo Html::image($CFG_GLPI['root_doc'] . "/pics/$color_png");
-                echo "&nbsp;" . $status_label;
-                echo "</li>";
+                echo '&nbsp;' . $status_label;
+                echo '</li>';
             }
-            echo "</ul>";
+            echo '</ul>';
 
             $error = $apiclient->getLastError();
             if (count($error)) {
-                echo "<h1>" . __("Last Error", 'metabase') . "</h1>";
+                echo '<h1>' . __('Last Error', 'metabase') . '</h1>';
                 if (isset($error['exception'])) {
                     echo $error['exception'];
                 } else {
@@ -214,10 +215,10 @@ class PluginMetabaseConfig extends Config
                 echo "<form name='form' action='" . self::getFormUrl() . "' method='post'>";
             }
 
-            echo "<h1>" . __("Action(s)", 'metabase') . "</h1>";
+            echo '<h1>' . __('Action(s)', 'metabase') . '</h1>';
             echo "<div class='btn-group-vertical'>";
 
-           // If session is OK but database cannot be found, it has been probably deleted on metabase side
+            // If session is OK but database cannot be found, it has been probably deleted on metabase side
             $previousDbNotFound = $current_config['glpi_db_id'] != 0
              && $apiclient->checkSession()
              && false === $apiclient->getGlpiDatabase();
@@ -226,7 +227,7 @@ class PluginMetabaseConfig extends Config
                 if ($previousDbNotFound) {
                     echo '<p><strong>' . __('Previously stored database is not existing anymore.', 'metabase') . '</strong></p>';
                 }
-                echo Html::submit(__("Create GLPI database in local Metabase", 'metabase'), [
+                echo Html::submit(__('Create GLPI database in local Metabase', 'metabase'), [
                     'name'  => 'create_database',
                     'icon'  => 'ti ti-database',
                     'class' => 'btn btn-outline-secondary',
@@ -234,28 +235,28 @@ class PluginMetabaseConfig extends Config
 
                 $databases = $apiclient->getDatabases();
                 if (is_array($databases) && array_key_exists('data', $databases) && count($databases['data']) > 0) {
-                     echo __("OR set an existing database: ", 'metabase');
+                    echo __('OR set an existing database: ', 'metabase');
 
-                     Dropdown::showFromArray('db_id', array_column($databases['data'], 'name', 'id'));
+                    Dropdown::showFromArray('db_id', array_column($databases['data'], 'name', 'id'));
 
-                     echo Html::submit(__("Set database", 'metabase'), [
-                         'name'  => 'set_database',
-                         'icon'  => 'ti ti-database-export',
-                         'class' => 'btn btn-outline-secondary',
-                     ]);
+                    echo Html::submit(__('Set database', 'metabase'), [
+                        'name'  => 'set_database',
+                        'icon'  => 'ti ti-database-export',
+                        'class' => 'btn btn-outline-secondary',
+                    ]);
                 }
-            } else if ($apiclient->checkSession()) {
+            } elseif ($apiclient->checkSession()) {
                 echo Html::hidden('glpi_db_id', ['value' => $current_config['glpi_db_id']]);
 
                 if ($current_config['datamodel_done']) {
-                    echo Html::submit(__("Push reports and dashboards in Metabase", 'metabase'), [
+                    echo Html::submit(__('Push reports and dashboards in Metabase', 'metabase'), [
                         'name'  => 'push_json',
                         'icon'  => 'ti ti-cloud-upload',
                         'class' => 'btn btn-outline-secondary',
                     ]);
                 }
 
-                echo Html::submit(__("(Re)generate datamodel in Metabase", 'metabase'), [
+                echo Html::submit(__('(Re)generate datamodel in Metabase', 'metabase'), [
                     'name'  => 'push_datamodel',
                     'icon'  => 'ti ti-relation-one-to-many',
                     'class' => 'btn btn-outline-secondary',
@@ -263,34 +264,35 @@ class PluginMetabaseConfig extends Config
 
                 echo '<a href="' . Plugin::getWebDir('metabase') . '/front/collections.php" class="btn btn-outline-secondary">'
                 . "<i class='ti ti-chart-infographic'></i>"
-                . "<span>" . __('Show reports and dashboards specifications', 'metabase') . "</span>"
+                . '<span>' . __('Show reports and dashboards specifications', 'metabase') . '</span>'
                 . '</a>';
             }
 
-            echo "</div>"; // .btn-group-vertical
+            echo '</div>'; // .btn-group-vertical
             Html::closeForm();
-            echo "</div>"; // #actions
+            echo '</div>'; // #actions
         }
-        echo "</div>"; // .metabase_config
+        echo '</div>'; // .metabase_config
     }
 
     public static function createGLPIDatabase()
     {
         $apiclient = new PluginMetabaseAPIClient();
 
-       // Remove previous database configuration
+        // Remove previous database configuration
         Config::setConfigurationValues(
             'plugin:metabase',
             [
                 'glpi_db_id'     => 0,
                 'datamodel_done' => 0,
-            ]
+            ],
         );
 
         $data = $apiclient->createGlpiDatabase();
 
         if ($data !== false) {
             self::setExistingDatabase($data['id']);
+
             return true;
         }
 
@@ -300,7 +302,7 @@ class PluginMetabaseConfig extends Config
     public static function setExistingDatabase($db_id)
     {
         Config::setConfigurationValues('plugin:metabase', [
-            'glpi_db_id' => $db_id
+            'glpi_db_id' => $db_id,
         ]);
     }
 
@@ -309,20 +311,20 @@ class PluginMetabaseConfig extends Config
         $api = new PluginMetabaseAPIClient();
         self::loadTablesAndFields($db_id);
 
-       // detect foreign keys
+        // detect foreign keys
         $fk_count = 0;
-        $tables = $_SESSION['metabase']['tables'];
-        $fields = $_SESSION['metabase']['fields'];
+        $tables   = $_SESSION['metabase']['tables'];
+        $fields   = $_SESSION['metabase']['fields'];
         foreach ($fields as $fieldname => $f_id_src) {
             list($table, $field) = explode('.', $fieldname);
 
             if (
-                ($fk_table = getTableNameForForeignKeyField($field)) !== ""
+                ($fk_table = getTableNameForForeignKeyField($field)) !== ''
                 && isset($tables[$fk_table])
             ) {
                 // create foreign key
-                if (isset($fields[$fk_table . ".id"])) {
-                    $api->createForeignKey($f_id_src, $fields[$fk_table . ".id"]);
+                if (isset($fields[$fk_table . '.id'])) {
+                    $api->createForeignKey($f_id_src, $fields[$fk_table . '.id']);
                     $fk_count++;
                 }
             }
@@ -330,16 +332,16 @@ class PluginMetabaseConfig extends Config
 
         Session::addMessageAfterRedirect("Foreign keys created: $fk_count");
 
-       // map value for itilobjects harcoded fields
+        // map value for itilobjects harcoded fields
         $harcoded = $api->setItiObjectHardcodedMapping();
 
-       // set config done
+        // set config done
         if (
             $fk_count
             && $harcoded
         ) {
             Config::setConfigurationValues('plugin:metabase', [
-                'datamodel_done' => 1
+                'datamodel_done' => 1,
             ]);
         }
 
@@ -348,17 +350,17 @@ class PluginMetabaseConfig extends Config
 
     public static function loadTablesAndFields($db_id)
     {
-        $api = new PluginMetabaseAPIClient();
+        $api      = new PluginMetabaseAPIClient();
         $metadata = $api->getDatabaseMetadata($db_id);
 
         if (
             (!array_key_exists('tables', $metadata) || count($metadata['tables']) == 0)
-            && (!array_key_exists(ERROR, $_SESSION["MESSAGE_AFTER_REDIRECT"]) || count($_SESSION["MESSAGE_AFTER_REDIRECT"][ERROR]) == 0)
+            && (!array_key_exists(ERROR, $_SESSION['MESSAGE_AFTER_REDIRECT']) || count($_SESSION['MESSAGE_AFTER_REDIRECT'][ERROR]) == 0)
         ) {
             Session::addMessageAfterRedirect('Issue with db metadata, no tables found. You should discard saved field values for this db in metabase databases administration.', true, ERROR);
         }
 
-       //flat all tables and fields to have their id
+        //flat all tables and fields to have their id
         $tables = [];
         $fields = [];
         if (isset($metadata['tables'])) {
@@ -366,7 +368,7 @@ class PluginMetabaseConfig extends Config
                 $tables[$table['name']] = $table['id'];
 
                 foreach ($table['fields'] as $field) {
-                    $fields[$table['name'] . "." . $field['name']] = $field['id'];
+                    $fields[$table['name'] . '.' . $field['name']] = $field['id'];
                 }
             }
         }
@@ -380,12 +382,12 @@ class PluginMetabaseConfig extends Config
         $current_config = self::getConfig();
         self::loadReports();
         self::loadTablesAndFields($current_config['glpi_db_id']);
-        $api = new PluginMetabaseAPIClient();
+        $api        = new PluginMetabaseAPIClient();
         $col_counts = 0;
         $rep_counts = 0;
 
-       // create collections
-        $collections = array_unique(array_column($_SESSION['metabase']['reports'], 'collection'));
+        // create collections
+        $collections      = array_unique(array_column($_SESSION['metabase']['reports'], 'collection'));
         $collections_keys = [];
         foreach ($collections as $collection) {
             if ($collection_id = $api->createOrGetCollection($collection)) {
@@ -396,7 +398,7 @@ class PluginMetabaseConfig extends Config
 
         Session::addMessageAfterRedirect("Collections created: $col_counts");
 
-       // create reports (cards or questions in metabase)
+        // create reports (cards or questions in metabase)
         foreach ($_SESSION['metabase']['reports'] as &$report) {
             if (
                 $report['card_id'] = $api->createOrUpdateCard($report['title'], [
@@ -419,28 +421,28 @@ class PluginMetabaseConfig extends Config
     public static function pushDashboards()
     {
         self::loadDashboards();
-        $api = new PluginMetabaseAPIClient();
+        $api       = new PluginMetabaseAPIClient();
         $dsh_count = 0;
 
-       // Build collection "name to ID" mapping
-        $collections = $api->getCollections();
+        // Build collection "name to ID" mapping
+        $collections      = $api->getCollections();
         $collections_keys = [];
         foreach ($collections as $collection) {
             $collections_keys[$collection['name']] = $collection['id'];
         }
 
-       // create reports (cards or questions in metabase)
+        // create reports (cards or questions in metabase)
         foreach ($_SESSION['metabase']['dashboards'] as &$dashboard) {
-           // Defines collection ID using "name to ID" mapping
+            // Defines collection ID using "name to ID" mapping
             $dashboard['collection_id'] = $collections_keys[$dashboard['collection']];
             unset($dashboard['collection']);
 
             if ($dashboard['id'] = $api->createOrGetDashboard($dashboard['name'], $dashboard)) {
                 $dsh_count++;
 
-               // prepare parameters (tags)
+                // prepare parameters (tags)
                 $dashboard_cfg = [];
-                $r_index = 0;
+                $r_index       = 0;
                 foreach ($dashboard['reports'] as $report_key => &$report_cfg) {
                     if (isset($_SESSION['metabase']['reports'][$report_key]['card_id'])) {
                         $card_id = $_SESSION['metabase']['reports'][$report_key]['card_id'];
@@ -454,19 +456,19 @@ class PluginMetabaseConfig extends Config
                             foreach ($report_cfg['parameter_mappings'] as $map_slug => $fieldname) {
                                 $parameter_index = array_search(
                                     $map_slug,
-                                    array_column($dashboard['parameters'], 'slug')
+                                    array_column($dashboard['parameters'], 'slug'),
                                 );
-                                $parameters_id   = $dashboard['parameters'][$parameter_index]['id'];
+                                $parameters_id             = $dashboard['parameters'][$parameter_index]['id'];
                                 $final_parameter_mapping[] = [
                                     'card_id'      => (int) $card_id,
                                     'parameter_id' => $parameters_id,
                                     'target'       => [
                                         'dimension',
                                         [
-                                            "template-tag",
-                                            $map_slug
-                                        ]
-                                    ]
+                                            'template-tag',
+                                            $map_slug,
+                                        ],
+                                    ],
                                 ];
                             }
                         }
@@ -497,17 +499,17 @@ class PluginMetabaseConfig extends Config
     public static function loadDir($path = '', $session_key = '')
     {
         $_SESSION['metabase'][$session_key] = [];
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
-        $success = true;
+        $iterator                           = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
+        $success                            = true;
         foreach ($iterator as $file) {
             if ($file->isFile() && 'json' === $file->getExtension()) {
                 $json = file_get_contents($file->getPathname());
                 if (($report_array = json_decode($json, true))) {
-                    $_SESSION['metabase'][$session_key][$file->getBasename(".json")] = $report_array;
+                    $_SESSION['metabase'][$session_key][$file->getBasename('.json')] = $report_array;
                 } else {
                     Session::addMessageAfterRedirect(sprintf(
-                        __("Cannot validate json for file %s"),
-                        $file->getPathname()
+                        __('Cannot validate json for file %s'),
+                        $file->getPathname(),
                     ));
                     $success = false;
                 }
@@ -522,11 +524,11 @@ class PluginMetabaseConfig extends Config
         $apiclient = new PluginMetabaseAPIClient();
         $card      = $apiclient->getCard($question_id);
         $extract   = [
-            'title'                  => $card['name'],
-            'description'            => $card['description'],
-            'collection'             => isset($card['collection']['name'])
+            'title'       => $card['name'],
+            'description' => $card['description'],
+            'collection'  => isset($card['collection']['name'])
                                        ? $card['collection']['name']
-                                       : "",
+                                       : '',
             'display'                => $card['display'],
             'visualization_settings' => $card['visualization_settings'],
             'template_tags'          => [],
@@ -577,10 +579,10 @@ class PluginMetabaseConfig extends Config
             $extract['parameters'][] = [
                 'default' => isset($parameter['default'])
                            ? $parameter['default']
-                           : "",
-                'name'    => $parameter['name'],
-                'slug'    => $parameter['slug'],
-                'type'    => $parameter['type'],
+                           : '',
+                'name' => $parameter['name'],
+                'slug' => $parameter['slug'],
+                'type' => $parameter['type'],
             ];
 
             $parameters_id[$parameter['id']] = $parameter['slug'];
@@ -589,7 +591,7 @@ class PluginMetabaseConfig extends Config
         foreach ($dashboard['ordered_cards'] as $card) {
             if (
                 isset($card['card_id']) // only question (TODO support markdown cards)
-                && $card['card']['dataset_query']['type'] === "native"
+                && $card['card']['dataset_query']['type'] === 'native'
             ) { // only native questions
                 $key = null;
                 foreach ($_SESSION['metabase']['reports'] as $session_key => $session_report) {
@@ -600,10 +602,10 @@ class PluginMetabaseConfig extends Config
 
                 if ($key !== null) {
                     $extract['reports'][$key] = [
-                        'col'     => $card['col'],
-                        'row'     => $card['row'],
-                        'sizeX'   => $card['sizeX'],
-                        'sizeY'   => $card['sizeY'],
+                        'col'   => $card['col'],
+                        'row'   => $card['row'],
+                        'sizeX' => $card['sizeX'],
+                        'sizeY' => $card['sizeY'],
                     ];
 
                     foreach ($card['parameter_mappings'] as $mapping) {
@@ -611,7 +613,7 @@ class PluginMetabaseConfig extends Config
                         $field_id    = $card['card']['dataset_query']
                                       ['native']['template-tags']
                                       [$mapping_key]['dimension'][1];
-                        $field_name  = array_search($field_id, $_SESSION['metabase']['fields']);
+                        $field_name = array_search($field_id, $_SESSION['metabase']['fields']);
                         if ($field_name !== false) {
                             $extract['reports'][$key]['parameter_mappings']
                             [$parameters_id[$mapping['parameter_id']]] = $field_name;
@@ -627,35 +629,35 @@ class PluginMetabaseConfig extends Config
 
     public static function displayPrettyJson($array = [])
     {
-        echo Html::css("lib/prism/prism.css");
-        echo Html::script("lib/prism/prism.js");
+        echo Html::css('lib/prism/prism.css');
+        echo Html::script('lib/prism/prism.js');
 
         echo "<pre><code class='language-json'>";
         echo preg_replace(
             "/(^|\G) {4}/m",
-            "   ", // replace indentation from 4 to 3 spaces
+            '   ', // replace indentation from 4 to 3 spaces
             json_encode($array, JSON_PRETTY_PRINT
                                           + JSON_UNESCAPED_UNICODE
-            + JSON_UNESCAPED_SLASHES)
+                                          + JSON_UNESCAPED_SLASHES),
         );
-        echo "</code></pre>";
+        echo '</code></pre>';
     }
 
-   /**
-    * Show a single config field
-    * Generic method who call the different GLPI function to display a field
-    *
-    * @param  array  $options a list of options:
-    *                            - inputtype (string), can be
-    *                               * text
-    *                               * password
-    *                               * yesno
-    *                               * dropdown
-    *                            - itemtype (only for input=dropdown)
-    *                            - label, <label> tag to append to the field
-    *                            - attrs, an array containing html attributes
-    * @return string the html
-    */
+    /**
+     * Show a single config field
+     * Generic method who call the different GLPI function to display a field
+     *
+     * @param  array  $options a list of options:
+     *                            - inputtype (string), can be
+     *                               * text
+     *                               * password
+     *                               * yesno
+     *                               * dropdown
+     *                            - itemtype (only for input=dropdown)
+     *                            - label, <label> tag to append to the field
+     *                            - attrs, an array containing html attributes
+     * @return string the html
+     */
     public static function showField($options = [])
     {
         $rand            = mt_rand();
@@ -672,8 +674,8 @@ class PluginMetabaseConfig extends Config
                 'id'          => "metabaseconfig_field_$rand",
                 'class'       => 'metabase_input form-control',
                 'required'    => 'required',
-                'on_change'   => ''
-            ]
+                'on_change'   => '',
+            ],
         ];
         $options = array_replace_recursive($default_options, $options);
 
@@ -681,10 +683,10 @@ class PluginMetabaseConfig extends Config
             unset($options['attrs']['required']);
         }
 
-        $out = "";
+        $out = '';
         $out .= "<div class='metabase_field'>";
 
-       // call the field according to its type
+        // call the field according to its type
         switch ($options['inputtype']) {
             default:
             case 'text':
@@ -693,12 +695,12 @@ class PluginMetabaseConfig extends Config
                 break;
 
             case 'password':
-                $out .=  "<input type='password' name='fakefield' style='display:none;'>";
-                $out .=  "<input type='password'";
+                $out .= "<input type='password' name='fakefield' style='display:none;'>";
+                $out .= "<input type='password'";
                 foreach ($options['attrs'] as $key => $value) {
                     $out .= "$key='$value' ";
                 }
-                $out .= ">";
+                $out .= '>';
                 break;
 
             case 'yesno':
@@ -724,20 +726,20 @@ class PluginMetabaseConfig extends Config
             $out .= "<i class='fa metabase_help fa-info-circle' title='{$options['help']}'></i>";
         }
 
-        $out .= "</div>";
+        $out .= '</div>';
 
         return $out;
     }
 
-   /**
-    * Check if current saved config is valid
-    * @param  boolean $with_api also check api status
-    * @return boolean
-    */
+    /**
+     * Check if current saved config is valid
+     * @param  boolean $with_api also check api status
+     * @return boolean
+     */
     public static function isValid($with_api = false)
     {
         $current_config = self::getConfig();
-        $valid_config =  (!empty($current_config['host'])
+        $valid_config   = (!empty($current_config['host'])
                         && !empty($current_config['username'])
                         && !empty($current_config['password']));
 
@@ -751,21 +753,20 @@ class PluginMetabaseConfig extends Config
         return ($valid_config && $valid_api);
     }
 
-   /**
-    * Hook called when updating plugin configuration.
-    *
-    * @param array $input
-    * @return array
-    * @see Config::prepareInputForUpdate()
-    */
+    /**
+     * Hook called when updating plugin configuration.
+     *
+     * @param array $input
+     * @return array
+     * @see Config::prepareInputForUpdate()
+     */
     public static function configUpdate($input)
     {
-
-        if (isset($input["password"])) {
-            if (empty($input["password"])) {
-                unset($input["password"]);
+        if (isset($input['password'])) {
+            if (empty($input['password'])) {
+                unset($input['password']);
             } else {
-               // Remove existing metabase session token to force reconnection
+                // Remove existing metabase session token to force reconnection
                 unset($_SESSION['metabase']['session_token']);
             }
         }
@@ -773,24 +774,24 @@ class PluginMetabaseConfig extends Config
         return $input;
     }
 
-   /**
-    * Database table installation for the item type
-    *
-    * @param Migration $migration
-    * @return boolean True on success
-    */
+    /**
+     * Database table installation for the item type
+     *
+     * @param Migration $migration
+     * @return boolean True on success
+     */
     public static function install(Migration $migration)
     {
         $current_config = self::getConfig();
 
-       // Encrypt password with sodium if previously stored without sodium encryption
+        // Encrypt password with sodium if previously stored without sodium encryption
         if (!array_key_exists('is_password_sodium_encrypted', $current_config) || !$current_config['is_password_sodium_encrypted']) {
             if (!empty($current_config['password'])) {
                 $key = new GLPIKey();
                 if (array_key_exists('is_password_random_encrypted', $current_config) && $current_config['is_password_random_encrypted']) {
                     // Decrypt using randomized key
                     $current_config['password'] = $key->decryptUsingLegacyKey($current_config['password'], $key->getLegacyKey());
-                } else if (array_key_exists('is_password_encrypted', $current_config) && $current_config['is_password_encrypted']) {
+                } elseif (array_key_exists('is_password_encrypted', $current_config) && $current_config['is_password_encrypted']) {
                     // Decrypt using GLPIKEY
                     $current_config['password'] = $key->decryptUsingLegacyKey($current_config['password'], GLPIKEY);
                 }
@@ -798,19 +799,19 @@ class PluginMetabaseConfig extends Config
                     'plugin:metabase',
                     [
                         'password' => $current_config['password'],
-                    ]
+                    ],
                 );
             }
 
-           // Add flag in config to prevent re-encrypt
+            // Add flag in config to prevent re-encrypt
             Config::setConfigurationValues('plugin:metabase', ['is_password_sodium_encrypted' => 1]);
             Config::deleteConfigurationValues('plugin:metabase', ['is_password_encrypted', 'is_password_random_encrypted']);
         }
 
-       // fill config table with default values if missing
+        // fill config table with default values if missing
         foreach (
             [
-            // api access
+                // api access
                 'host'           => '',
                 'port'           => 3000,
                 'username'       => '',
@@ -831,11 +832,11 @@ class PluginMetabaseConfig extends Config
         return true;
     }
 
-   /**
-    * Database table uninstallation for the item type
-    *
-    * @return boolean True on success
-    */
+    /**
+     * Database table uninstallation for the item type
+     *
+     * @return boolean True on success
+     */
     public static function uninstall()
     {
         $config = new Config();
