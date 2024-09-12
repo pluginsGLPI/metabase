@@ -1,7 +1,8 @@
 [main]
 host = https://www.transifex.com
 
-[o:teclib:p:glpi-plugin-metabase:r:metabasepot]
+[o:teclib:p:glpi-project-plugin-metabase:r:metabasepot]
 file_filter = locales/<lang>.po
 source_file = locales/metabase.pot
-source_lang = en_GB
+source_lang = en
+type        = PO
