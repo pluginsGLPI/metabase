@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 13:32+0000\n"
+"POT-Creation-Date: 2024-09-16 01:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,72 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: inc/config.class.php:251
+#: inc/config.class.php:259
 msgid "(Re)generate datamodel in Metabase"
 msgstr ""
 
-#: inc/config.class.php:178
+#: inc/config.class.php:186
 msgid "API status"
 msgstr ""
 
-#: inc/apiclient.class.php:66
+#: inc/apiclient.class.php:67
 msgid "API: get GLPI database"
 msgstr ""
 
-#: inc/apiclient.class.php:60
+#: inc/apiclient.class.php:61
 msgid "API: get current user"
 msgstr ""
 
-#: inc/apiclient.class.php:64
+#: inc/apiclient.class.php:65
 msgid "API: get databases"
 msgstr ""
 
-#: inc/apiclient.class.php:62
+#: inc/apiclient.class.php:63
 msgid "API: get users"
 msgstr ""
 
-#: inc/apiclient.class.php:58
+#: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr ""
 
-#: inc/config.class.php:210
+#: inc/config.class.php:218
 msgid "Action(s)"
 msgstr ""
 
-#: inc/profileright.class.php:116
+#: inc/profileright.class.php:109
 msgid "Allow access to all"
 msgstr ""
 
-#: inc/config.class.php:222
+#: inc/config.class.php:230
 msgid "Create GLPI database in local Metabase"
 msgstr ""
 
-#: inc/profileright.class.php:121
+#: inc/profileright.class.php:114
 msgid "Disallow access to all"
 msgstr ""
 
-#: inc/apiclient.class.php:658
+#: inc/apiclient.class.php:694
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr ""
 
-#: front/collections.php:88
+#: front/collections.php:95
 msgid "Extract dashboards from metabase:"
 msgstr ""
 
-#: front/collections.php:60
+#: front/collections.php:63
 msgid "Extract questions from metabase:"
 msgstr ""
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
+#: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr ""
 
-#: inc/config.class.php:197
+#: inc/config.class.php:205
 msgid "Last Error"
 msgstr ""
 
-#: inc/profileright.class.php:48 inc/config.class.php:38
+#: inc/profileright.class.php:48 inc/config.class.php:39
 msgid "Metabase"
 msgstr ""
 
@@ -94,39 +94,39 @@ msgstr ""
 msgid "Metabase dashboard"
 msgstr ""
 
-#: inc/config.class.php:134
+#: inc/config.class.php:142
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr ""
 
-#: inc/config.class.php:87
+#: inc/config.class.php:95
 msgid "Metabase host"
 msgstr ""
 
-#: inc/config.class.php:95
+#: inc/config.class.php:103
 msgid "Metabase port"
 msgstr ""
 
-#: inc/config.class.php:144
+#: inc/config.class.php:152
 msgid "Metabase url"
 msgstr ""
 
-#: inc/apiclient.class.php:177
+#: inc/apiclient.class.php:186
 msgid "No auto-generated GLPI database found"
 msgstr ""
 
-#: inc/config.class.php:230
+#: inc/config.class.php:238
 msgid "OR set an existing database: "
 msgstr ""
 
-#: inc/config.class.php:220
+#: inc/config.class.php:228
 msgid "Previously stored database is not existing anymore."
 msgstr ""
 
-#: inc/config.class.php:244
+#: inc/config.class.php:252
 msgid "Push reports and dashboards in Metabase"
 msgstr ""
 
-#: inc/apiclient.class.php:835
+#: inc/apiclient.class.php:883
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -136,32 +136,32 @@ msgstr ""
 msgid "Reports and dashboards specifications"
 msgstr ""
 
-#: inc/profileright.class.php:107
+#: inc/profileright.class.php:100
 msgid "Rights management"
 msgstr ""
 
-#: inc/config.class.php:234
+#: inc/config.class.php:242
 msgid "Set database"
 msgstr ""
 
-#: inc/config.class.php:259
+#: inc/config.class.php:267
 msgid "Show reports and dashboards specifications"
 msgstr ""
 
-#: inc/config.class.php:155
+#: inc/config.class.php:163
 msgid "Timeout for sending data (in seconds)"
 msgstr ""
 
-#: front/collections.php:100
+#: front/collections.php:107
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 
-#: inc/config.class.php:145
+#: inc/config.class.php:153
 msgid ""
 "You may want to have a different dashboard url (with https for example) than "
 "the host (used to push the data) "
 msgstr ""
 
-#: inc/config.class.php:104
+#: inc/config.class.php:112
 msgid "username (metabase admin)"
 msgstr ""
