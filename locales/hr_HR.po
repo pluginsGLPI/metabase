@@ -11,82 +11,82 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 13:32+0000\n"
+"POT-Creation-Date: 2024-09-16 01:00+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>, 2020\n"
-"Language-Team: Croatian (Croatia) (https://www.transifex.com/teclib/teams/28042/hr_HR/)\n"
+"Language-Team: Croatian (Croatia) (https://app.transifex.com/teclib/teams/28042/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hr_HR\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: inc/config.class.php:251
+#: inc/config.class.php:259
 msgid "(Re)generate datamodel in Metabase"
 msgstr "(Ponovo) generiraj datotečni model u Metabaseu"
 
-#: inc/config.class.php:178
+#: inc/config.class.php:186
 msgid "API status"
 msgstr "Stanje API-a"
 
-#: inc/apiclient.class.php:66
+#: inc/apiclient.class.php:67
 msgid "API: get GLPI database"
 msgstr "API: dobij GLPI bazu podataka"
 
-#: inc/apiclient.class.php:60
+#: inc/apiclient.class.php:61
 msgid "API: get current user"
 msgstr "API: dobij trenutačnog korisnika"
 
-#: inc/apiclient.class.php:64
+#: inc/apiclient.class.php:65
 msgid "API: get databases"
 msgstr "API: dobij baze podataka"
 
-#: inc/apiclient.class.php:62
+#: inc/apiclient.class.php:63
 msgid "API: get users"
 msgstr "API: dobij korisnike"
 
-#: inc/apiclient.class.php:58
+#: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr "API: prijava"
 
-#: inc/config.class.php:210
+#: inc/config.class.php:218
 msgid "Action(s)"
 msgstr "Radnje"
 
-#: inc/profileright.class.php:116
+#: inc/profileright.class.php:109
 msgid "Allow access to all"
 msgstr "Dozvoli pristup svima"
 
-#: inc/config.class.php:222
+#: inc/config.class.php:230
 msgid "Create GLPI database in local Metabase"
 msgstr "Stvori GLPI bazu podataka u lokalnoj Metabase bazi podataka"
 
-#: inc/profileright.class.php:121
+#: inc/profileright.class.php:114
 msgid "Disallow access to all"
 msgstr "Zabrani pristup svima"
 
-#: inc/apiclient.class.php:658
+#: inc/apiclient.class.php:694
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Aktiviranje ugrađenog prikaza ne uspijeva za nadzornu ploču %s."
 
-#: front/collections.php:88
+#: front/collections.php:95
 msgid "Extract dashboards from metabase:"
 msgstr "Izvuci pregledne ploče iz Metabase baze podataka:"
 
-#: front/collections.php:60
+#: front/collections.php:63
 msgid "Extract questions from metabase:"
 msgstr "Izvuci pitanja iz Metabase baze podataka:"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
+#: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "Nevaljan zahtjev."
 
-#: inc/config.class.php:197
+#: inc/config.class.php:205
 msgid "Last Error"
 msgstr "Zadnja greška"
 
-#: inc/profileright.class.php:48 inc/config.class.php:38
+#: inc/profileright.class.php:48 inc/config.class.php:39
 msgid "Metabase"
 msgstr "Metabase"
 
@@ -98,39 +98,39 @@ msgstr "Metabase zbirke"
 msgid "Metabase dashboard"
 msgstr "Metabase nadzorna ploča"
 
-#: inc/config.class.php:134
+#: inc/config.class.php:142
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr "Ugrađeni Metabase token (za prikaz nadzorne ploče u GLPI-u)"
 
-#: inc/config.class.php:87
+#: inc/config.class.php:95
 msgid "Metabase host"
 msgstr "Metabase računalo"
 
-#: inc/config.class.php:95
+#: inc/config.class.php:103
 msgid "Metabase port"
 msgstr "Metabase priključak"
 
-#: inc/config.class.php:144
+#: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Metabase url"
 
-#: inc/apiclient.class.php:177
+#: inc/apiclient.class.php:186
 msgid "No auto-generated GLPI database found"
 msgstr "Nema automatki generirane GLPI baze podataka"
 
-#: inc/config.class.php:230
+#: inc/config.class.php:238
 msgid "OR set an existing database: "
 msgstr "ILI postavi jednu postojeću bazu podataka: "
 
-#: inc/config.class.php:220
+#: inc/config.class.php:228
 msgid "Previously stored database is not existing anymore."
 msgstr "Prethodno spremljena baza podataka više ne postoji."
 
-#: inc/config.class.php:244
+#: inc/config.class.php:252
 msgid "Push reports and dashboards in Metabase"
 msgstr "Šalji izvještaje i pregledne ploče u Metabase"
 
-#: inc/apiclient.class.php:835
+#: inc/apiclient.class.php:883
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -142,27 +142,27 @@ msgstr ""
 msgid "Reports and dashboards specifications"
 msgstr "Specifikacije za izvještaje i pregledne ploče"
 
-#: inc/profileright.class.php:107
+#: inc/profileright.class.php:100
 msgid "Rights management"
 msgstr "Upravljanje pravima"
 
-#: inc/config.class.php:234
+#: inc/config.class.php:242
 msgid "Set database"
 msgstr "Postavi bazu podataka"
 
-#: inc/config.class.php:259
+#: inc/config.class.php:267
 msgid "Show reports and dashboards specifications"
 msgstr "Prikaži specifikacije za izvještaje i nadzorne ploče"
 
-#: inc/config.class.php:155
+#: inc/config.class.php:163
 msgid "Timeout for sending data (in seconds)"
 msgstr "Istek vremena za slanje podataka (u sekundama)"
 
-#: front/collections.php:100
+#: front/collections.php:107
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "Nemoguć pristup Metabase podacima. Provjeri konfiguraciju dodatka."
 
-#: inc/config.class.php:145
+#: inc/config.class.php:153
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
@@ -170,6 +170,6 @@ msgstr ""
 "Možda želiš imati drugačiji url nadzorne ploče (npr. https) od računala "
 "(koristi se za slanje podataka) "
 
-#: inc/config.class.php:104
+#: inc/config.class.php:112
 msgid "username (metabase admin)"
 msgstr "korisničko ime (metabase administrator)"
