@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2023
+# Kaya Zeren <kayazeren@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 01:00+0000\n"
+"POT-Creation-Date: 2024-12-30 01:02+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2023\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2024\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/teclib/teams/28042/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -135,7 +135,7 @@ msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
 msgstr ""
-"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Uygulama eki "
+"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
 "yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
 
 #: front/collections.php:44
@@ -161,7 +161,7 @@ msgstr "Veri gönderme zaman aşımı (saniye)"
 #: front/collections.php:107
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
-"Metabase verilerine erişilemiyor. Lütfen uygulama eki yapılandırmasını "
+"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
 "denetleyin."
 
 #: inc/config.class.php:153
