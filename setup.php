@@ -31,7 +31,7 @@
 define('PLUGIN_METABASE_VERSION', '1.3.3');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_METABASE_MIN_GLPI', '10.0.0');
+define('PLUGIN_METABASE_MIN_GLPI', '10.0.11');
 // Maximum GLPI version, exclusive
 define('PLUGIN_METABASE_MAX_GLPI', '10.0.99');
 
@@ -143,7 +143,7 @@ function metabaseGetIdByField($itemtype = '', $field = '', $value = '')
     $query = 'SELECT `id`
              FROM `' . $itemtype::getTable() . "`
              WHERE `$field` = '" . addslashes($value) . "'";
-    $result = $DB->query($query);
+    $result = $DB->doQuery($query);
 
     if ($DB->numrows($result) == 1) {
         return $DB->result($result, 0, 'id');
