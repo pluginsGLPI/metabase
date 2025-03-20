@@ -4,10 +4,12 @@
         "lcobucci/jwt": "^4.2"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.70",
+        "friendsofphp/php-cs-fixer": "^3.73",
         "glpi-project/tools": "^0.7.4",
         "php-parallel-lint/php-parallel-lint": "^1.4",
-        "phpstan/phpstan": "^2.1"
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0"
     },
     "provide": {
         "guzzlehttp/guzzle": "*",
@@ -18,6 +20,9 @@
         "platform": {
             "php": "7.4.0"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     }
 }

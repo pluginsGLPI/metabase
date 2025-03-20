@@ -290,7 +290,7 @@ class PluginMetabaseProfileright extends CommonDBTM
                      PRIMARY KEY (`id`),
                      UNIQUE `profiles_id_dashboard_uuid` (`profiles_id`, `dashboard_uuid`)
                   ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
-            $DB->query($query) or die($DB->error());
+            $DB->doQuery($query) or die($DB->error());
         }
     }
 
@@ -304,6 +304,6 @@ class PluginMetabaseProfileright extends CommonDBTM
         /** @var DBmysql $DB */
         global $DB;
 
-        $DB->query('DROP TABLE IF EXISTS `' . self::getTable() . '`');
+        $DB->doQuery('DROP TABLE IF EXISTS `' . self::getTable() . '`');
     }
 }
