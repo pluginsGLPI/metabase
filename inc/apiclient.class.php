@@ -119,6 +119,22 @@ class PluginMetabaseAPIClient extends CommonGLPI
         return false;
     }
 
+    public function getVersion()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $data = $this->httpQuery('setting/version');
+
+        if ($data === false) {
+            $this->last_error[] = __('Unable to retrieve Metabase version', 'metabase');
+            return false;
+        }
+
+        return $data;
+    }
+
     public function getCurrentUser($skip_session_check = false)
     {
         if (
@@ -241,9 +257,15 @@ class PluginMetabaseAPIClient extends CommonGLPI
             return false;
         }
 
+        $mb_version = $this->getVersion();
+
+        $mb_fieldname = version_compare($mb_version['tag'], 'v0.39.0', '>=')
+            ? 'semantic_type'
+            : 'special_type';
+
         $data = $this->httpQuery("/api/field/$f_id_src", [
             'json' => [
-                'special_type'       => 'type/FK',
+                $mb_fieldname        => 'type/FK',
                 'fk_target_field_id' => $f_id_trgt,
             ],
         ], 'PUT');
