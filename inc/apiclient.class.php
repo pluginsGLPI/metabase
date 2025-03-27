@@ -362,9 +362,16 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
     public function setFieldCustomMapping($field_id, $label = '')
     {
+
+        $mb_version = $this->getVersion();
+
+        $mb_fieldname = version_compare($mb_version['tag'], 'v0.39.0', '>=')
+            ? 'semantic_type'
+            : 'special_type';
+
         $data = $this->httpQuery("/api/field/$field_id", [
             'json' => [
-                'special_type'     => 'type/Category',
+                $mb_fieldname      => 'type/Category',
                 'has_field_values' => 'list',
             ],
         ], 'PUT');
