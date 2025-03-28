@@ -263,7 +263,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ? 'semantic_type'
             : 'special_type';
 
-        $data = $this->httpQuery("/api/field/$f_id_src", [
+        $data = $this->httpQuery("field/$f_id_src", [
             'json' => [
                 $mb_fieldname        => 'type/FK',
                 'fk_target_field_id' => $f_id_trgt,
@@ -296,7 +296,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     {
         $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
         $this->setFieldCustomMapping($field_id, __('Type'));
-        $data = $this->httpQuery("/api/field/$field_id/values", [
+        $data = $this->httpQuery("field/$field_id/values", [
             'json' => [
                 'values' => [
                     [Ticket::INCIDENT_TYPE, __('Incident')],
@@ -318,7 +318,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         $table    = $item::getTable();
         $field_id = $_SESSION['metabase']['fields']["$table.status"];
         $this->setFieldCustomMapping($field_id, __('Status'));
-        $data = $this->httpQuery("/api/field/$field_id/values", [
+        $data = $this->httpQuery("field/$field_id/values", [
             'json' => [
                 'values' => $statuses_topush,
             ],
@@ -343,7 +343,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             if ($matrix_field === 'priority') {
                 array_unshift($data_topush, [6, _x($matrix_field, 'Major')]);
             }
-            $data = $this->httpQuery("/api/field/$field_id/values", [
+            $data = $this->httpQuery("field/$field_id/values", [
                 'json' => [
                     'values' => $data_topush,
                 ],
@@ -369,14 +369,14 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ? 'semantic_type'
             : 'special_type';
 
-        $data = $this->httpQuery("/api/field/$field_id", [
+        $data = $this->httpQuery("field/$field_id", [
             'json' => [
                 $mb_fieldname      => 'type/Category',
                 'has_field_values' => 'list',
             ],
         ], 'PUT');
 
-        $data = $this->httpQuery("/api/field/$field_id/dimension", [
+        $data = $this->httpQuery("field/$field_id/dimension", [
             'json' => [
                 'human_readable_field_id' => null,
                 'type'                    => 'internal',
