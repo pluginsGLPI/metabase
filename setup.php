@@ -134,20 +134,3 @@ function plugin_metabase_recursive_remove_empty($haystack)
 
     return $haystack;
 }
-
-function metabaseGetIdByField($itemtype = '', $field = '', $value = '')
-{
-    /** @var DBmysql $DB */
-    global $DB;
-
-    $query = 'SELECT `id`
-             FROM `' . $itemtype::getTable() . "`
-             WHERE `$field` = '" . addslashes($value) . "'";
-    $result = $DB->doQuery($query);
-
-    if ($DB->numrows($result) == 1) {
-        return $DB->result($result, 0, 'id');
-    }
-
-    return false;
-}
