@@ -31,9 +31,9 @@
 define('PLUGIN_METABASE_VERSION', '1.3.3');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_METABASE_MIN_GLPI', '10.0.11');
+define('PLUGIN_METABASE_MIN_GLPI', '11.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_METABASE_MAX_GLPI', '10.0.99');
+define('PLUGIN_METABASE_MAX_GLPI', '11.0.99');
 
 if (!defined('PLUGINMETABASE_DIR')) {
     define('PLUGINMETABASE_DIR', __DIR__);
@@ -68,7 +68,7 @@ function plugin_init_metabase()
 
     // config page
     Plugin::registerClass('PluginMetabaseConfig', ['addtabon' => 'Config']);
-    $PLUGIN_HOOKS['config_page']['metabase'] = 'front/config.form.php';
+    $PLUGIN_HOOKS['config_page']['metabase'] = "../../front/config.form.php?forcetab=PluginMetabaseConfig\$1";
 
     // add dashboards
     Plugin::registerClass('PluginMetabaseDashboard', ['addtabon' => 'Central']);
@@ -133,4 +133,14 @@ function plugin_metabase_recursive_remove_empty($haystack)
     }
 
     return $haystack;
+}
+
+function plugin_metabase_check_prerequisites()
+{
+    if (!is_readable(__DIR__ . '/vendor/autoload.php') || !is_file(__DIR__ . '/vendor/autoload.php')) {
+        echo "Run composer install --no-dev in the plugin directory<br>";
+        return false;
+    }
+
+    return true;
 }
