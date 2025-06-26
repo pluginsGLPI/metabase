@@ -28,8 +28,6 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
-
 Html::header(
     __('Metabase collections', 'metabase'),
     $_SERVER['PHP_SELF'],

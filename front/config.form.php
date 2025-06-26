@@ -28,10 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
-
 if (isset($_REQUEST['create_database'])) {
-    Session::checkRight("config", CREATE);
+    Session::checkRight("config", UPDATE);
     PluginMetabaseConfig::createGLPIDatabase();
     Html::back();
 } elseif (isset($_REQUEST['set_database'])) {
