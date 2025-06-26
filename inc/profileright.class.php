@@ -51,7 +51,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
-            return self::createTabEntry(self::getTypeName());
+            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
 
         return '';
