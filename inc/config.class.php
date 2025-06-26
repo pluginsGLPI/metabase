@@ -51,7 +51,7 @@ class PluginMetabaseConfig extends Config
     {
         switch ($item->getType()) {
             case 'Config':
-                return self::createTabEntry(self::getTypeName());
+                return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
         }
 
         return '';
@@ -841,5 +841,10 @@ class PluginMetabaseConfig extends Config
         $config->deleteByCriteria(['context' => 'plugin:metabase']);
 
         return true;
+    }
+
+    public static function getIcon()
+    {
+        return "ti ti-hexagon-letter-m";
     }
 }
