@@ -48,7 +48,7 @@ class PluginMetabaseDashboard extends CommonDBTM
         switch ($item->getType()) {
             case 'Central':
                 if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
-                    return self::createTabEntry(self::getTypeName());
+                    return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
                 }
 
                 break;
