@@ -28,10 +28,6 @@
  * -------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 class PluginMetabaseProfileright extends CommonDBTM
 {
     /**
@@ -55,7 +51,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
-            return self::createTabEntry(self::getTypeName());
+            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
 
         return '';
@@ -290,7 +286,7 @@ class PluginMetabaseProfileright extends CommonDBTM
                      PRIMARY KEY (`id`),
                      UNIQUE `profiles_id_dashboard_uuid` (`profiles_id`, `dashboard_uuid`)
                   ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
-            $DB->doQuery($query) or die($DB->error());
+            $DB->doQuery($query);
         }
     }
 

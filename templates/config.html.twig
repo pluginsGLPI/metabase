@@ -1,0 +1,77 @@
+{#
+ # -------------------------------------------------------------------------
+ # Metabase plugin for GLPI
+ # -------------------------------------------------------------------------
+ #
+ # LICENSE
+ #
+ # This file is part of Metabase.
+ #
+ # Metabase is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ #
+ # Metabase is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with Metabase. If not, see <http://www.gnu.org/licenses/>.
+ # -------------------------------------------------------------------------
+ # @copyright Copyright (C) 2018-2023 by Metabase plugin team.
+ # @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+ # @link      https://github.com/pluginsGLPI/metabase
+ # -------------------------------------------------------------------------
+ #}
+
+{% import 'components/form/fields_macros.html.twig' as fields %}
+
+{{ fields.largeTitle(type_name, 'ti ti-adjustments') }}
+
+<form action="{{ form_url }}" method="post">
+    {{ fields.textField('host', current_config.host, __('Metabase host', 'metabase'), {
+        placeholder: '127.0.0.1'
+    }) }}
+    {{ fields.numberField('port', current_config.port, __('Metabase port', 'metabase'), {
+        placeholder: '3000'
+    }) }}
+    {{ fields.textField('username', current_config.username, __('Username (metabase admin)', 'metabase'), {}) }}
+    {% if can_use_proxy %}
+        {{ fields.sliderField('use_proxy', current_config.use_proxy, __('Use proxy'), {}) }}
+    {% endif %}
+    {{ fields.passwordField('password', '', __('Password'), {}) }}
+    {{ fields.textField('embedded_token', current_config.embedded_token, __('Metabase embedded token (to display dashboard in GLPI)', 'metabase'), {}) }}
+    {{ fields.textField('metabase_url', current_config.metabase_url, __('Metabase url', 'metabase'), {
+        helper: __('You may want to have a different dashboard url (with https for example) than the host (used to push the data) ', 'metabase'),
+        placeholder: 'http(s)://...'
+    }) }}
+    {{ fields.numberField('timeout', current_config.timeout, __('Timeout for sending data (in seconds)', 'metabase'), {}) }}
+
+    <div class="card-body mx-n2 border-top d-flex flex-row-reverse align-items-start flex-wrap">
+        {% if canedit %}
+            {{ fields.hiddenField('_glpi_csrf_token', csrf_token()) }}
+            {{ fields.hiddenField('config_class', 'PluginMetabaseConfig') }}
+            {{ fields.hiddenField('config_context', 'plugin:metabase') }}
+            <button class="btn btn-primary me-2" type="submit" name="update" value="1">
+                <i class="ti ti-device-floppy"></i>
+                <span>{{ _x('button', 'Save') }}</span>
+            </button>
+        {% endif %}
+    </div>
+</form>
+
+{% if is_valid %}
+    {{ fields.largeTitle(__('API status', 'metabase'), 'ti ti-adjustments') }}
+    {{ status|raw }}
+{% endif %}
+
+{# <form action="{{ form_url }}" method="post">
+    {{ fields.largeTitle(__('Send a test notification', 'collaborativetools'), 'ti ti-test-pipe') }}
+    {{ fields.dropdownField('PluginCollaborativetoolsWebHook', 'plugin_collaborativetools_webhooks_id', 0, __('Webhook', 'collaborativetools')) }}</td>
+    <div class="card-body mx-n2 border-top d-flex flex-row-reverse align-items-start flex-wrap">
+        <input class="btn btn-primary" type="submit" name="test_send" value="{{ __('Send a test notification', 'collaborativetools') }}" required />
+    </div>
+    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}" />
+</form> #}

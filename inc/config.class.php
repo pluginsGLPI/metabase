@@ -28,9 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+use Glpi\Application\View\TemplateRenderer;
 
 class PluginMetabaseConfig extends Config
 {
@@ -53,7 +51,7 @@ class PluginMetabaseConfig extends Config
     {
         switch ($item->getType()) {
             case 'Config':
-                return self::createTabEntry(self::getTypeName());
+                return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
         }
 
         return '';
@@ -262,7 +260,7 @@ class PluginMetabaseConfig extends Config
                     'class' => 'btn btn-outline-secondary',
                 ]);
 
-                echo '<a href="' . Plugin::getWebDir('metabase') . '/front/collections.php" class="btn btn-outline-secondary">'
+                echo '<a href="' . $CFG_GLPI['root_doc'] . '/plugins/metabase/front/collections.php" class="btn btn-outline-secondary">'
                 . "<i class='ti ti-chart-infographic'></i>"
                 . '<span>' . __('Show reports and dashboards specifications', 'metabase') . '</span>'
                 . '</a>';
@@ -843,5 +841,10 @@ class PluginMetabaseConfig extends Config
         $config->deleteByCriteria(['context' => 'plugin:metabase']);
 
         return true;
+    }
+
+    public static function getIcon()
+    {
+        return "ti ti-hexagon-letter-m";
     }
 }
