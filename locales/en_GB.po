@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 01:03+0000\n"
-"PO-Revision-Date: 2025-01-06 01:03+0000\n"
+"POT-Creation-Date: 2025-06-30 01:16+0000\n"
+"PO-Revision-Date: 2025-06-30 01:16+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,86 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)generate datamodel in Metabase"
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "API status"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API: get GLPI database"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API: get current user"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API: get databases"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API: get users"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API: login"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "Action(s)"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Allow access to all"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Create GLPI database in local Metabase"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Disallow access to all"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Enabling embedded display fails for dashboard %s."
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Extract dashboards from metabase:"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Extract questions from metabase:"
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "Invalid request."
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Last Error"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr "Metabase"
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr "Metabase collections"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase dashboard"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
+msgstr "Reports and dashboards specifications"
 
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Metabase embedded token (to display dashboard in GLPI)"
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "Extract questions from metabase:"
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "Extract dashboards from metabase:"
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr "Unable to access Metabase data. Please check plugin configuration."
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr "Metabase"
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -106,57 +53,17 @@ msgstr "Metabase host"
 msgid "Metabase port"
 msgstr "Metabase port"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "username (metabase admin)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr "Metabase embedded token (to display dashboard in GLPI)"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Metabase url"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "No auto-generated GLPI database found"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "OR set an existing database: "
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "Previously stored database is not existing anymore."
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Push reports and dashboards in Metabase"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Reports and dashboards specifications"
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Rights management"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Set database"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Show reports and dashboards specifications"
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "Timeout for sending data (in seconds)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr "Unable to access Metabase data. Please check plugin configuration."
 
 #: inc/config.class.php:153
 msgid ""
@@ -166,6 +73,103 @@ msgstr ""
 "You may want to have a different dashboard url (with https for example) than "
 "the host (used to push the data) "
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "username (metabase admin)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "Timeout for sending data (in seconds)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "API status"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "Last Error"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr "Action(s)"
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "Previously stored database is not existing anymore."
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "Create GLPI database in local Metabase"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "OR set an existing database: "
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "Set database"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "Push reports and dashboards in Metabase"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re)generate datamodel in Metabase"
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr "Show reports and dashboards specifications"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase dashboard"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Rights management"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Allow access to all"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Disallow access to all"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API: login"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API: get current user"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API: get users"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API: get databases"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API: get GLPI database"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr "Unable to retrieve Metabase version"
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "No auto-generated GLPI database found"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "Enabling embedded display fails for dashboard %s."
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"

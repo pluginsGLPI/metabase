@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2024
+# Kaya Zeren <kayazeren@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 01:02+0000\n"
+"POT-Creation-Date: 2025-06-30 01:16+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2024\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2025\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/teclib/teams/28042/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,86 +21,35 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "Metabase veri modelini (yeniden) oluştur"
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "API durumu"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API: GLPI veri tabanını al"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API: Geçerli kullanıcıyı al"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API: Veri tabanlarını al"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API: Kullanıcıları al"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API: Oturum açma"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "İşlemler"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Tümüne erişim izni ver"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Yerel Metabase üzerinde GLPI veri tabanı oluşturun"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Tümünden erişim iznini kaldır"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Metabase üzerinden panoları ayıkla:"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Metabase üzerinden soruları ayıkla:"
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "İstek geçersiz."
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Son hata"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr "Metabase"
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr "Metabase derlemeleri"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase panosu"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
+msgstr "Raporların ve panoların özellikleri"
 
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Metabase gömülü kodu (panonun GLPI içinde görüntülenmesi için)"
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "Metabase üzerinden soruları ayıkla:"
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "Metabase üzerinden panoları ayıkla:"
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
+"denetleyin."
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr "Metabase"
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -110,59 +59,17 @@ msgstr "Metabase sunucusu"
 msgid "Metabase port"
 msgstr "Metabase bağlantı noktası"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "Kullanıcı adı (Metabase yöneticisi)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr "Metabase gömülü kodu (panonun GLPI içinde görüntülenmesi için)"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Metabase adresi"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "Otomatik olarak üretilmiş bir GLPI veri tabanı bulunamadı"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "YA DA var olan bir veri tabanı ayarlayın"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "Daha önce kaydedilmiş veri tabanı artık yok."
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Rapor ve panoları Metabase üzerine gönder"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
-"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Raporların ve panoların özellikleri"
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "İzin yönetimi"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Veri tabanı ayarla"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Raporların ve panoların özelliklerini görüntüle"
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "Veri gönderme zaman aşımı (saniye)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
-"denetleyin."
 
 #: inc/config.class.php:153
 msgid ""
@@ -172,6 +79,103 @@ msgstr ""
 "Sunucudan (veri göndermek için kullanılan) farklı bir pano adresi kullanmak "
 "isteyebilirsiniz örneğin https gibi) "
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "Kullanıcı adı (Metabase yöneticisi)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "Veri gönderme zaman aşımı (saniye)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "API durumu"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "Son hata"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr "İşlemler"
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "Daha önce kaydedilmiş veri tabanı artık yok."
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "Yerel Metabase üzerinde GLPI veri tabanı oluşturun"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "YA DA var olan bir veri tabanı ayarlayın"
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "Veri tabanı ayarla"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "Rapor ve panoları Metabase üzerine gönder"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "Metabase veri modelini (yeniden) oluştur"
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr "Raporların ve panoların özelliklerini görüntüle"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase panosu"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "İzin yönetimi"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Tümüne erişim izni ver"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Tümünden erişim iznini kaldır"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API: Oturum açma"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API: Geçerli kullanıcıyı al"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API: Kullanıcıları al"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API: Veri tabanlarını al"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API: GLPI veri tabanını al"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr "Metabase sürümü alınamadı"
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "Otomatik olarak üretilmiş bir GLPI veri tabanı bulunamadı"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
+"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."

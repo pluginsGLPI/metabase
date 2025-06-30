@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 01:02+0000\n"
+"POT-Creation-Date: 2025-06-27 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Haider López <hlopez@itsoluciones.com.co>, 2019\n"
 "Language-Team: Spanish (Colombia) (https://app.transifex.com/teclib/teams/28042/es_CO/)\n"
@@ -21,88 +21,35 @@ msgstr ""
 "Language: es_CO\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)generar modelo de datos en metabase"
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "Estatus API"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API: obtener base de datos GLPI"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API: obtener usuario actual"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API: obtener bases de datos"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API: obtener usuarios"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API: acceso"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "Acción(es)"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Permitir acceso a todo"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Crear una base de datos GLPI en la metabase local"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Deshabilitar acceso a todo"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"La habilitación de la visualización integrada falla para el panel de control"
-" %s."
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Extraer tableros desde la metabase:"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Extraer preguntas desde la metabase:"
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "Respuesta invalida."
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Último error"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr "Metabase"
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr "Colecciones de metabase"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tablero de metabase"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
+msgstr "Especificaciones de informes y cuadros de mando"
 
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Token incrustado de la metabase (para mostrar el panel en GLPI)"
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "Extraer preguntas desde la metabase:"
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "Extraer tableros desde la metabase:"
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"No se puede acceder a los datos de la metabase. Verifique la configuración "
+"del complemento."
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr "Metabase"
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -112,60 +59,17 @@ msgstr "Host de metabase"
 msgid "Metabase port"
 msgstr "Puerto de metabase"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "nombre de usuario (admin de metabase)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr "Token incrustado de la metabase (para mostrar el panel en GLPI)"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Url de metabase"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "No se encontró una base de datos GLPI generada automáticamente"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "O establezca una base de datos existente:"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "La base de datos previamente almacenada ya no existe."
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Notificaciones de reportes y tableros en la metabase"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"La consulta a la metabase falló porque la operación se agotó. Tal vez "
-"debería aumentar el valor de tiempo de espera en la configuración del "
-"complemento"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Especificaciones de informes y cuadros de mando"
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Gestión de permisos"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Establecer base de datos"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Mostrar informes y especificaciones de paneles"
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "Tiempo fuera para enviar datos (en segundos)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"No se puede acceder a los datos de la metabase. Verifique la configuración "
-"del complemento."
 
 #: inc/config.class.php:153
 msgid ""
@@ -175,6 +79,106 @@ msgstr ""
 "Es posible que desee tener una url con un panel diferente (con https por "
 "ejemplo) que el host (usado para enviar datos)"
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "nombre de usuario (admin de metabase)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "Tiempo fuera para enviar datos (en segundos)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "Estatus API"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "Último error"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr "Acción(es)"
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "La base de datos previamente almacenada ya no existe."
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "Crear una base de datos GLPI en la metabase local"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "O establezca una base de datos existente:"
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "Establecer base de datos"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "Notificaciones de reportes y tableros en la metabase"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re)generar modelo de datos en metabase"
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr "Mostrar informes y especificaciones de paneles"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tablero de metabase"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Gestión de permisos"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Permitir acceso a todo"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Deshabilitar acceso a todo"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API: acceso"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API: obtener usuario actual"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API: obtener usuarios"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API: obtener bases de datos"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API: obtener base de datos GLPI"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr ""
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "No se encontró una base de datos GLPI generada automáticamente"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"La habilitación de la visualización integrada falla para el panel de control"
+" %s."
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"La consulta a la metabase falló porque la operación se agotó. Tal vez "
+"debería aumentar el valor de tiempo de espera en la configuración del "
+"complemento"
