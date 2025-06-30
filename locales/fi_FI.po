@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 01:02+0000\n"
+"POT-Creation-Date: 2025-06-27 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Markku Vepsä, 2018\n"
 "Language-Team: Finnish (Finland) (https://app.transifex.com/teclib/teams/28042/fi_FI/)\n"
@@ -21,88 +21,33 @@ msgstr ""
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "Luo uudelleen Metabse-tietomalli "
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "API:n tila"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API: nouda GLPI tietoanta"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API: nouda nykyinen käyttäjä"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API: nouda tietokannat"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API: nouda käyttäjät"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API: kirjautuminen"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "Toimet"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Salli pääsy kaikille"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Estää pääsyn kaikille"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"Sulautetun näytön käyttöönottaminen epäonnistui hallintapaneelissa %s."
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Poimi hallintapaneeleita Metabasesta:"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Poimi kysymyksiä Metabasesta:"
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "Virheellinen pyyntö."
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Viimeisin virhe"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr "Metabase"
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr ""
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase-hallintapaneeli"
-
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
 msgstr ""
-"Metabasen upotettu tunniste 'token' (nähdäksesi hallintapaneelin GLPI:ssä)"
+
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "Poimi kysymyksiä Metabasesta:"
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "Poimi hallintapaneeleita Metabasesta:"
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr "Metabase"
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -112,57 +57,18 @@ msgstr "Metabase-isäntä"
 msgid "Metabase port"
 msgstr "Metabase-portti"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "käyttäjätunnus (metabase ylläpitäjä)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr ""
+"Metabasen upotettu tunniste 'token' (nähdäksesi hallintapaneelin GLPI:ssä)"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Metabase url"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "Automaattisesti generoitua GLPI-tietokantaa ei löytynyt"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "TAI aseta olemassa olevaan tietokantaan:"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
-"tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr ""
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Käyttöoikeuksien hallinta"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Aseta tietokanta"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr ""
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "Tiedon lähettämisen katkaisuaika (sekunneissa)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
 
 #: inc/config.class.php:153
 msgid ""
@@ -172,6 +78,104 @@ msgstr ""
 "Voit halutessasi käyttää eri dashboard-URL-osoitetta (esim. https) kuin "
 "isäntä (push data)"
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "käyttäjätunnus (metabase ylläpitäjä)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "Tiedon lähettämisen katkaisuaika (sekunneissa)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "API:n tila"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "Viimeisin virhe"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr "Toimet"
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "TAI aseta olemassa olevaan tietokantaan:"
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "Aseta tietokanta"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "Luo uudelleen Metabse-tietomalli "
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr ""
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase-hallintapaneeli"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Käyttöoikeuksien hallinta"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Salli pääsy kaikille"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Estää pääsyn kaikille"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API: kirjautuminen"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API: nouda nykyinen käyttäjä"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API: nouda käyttäjät"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API: nouda tietokannat"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API: nouda GLPI tietoanta"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr ""
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "Automaattisesti generoitua GLPI-tietokantaa ei löytynyt"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr ""
+"Sulautetun näytön käyttöönottaminen epäonnistui hallintapaneelissa %s."
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
+"tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."

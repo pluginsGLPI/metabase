@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 01:02+0000\n"
+"POT-Creation-Date: 2025-06-27 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>, 2024\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/teclib/teams/28042/cs_CZ/)\n"
@@ -22,86 +22,35 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(znovu)vytvořit datový model v Metabase"
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "Stav API"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API: získat GLPI databázi"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API: získat stávajícího uživatele"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API: získat databáze"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API: získat uživatele"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API: přihlášení"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "Akce"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Umožnit přístup ke všemu"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Vytvořit databázi GLPI v místní instanci Metabase"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Znemožnit přístup ke všemu"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Zapnutí vestavěného zobrazení se pro nástěnku %s nezdařilo."
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Vytáhnout přehledy z metabase:"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Vytáhnout dotazy z metabase:"
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "Neplatný požadavek."
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Poslední chyba"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr "Metabase"
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr "Metabase sbírky"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Nástěnka Metabase"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
+msgstr "Specifikace výkazů a přehledů"
 
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Metabase zapouzdřený token (pro zobrazení nástěnky v GLPI)"
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "Vytáhnout dotazy z metabase:"
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "Vytáhnout přehledy z metabase:"
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"Nedaří se přistupovat k datům Metabase. Zkontrolujte nastavení zásuvného "
+"modulu."
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr "Metabase"
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -111,59 +60,17 @@ msgstr "Stroj s metabase"
 msgid "Metabase port"
 msgstr "Port metabase"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "uživatelské jméno (správce metabase)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr "Metabase zapouzdřený token (pro zobrazení nástěnky v GLPI)"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "URL adresa metabase"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "Nenalezena žádná automaticky vytvořená GLPI databáze"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "NEBO nastavit existující databázi:"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "Dříve uložená databáze už neexistuje."
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Odeslat výkazy a přehledy do Metabase"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"Dotaz do metabase se nezdařil kvůli překročení časového limitu. Možná byste "
-"měli tento limit zvýšit (v nastavení zásuvného modulu)"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Specifikace výkazů a přehledů"
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Správa oprávnění"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Nastavit databázi"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Zobrazit specifikace výkazů a přehledů"
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "Časový limit pro odeslání dat (v milisekundách)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"Nedaří se přistupovat k datům Metabase. Zkontrolujte nastavení zásuvného "
-"modulu."
 
 #: inc/config.class.php:153
 msgid ""
@@ -173,6 +80,103 @@ msgstr ""
 "Nejspíš chcete jinou URL adresu pro nástěnku (například s https) než stroj "
 "(slouží k odesílání dat)."
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "uživatelské jméno (správce metabase)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "Časový limit pro odeslání dat (v milisekundách)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "Stav API"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "Poslední chyba"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr "Akce"
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "Dříve uložená databáze už neexistuje."
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "Vytvořit databázi GLPI v místní instanci Metabase"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "NEBO nastavit existující databázi:"
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "Nastavit databázi"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "Odeslat výkazy a přehledy do Metabase"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(znovu)vytvořit datový model v Metabase"
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr "Zobrazit specifikace výkazů a přehledů"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Nástěnka Metabase"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Správa oprávnění"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Umožnit přístup ke všemu"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Znemožnit přístup ke všemu"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API: přihlášení"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API: získat stávajícího uživatele"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API: získat uživatele"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API: získat databáze"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API: získat GLPI databázi"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr ""
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "Nenalezena žádná automaticky vytvořená GLPI databáze"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "Zapnutí vestavěného zobrazení se pro nástěnku %s nezdařilo."
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"Dotaz do metabase se nezdařil kvůli překročení časového limitu. Možná byste "
+"měli tento limit zvýšit (v nastavení zásuvného modulu)"

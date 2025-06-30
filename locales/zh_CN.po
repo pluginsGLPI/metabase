@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 01:02+0000\n"
+"POT-Creation-Date: 2025-06-27 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 李赋 <fu792659@163.com>, 2018\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -22,86 +22,33 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "（重新）在Metabase中生成数据模型"
-
-#: inc/config.class.php:186
-msgid "API status"
-msgstr "API 状态"
-
-#: inc/apiclient.class.php:67
-msgid "API: get GLPI database"
-msgstr "API：获取GLPI数据库"
-
-#: inc/apiclient.class.php:61
-msgid "API: get current user"
-msgstr "API：获取当前用户"
-
-#: inc/apiclient.class.php:65
-msgid "API: get databases"
-msgstr "API：获取数据库"
-
-#: inc/apiclient.class.php:63
-msgid "API: get users"
-msgstr "API：获取用户"
-
-#: inc/apiclient.class.php:59
-msgid "API: login"
-msgstr "API：登录"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr ""
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "允许全部访问"
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "在本地Metabase创建GLPI数据库"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "禁止全部访问"
-
-#: inc/apiclient.class.php:694
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "仪表板启用嵌入式显示失败%s"
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "从Metabase中提取仪表板："
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "从metabase中提取问题："
-
 #: front/profileright.form.php:43 front/profileright.form.php:70
 msgid "Invalid request."
 msgstr "无效请求。 "
-
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "上次错误"
-
-#: inc/profileright.class.php:48 inc/config.class.php:39
-msgid "Metabase"
-msgstr ""
 
 #: front/collections.php:34
 msgid "Metabase collections"
 msgstr ""
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase仪表盘"
+#: front/collections.php:44
+msgid "Reports and dashboards specifications"
+msgstr ""
 
-#: inc/config.class.php:142
-msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Metabase嵌入式令牌（在GLPI中显示仪表板）"
+#: front/collections.php:63
+msgid "Extract questions from metabase:"
+msgstr "从metabase中提取问题："
+
+#: front/collections.php:95
+msgid "Extract dashboards from metabase:"
+msgstr "从Metabase中提取仪表板："
+
+#: front/collections.php:107
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: inc/config.class.php:39 inc/profileright.class.php:48
+msgid "Metabase"
+msgstr ""
 
 #: inc/config.class.php:95
 msgid "Metabase host"
@@ -111,55 +58,17 @@ msgstr "Metabase 主机"
 msgid "Metabase port"
 msgstr "Metabase 端口"
 
+#: inc/config.class.php:112
+msgid "username (metabase admin)"
+msgstr "用户名 (metabase admin)"
+
+#: inc/config.class.php:142
+msgid "Metabase embedded token (to display dashboard in GLPI)"
+msgstr "Metabase嵌入式令牌（在GLPI中显示仪表板）"
+
 #: inc/config.class.php:152
 msgid "Metabase url"
 msgstr "Metabase网址"
-
-#: inc/apiclient.class.php:186
-msgid "No auto-generated GLPI database found"
-msgstr "未找到自动生成的GLPI数据库"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "或者设置现有数据库："
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "以前存储的数据库不存在。"
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "在Metabase中推送报告和仪表盘"
-
-#: inc/apiclient.class.php:883
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr ""
-
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "权限管理"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "设置数据库"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr ""
-
-#: inc/config.class.php:163
-msgid "Timeout for sending data (in seconds)"
-msgstr "数据发送超时 (in seconds)"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
 
 #: inc/config.class.php:153
 msgid ""
@@ -167,6 +76,101 @@ msgid ""
 " the host (used to push the data) "
 msgstr "您可能希望拥有与主机（用于推送数据）不同的仪表板URL（例如，使用https）"
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "用户名 (metabase admin)"
+#: inc/config.class.php:163
+msgid "Timeout for sending data (in seconds)"
+msgstr "数据发送超时 (in seconds)"
+
+#: inc/config.class.php:186
+msgid "API status"
+msgstr "API 状态"
+
+#: inc/config.class.php:205
+msgid "Last Error"
+msgstr "上次错误"
+
+#: inc/config.class.php:218
+msgid "Action(s)"
+msgstr ""
+
+#: inc/config.class.php:228
+msgid "Previously stored database is not existing anymore."
+msgstr "以前存储的数据库不存在。"
+
+#: inc/config.class.php:230
+msgid "Create GLPI database in local Metabase"
+msgstr "在本地Metabase创建GLPI数据库"
+
+#: inc/config.class.php:238
+msgid "OR set an existing database: "
+msgstr "或者设置现有数据库："
+
+#: inc/config.class.php:242
+msgid "Set database"
+msgstr "设置数据库"
+
+#: inc/config.class.php:252
+msgid "Push reports and dashboards in Metabase"
+msgstr "在Metabase中推送报告和仪表盘"
+
+#: inc/config.class.php:259
+msgid "(Re)generate datamodel in Metabase"
+msgstr "（重新）在Metabase中生成数据模型"
+
+#: inc/config.class.php:267
+msgid "Show reports and dashboards specifications"
+msgstr ""
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase仪表盘"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "权限管理"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "允许全部访问"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "禁止全部访问"
+
+#: inc/apiclient.class.php:59
+msgid "API: login"
+msgstr "API：登录"
+
+#: inc/apiclient.class.php:61
+msgid "API: get current user"
+msgstr "API：获取当前用户"
+
+#: inc/apiclient.class.php:63
+msgid "API: get users"
+msgstr "API：获取用户"
+
+#: inc/apiclient.class.php:65
+msgid "API: get databases"
+msgstr "API：获取数据库"
+
+#: inc/apiclient.class.php:67
+msgid "API: get GLPI database"
+msgstr "API：获取GLPI数据库"
+
+#: inc/apiclient.class.php:131
+msgid "Unable to retrieve Metabase version"
+msgstr ""
+
+#: inc/apiclient.class.php:202
+msgid "No auto-generated GLPI database found"
+msgstr "未找到自动生成的GLPI数据库"
+
+#: inc/apiclient.class.php:723
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "仪表板启用嵌入式显示失败%s"
+
+#: inc/apiclient.class.php:912
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
