@@ -28,8 +28,6 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
-
 if (isset($_REQUEST['update'])) {
     Session::checkRight('profile', UPDATE);
 
