@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 01:13+0000\n"
+"POT-Creation-Date: 2025-07-14 01:19+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: feonsu <feonsu@gmail.com>, 2024\n"
 "Language-Team: Slovak (Slovakia) (https://app.transifex.com/teclib/teams/28042/sk_SK/)\n"
@@ -20,10 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sk_SK\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr "Neplatná požiadavka."
 
 #: front/collections.php:34
 msgid "Metabase collections"
@@ -46,6 +42,10 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Nepodarilo sa získať prístup k dátam Metabase. Skontrolujte konfiguráciu "
 "pluginu."
+
+#: front/profileright.form.php:43 front/profileright.form.php:70
+msgid "Invalid request."
+msgstr "Neplatná požiadavka."
 
 #: inc/config.class.php:39 inc/profileright.class.php:48
 msgid "Metabase"
@@ -127,18 +127,6 @@ msgstr "Zobraziť špecifikáciu reportov a dashboardov"
 msgid "Metabase dashboard"
 msgstr "Metabase dashboard"
 
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Správa oprávnení"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Umožniť prístup ku všetkému"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Zakázať prístup ku všetkému"
-
 #: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr "API: prihlásenie"
@@ -179,3 +167,15 @@ msgid ""
 msgstr ""
 "Dotaz do metabase zlyhal pretože časový limit operácie vypršal. Možno by ste"
 " mali hodnotu časového limitu zvýšiť v konfigurácii pluginu"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Správa oprávnení"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Umožniť prístup ku všetkému"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Zakázať prístup ku všetkému"

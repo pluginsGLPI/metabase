@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-30 01:16+0000\n"
+"POT-Creation-Date: 2025-07-25 01:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr ""
 
 #: front/collections.php:34
 msgid "Metabase collections"
@@ -39,6 +35,10 @@ msgstr ""
 
 #: front/collections.php:107
 msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: front/profileright.form.php:43 front/profileright.form.php:70
+msgid "Invalid request."
 msgstr ""
 
 #: inc/config.class.php:39 inc/profileright.class.php:48
@@ -119,18 +119,6 @@ msgstr ""
 msgid "Metabase dashboard"
 msgstr ""
 
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr ""
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr ""
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr ""
-
 #: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr ""
@@ -168,4 +156,16 @@ msgstr ""
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
+msgstr ""
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr ""
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr ""
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
 msgstr ""

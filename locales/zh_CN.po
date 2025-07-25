@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 01:13+0000\n"
+"POT-Creation-Date: 2025-07-14 01:19+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 李赋 <fu792659@163.com>, 2018\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -21,10 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr "无效请求。 "
 
 #: front/collections.php:34
 msgid "Metabase collections"
@@ -45,6 +41,10 @@ msgstr "从Metabase中提取仪表板："
 #: front/collections.php:107
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+
+#: front/profileright.form.php:43 front/profileright.form.php:70
+msgid "Invalid request."
+msgstr "无效请求。 "
 
 #: inc/config.class.php:39 inc/profileright.class.php:48
 msgid "Metabase"
@@ -124,18 +124,6 @@ msgstr ""
 msgid "Metabase dashboard"
 msgstr "Metabase仪表盘"
 
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "权限管理"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "允许全部访问"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "禁止全部访问"
-
 #: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr "API：登录"
@@ -174,3 +162,15 @@ msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
 msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "权限管理"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "允许全部访问"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "禁止全部访问"
