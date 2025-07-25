@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 01:13+0000\n"
+"POT-Creation-Date: 2025-07-14 01:19+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Emanuele Trotta <emanuele.trotta@axians.it>, 2020\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/teclib/teams/28042/it_IT/)\n"
@@ -21,10 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr "Richiesta non valida."
 
 #: front/collections.php:34
 msgid "Metabase collections"
@@ -47,6 +43,10 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Impossibile accedere ai dati di Metabase. Controlla la configurazione del "
 "plugin."
+
+#: front/profileright.form.php:43 front/profileright.form.php:70
+msgid "Invalid request."
+msgstr "Richiesta non valida."
 
 #: inc/config.class.php:39 inc/profileright.class.php:48
 msgid "Metabase"
@@ -128,18 +128,6 @@ msgstr "Mostra le specifiche di report e dashboard"
 msgid "Metabase dashboard"
 msgstr "dashboard di metabase"
 
-#: inc/profileright.class.php:100
-msgid "Rights management"
-msgstr "Gestione dei diritti"
-
-#: inc/profileright.class.php:109
-msgid "Allow access to all"
-msgstr "Consenti l'accesso a tutti"
-
-#: inc/profileright.class.php:114
-msgid "Disallow access to all"
-msgstr "Non consentire l'accesso a tutti"
-
 #: inc/apiclient.class.php:59
 msgid "API: login"
 msgstr "API: login"
@@ -182,3 +170,15 @@ msgid ""
 msgstr ""
 "Query su metabase non riuscita perché l'operazione è scaduta. Forse dovresti"
 " aumentare il valore di timeout nella configurazione del plugin"
+
+#: inc/profileright.class.php:100
+msgid "Rights management"
+msgstr "Gestione dei diritti"
+
+#: inc/profileright.class.php:109
+msgid "Allow access to all"
+msgstr "Consenti l'accesso a tutti"
+
+#: inc/profileright.class.php:114
+msgid "Disallow access to all"
+msgstr "Non consentire l'accesso a tutti"
