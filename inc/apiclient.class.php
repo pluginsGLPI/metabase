@@ -361,7 +361,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ? 'semantic_type'
             : 'special_type';
 
-        $data = $this->httpQuery("field/$field_id", [
+        $this->httpQuery("field/$field_id", [
             'json' => [
                 $mb_fieldname      => 'type/Category',
                 'has_field_values' => 'list',
