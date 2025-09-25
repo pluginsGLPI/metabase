@@ -27,7 +27,7 @@
  * @link      https://github.com/pluginsGLPI/metabase
  * -------------------------------------------------------------------------
  */
-
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -88,10 +88,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ],
         ], 'POST');
 
-        if (is_array($data)) {
-            if (isset($data['id'])) {
-                $_SESSION['metabase']['session_token'] = $data['id'];
-            }
+        if (is_array($data) && isset($data['id'])) {
+            $_SESSION['metabase']['session_token'] = $data['id'];
         }
 
         return ($data !== false && count($data) > 0);
@@ -109,13 +107,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         // so reconnect
         $this->connect();
-
         // check again session token, if set, we now have a valid token
-        if (isset($_SESSION['metabase']['session_token'])) {
-            return true;
-        }
-
-        return false;
+        return isset($_SESSION['metabase']['session_token']);
     }
 
     public function getVersion()
@@ -375,7 +368,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ],
         ], 'PUT');
 
-        $data = $this->httpQuery("field/$field_id/dimension", [
+        $this->httpQuery("field/$field_id/dimension", [
             'json' => [
                 'human_readable_field_id' => null,
                 'type'                    => 'internal',
@@ -404,9 +397,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ],
         ], 'POST');
 
-        return isset($data['id'])
-         ? $data['id']
-         : false;
+        return $data['id'] ?? false;
     }
 
     public function retrieveCollection($collection_name)
@@ -465,9 +456,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ], 'POST');
         }
 
-        return isset($data['id'])
-         ? $data['id']
-         : false;
+        return $data['id'] ?? false;
     }
 
     public function setDashboardCards($dashboard_id, $params)
@@ -494,9 +483,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 'json'    => $c_params,
             ], 'POST');
 
-            $card['id'] = isset($c_data['id'])
-             ? $c_data['id']
-             : false;
+            $card['id'] = $c_data['id'] ?? false;
         };
 
         // append cards to dashboard
@@ -505,9 +492,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             'json'    => $params,
         ], 'PUT');
 
-        return isset($data['id'])
-         ? $data['id']
-         : false;
+        return $data['id'] ?? false;
     }
 
     public function retrieveDashboard($dashboard_name)
@@ -547,9 +532,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
     {
         $data = $this->httpQuery("dashboard/$id", [], 'GET');
 
-        return isset($data['ordered_cards'])
-         ? $data['ordered_cards']
-         : false;
+        return $data['ordered_cards'] ?? false;
     }
 
     public function createOrUpdateCard($card_name, $params = [])
@@ -630,9 +613,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             ], 'POST');
         }
 
-        return isset($data['id'])
-         ? $data['id']
-         : false;
+        return $data['id'] ?? false;
     }
 
     public function getCard($card_id)
@@ -678,11 +659,9 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         $cards = array_filter(
             $cards,
-            function ($card) use ($collection_id) {
-                return is_array($card)
-                  && array_key_exists('collection_id', $card)
-                  && $collection_id === $card['collection_id'];
-            },
+            fn($card) => is_array($card)
+              && array_key_exists('collection_id', $card)
+              && $collection_id === $card['collection_id'],
         );
 
         return $cards;
@@ -876,7 +855,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         $params = plugin_metabase_recursive_remove_empty($params);
 
         // init guzzle
-        $http_client = new GuzzleHttp\Client(['base_uri' => $this->getAPIBaseUri()]);
+        $http_client = new Client(['base_uri' => $this->getAPIBaseUri()]);
 
         // send http request
         try {

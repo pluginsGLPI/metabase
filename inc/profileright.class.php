@@ -175,7 +175,7 @@ class PluginMetabaseProfileright extends CommonDBTM
         );
 
         foreach ($iterator as $right) {
-            if ($right['rights'] & READ) {
+            if (($right['rights'] & READ) !== 0) {
                 return true;
             }
         }

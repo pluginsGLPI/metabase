@@ -28,6 +28,10 @@
  * -------------------------------------------------------------------------
  */
 
+use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
+
 class PluginMetabaseDashboard extends CommonDBTM
 {
     /**
@@ -87,7 +91,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     {
         $apiclient = new PluginMetabaseAPIClient();
 
-        $currentUuid = isset($_GET['uuid']) ? $_GET['uuid'] : null;
+        $currentUuid = $_GET['uuid'] ?? null;
 
         $dashboards = $apiclient->getDashboards();
         if (is_array($dashboards)) {
@@ -125,9 +129,9 @@ class PluginMetabaseDashboard extends CommonDBTM
 
         $config = PluginMetabaseConfig::getConfig();
 
-        $signer_config = Lcobucci\JWT\Configuration::forSymmetricSigner(
-            new Lcobucci\JWT\Signer\Hmac\Sha256(),
-            Lcobucci\JWT\Signer\Key\InMemory::plainText($config['embedded_token']),
+        $signer_config = Configuration::forSymmetricSigner(
+            new Sha256(),
+            InMemory::plainText($config['embedded_token']),
         );
         $token = $signer_config->builder()
           ->withClaim('resource', [

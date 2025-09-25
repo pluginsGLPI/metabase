@@ -42,9 +42,9 @@ function plugin_metabase_install()
     $migration = new Migration($version['version']);
 
     // Parse inc directory
-    foreach (glob(dirname(__FILE__) . '/inc/*') as $filepath) {
+    foreach (glob(__DIR__ . '/inc/*') as $filepath) {
         // Load *.class.php files and get the class name
-        if (preg_match("/inc.(.+)\.class.php$/", $filepath, $matches)) {
+        if (preg_match("/inc.(.+)\.class.php$/", $filepath, $matches) !== 0) {
             $classname = 'PluginMetabase' . ucfirst($matches[1]);
             include_once($filepath);
             // If the install method exists, load it
@@ -66,9 +66,9 @@ function plugin_metabase_install()
 function plugin_metabase_uninstall()
 {
     // Parse inc directory
-    foreach (glob(dirname(__FILE__) . '/inc/*') as $filepath) {
+    foreach (glob(__DIR__ . '/inc/*') as $filepath) {
         // Load *.class.php files and get the class name
-        if (preg_match("/inc.(.+)\.class.php/", $filepath, $matches)) {
+        if (preg_match("/inc.(.+)\.class.php/", $filepath, $matches) !== 0) {
             $classname = 'PluginMetabase' . ucfirst($matches[1]);
             include_once($filepath);
             // If the install method exists, load it

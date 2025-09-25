@@ -53,7 +53,7 @@ if (isset($_REQUEST['update'])) {
             $rights,
         );
 
-        if ($rights & READ) {
+        if (($rights & READ) !== 0) {
             $viewableDashboardsUuids[] = $dashboardUuid;
         }
     }

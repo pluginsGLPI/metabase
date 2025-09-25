@@ -28,8 +28,6 @@
  * -------------------------------------------------------------------------
  */
 
-use Glpi\Application\View\TemplateRenderer;
-
 use function Safe\file_get_contents;
 use function Safe\json_decode;
 use function Safe\json_encode;
@@ -173,7 +171,7 @@ class PluginMetabaseConfig extends Config
         ]);
 
         if ($canedit) {
-            echo Html::hidden('config_class', ['value' => __CLASS__]);
+            echo Html::hidden('config_class', ['value' => self::class]);
             echo Html::hidden('config_context', ['value' => 'plugin:metabase']);
             echo Html::submit(_sx('button', 'Save'), [
                 'class' => 'btn btn-primary',
@@ -204,7 +202,7 @@ class PluginMetabaseConfig extends Config
             echo '</ul>';
 
             $error = $apiclient->getLastError();
-            if (count($error)) {
+            if (count($error) > 0) {
                 echo '<h1>' . __s('Last Error', 'metabase') . '</h1>';
                 if (isset($error['exception'])) {
                     echo $error['exception'];
@@ -319,17 +317,13 @@ class PluginMetabaseConfig extends Config
         $tables   = $_SESSION['metabase']['tables'];
         $fields   = $_SESSION['metabase']['fields'];
         foreach ($fields as $fieldname => $f_id_src) {
-            list($table, $field) = explode('.', $fieldname);
+            [$table, $field] = explode('.', $fieldname);
 
-            if (
-                ($fk_table = getTableNameForForeignKeyField($field)) !== ''
-                && isset($tables[$fk_table])
-            ) {
-                // create foreign key
-                if (isset($fields[$fk_table . '.id'])) {
-                    $api->createForeignKey($f_id_src, $fields[$fk_table . '.id']);
-                    $fk_count++;
-                }
+            $fk_table = getTableNameForForeignKeyField($field);
+            // create foreign key
+            if ($fk_table !== '' && isset($tables[$fk_table]) && isset($fields[$fk_table . '.id'])) {
+                $api->createForeignKey($f_id_src, $fields[$fk_table . '.id']);
+                $fk_count++;
             }
         }
 
@@ -529,9 +523,7 @@ class PluginMetabaseConfig extends Config
         $extract   = [
             'title'       => $card['name'],
             'description' => $card['description'],
-            'collection'  => isset($card['collection']['name'])
-                                       ? $card['collection']['name']
-                                       : '',
+            'collection'  => $card['collection']['name'] ?? '',
             'display'                => $card['display'],
             'visualization_settings' => $card['visualization_settings'],
             'template_tags'          => [],
@@ -580,9 +572,7 @@ class PluginMetabaseConfig extends Config
         $parameters_id = [];
         foreach ($dashboard['parameters'] as $parameter) {
             $extract['parameters'][] = [
-                'default' => isset($parameter['default'])
-                           ? $parameter['default']
-                           : '',
+                'default' => $parameter['default'] ?? '',
                 'name' => $parameter['name'],
                 'slug' => $parameter['slug'],
                 'type' => $parameter['type'],
@@ -725,7 +715,7 @@ class PluginMetabaseConfig extends Config
         $out .= "<label class='metabase_label' for='{$options['attrs']['id']}'>
               {$options['label']}</label>";
 
-        if (strlen($options['help'])) {
+        if (strlen($options['help']) !== 0) {
             $out .= "<i class='fa metabase_help fa-info-circle' title='{$options['help']}'></i>";
         }
 
