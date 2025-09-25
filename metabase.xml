@@ -52,9 +52,9 @@ Il permet actuellement de:
    </authors>
    <versions>
       <version>
-         <num>1.4.0-beta2</num>
+         <num>1.4.0-beta3</num>
          <compatibility>~11.0.0</compatibility>
-         <download_url>https://github.com/pluginsGLPI/metabase/releases/download/1.4.0-beta2/glpi-metabase-1.4.0-beta2.tar.bz2</download_url>
+         <download_url>https://github.com/pluginsGLPI/metabase/releases/download/1.4.0-beta3/glpi-metabase-1.4.0-beta3.tar.bz2</download_url>
       </version>
       <version>
          <num>1.3.3</num>
