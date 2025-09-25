@@ -38,7 +38,7 @@ if (isset($_REQUEST['update'])) {
         || !is_array($_REQUEST['dashboard'])
     ) {
         Session::addMessageAfterRedirect(
-            __('Invalid request.', 'metabase'),
+            __s('Invalid request.', 'metabase'),
             false,
             ERROR,
         );
@@ -65,7 +65,7 @@ if (isset($_REQUEST['update'])) {
 
     if (!array_key_exists('profiles_id', $_REQUEST) || empty($_REQUEST['profiles_id'])) {
         Session::addMessageAfterRedirect(
-            __('Invalid request.', 'metabase'),
+            __s('Invalid request.', 'metabase'),
             false,
             ERROR,
         );

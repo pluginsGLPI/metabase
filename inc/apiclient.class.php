@@ -55,15 +55,15 @@ class PluginMetabaseAPIClient extends CommonGLPI
     public function status()
     {
         return [
-            __('API: login', 'metabase')
+            __s('API: login', 'metabase')
             => $this->connect(),
-            __('API: get current user', 'metabase')
+            __s('API: get current user', 'metabase')
             => $this->getCurrentUser() !== false,
-            __('API: get users', 'metabase')
+            __s('API: get users', 'metabase')
             => $this->getUsers() !== false,
-            __('API: get databases', 'metabase')
+            __s('API: get databases', 'metabase')
             => $this->getDatabases() !== false,
-            __('API: get GLPI database', 'metabase')
+            __s('API: get GLPI database', 'metabase')
             => $this->getGlpiDatabase() !== false,
         ];
     }
@@ -127,7 +127,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         $data = $this->httpQuery('setting/version');
 
         if ($data === false) {
-            $this->last_error[] = __('Unable to retrieve Metabase version', 'metabase');
+            $this->last_error[] = __s('Unable to retrieve Metabase version', 'metabase');
             return false;
         }
 
@@ -198,7 +198,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             }
         }
 
-        $this->last_error[] = __('No auto-generated GLPI database found', 'metabase');
+        $this->last_error[] = __s('No auto-generated GLPI database found', 'metabase');
 
         return false;
     }
@@ -294,12 +294,12 @@ class PluginMetabaseAPIClient extends CommonGLPI
     public function setTicketTypeMapping()
     {
         $field_id = $_SESSION['metabase']['fields']['glpi_tickets.type'];
-        $this->setFieldCustomMapping($field_id, __('Type'));
+        $this->setFieldCustomMapping($field_id, __s('Type'));
         $data = $this->httpQuery("field/$field_id/values", [
             'json' => [
                 'values' => [
-                    [Ticket::INCIDENT_TYPE, __('Incident')],
-                    [Ticket::DEMAND_TYPE, __('Request')],
+                    [Ticket::INCIDENT_TYPE, __s('Incident')],
+                    [Ticket::DEMAND_TYPE, __s('Request')],
                 ],
             ],
         ], 'POST');
@@ -316,7 +316,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         }
         $table    = $item::getTable();
         $field_id = $_SESSION['metabase']['fields']["$table.status"];
-        $this->setFieldCustomMapping($field_id, __('Status'));
+        $this->setFieldCustomMapping($field_id, __s('Status'));
         $data = $this->httpQuery("field/$field_id/values", [
             'json' => [
                 'values' => $statuses_topush,
@@ -331,7 +331,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
         $table = $item::getTable();
         foreach (['urgency', 'impact', 'priority'] as $matrix_field) {
             $field_id = $_SESSION['metabase']['fields']["$table.$matrix_field"];
-            $this->setFieldCustomMapping($field_id, __(mb_convert_case($matrix_field, MB_CASE_TITLE)));
+            $this->setFieldCustomMapping($field_id, __s(mb_convert_case($matrix_field, MB_CASE_TITLE)));
             $data_topush = [
                 [5, _x($matrix_field, 'Very high')],
                 [4, _x($matrix_field, 'High')],
@@ -719,7 +719,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 if (false === $result) {
                     Session::addMessageAfterRedirect(
                         sprintf(
-                            __('Enabling embedded display fails for dashboard %s.', 'metabase'),
+                            __s('Enabling embedded display fails for dashboard %s.', 'metabase'),
                             $dashboard['name'],
                         ),
                         true,
@@ -908,7 +908,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
             if ($e instanceof ConnectException) {
                 Session::addMessageAfterRedirect(
-                    __('Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration', 'metabase'),
+                    __s('Query to metabase failed because operation timed out. Maybe you should increase the timeout value in plugin configuration', 'metabase'),
                     true,
                     ERROR,
                 );

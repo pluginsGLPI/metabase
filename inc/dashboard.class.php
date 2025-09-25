@@ -36,7 +36,7 @@ class PluginMetabaseDashboard extends CommonDBTM
      */
     public static function getTypeName($nb = 0)
     {
-        return __('Metabase dashboard', 'metabase');
+        return __s('Metabase dashboard', 'metabase');
     }
 
     /**
