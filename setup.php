@@ -30,7 +30,7 @@
 
 use function Safe\define;
 
-define('PLUGIN_METABASE_VERSION', '1.4.0-beta2');
+define('PLUGIN_METABASE_VERSION', '1.4.0-beta3');
 
 // Minimal GLPI version, inclusive
 define('PLUGIN_METABASE_MIN_GLPI', '11.0.0');
