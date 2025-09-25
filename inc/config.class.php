@@ -30,6 +30,11 @@
 
 use Glpi\Application\View\TemplateRenderer;
 
+use function Safe\file_get_contents;
+use function Safe\json_decode;
+use function Safe\json_encode;
+use function Safe\preg_replace;
+
 class PluginMetabaseConfig extends Config
 {
     public static function getTypeName($nb = 0)

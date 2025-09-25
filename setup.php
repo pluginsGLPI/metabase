@@ -28,6 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
+use function Safe\define;
+
 define('PLUGIN_METABASE_VERSION', '1.4.0-beta2');
 
 // Minimal GLPI version, inclusive

@@ -28,6 +28,9 @@
  * -------------------------------------------------------------------------
  */
 
+use function Safe\glob;
+use function Safe\preg_match;
+
 /**
  * Plugin install process
  *

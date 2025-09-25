@@ -28,10 +28,13 @@
  * -------------------------------------------------------------------------
  */
 
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
+
+use function Safe\json_decode;
+use function Safe\preg_replace;
 
 class PluginMetabaseAPIClient extends CommonGLPI
 {
