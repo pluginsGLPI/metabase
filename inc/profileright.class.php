@@ -63,7 +63,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        if ($item instanceof self && Session::haveRight('profile', READ)) {
+        if ($item instanceof Profile && Session::haveRight('profile', READ)) {
             $profileright = new self();
             $profileright->showForm($item->fields['id']);
         }
