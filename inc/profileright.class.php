@@ -28,10 +28,6 @@
  * -------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 class PluginMetabaseProfileright extends CommonDBTM
 {
     /**
@@ -45,7 +41,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public static function getTypeName($nb = 0)
     {
-        return __('Metabase', 'metabase');
+        return __s('Metabase', 'metabase');
     }
 
     /**
@@ -55,7 +51,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
-            return self::createTabEntry(self::getTypeName());
+            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
 
         return '';
@@ -67,7 +63,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        if ($item instanceof self && Session::haveRight('profile', READ)) {
+        if ($item instanceof Profile && Session::haveRight('profile', READ)) {
             $profileright = new self();
             $profileright->showForm($item->fields['id']);
         }
@@ -97,7 +93,7 @@ class PluginMetabaseProfileright extends CommonDBTM
 
         Plugin::doHook('pre_item_form', ['item' => $this, 'options' => &$options]);
 
-        echo '<tr><th colspan="2">' . __('Rights management', 'metabase') . '</th></tr>';
+        echo '<tr><th colspan="2">' . __s('Rights management', 'metabase') . '</th></tr>';
 
         echo '<input type="hidden" name="profiles_id" value="' . $id . '" />';
 
@@ -106,12 +102,12 @@ class PluginMetabaseProfileright extends CommonDBTM
             echo '<td colspan="2" class="center">';
             echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
             . "<i class='ti ti-check'></i>"
-            . '<span>' . __('Allow access to all', 'metabase') . '</span>'
+            . '<span>' . __s('Allow access to all', 'metabase') . '</span>'
             . '</button>';
             echo ' &nbsp; ';
             echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
             . "<i class='ti ti-forbid'></i>"
-            . '<span>' . __('Disallow access to all', 'metabase') . '</span>'
+            . '<span>' . __s('Disallow access to all', 'metabase') . '</span>'
             . '</button>';
             echo '</td>';
             echo '</tr>';
@@ -179,7 +175,7 @@ class PluginMetabaseProfileright extends CommonDBTM
         );
 
         foreach ($iterator as $right) {
-            if ($right['rights'] & READ) {
+            if (($right['rights'] & READ) !== 0) {
                 return true;
             }
         }
@@ -290,7 +286,7 @@ class PluginMetabaseProfileright extends CommonDBTM
                      PRIMARY KEY (`id`),
                      UNIQUE `profiles_id_dashboard_uuid` (`profiles_id`, `dashboard_uuid`)
                   ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
-            $DB->doQuery($query) or die($DB->error());
+            $DB->doQuery($query);
         }
     }
 

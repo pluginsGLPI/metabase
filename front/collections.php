@@ -28,10 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
-
 Html::header(
-    __('Metabase collections', 'metabase'),
+    __s('Metabase collections', 'metabase'),
     $_SERVER['PHP_SELF'],
     'config',
     'config',
@@ -41,7 +39,7 @@ Html::header(
 Session::checkRight('config', READ);
 
 echo '<div class="metabase_config">';
-echo '<h1>' . __('Reports and dashboards specifications', 'metabase') . '</h1>';
+echo '<h1>' . __s('Reports and dashboards specifications', 'metabase') . '</h1>';
 $metabaseConfig = new PluginMetabaseConfig();
 $apiclient      = new PluginMetabaseAPIClient();
 if ($metabaseConfig::isValid() && $apiclient->getGlpiDatabase() && $apiclient->checkSession()) {
@@ -60,7 +58,7 @@ if ($metabaseConfig::isValid() && $apiclient->getGlpiDatabase() && $apiclient->c
             PluginMetabaseConfig::loadTablesAndFields($current_config['glpi_db_id']);
         }
 
-        echo '<h3>' . __('Extract questions from metabase:', 'metabase') . '</h3>';
+        echo '<h3>' . __s('Extract questions from metabase:', 'metabase') . '</h3>';
         echo "<ul class='metabase_collection_list'>";
         foreach ($collections as $collection) {
             $collection_cards = $apiclient->getCards($collection['id']);
@@ -92,7 +90,7 @@ if ($metabaseConfig::isValid() && $apiclient->getGlpiDatabase() && $apiclient->c
         && count($dashboards)
     ) {
         PluginMetabaseConfig::loadReports();
-        echo '<h3>' . __('Extract dashboards from metabase:', 'metabase') . '</h3>';
+        echo '<h3>' . __s('Extract dashboards from metabase:', 'metabase') . '</h3>';
         echo "<ul class='extract_list extract_dashboards'>";
         foreach ($dashboards as $dashboard) {
             echo "<li><a href='#'
@@ -104,7 +102,7 @@ if ($metabaseConfig::isValid() && $apiclient->getGlpiDatabase() && $apiclient->c
         echo '</ul>';
     }
 } else {
-    echo '<p>' . __('Unable to access Metabase data. Please check plugin configuration.', 'metabase') . '</p>';
+    echo '<p>' . __s('Unable to access Metabase data. Please check plugin configuration.', 'metabase') . '</p>';
 }
 
 echo '</div>';
