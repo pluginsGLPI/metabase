@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 01:19+0000\n"
+"POT-Creation-Date: 2025-09-29 01:06+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Soporte Infraestructura Standby, 2023\n"
 "Language-Team: Spanish (Ecuador) (https://app.transifex.com/teclib/teams/28042/es_EC/)\n"
@@ -21,57 +21,27 @@ msgstr ""
 "Language: es_EC\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: front/collections.php:34
-msgid "Metabase collections"
-msgstr "Colecciones de metabases"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Especificaciones de informes y cuadros de mando"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Extraer preguntas de la metabase:"
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Extraer cuadros de mando de la metabase:"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"No se puede acceder a los datos de la metabase. Por favor, compruebe la "
-"configuración del plugin."
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr "Solicitud no válida."
-
-#: inc/config.class.php:39 inc/profileright.class.php:48
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/config.class.php:95
+#: templates/config.html.twig inc/config.class.php:96
 msgid "Metabase host"
 msgstr "Host de la metabase"
 
-#: inc/config.class.php:103
+#: templates/config.html.twig inc/config.class.php:104
 msgid "Metabase port"
 msgstr "Puerto de la metabase"
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "nombre de usuario (administrador de la metabase)"
+#: templates/config.html.twig
+msgid "Username (metabase admin)"
+msgstr ""
 
-#: inc/config.class.php:142
+#: templates/config.html.twig inc/config.class.php:143
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr "Token incrustado de metabase (para mostrar el panel en GLPI)"
 
-#: inc/config.class.php:152
+#: templates/config.html.twig inc/config.class.php:153
 msgid "Metabase url"
 msgstr "URL de la metabase"
 
-#: inc/config.class.php:153
+#: templates/config.html.twig inc/config.class.php:154
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
@@ -79,90 +49,50 @@ msgstr ""
 "Es posible que desee tener una URL de panel diferente (con https, por "
 "ejemplo) que el host (utilizado para insertar los datos) "
 
-#: inc/config.class.php:163
+#: templates/config.html.twig inc/config.class.php:164
 msgid "Timeout for sending data (in seconds)"
 msgstr "Tiempo de espera para enviar datos (en segundos)"
 
-#: inc/config.class.php:186
+#: templates/config.html.twig inc/config.class.php:187
 msgid "API status"
 msgstr "Estado de la API"
 
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Último error"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "Acción(es)"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "La base de datos almacenada anteriormente ya no existe."
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Crear base de datos GLPI en Metabase local"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "O establecer una base de datos existente: "
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Establecer base de datos"
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Insertar informes y paneles en la metabase"
-
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)generar modelo de datos en Metabase"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Mostrar especificaciones de informes y paneles"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Cuadro de mando de la metabase"
-
-#: inc/apiclient.class.php:59
+#: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: inicio de sesión"
 
-#: inc/apiclient.class.php:61
+#: inc/apiclient.class.php:60
 msgid "API: get current user"
 msgstr "API: obtener el usuario actual"
 
-#: inc/apiclient.class.php:63
+#: inc/apiclient.class.php:62
 msgid "API: get users"
 msgstr "API: obtener usuarios"
 
-#: inc/apiclient.class.php:65
+#: inc/apiclient.class.php:64
 msgid "API: get databases"
 msgstr "API: obtener bases de datos"
 
-#: inc/apiclient.class.php:67
+#: inc/apiclient.class.php:66
 msgid "API: get GLPI database"
 msgstr "API: obtener base de datos GLPI"
 
-#: inc/apiclient.class.php:131
+#: inc/apiclient.class.php:123
 msgid "Unable to retrieve Metabase version"
 msgstr ""
 
-#: inc/apiclient.class.php:202
+#: inc/apiclient.class.php:194
 msgid "No auto-generated GLPI database found"
 msgstr "No se ha encontrado ninguna base de datos GLPI autogenerada"
 
-#: inc/apiclient.class.php:723
+#: inc/apiclient.class.php:701
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr ""
 "La activación de la visualización incrustada falla para el cuadro de mandos "
 "%s."
 
-#: inc/apiclient.class.php:912
+#: inc/apiclient.class.php:890
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -171,14 +101,88 @@ msgstr ""
 " operación. Tal vez debería aumentar el valor de tiempo de espera en la "
 "configuración del complemento"
 
-#: inc/profileright.class.php:100
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Cuadro de mando de la metabase"
+
+#: inc/config.class.php:40 inc/profileright.class.php:44
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "nombre de usuario (administrador de la metabase)"
+
+#: inc/config.class.php:206
+msgid "Last Error"
+msgstr "Último error"
+
+#: inc/config.class.php:219
+msgid "Action(s)"
+msgstr "Acción(es)"
+
+#: inc/config.class.php:229
+msgid "Previously stored database is not existing anymore."
+msgstr "La base de datos almacenada anteriormente ya no existe."
+
+#: inc/config.class.php:231
+msgid "Create GLPI database in local Metabase"
+msgstr "Crear base de datos GLPI en Metabase local"
+
+#: inc/config.class.php:239
+msgid "OR set an existing database: "
+msgstr "O establecer una base de datos existente: "
+
+#: inc/config.class.php:243
+msgid "Set database"
+msgstr "Establecer base de datos"
+
+#: inc/config.class.php:253
+msgid "Push reports and dashboards in Metabase"
+msgstr "Insertar informes y paneles en la metabase"
+
+#: inc/config.class.php:260
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re)generar modelo de datos en Metabase"
+
+#: inc/config.class.php:268
+msgid "Show reports and dashboards specifications"
+msgstr "Mostrar especificaciones de informes y paneles"
+
+#: inc/profileright.class.php:96
 msgid "Rights management"
 msgstr "Gestión de derechos"
 
-#: inc/profileright.class.php:109
+#: inc/profileright.class.php:105
 msgid "Allow access to all"
 msgstr "Permitir el acceso a todos"
 
-#: inc/profileright.class.php:114
+#: inc/profileright.class.php:110
 msgid "Disallow access to all"
 msgstr "No permitir el acceso a todos"
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Colecciones de metabases"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Especificaciones de informes y cuadros de mando"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Extraer preguntas de la metabase:"
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Extraer cuadros de mando de la metabase:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"No se puede acceder a los datos de la metabase. Por favor, compruebe la "
+"configuración del plugin."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Solicitud no válida."

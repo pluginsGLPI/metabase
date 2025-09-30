@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 01:19+0000\n"
+"POT-Creation-Date: 2025-09-29 01:06+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2025\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/teclib/teams/28042/tr_TR/)\n"
@@ -21,57 +21,27 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: front/collections.php:34
-msgid "Metabase collections"
-msgstr "Metabase derlemeleri"
-
-#: front/collections.php:44
-msgid "Reports and dashboards specifications"
-msgstr "Raporların ve panoların özellikleri"
-
-#: front/collections.php:63
-msgid "Extract questions from metabase:"
-msgstr "Metabase üzerinden soruları ayıkla:"
-
-#: front/collections.php:95
-msgid "Extract dashboards from metabase:"
-msgstr "Metabase üzerinden panoları ayıkla:"
-
-#: front/collections.php:107
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
-"denetleyin."
-
-#: front/profileright.form.php:43 front/profileright.form.php:70
-msgid "Invalid request."
-msgstr "İstek geçersiz."
-
-#: inc/config.class.php:39 inc/profileright.class.php:48
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/config.class.php:95
+#: templates/config.html.twig inc/config.class.php:96
 msgid "Metabase host"
 msgstr "Metabase sunucusu"
 
-#: inc/config.class.php:103
+#: templates/config.html.twig inc/config.class.php:104
 msgid "Metabase port"
 msgstr "Metabase bağlantı noktası"
 
-#: inc/config.class.php:112
-msgid "username (metabase admin)"
-msgstr "Kullanıcı adı (Metabase yöneticisi)"
+#: templates/config.html.twig
+msgid "Username (metabase admin)"
+msgstr ""
 
-#: inc/config.class.php:142
+#: templates/config.html.twig inc/config.class.php:143
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr "Metabase gömülü kodu (panonun GLPI içinde görüntülenmesi için)"
 
-#: inc/config.class.php:152
+#: templates/config.html.twig inc/config.class.php:153
 msgid "Metabase url"
 msgstr "Metabase adresi"
 
-#: inc/config.class.php:153
+#: templates/config.html.twig inc/config.class.php:154
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
@@ -79,88 +49,48 @@ msgstr ""
 "Sunucudan (veri göndermek için kullanılan) farklı bir pano adresi kullanmak "
 "isteyebilirsiniz örneğin https gibi) "
 
-#: inc/config.class.php:163
+#: templates/config.html.twig inc/config.class.php:164
 msgid "Timeout for sending data (in seconds)"
 msgstr "Veri gönderme zaman aşımı (saniye)"
 
-#: inc/config.class.php:186
+#: templates/config.html.twig inc/config.class.php:187
 msgid "API status"
 msgstr "API durumu"
 
-#: inc/config.class.php:205
-msgid "Last Error"
-msgstr "Son hata"
-
-#: inc/config.class.php:218
-msgid "Action(s)"
-msgstr "İşlemler"
-
-#: inc/config.class.php:228
-msgid "Previously stored database is not existing anymore."
-msgstr "Daha önce kaydedilmiş veri tabanı artık yok."
-
-#: inc/config.class.php:230
-msgid "Create GLPI database in local Metabase"
-msgstr "Yerel Metabase üzerinde GLPI veri tabanı oluşturun"
-
-#: inc/config.class.php:238
-msgid "OR set an existing database: "
-msgstr "YA DA var olan bir veri tabanı ayarlayın"
-
-#: inc/config.class.php:242
-msgid "Set database"
-msgstr "Veri tabanı ayarla"
-
-#: inc/config.class.php:252
-msgid "Push reports and dashboards in Metabase"
-msgstr "Rapor ve panoları Metabase üzerine gönder"
-
-#: inc/config.class.php:259
-msgid "(Re)generate datamodel in Metabase"
-msgstr "Metabase veri modelini (yeniden) oluştur"
-
-#: inc/config.class.php:267
-msgid "Show reports and dashboards specifications"
-msgstr "Raporların ve panoların özelliklerini görüntüle"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase panosu"
-
-#: inc/apiclient.class.php:59
+#: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: Oturum açma"
 
-#: inc/apiclient.class.php:61
+#: inc/apiclient.class.php:60
 msgid "API: get current user"
 msgstr "API: Geçerli kullanıcıyı al"
 
-#: inc/apiclient.class.php:63
+#: inc/apiclient.class.php:62
 msgid "API: get users"
 msgstr "API: Kullanıcıları al"
 
-#: inc/apiclient.class.php:65
+#: inc/apiclient.class.php:64
 msgid "API: get databases"
 msgstr "API: Veri tabanlarını al"
 
-#: inc/apiclient.class.php:67
+#: inc/apiclient.class.php:66
 msgid "API: get GLPI database"
 msgstr "API: GLPI veri tabanını al"
 
-#: inc/apiclient.class.php:131
+#: inc/apiclient.class.php:123
 msgid "Unable to retrieve Metabase version"
 msgstr "Metabase sürümü alınamadı"
 
-#: inc/apiclient.class.php:202
+#: inc/apiclient.class.php:194
 msgid "No auto-generated GLPI database found"
 msgstr "Otomatik olarak üretilmiş bir GLPI veri tabanı bulunamadı"
 
-#: inc/apiclient.class.php:723
+#: inc/apiclient.class.php:701
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
 
-#: inc/apiclient.class.php:912
+#: inc/apiclient.class.php:890
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -168,14 +98,88 @@ msgstr ""
 "İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
 "yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
 
-#: inc/profileright.class.php:100
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase panosu"
+
+#: inc/config.class.php:40 inc/profileright.class.php:44
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "Kullanıcı adı (Metabase yöneticisi)"
+
+#: inc/config.class.php:206
+msgid "Last Error"
+msgstr "Son hata"
+
+#: inc/config.class.php:219
+msgid "Action(s)"
+msgstr "İşlemler"
+
+#: inc/config.class.php:229
+msgid "Previously stored database is not existing anymore."
+msgstr "Daha önce kaydedilmiş veri tabanı artık yok."
+
+#: inc/config.class.php:231
+msgid "Create GLPI database in local Metabase"
+msgstr "Yerel Metabase üzerinde GLPI veri tabanı oluşturun"
+
+#: inc/config.class.php:239
+msgid "OR set an existing database: "
+msgstr "YA DA var olan bir veri tabanı ayarlayın"
+
+#: inc/config.class.php:243
+msgid "Set database"
+msgstr "Veri tabanı ayarla"
+
+#: inc/config.class.php:253
+msgid "Push reports and dashboards in Metabase"
+msgstr "Rapor ve panoları Metabase üzerine gönder"
+
+#: inc/config.class.php:260
+msgid "(Re)generate datamodel in Metabase"
+msgstr "Metabase veri modelini (yeniden) oluştur"
+
+#: inc/config.class.php:268
+msgid "Show reports and dashboards specifications"
+msgstr "Raporların ve panoların özelliklerini görüntüle"
+
+#: inc/profileright.class.php:96
 msgid "Rights management"
 msgstr "İzin yönetimi"
 
-#: inc/profileright.class.php:109
+#: inc/profileright.class.php:105
 msgid "Allow access to all"
 msgstr "Tümüne erişim izni ver"
 
-#: inc/profileright.class.php:114
+#: inc/profileright.class.php:110
 msgid "Disallow access to all"
 msgstr "Tümünden erişim iznini kaldır"
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Metabase derlemeleri"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Raporların ve panoların özellikleri"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Metabase üzerinden soruları ayıkla:"
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Metabase üzerinden panoları ayıkla:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
+"denetleyin."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "İstek geçersiz."
