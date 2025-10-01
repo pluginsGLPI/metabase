@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Emiliano Cagliari <thelordbat@gmail.com>, 2018
+# Arkham_1997, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-29 01:06+0000\n"
+"POT-Creation-Date: 2025-10-01 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: Emiliano Cagliari <thelordbat@gmail.com>, 2018\n"
+"Last-Translator: Arkham_1997, 2025\n"
 "Language-Team: Spanish (Argentina) (https://app.transifex.com/teclib/teams/28042/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr "Puerto de Metabase"
 
 #: templates/config.html.twig
 msgid "Username (metabase admin)"
-msgstr ""
+msgstr "Nombre de usuario (administrador de metabase)"
 
 #: templates/config.html.twig inc/config.class.php:143
 msgid "Metabase embedded token (to display dashboard in GLPI)"
@@ -79,7 +80,7 @@ msgstr "API: obtener base de datos GLPI"
 
 #: inc/apiclient.class.php:123
 msgid "Unable to retrieve Metabase version"
-msgstr ""
+msgstr "No se pudo obtener la versión de Metabase"
 
 #: inc/apiclient.class.php:194
 msgid "No auto-generated GLPI database found"
@@ -146,7 +147,7 @@ msgstr "(Re) generar modelo de datos en Metabase"
 
 #: inc/config.class.php:268
 msgid "Show reports and dashboards specifications"
-msgstr ""
+msgstr "Mostrar especificaciones de reportes y paneles"
 
 #: inc/profileright.class.php:96
 msgid "Rights management"
@@ -162,11 +163,11 @@ msgstr "No permitir el acceso a todos"
 
 #: front/collections.php:32
 msgid "Metabase collections"
-msgstr ""
+msgstr "Colecciones de Metabase"
 
 #: front/collections.php:42
 msgid "Reports and dashboards specifications"
-msgstr ""
+msgstr "Especificaciones de reportes y paneles"
 
 #: front/collections.php:61
 msgid "Extract questions from metabase:"
@@ -179,6 +180,8 @@ msgstr "Extrae los paneles de la metabase:"
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+"No se puede acceder a los datos de Metabase. Por favor, revisá la "
+"configuración del complemento."
 
 #: front/profileright.form.php:41 front/profileright.form.php:68
 msgid "Invalid request."
