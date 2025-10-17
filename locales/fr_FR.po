@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-29 01:06+0000\n"
+"POT-Creation-Date: 2025-10-17 01:08+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: EpicIT33, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/teclib/teams/28042/fr_FR/)\n"
@@ -62,6 +62,10 @@ msgstr "Délai d'expiration pour envoyer les données (en secondes)"
 msgid "API status"
 msgstr "Status de l'API"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tableau de bord Metabase"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API : connexion"
@@ -104,10 +108,6 @@ msgid ""
 msgstr ""
 "La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
 "pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tableau de bord Metabase"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"

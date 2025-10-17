@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-29 01:06+0000\n"
+"POT-Creation-Date: 2025-10-17 01:08+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>, 2020\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -57,6 +57,10 @@ msgstr "Istek vremena za slanje podataka (u sekundama)"
 msgid "API status"
 msgstr "Stanje API-a"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase nadzorna ploča"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: prijava"
@@ -97,10 +101,6 @@ msgid ""
 msgstr ""
 "Upit za metabase nije uspio jer je operaciji isteklo vrijeme. Možda moraš "
 "povećati istek vremena u konfiguraciji dodataka"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase nadzorna ploča"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"

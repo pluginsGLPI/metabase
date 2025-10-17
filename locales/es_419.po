@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-29 01:06+0000\n"
+"POT-Creation-Date: 2025-10-17 01:08+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Roberto Flores <robertocarlos.floresh@gmail.com>, 2018\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/teclib/teams/28042/es_419/)\n"
@@ -57,6 +57,10 @@ msgstr "Tiempo de espera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estado de la API"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tablero de la metabase"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: Inicio de sesión"
@@ -99,10 +103,6 @@ msgstr ""
 "La consulta a metabase falló debido a que se agotó el tiempo de espera de la"
 " operación. Tal vez debería aumentar el valor de tiempo de espera en la "
 "configuración del complemento."
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tablero de la metabase"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
