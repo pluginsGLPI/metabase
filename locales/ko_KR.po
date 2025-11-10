@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (https://app.transifex.com/teclib/teams/28042/ko_KR/)\n"
@@ -55,10 +55,6 @@ msgstr "데이터 전송 시간 만료 (초 단위)"
 msgid "API status"
 msgstr "API 상태"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "메타베이스 대시보드"
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: 로그인"
@@ -97,6 +93,10 @@ msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
 msgstr "동작 시간 만료로 메타베이스에 대한 질의가 실패했습니다. 아마 플러그인 구성에서 시간 만료 값을 증가해야 할 겁니다."
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "메타베이스 대시보드"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"

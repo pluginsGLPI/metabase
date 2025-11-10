@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: feonsu <feonsu@gmail.com>, 2024\n"
 "Language-Team: Slovak (Slovakia) (https://app.transifex.com/teclib/teams/28042/sk_SK/)\n"
@@ -57,10 +57,6 @@ msgstr "Časový limit pre odoslanie dát (v sekundách)"
 msgid "API status"
 msgstr "Stav API"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase dashboard"
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: prihlásenie"
@@ -101,6 +97,10 @@ msgid ""
 msgstr ""
 "Dotaz do metabase zlyhal pretože časový limit operácie vypršal. Možno by ste"
 " mali hodnotu časového limitu zvýšiť v konfigurácii pluginu"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase dashboard"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"

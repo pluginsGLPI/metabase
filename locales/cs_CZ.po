@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>, 2025\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/teclib/teams/28042/cs_CZ/)\n"
@@ -58,10 +58,6 @@ msgstr "Časový limit pro odeslání dat (v milisekundách)"
 msgid "API status"
 msgstr "Stav API"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Nástěnka Metabase"
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: přihlášení"
@@ -102,6 +98,10 @@ msgid ""
 msgstr ""
 "Dotaz do metabase se nezdařil kvůli překročení časového limitu. Možná byste "
 "měli tento limit zvýšit (v nastavení zásuvného modulu)"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Nástěnka Metabase"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
