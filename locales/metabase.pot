@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,10 +51,6 @@ msgstr ""
 msgid "API status"
 msgstr ""
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr ""
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr ""
@@ -92,6 +88,10 @@ msgstr ""
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
+msgstr ""
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
 msgstr ""
 
 #: inc/config.class.php:40 inc/profileright.class.php:44

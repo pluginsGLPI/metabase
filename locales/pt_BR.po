@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Diego Nobre <diego@koruma.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/teclib/teams/28042/pt_BR/)\n"
@@ -57,10 +57,6 @@ msgstr "Tempo limite para envio de dados (em segundos)"
 msgid "API status"
 msgstr "Status da API"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Painel Metabase"
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: login"
@@ -101,6 +97,10 @@ msgid ""
 msgstr ""
 "A consulta ao Metabase falhou porque a operação atingiu o tempo limite. "
 "Talvez você deva aumentar o valor do tempo limite na configuração do plugin"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Painel Metabase"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"

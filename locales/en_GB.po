@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 01:08+0000\n"
-"PO-Revision-Date: 2025-10-17 01:08+0000\n"
+"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"PO-Revision-Date: 2025-11-10 01:13+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -53,10 +53,6 @@ msgstr "Timeout for sending data (in seconds)"
 msgid "API status"
 msgstr "API status"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase dashboard"
-
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: login"
@@ -97,6 +93,10 @@ msgid ""
 msgstr ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase dashboard"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
