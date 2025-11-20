@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"POT-Creation-Date: 2025-11-20 01:08+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Alan Lehoux, 2025\n"
 "Language-Team: Spanish (Argentina) (https://app.transifex.com/teclib/teams/28042/es_AR/)\n"
@@ -36,23 +36,23 @@ msgstr "Nombre de usuario (administrador de metabase)"
 
 #: templates/config.html.twig inc/config.class.php:143
 msgid "Metabase embedded token (to display dashboard in GLPI)"
-msgstr "Token incrustado en la metabase (para mostrar el tablero en GLPI)"
+msgstr "Token incrustado de Metabase (para mostrar el panel en GLPI)"
 
 #: templates/config.html.twig inc/config.class.php:153
 msgid "Metabase url"
-msgstr "Metabase url"
+msgstr "URL de Metabase"
 
 #: templates/config.html.twig inc/config.class.php:154
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
 msgstr ""
-"Es posible que desee tener una URL de tablero diferente (con https por "
+"Es posible que desees tener una URL de panel diferente (con https, por "
 "ejemplo) que el host (utilizado para enviar los datos)"
 
 #: templates/config.html.twig inc/config.class.php:164
 msgid "Timeout for sending data (in seconds)"
-msgstr "Tiempo de espera para enviar datos (en segundos)"
+msgstr "Tiempo de espera para el envío de datos (en segundos)"
 
 #: templates/config.html.twig inc/config.class.php:187
 msgid "API status"
@@ -76,7 +76,7 @@ msgstr "API: obtener bases de datos"
 
 #: inc/apiclient.class.php:66
 msgid "API: get GLPI database"
-msgstr "API: obtener base de datos GLPI"
+msgstr "API: obtener base de datos de GLPI"
 
 #: inc/apiclient.class.php:123
 msgid "Unable to retrieve Metabase version"
@@ -84,26 +84,25 @@ msgstr "No se pudo obtener la versión de Metabase"
 
 #: inc/apiclient.class.php:194
 msgid "No auto-generated GLPI database found"
-msgstr "No se encontró una base de datos GLPI autogenerada"
+msgstr "No se encontró una base de datos de GLPI autogenerada"
 
 #: inc/apiclient.class.php:701
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
-msgstr ""
-"La habilitación de la visualización incrustada falla para el tablero %s."
+msgstr "La activación de la visualización incrustada falla para el panel %s."
 
 #: inc/apiclient.class.php:890
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
 msgstr ""
-"La consulta a metabase falló debido a que se agotó el tiempo de espera de la"
-" operación. Tal vez debería aumentar el valor de tiempo de espera en la "
-"configuración del complemento"
+"La consulta a metabase falló porque la operación agotó el tiempo de espera. "
+"Tal vez deberías aumentar el valor del tiempo de espera en la configuración "
+"del complemento"
 
 #: inc/dashboard.class.php:43
 msgid "Metabase dashboard"
-msgstr "Panel Metabase"
+msgstr "Panel de Metabase"
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -111,15 +110,15 @@ msgstr "Metabase"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
-msgstr "nombre de usuario (administrador de la metabase)"
+msgstr "nombre de usuario (administrador de metabase)"
 
 #: inc/config.class.php:206
 msgid "Last Error"
-msgstr "Ultimo Error"
+msgstr "Último Error"
 
 #: inc/config.class.php:219
 msgid "Action(s)"
-msgstr "Accion(es)"
+msgstr "Acción(es)"
 
 #: inc/config.class.php:229
 msgid "Previously stored database is not existing anymore."
@@ -127,7 +126,7 @@ msgstr "La base de datos previamente almacenada ya no existe."
 
 #: inc/config.class.php:231
 msgid "Create GLPI database in local Metabase"
-msgstr "Crear base de datos GLPI en Metabase local"
+msgstr "Crear base de datos de GLPI en Metabase local"
 
 #: inc/config.class.php:239
 msgid "OR set an existing database: "
@@ -143,15 +142,15 @@ msgstr "Enviar informes y paneles en Metabase"
 
 #: inc/config.class.php:260
 msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re) generar modelo de datos en Metabase"
+msgstr "(Re)generar modelo de datos en Metabase"
 
 #: inc/config.class.php:268
 msgid "Show reports and dashboards specifications"
-msgstr "Mostrar especificaciones de reportes y paneles"
+msgstr "Mostrar especificaciones de informes y paneles"
 
 #: inc/profileright.class.php:96
 msgid "Rights management"
-msgstr "Gestión de Permisos"
+msgstr "Gestión de permisos"
 
 #: inc/profileright.class.php:105
 msgid "Allow access to all"
@@ -159,7 +158,7 @@ msgstr "Permitir acceso a todos"
 
 #: inc/profileright.class.php:110
 msgid "Disallow access to all"
-msgstr "No permitir el acceso a todos"
+msgstr "Denegar acceso a todos"
 
 #: front/collections.php:32
 msgid "Metabase collections"
