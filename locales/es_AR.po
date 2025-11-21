@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-20 01:08+0000\n"
+"POT-Creation-Date: 2025-11-21 01:09+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Alan Lehoux, 2025\n"
 "Language-Team: Spanish (Argentina) (https://app.transifex.com/teclib/teams/28042/es_AR/)\n"
@@ -166,7 +166,7 @@ msgstr "Colecciones de Metabase"
 
 #: front/collections.php:42
 msgid "Reports and dashboards specifications"
-msgstr "Especificaciones de reportes y paneles"
+msgstr "Especificaciones de informes y paneles"
 
 #: front/collections.php:61
 msgid "Extract questions from metabase:"
@@ -184,4 +184,4 @@ msgstr ""
 
 #: front/profileright.form.php:41 front/profileright.form.php:68
 msgid "Invalid request."
-msgstr "Solicitud No Valida"
+msgstr "Solicitud inválida."
