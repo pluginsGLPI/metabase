@@ -913,7 +913,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         // cast body as string, guzzle return strems
         $json = (string) $response->getBody();
-        $data = json_decode($json, true);
+        $data = empty($json) ? [] : json_decode($json, true);
 
         //append metadata
         if ($params['_with_metadata']) {
