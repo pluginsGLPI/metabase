@@ -85,6 +85,14 @@ class PluginMetabaseProfileright extends CommonDBTM
             return false;
         }
 
+        $apiclient  = new PluginMetabaseAPIClient();
+        $dashboards = $apiclient->getDashboards();
+
+        if (!$dashboards) {
+            echo '<div class="alert alert-warning">' . __s('No dashboards found in Metabase.', 'metabase') . '</div>';
+            return false;
+        }
+
         echo '<form method="post" action="' . self::getFormURL() . '">';
         echo '<div class="spaced" id="tabsbody">';
         echo '<table class="tab_cadre_fixe" id="mainformtable">';
@@ -112,9 +120,6 @@ class PluginMetabaseProfileright extends CommonDBTM
             echo '</td>';
             echo '</tr>';
         }
-
-        $apiclient  = new PluginMetabaseAPIClient();
-        $dashboards = $apiclient->getDashboards();
 
         foreach ($dashboards as $dashboard) {
             echo '<tr class="tab_bg_1">';
