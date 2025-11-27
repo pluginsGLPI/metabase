@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"POT-Creation-Date: 2025-11-25 01:10+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Emanuele Trotta <emanuele.trotta@axians.it>, 2020\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/teclib/teams/28042/it_IT/)\n"
@@ -149,15 +149,19 @@ msgstr "(Ri)genera datamodel in Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Mostra le specifiche di report e dashboard"
 
-#: inc/profileright.class.php:96
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
 msgid "Rights management"
 msgstr "Gestione dei diritti"
 
-#: inc/profileright.class.php:105
+#: inc/profileright.class.php:113
 msgid "Allow access to all"
 msgstr "Consenti l'accesso a tutti"
 
-#: inc/profileright.class.php:110
+#: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Non consentire l'accesso a tutti"
 

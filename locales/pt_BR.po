@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"POT-Creation-Date: 2025-11-25 01:10+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Diego Nobre <diego@koruma.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/teclib/teams/28042/pt_BR/)\n"
@@ -146,15 +146,19 @@ msgstr "(Re)gerar modelo de dados no Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar especificações de relatórios e painéis"
 
-#: inc/profileright.class.php:96
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
 msgid "Rights management"
 msgstr "Gestão de permissões"
 
-#: inc/profileright.class.php:105
+#: inc/profileright.class.php:113
 msgid "Allow access to all"
 msgstr "Permitir acesso a todos"
 
-#: inc/profileright.class.php:110
+#: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Proibir acesso a todos"
 
