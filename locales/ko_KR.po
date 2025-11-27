@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"POT-Creation-Date: 2025-11-25 01:10+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (https://app.transifex.com/teclib/teams/28042/ko_KR/)\n"
@@ -142,15 +142,19 @@ msgstr "메타베이스에 데이터모델 (재)생성"
 msgid "Show reports and dashboards specifications"
 msgstr "보고서와 대시보드 명세서 보기"
 
-#: inc/profileright.class.php:96
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
 msgid "Rights management"
 msgstr "권한 관리"
 
-#: inc/profileright.class.php:105
+#: inc/profileright.class.php:113
 msgid "Allow access to all"
 msgstr "전체에 접근 허용"
 
-#: inc/profileright.class.php:110
+#: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "전체에 접근 금지"
 

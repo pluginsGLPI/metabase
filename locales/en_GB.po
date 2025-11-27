@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-21 01:09+0000\n"
-"PO-Revision-Date: 2025-11-21 01:09+0000\n"
+"POT-Creation-Date: 2025-11-27 01:09+0000\n"
+"PO-Revision-Date: 2025-11-27 01:09+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -142,15 +142,19 @@ msgstr "(Re)generate datamodel in Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Show reports and dashboards specifications"
 
-#: inc/profileright.class.php:96
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr "No dashboards found in Metabase."
+
+#: inc/profileright.class.php:104
 msgid "Rights management"
 msgstr "Rights management"
 
-#: inc/profileright.class.php:105
+#: inc/profileright.class.php:113
 msgid "Allow access to all"
 msgstr "Allow access to all"
 
-#: inc/profileright.class.php:110
+#: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Disallow access to all"
 

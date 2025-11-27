@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 01:13+0000\n"
+"POT-Creation-Date: 2025-11-25 01:10+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: feonsu <feonsu@gmail.com>, 2024\n"
 "Language-Team: Slovak (Slovakia) (https://app.transifex.com/teclib/teams/28042/sk_SK/)\n"
@@ -146,15 +146,19 @@ msgstr "Znova generovať dátový model v Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Zobraziť špecifikáciu reportov a dashboardov"
 
-#: inc/profileright.class.php:96
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
 msgid "Rights management"
 msgstr "Správa oprávnení"
 
-#: inc/profileright.class.php:105
+#: inc/profileright.class.php:113
 msgid "Allow access to all"
 msgstr "Umožniť prístup ku všetkému"
 
-#: inc/profileright.class.php:110
+#: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Zakázať prístup ku všetkému"
 
