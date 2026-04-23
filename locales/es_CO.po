@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 01:23+0000\n"
+"POT-Creation-Date: 2026-04-23 02:05+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Haider López <hlopez@itsoluciones.com.co>, 2019\n"
 "Language-Team: Spanish (Colombia) (https://app.transifex.com/teclib/teams/28042/es_CO/)\n"
@@ -57,6 +57,32 @@ msgstr "Tiempo fuera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estatus API"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Respuesta invalida."
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Colecciones de metabase"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Especificaciones de informes y cuadros de mando"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Extraer preguntas desde la metabase:"
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Extraer tableros desde la metabase:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"No se puede acceder a los datos de la metabase. Verifique la configuración "
+"del complemento."
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: acceso"
@@ -101,13 +127,25 @@ msgstr ""
 "debería aumentar el valor de tiempo de espera en la configuración del "
 "complemento"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tablero de metabase"
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
 msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestión de permisos"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Permitir acceso a todo"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Deshabilitar acceso a todo"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -149,44 +187,6 @@ msgstr "(Re)generar modelo de datos en metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar informes y especificaciones de paneles"
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestión de permisos"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Permitir acceso a todo"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Deshabilitar acceso a todo"
-
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "Colecciones de metabase"
-
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "Especificaciones de informes y cuadros de mando"
-
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "Extraer preguntas desde la metabase:"
-
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "Extraer tableros desde la metabase:"
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"No se puede acceder a los datos de la metabase. Verifique la configuración "
-"del complemento."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Respuesta invalida."
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tablero de metabase"

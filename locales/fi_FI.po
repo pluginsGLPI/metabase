@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 01:23+0000\n"
+"POT-Creation-Date: 2026-04-23 02:05+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Markku Vepsä, 2018\n"
 "Language-Team: Finnish (Finland) (https://app.transifex.com/teclib/teams/28042/fi_FI/)\n"
@@ -58,6 +58,30 @@ msgstr "Tiedon lähettämisen katkaisuaika (sekunneissa)"
 msgid "API status"
 msgstr "API:n tila"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Virheellinen pyyntö."
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr ""
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr ""
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Poimi kysymyksiä Metabasesta:"
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Poimi hallintapaneeleita Metabasesta:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: kirjautuminen"
@@ -100,13 +124,25 @@ msgstr ""
 "Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
 "tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase-hallintapaneeli"
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
 msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Käyttöoikeuksien hallinta"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Salli pääsy kaikille"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Estää pääsyn kaikille"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -148,42 +184,6 @@ msgstr "Luo uudelleen Metabse-tietomalli "
 msgid "Show reports and dashboards specifications"
 msgstr ""
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Käyttöoikeuksien hallinta"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Salli pääsy kaikille"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Estää pääsyn kaikille"
-
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr ""
-
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr ""
-
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "Poimi kysymyksiä Metabasesta:"
-
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "Poimi hallintapaneeleita Metabasesta:"
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Virheellinen pyyntö."
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase-hallintapaneeli"

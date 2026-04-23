@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 01:23+0000\n"
+"POT-Creation-Date: 2026-04-23 02:05+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: DWXXX, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -57,6 +57,30 @@ msgstr "数据发送超时 (in seconds)"
 msgid "API status"
 msgstr "API 状态"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "无效请求。 "
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Metabase 集合"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "报表和看板规格"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "从metabase中提取问题："
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "从Metabase中提取仪表板："
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr "无法访问Metabase数据。请检查插件配置。"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API：登录"
@@ -96,13 +120,25 @@ msgid ""
 "increase the timeout value in plugin configuration"
 msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase仪表盘"
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
 msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "权限管理"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "允许全部访问"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "禁止全部访问"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -144,42 +180,6 @@ msgstr "（重新）在Metabase中生成数据模型"
 msgid "Show reports and dashboards specifications"
 msgstr "显示报表和看板规格"
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "权限管理"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "允许全部访问"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "禁止全部访问"
-
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "Metabase 集合"
-
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "报表和看板规格"
-
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "从metabase中提取问题："
-
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "从Metabase中提取仪表板："
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr "无法访问Metabase数据。请检查插件配置。"
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "无效请求。 "
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase仪表盘"
