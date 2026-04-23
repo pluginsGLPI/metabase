@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 01:23+0000\n"
+"POT-Creation-Date: 2026-04-23 02:05+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: EpicIT33, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/teclib/teams/28042/fr_FR/)\n"
@@ -62,6 +62,32 @@ msgstr "Délai d'expiration pour envoyer les données (en secondes)"
 msgid "API status"
 msgstr "Status de l'API"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Requête invalide"
+
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Collections Metabase"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Spécifications des rapports et tableaux de bord"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Extraire les question depuis Metabase : "
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Extraire les tableaux de bords depuis Metabase : "
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"Impossible d'accéder aux données de Metabase. Veuillez vérifier la "
+"configuration du plugin."
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API : connexion"
@@ -105,13 +131,25 @@ msgstr ""
 "La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
 "pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tableau de bord Metabase"
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
 msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestion des droits"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Autoriser l’accès pour tous"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Interdire l'accès à tous"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -153,44 +191,6 @@ msgstr "(Re)générer le modèle de données dans Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Voir les spécifications des rapports et tableaux de bord"
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestion des droits"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Autoriser l’accès pour tous"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Interdire l'accès à tous"
-
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "Collections Metabase"
-
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "Spécifications des rapports et tableaux de bord"
-
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "Extraire les question depuis Metabase : "
-
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "Extraire les tableaux de bords depuis Metabase : "
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"Impossible d'accéder aux données de Metabase. Veuillez vérifier la "
-"configuration du plugin."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Requête invalide"
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tableau de bord Metabase"
