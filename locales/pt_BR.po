@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-14 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Diego Nobre <diego@koruma.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/teclib/teams/28042/pt_BR/)\n"
@@ -57,10 +57,6 @@ msgstr "Tempo limite para envio de dados (em segundos)"
 msgid "API status"
 msgstr "Status da API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Requisição inválida."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Coleções Metabase"
@@ -82,46 +78,9 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Incapaz de acessar os dados do Metabase. Verifique a configuração do plugin."
 
-#: inc/apiclient.class.php:58
-msgid "API: login"
-msgstr "API: login"
-
-#: inc/apiclient.class.php:60
-msgid "API: get current user"
-msgstr "API: obter o usuário atual"
-
-#: inc/apiclient.class.php:62
-msgid "API: get users"
-msgstr "API: obter usuários"
-
-#: inc/apiclient.class.php:64
-msgid "API: get databases"
-msgstr "API: obter bancos de dados"
-
-#: inc/apiclient.class.php:66
-msgid "API: get GLPI database"
-msgstr "API: obter banco de dados GLPI"
-
-#: inc/apiclient.class.php:123
-msgid "Unable to retrieve Metabase version"
-msgstr ""
-
-#: inc/apiclient.class.php:194
-msgid "No auto-generated GLPI database found"
-msgstr "Nenhum banco de dados GLPI gerado automaticamente foi encontrado"
-
-#: inc/apiclient.class.php:701
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "Falha ao ativar a exibição incorporada para o painel %s."
-
-#: inc/apiclient.class.php:890
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"A consulta ao Metabase falhou porque a operação atingiu o tempo limite. "
-"Talvez você deva aumentar o valor do tempo limite na configuração do plugin"
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Requisição inválida."
 
 #: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
@@ -142,6 +101,10 @@ msgstr "Permitir acesso a todos"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Proibir acesso a todos"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Painel Metabase"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -183,6 +146,43 @@ msgstr "(Re)gerar modelo de dados no Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar especificações de relatórios e painéis"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Painel Metabase"
+#: inc/apiclient.class.php:58
+msgid "API: login"
+msgstr "API: login"
+
+#: inc/apiclient.class.php:60
+msgid "API: get current user"
+msgstr "API: obter o usuário atual"
+
+#: inc/apiclient.class.php:62
+msgid "API: get users"
+msgstr "API: obter usuários"
+
+#: inc/apiclient.class.php:64
+msgid "API: get databases"
+msgstr "API: obter bancos de dados"
+
+#: inc/apiclient.class.php:66
+msgid "API: get GLPI database"
+msgstr "API: obter banco de dados GLPI"
+
+#: inc/apiclient.class.php:123
+msgid "Unable to retrieve Metabase version"
+msgstr ""
+
+#: inc/apiclient.class.php:194
+msgid "No auto-generated GLPI database found"
+msgstr "Nenhum banco de dados GLPI gerado automaticamente foi encontrado"
+
+#: inc/apiclient.class.php:701
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "Falha ao ativar a exibição incorporada para o painel %s."
+
+#: inc/apiclient.class.php:890
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"A consulta ao Metabase falhou porque a operação atingiu o tempo limite. "
+"Talvez você deva aumentar o valor do tempo limite na configuração do plugin"

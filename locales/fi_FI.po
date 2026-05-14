@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-14 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Markku Vepsä, 2018\n"
 "Language-Team: Finnish (Finland) (https://app.transifex.com/teclib/teams/28042/fi_FI/)\n"
@@ -58,10 +58,6 @@ msgstr "Tiedon lähettämisen katkaisuaika (sekunneissa)"
 msgid "API status"
 msgstr "API:n tila"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Virheellinen pyyntö."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr ""
@@ -80,6 +76,74 @@ msgstr "Poimi hallintapaneeleita Metabasesta:"
 
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Virheellinen pyyntö."
+
+#: inc/profileright.class.php:44 inc/config.class.php:40
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Käyttöoikeuksien hallinta"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Salli pääsy kaikille"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Estää pääsyn kaikille"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase-hallintapaneeli"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "käyttäjätunnus (metabase ylläpitäjä)"
+
+#: inc/config.class.php:206
+msgid "Last Error"
+msgstr "Viimeisin virhe"
+
+#: inc/config.class.php:219
+msgid "Action(s)"
+msgstr "Toimet"
+
+#: inc/config.class.php:229
+msgid "Previously stored database is not existing anymore."
+msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
+
+#: inc/config.class.php:231
+msgid "Create GLPI database in local Metabase"
+msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
+
+#: inc/config.class.php:239
+msgid "OR set an existing database: "
+msgstr "TAI aseta olemassa olevaan tietokantaan:"
+
+#: inc/config.class.php:243
+msgid "Set database"
+msgstr "Aseta tietokanta"
+
+#: inc/config.class.php:253
+msgid "Push reports and dashboards in Metabase"
+msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
+
+#: inc/config.class.php:260
+msgid "(Re)generate datamodel in Metabase"
+msgstr "Luo uudelleen Metabse-tietomalli "
+
+#: inc/config.class.php:268
+msgid "Show reports and dashboards specifications"
 msgstr ""
 
 #: inc/apiclient.class.php:58
@@ -123,67 +187,3 @@ msgid ""
 msgstr ""
 "Metabase-kysely epäonnistui, koska toiminto aikakatkaistiin. Voit "
 "tarvittaessa lisätä aikakatkaisun arvoa liitännäisen asetuksissa."
-
-#: inc/profileright.class.php:44 inc/config.class.php:40
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Käyttöoikeuksien hallinta"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Salli pääsy kaikille"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Estää pääsyn kaikille"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "käyttäjätunnus (metabase ylläpitäjä)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "Viimeisin virhe"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "Toimet"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "Aiemmin tallennettua tietokantaa ei ole enää olemassa."
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "Luo GLPI-tietokanta paikalliseen Metabase:iin"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "TAI aseta olemassa olevaan tietokantaan:"
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "Aseta tietokanta"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "\"Työnnä\" raportit ja hallintapaneelit Metabase:iin"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "Luo uudelleen Metabse-tietomalli "
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr ""
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase-hallintapaneeli"

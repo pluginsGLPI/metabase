@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-14 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Haider López <hlopez@itsoluciones.com.co>, 2019\n"
 "Language-Team: Spanish (Colombia) (https://app.transifex.com/teclib/teams/28042/es_CO/)\n"
@@ -57,10 +57,6 @@ msgstr "Tiempo fuera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estatus API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Respuesta invalida."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Colecciones de metabase"
@@ -82,6 +78,74 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "No se puede acceder a los datos de la metabase. Verifique la configuración "
 "del complemento."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Respuesta invalida."
+
+#: inc/profileright.class.php:44 inc/config.class.php:40
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestión de permisos"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Permitir acceso a todo"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Deshabilitar acceso a todo"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tablero de metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "nombre de usuario (admin de metabase)"
+
+#: inc/config.class.php:206
+msgid "Last Error"
+msgstr "Último error"
+
+#: inc/config.class.php:219
+msgid "Action(s)"
+msgstr "Acción(es)"
+
+#: inc/config.class.php:229
+msgid "Previously stored database is not existing anymore."
+msgstr "La base de datos previamente almacenada ya no existe."
+
+#: inc/config.class.php:231
+msgid "Create GLPI database in local Metabase"
+msgstr "Crear una base de datos GLPI en la metabase local"
+
+#: inc/config.class.php:239
+msgid "OR set an existing database: "
+msgstr "O establezca una base de datos existente:"
+
+#: inc/config.class.php:243
+msgid "Set database"
+msgstr "Establecer base de datos"
+
+#: inc/config.class.php:253
+msgid "Push reports and dashboards in Metabase"
+msgstr "Notificaciones de reportes y tableros en la metabase"
+
+#: inc/config.class.php:260
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re)generar modelo de datos en metabase"
+
+#: inc/config.class.php:268
+msgid "Show reports and dashboards specifications"
+msgstr "Mostrar informes y especificaciones de paneles"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -126,67 +190,3 @@ msgstr ""
 "La consulta a la metabase falló porque la operación se agotó. Tal vez "
 "debería aumentar el valor de tiempo de espera en la configuración del "
 "complemento"
-
-#: inc/profileright.class.php:44 inc/config.class.php:40
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestión de permisos"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Permitir acceso a todo"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Deshabilitar acceso a todo"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "nombre de usuario (admin de metabase)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "Último error"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "Acción(es)"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "La base de datos previamente almacenada ya no existe."
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "Crear una base de datos GLPI en la metabase local"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "O establezca una base de datos existente:"
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "Establecer base de datos"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "Notificaciones de reportes y tableros en la metabase"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)generar modelo de datos en metabase"
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr "Mostrar informes y especificaciones de paneles"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tablero de metabase"

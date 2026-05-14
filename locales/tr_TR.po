@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-14 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2025\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/teclib/teams/28042/tr_TR/)\n"
@@ -57,10 +57,6 @@ msgstr "Veri gönderme zaman aşımı (saniye)"
 msgid "API status"
 msgstr "API durumu"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "İstek geçersiz."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase derlemeleri"
@@ -83,46 +79,9 @@ msgstr ""
 "Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
 "denetleyin."
 
-#: inc/apiclient.class.php:58
-msgid "API: login"
-msgstr "API: Oturum açma"
-
-#: inc/apiclient.class.php:60
-msgid "API: get current user"
-msgstr "API: Geçerli kullanıcıyı al"
-
-#: inc/apiclient.class.php:62
-msgid "API: get users"
-msgstr "API: Kullanıcıları al"
-
-#: inc/apiclient.class.php:64
-msgid "API: get databases"
-msgstr "API: Veri tabanlarını al"
-
-#: inc/apiclient.class.php:66
-msgid "API: get GLPI database"
-msgstr "API: GLPI veri tabanını al"
-
-#: inc/apiclient.class.php:123
-msgid "Unable to retrieve Metabase version"
-msgstr "Metabase sürümü alınamadı"
-
-#: inc/apiclient.class.php:194
-msgid "No auto-generated GLPI database found"
-msgstr "Otomatik olarak üretilmiş bir GLPI veri tabanı bulunamadı"
-
-#: inc/apiclient.class.php:701
-#, php-format
-msgid "Enabling embedded display fails for dashboard %s."
-msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
-
-#: inc/apiclient.class.php:890
-msgid ""
-"Query to metabase failed because operation timed out. Maybe you should "
-"increase the timeout value in plugin configuration"
-msgstr ""
-"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
-"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "İstek geçersiz."
 
 #: inc/profileright.class.php:44 inc/config.class.php:40
 msgid "Metabase"
@@ -143,6 +102,10 @@ msgstr "Tümüne erişim izni ver"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Tümünden erişim iznini kaldır"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase panosu"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -184,6 +147,43 @@ msgstr "Metabase veri modelini (yeniden) oluştur"
 msgid "Show reports and dashboards specifications"
 msgstr "Raporların ve panoların özelliklerini görüntüle"
 
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase panosu"
+#: inc/apiclient.class.php:58
+msgid "API: login"
+msgstr "API: Oturum açma"
+
+#: inc/apiclient.class.php:60
+msgid "API: get current user"
+msgstr "API: Geçerli kullanıcıyı al"
+
+#: inc/apiclient.class.php:62
+msgid "API: get users"
+msgstr "API: Kullanıcıları al"
+
+#: inc/apiclient.class.php:64
+msgid "API: get databases"
+msgstr "API: Veri tabanlarını al"
+
+#: inc/apiclient.class.php:66
+msgid "API: get GLPI database"
+msgstr "API: GLPI veri tabanını al"
+
+#: inc/apiclient.class.php:123
+msgid "Unable to retrieve Metabase version"
+msgstr "Metabase sürümü alınamadı"
+
+#: inc/apiclient.class.php:194
+msgid "No auto-generated GLPI database found"
+msgstr "Otomatik olarak üretilmiş bir GLPI veri tabanı bulunamadı"
+
+#: inc/apiclient.class.php:701
+#, php-format
+msgid "Enabling embedded display fails for dashboard %s."
+msgstr "%s panosu için gömülü ekran etkinleştiriliyor."
+
+#: inc/apiclient.class.php:890
+msgid ""
+"Query to metabase failed because operation timed out. Maybe you should "
+"increase the timeout value in plugin configuration"
+msgstr ""
+"İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
+"yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."

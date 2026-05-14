@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-14 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Roberto Flores <robertocarlos.floresh@gmail.com>, 2018\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/teclib/teams/28042/es_419/)\n"
@@ -57,10 +57,6 @@ msgstr "Tiempo de espera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estado de la API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Solicitud no válida."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr ""
@@ -79,6 +75,74 @@ msgstr "Extrae los paneles de la metabase:"
 
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Solicitud no válida."
+
+#: inc/profileright.class.php:44 inc/config.class.php:40
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestión de Derechos"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Permitir acceso a todos"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "No permitir el acceso a todos"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tablero de la metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "Nombre de usuario (administrador de metabase)"
+
+#: inc/config.class.php:206
+msgid "Last Error"
+msgstr "Último error"
+
+#: inc/config.class.php:219
+msgid "Action(s)"
+msgstr "Acción (es)"
+
+#: inc/config.class.php:229
+msgid "Previously stored database is not existing anymore."
+msgstr "La base de datos previamente almacenada ya no existe."
+
+#: inc/config.class.php:231
+msgid "Create GLPI database in local Metabase"
+msgstr "Crear base de datos GLPI en Metabase local"
+
+#: inc/config.class.php:239
+msgid "OR set an existing database: "
+msgstr "O establecer una base de datos existente:"
+
+#: inc/config.class.php:243
+msgid "Set database"
+msgstr "Establecer base de datos"
+
+#: inc/config.class.php:253
+msgid "Push reports and dashboards in Metabase"
+msgstr "Enviar informes y paneles en Metabase"
+
+#: inc/config.class.php:260
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re) generar modelo de datos en Metabase"
+
+#: inc/config.class.php:268
+msgid "Show reports and dashboards specifications"
 msgstr ""
 
 #: inc/apiclient.class.php:58
@@ -123,67 +187,3 @@ msgstr ""
 "La consulta a metabase falló debido a que se agotó el tiempo de espera de la"
 " operación. Tal vez debería aumentar el valor de tiempo de espera en la "
 "configuración del complemento."
-
-#: inc/profileright.class.php:44 inc/config.class.php:40
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestión de Derechos"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Permitir acceso a todos"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "No permitir el acceso a todos"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "Nombre de usuario (administrador de metabase)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "Último error"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "Acción (es)"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "La base de datos previamente almacenada ya no existe."
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "Crear base de datos GLPI en Metabase local"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "O establecer una base de datos existente:"
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "Establecer base de datos"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "Enviar informes y paneles en Metabase"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re) generar modelo de datos en Metabase"
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr ""
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tablero de la metabase"
