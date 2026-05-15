@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-15 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Rui Melo <viper5000pt@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Portugal) (https://app.transifex.com/teclib/teams/28042/pt_PT/)\n"
@@ -57,10 +57,6 @@ msgstr "Tempo limite para envio de dados (em segundos)"
 msgid "API status"
 msgstr "Status da API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Pedido inválido."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr ""
@@ -80,6 +76,10 @@ msgstr "Extraia dashboards da metabase:"
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Pedido inválido."
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -122,25 +122,9 @@ msgstr ""
 "Consulta à metabase falhou porque a operação expirou. Talvez deva aumentar o"
 " valor de tempo limite na configuração do plugin"
 
-#: inc/profileright.class.php:44 inc/config.class.php:40
+#: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
 msgstr "Metabase"
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestão de direitos"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Permitir o acesso a todos os"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Não permitir o acesso a todos"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -181,6 +165,22 @@ msgstr "Gerar/Regenerar datamodel na metabase"
 #: inc/config.class.php:268
 msgid "Show reports and dashboards specifications"
 msgstr ""
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestão de direitos"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Permitir o acesso a todos os"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Não permitir o acesso a todos"
 
 #: inc/dashboard.class.php:43
 msgid "Metabase dashboard"

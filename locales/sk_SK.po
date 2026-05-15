@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-15 02:38+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: feonsu <feonsu@gmail.com>, 2024\n"
 "Language-Team: Slovak (Slovakia) (https://app.transifex.com/teclib/teams/28042/sk_SK/)\n"
@@ -57,10 +57,6 @@ msgstr "Časový limit pre odoslanie dát (v sekundách)"
 msgid "API status"
 msgstr "Stav API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Neplatná požiadavka."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase kolekcie"
@@ -82,6 +78,10 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Nepodarilo sa získať prístup k dátam Metabase. Skontrolujte konfiguráciu "
 "pluginu."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Neplatná požiadavka."
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -124,25 +124,9 @@ msgstr ""
 "Dotaz do metabase zlyhal pretože časový limit operácie vypršal. Možno by ste"
 " mali hodnotu časového limitu zvýšiť v konfigurácii pluginu"
 
-#: inc/profileright.class.php:44 inc/config.class.php:40
+#: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
 msgstr "Metabase"
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Správa oprávnení"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Umožniť prístup ku všetkému"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Zakázať prístup ku všetkému"
 
 #: inc/config.class.php:113
 msgid "username (metabase admin)"
@@ -183,6 +167,22 @@ msgstr "Znova generovať dátový model v Metabase"
 #: inc/config.class.php:268
 msgid "Show reports and dashboards specifications"
 msgstr "Zobraziť špecifikáciu reportov a dashboardov"
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Správa oprávnení"
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Umožniť prístup ku všetkému"
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Zakázať prístup ku všetkému"
 
 #: inc/dashboard.class.php:43
 msgid "Metabase dashboard"

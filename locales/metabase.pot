@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 02:05+0000\n"
+"POT-Creation-Date: 2026-05-15 02:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,10 +51,6 @@ msgstr ""
 msgid "API status"
 msgstr ""
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr ""
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr ""
@@ -73,6 +69,10 @@ msgstr ""
 
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
 msgstr ""
 
 #: inc/apiclient.class.php:58
@@ -114,24 +114,8 @@ msgid ""
 "increase the timeout value in plugin configuration"
 msgstr ""
 
-#: inc/profileright.class.php:44 inc/config.class.php:40
+#: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
-msgstr ""
-
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
-
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr ""
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr ""
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
 msgstr ""
 
 #: inc/config.class.php:113
@@ -172,6 +156,22 @@ msgstr ""
 
 #: inc/config.class.php:268
 msgid "Show reports and dashboards specifications"
+msgstr ""
+
+#: inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
+
+#: inc/profileright.class.php:104
+msgid "Rights management"
+msgstr ""
+
+#: inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr ""
+
+#: inc/profileright.class.php:118
+msgid "Disallow access to all"
 msgstr ""
 
 #: inc/dashboard.class.php:43
