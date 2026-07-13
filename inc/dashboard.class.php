@@ -44,6 +44,58 @@ class PluginMetabaseDashboard extends CommonDBTM
     }
 
     /**
+     * Check if the currently logged-in user is able to view at least one
+     * dashboard, combining profile, group and user based rights.
+     *
+     * CUSTOM FORK: rights are additive (OR) across profile / groups / user.
+     *
+     * @return boolean
+     */
+    public static function canCurrentUserViewDashboards(): bool
+    {
+        if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
+            return true;
+        }
+
+        if (PluginMetabaseItemright::canItemViewDashboards(User::class, Session::getLoginUserID())) {
+            return true;
+        }
+
+        if (PluginMetabaseItemright::canGroupsViewDashboards($_SESSION['glpigroups'] ?? [])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the currently logged-in user is able to view the given
+     * dashboard, combining profile, group and user based rights.
+     *
+     * CUSTOM FORK: rights are additive (OR) across profile / groups / user.
+     *
+     * @param integer $dashboardUuid
+     *
+     * @return boolean
+     */
+    public static function canCurrentUserViewDashboard($dashboardUuid): bool
+    {
+        if (PluginMetabaseProfileright::canProfileViewDashboard($_SESSION['glpiactiveprofile']['id'], $dashboardUuid)) {
+            return true;
+        }
+
+        if (PluginMetabaseItemright::canItemViewDashboard(User::class, Session::getLoginUserID(), $dashboardUuid)) {
+            return true;
+        }
+
+        if (PluginMetabaseItemright::canGroupsViewDashboard($_SESSION['glpigroups'] ?? [], $dashboardUuid)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * {@inheritDoc}
      * @see CommonGLPI::getTabNameForItem()
      */
@@ -51,7 +103,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     {
         switch ($item->getType()) {
             case 'Central':
-                if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
+                if (self::canCurrentUserViewDashboards()) {
                     return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
                 }
 
@@ -69,7 +121,7 @@ class PluginMetabaseDashboard extends CommonDBTM
     {
         switch (get_class($item)) {
             case Central::class:
-                if (PluginMetabaseProfileright::canProfileViewDashboards($_SESSION['glpiactiveprofile']['id'])) {
+                if (self::canCurrentUserViewDashboards()) {
                     self::showForCentral($item, $withtemplate);
                 }
 
@@ -99,10 +151,7 @@ class PluginMetabaseDashboard extends CommonDBTM
                 $dashboards,
                 function ($dashboard) {
                     $isEmbeddingEnabled = $dashboard['enable_embedding'];
-                    $canView            = PluginMetabaseProfileright::canProfileViewDashboard(
-                        $_SESSION['glpiactiveprofile']['id'],
-                        $dashboard['id'],
-                    );
+                    $canView            = self::canCurrentUserViewDashboard($dashboard['id']);
 
                     return $isEmbeddingEnabled && $canView;
                 },
