@@ -72,7 +72,7 @@ class PluginMetabaseDashboard extends CommonDBTM
      * Check if the currently logged-in user is able to view the given
      * dashboard, combining profile, group and user based rights.
      *
-     * CUSTOM FORK: rights are additive (OR) across profile / groups / user.
+     * rights are additive (OR) across profile / groups / user.
      *
      * @param integer $dashboardUuid
      *
