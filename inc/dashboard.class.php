@@ -78,7 +78,7 @@ class PluginMetabaseDashboard extends CommonDBTM
      *
      * @return boolean
      */
-    public static function canCurrentUserViewDashboard($dashboardUuid): bool
+    public static function canCurrentUserViewDashboard(int $dashboardUuid): bool
     {
         if (PluginMetabaseProfileright::canProfileViewDashboard($_SESSION['glpiactiveprofile']['id'], $dashboardUuid)) {
             return true;
