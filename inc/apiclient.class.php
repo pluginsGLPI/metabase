@@ -822,7 +822,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
             'timeout'         => 5,
             'connect_timeout' => 2,
             'debug'           => false,
-            'verify'          => false,
+            'verify'          => true,
             'query'           => [], // url parameter
             'body'            => '', // raw data to send in body
             'json'            => [], // json data to send

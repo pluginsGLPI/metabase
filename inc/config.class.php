@@ -140,10 +140,11 @@ class PluginMetabaseConfig extends Config
         ]);
 
         echo self::showField([
-            'label' => __s('Metabase embedded token (to display dashboard in GLPI)', 'metabase'),
-            'attrs' => [
+            'inputtype' => 'password',
+            'label'     => __s('Metabase embedded token (to display dashboard in GLPI)', 'metabase'),
+            'attrs'     => [
                 'name'        => 'embedded_token',
-                'value'       => $current_config['embedded_token'],
+                'value'       => '',
                 'placeholder' => '',
                 'required'    => false,
             ],
@@ -202,7 +203,7 @@ class PluginMetabaseConfig extends Config
             echo '</ul>';
 
             $error = $apiclient->getLastError();
-            if (count($error) > 0) {
+            if ($canedit && count($error) > 0) {
                 echo '<h1>' . __s('Last Error', 'metabase') . '</h1>';
                 if (isset($error['exception'])) {
                     echo $error['exception'];
@@ -764,6 +765,10 @@ class PluginMetabaseConfig extends Config
             }
         }
 
+        if (isset($input['embedded_token']) && empty($input['embedded_token'])) {
+            unset($input['embedded_token']);
+        }
+
         return $input;
     }
 
@@ -799,6 +804,21 @@ class PluginMetabaseConfig extends Config
             // Add flag in config to prevent re-encrypt
             Config::setConfigurationValues('plugin:metabase', ['is_password_sodium_encrypted' => 1]);
             Config::deleteConfigurationValues('plugin:metabase', ['is_password_encrypted', 'is_password_random_encrypted']);
+        }
+
+        // Encrypt embedded_token, previously stored in plain text
+        if (!array_key_exists('is_embedded_token_encrypted', $current_config) || !$current_config['is_embedded_token_encrypted']) {
+            if (!empty($current_config['embedded_token'])) {
+                Config::setConfigurationValues(
+                    'plugin:metabase',
+                    [
+                        'embedded_token' => $current_config['embedded_token'],
+                    ],
+                );
+            }
+
+            // Add flag in config to prevent re-encrypt
+            Config::setConfigurationValues('plugin:metabase', ['is_embedded_token_encrypted' => 1]);
         }
 
         // fill config table with default values if missing

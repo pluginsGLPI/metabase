@@ -93,7 +93,7 @@ function plugin_init_metabase()
     $PLUGIN_HOOKS['add_javascript']['metabase'] = 'metabase.js';
 
     // Encryption
-    $PLUGIN_HOOKS['secured_configs']['metabase'] = ['password'];
+    $PLUGIN_HOOKS['secured_configs']['metabase'] = ['password', 'embedded_token'];
 }
 
 
