@@ -6,16 +6,16 @@
 # Translators:
 # liAnGjiA <liangjia@qq.com>, 2018
 # 李赋 <fu792659@163.com>, 2018
-# DWXXX, 2025
+# DWXXX, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 02:38+0000\n"
+"POT-Creation-Date: 2026-08-14 01:22+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
-"Last-Translator: DWXXX, 2025\n"
+"Last-Translator: DWXXX, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,27 +35,31 @@ msgstr "Metabase 端口"
 msgid "Username (metabase admin)"
 msgstr "用户名 (Metabase管理员)"
 
-#: templates/config.html.twig inc/config.class.php:143
+#: templates/config.html.twig inc/config.class.php:144
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr "Metabase嵌入式令牌（在GLPI中显示仪表板）"
 
-#: templates/config.html.twig inc/config.class.php:153
+#: templates/config.html.twig inc/config.class.php:154
 msgid "Metabase url"
 msgstr "Metabase网址"
 
-#: templates/config.html.twig inc/config.class.php:154
+#: templates/config.html.twig inc/config.class.php:155
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
 msgstr "您可能希望拥有与主机（用于推送数据）不同的仪表板URL（例如，使用https）"
 
-#: templates/config.html.twig inc/config.class.php:164
+#: templates/config.html.twig inc/config.class.php:165
 msgid "Timeout for sending data (in seconds)"
 msgstr "数据发送超时 (in seconds)"
 
-#: templates/config.html.twig inc/config.class.php:187
+#: templates/config.html.twig inc/config.class.php:188
 msgid "API status"
 msgstr "API 状态"
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "无效请求。 "
 
 #: front/collections.php:32
 msgid "Metabase collections"
@@ -77,9 +81,53 @@ msgstr "从Metabase中提取仪表板："
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "无法访问Metabase数据。请检查插件配置。"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "无效请求。 "
+#: inc/config.class.php:40 inc/profileright.class.php:44
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "用户名 (metabase admin)"
+
+#: inc/config.class.php:207
+msgid "Last Error"
+msgstr "上次错误"
+
+#: inc/config.class.php:220
+msgid "Action(s)"
+msgstr "动作"
+
+#: inc/config.class.php:230
+msgid "Previously stored database is not existing anymore."
+msgstr "以前存储的数据库不存在。"
+
+#: inc/config.class.php:232
+msgid "Create GLPI database in local Metabase"
+msgstr "在本地Metabase创建GLPI数据库"
+
+#: inc/config.class.php:240
+msgid "OR set an existing database: "
+msgstr "或者设置现有数据库："
+
+#: inc/config.class.php:244
+msgid "Set database"
+msgstr "设置数据库"
+
+#: inc/config.class.php:254
+msgid "Push reports and dashboards in Metabase"
+msgstr "在Metabase中推送报告和仪表盘"
+
+#: inc/config.class.php:261
+msgid "(Re)generate datamodel in Metabase"
+msgstr "（重新）在Metabase中生成数据模型"
+
+#: inc/config.class.php:269
+msgid "Show reports and dashboards specifications"
+msgstr "显示报表和看板规格"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase仪表盘"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -120,53 +168,9 @@ msgid ""
 "increase the timeout value in plugin configuration"
 msgstr "对metabase的查询失败，因为操作超时。也许你应该增加插件配置中的超时值"
 
-#: inc/config.class.php:40 inc/profileright.class.php:44
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "用户名 (metabase admin)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "上次错误"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "动作"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "以前存储的数据库不存在。"
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "在本地Metabase创建GLPI数据库"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "或者设置现有数据库："
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "设置数据库"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "在Metabase中推送报告和仪表盘"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "（重新）在Metabase中生成数据模型"
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr "显示报表和看板规格"
-
 #: inc/profileright.class.php:92
 msgid "No dashboards found in Metabase."
-msgstr ""
+msgstr "在Metabase中未发现仪表盘"
 
 #: inc/profileright.class.php:104
 msgid "Rights management"
@@ -179,7 +183,3 @@ msgstr "允许全部访问"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "禁止全部访问"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase仪表盘"
