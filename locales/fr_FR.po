@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 02:38+0000\n"
+"POT-Creation-Date: 2026-07-29 02:02+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: EpicIT33, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/teclib/teams/28042/fr_FR/)\n"
@@ -36,16 +36,16 @@ msgstr "Port de Metabase"
 msgid "Username (metabase admin)"
 msgstr ""
 
-#: templates/config.html.twig inc/config.class.php:143
+#: templates/config.html.twig inc/config.class.php:144
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr ""
 "Jeton d'intégration Metabase (pour afficher les tableaux de bord dans GLPI)"
 
-#: templates/config.html.twig inc/config.class.php:153
+#: templates/config.html.twig inc/config.class.php:154
 msgid "Metabase url"
 msgstr "Url de Metabase"
 
-#: templates/config.html.twig inc/config.class.php:154
+#: templates/config.html.twig inc/config.class.php:155
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
@@ -54,13 +54,17 @@ msgstr ""
 "(avec https par exemple) que celle de l'hôte (utilisée pour pousser les "
 "données)"
 
-#: templates/config.html.twig inc/config.class.php:164
+#: templates/config.html.twig inc/config.class.php:165
 msgid "Timeout for sending data (in seconds)"
 msgstr "Délai d'expiration pour envoyer les données (en secondes)"
 
-#: templates/config.html.twig inc/config.class.php:187
+#: templates/config.html.twig inc/config.class.php:188
 msgid "API status"
 msgstr "Status de l'API"
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Requête invalide"
 
 #: front/collections.php:32
 msgid "Metabase collections"
@@ -84,9 +88,53 @@ msgstr ""
 "Impossible d'accéder aux données de Metabase. Veuillez vérifier la "
 "configuration du plugin."
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Requête invalide"
+#: inc/config.class.php:40 inc/profileright.class.php:44
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "Nom d'utilisateur (administrateur Metabase)"
+
+#: inc/config.class.php:207
+msgid "Last Error"
+msgstr "Dernière erreur"
+
+#: inc/config.class.php:220
+msgid "Action(s)"
+msgstr "Action(s)"
+
+#: inc/config.class.php:230
+msgid "Previously stored database is not existing anymore."
+msgstr "La base de données précédemment stockée n'existe plus."
+
+#: inc/config.class.php:232
+msgid "Create GLPI database in local Metabase"
+msgstr "Créer la base de données de GLPI dans la Metabase local"
+
+#: inc/config.class.php:240
+msgid "OR set an existing database: "
+msgstr "Ou définir une base de données existante :"
+
+#: inc/config.class.php:244
+msgid "Set database"
+msgstr "Définir la base de donnée"
+
+#: inc/config.class.php:254
+msgid "Push reports and dashboards in Metabase"
+msgstr "Pousser les rapports et tableaux de bords dans Metabase"
+
+#: inc/config.class.php:261
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Re)générer le modèle de données dans Metabase"
+
+#: inc/config.class.php:269
+msgid "Show reports and dashboards specifications"
+msgstr "Voir les spécifications des rapports et tableaux de bord"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Tableau de bord Metabase"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -131,50 +179,6 @@ msgstr ""
 "La requête vers Metabase a échoué parce l'opération a expirée. Peut être "
 "pouvez vous augmenter la temps d'expiration dans la configuration du plugin"
 
-#: inc/config.class.php:40 inc/profileright.class.php:44
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "Nom d'utilisateur (administrateur Metabase)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "Dernière erreur"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "Action(s)"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "La base de données précédemment stockée n'existe plus."
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "Créer la base de données de GLPI dans la Metabase local"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "Ou définir une base de données existante :"
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "Définir la base de donnée"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "Pousser les rapports et tableaux de bords dans Metabase"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Re)générer le modèle de données dans Metabase"
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr "Voir les spécifications des rapports et tableaux de bord"
-
 #: inc/profileright.class.php:92
 msgid "No dashboards found in Metabase."
 msgstr ""
@@ -190,7 +194,3 @@ msgstr "Autoriser l’accès pour tous"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Interdire l'accès à tous"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Tableau de bord Metabase"

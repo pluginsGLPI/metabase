@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 02:38+0000\n"
+"POT-Creation-Date: 2026-07-29 02:02+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>, 2026\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -33,15 +33,15 @@ msgstr "Metabase priključak"
 msgid "Username (metabase admin)"
 msgstr "Korisničko ime (metabase administrator)"
 
-#: templates/config.html.twig inc/config.class.php:143
+#: templates/config.html.twig inc/config.class.php:144
 msgid "Metabase embedded token (to display dashboard in GLPI)"
 msgstr "Ugrađeni Metabase token (za prikaz nadzorne ploče u GLPI-u)"
 
-#: templates/config.html.twig inc/config.class.php:153
+#: templates/config.html.twig inc/config.class.php:154
 msgid "Metabase url"
 msgstr "Metabase url"
 
-#: templates/config.html.twig inc/config.class.php:154
+#: templates/config.html.twig inc/config.class.php:155
 msgid ""
 "You may want to have a different dashboard url (with https for example) than"
 " the host (used to push the data) "
@@ -49,13 +49,17 @@ msgstr ""
 "Možda želiš imati drugačiji url nadzorne ploče (npr. https) od računala "
 "(koristi se za slanje podataka) "
 
-#: templates/config.html.twig inc/config.class.php:164
+#: templates/config.html.twig inc/config.class.php:165
 msgid "Timeout for sending data (in seconds)"
 msgstr "Istek vremena za slanje podataka (u sekundama)"
 
-#: templates/config.html.twig inc/config.class.php:187
+#: templates/config.html.twig inc/config.class.php:188
 msgid "API status"
 msgstr "Stanje API-a"
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Nevaljan zahtjev."
 
 #: front/collections.php:32
 msgid "Metabase collections"
@@ -77,9 +81,53 @@ msgstr "Izvuci pregledne ploče iz Metabase baze podataka:"
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "Nemoguć pristup Metabase podacima. Provjeri konfiguraciju dodatka."
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Nevaljan zahtjev."
+#: inc/config.class.php:40 inc/profileright.class.php:44
+msgid "Metabase"
+msgstr "Metabase"
+
+#: inc/config.class.php:113
+msgid "username (metabase admin)"
+msgstr "korisničko ime (metabase administrator)"
+
+#: inc/config.class.php:207
+msgid "Last Error"
+msgstr "Zadnja greška"
+
+#: inc/config.class.php:220
+msgid "Action(s)"
+msgstr "Radnje"
+
+#: inc/config.class.php:230
+msgid "Previously stored database is not existing anymore."
+msgstr "Prethodno spremljena baza podataka više ne postoji."
+
+#: inc/config.class.php:232
+msgid "Create GLPI database in local Metabase"
+msgstr "Stvori GLPI bazu podataka u lokalnoj Metabase bazi podataka"
+
+#: inc/config.class.php:240
+msgid "OR set an existing database: "
+msgstr "ILI postavi jednu postojeću bazu podataka: "
+
+#: inc/config.class.php:244
+msgid "Set database"
+msgstr "Postavi bazu podataka"
+
+#: inc/config.class.php:254
+msgid "Push reports and dashboards in Metabase"
+msgstr "Šalji izvještaje i pregledne ploče u Metabase"
+
+#: inc/config.class.php:261
+msgid "(Re)generate datamodel in Metabase"
+msgstr "(Ponovo) generiraj datotečni model u Metabaseu"
+
+#: inc/config.class.php:269
+msgid "Show reports and dashboards specifications"
+msgstr "Prikaži specifikacije za izvještaje i nadzorne ploče"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase nadzorna ploča"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -122,50 +170,6 @@ msgstr ""
 "Upit za metabase nije uspio jer je operaciji isteklo vrijeme. Možda moraš "
 "povećati istek vremena u konfiguraciji dodataka"
 
-#: inc/config.class.php:40 inc/profileright.class.php:44
-msgid "Metabase"
-msgstr "Metabase"
-
-#: inc/config.class.php:113
-msgid "username (metabase admin)"
-msgstr "korisničko ime (metabase administrator)"
-
-#: inc/config.class.php:206
-msgid "Last Error"
-msgstr "Zadnja greška"
-
-#: inc/config.class.php:219
-msgid "Action(s)"
-msgstr "Radnje"
-
-#: inc/config.class.php:229
-msgid "Previously stored database is not existing anymore."
-msgstr "Prethodno spremljena baza podataka više ne postoji."
-
-#: inc/config.class.php:231
-msgid "Create GLPI database in local Metabase"
-msgstr "Stvori GLPI bazu podataka u lokalnoj Metabase bazi podataka"
-
-#: inc/config.class.php:239
-msgid "OR set an existing database: "
-msgstr "ILI postavi jednu postojeću bazu podataka: "
-
-#: inc/config.class.php:243
-msgid "Set database"
-msgstr "Postavi bazu podataka"
-
-#: inc/config.class.php:253
-msgid "Push reports and dashboards in Metabase"
-msgstr "Šalji izvještaje i pregledne ploče u Metabase"
-
-#: inc/config.class.php:260
-msgid "(Re)generate datamodel in Metabase"
-msgstr "(Ponovo) generiraj datotečni model u Metabaseu"
-
-#: inc/config.class.php:268
-msgid "Show reports and dashboards specifications"
-msgstr "Prikaži specifikacije za izvještaje i nadzorne ploče"
-
 #: inc/profileright.class.php:92
 msgid "No dashboards found in Metabase."
 msgstr "U Metabase nije pronađena nijedna nadzorna ploča."
@@ -181,7 +185,3 @@ msgstr "Dozvoli pristup svima"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Zabrani pristup svima"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase nadzorna ploča"
