@@ -202,8 +202,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
         global $DB;
 
         if (($data = $this->getGlpiDatabase()) === false) {
-            // try to switch to slave db
-            DBConnection::switchToSlave();
+            // try to switch to replica db
+            DBConnection::switchToReplica();
 
             // post conf for the glpi database
             $data = $this->httpQuery('database', [
@@ -223,8 +223,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 ],
             ], 'POST');
 
-            // switch back to master
-            DBConnection::switchToMaster();
+            // switch back to main
+            DBConnection::switchToMain();
         }
 
         return $data;
