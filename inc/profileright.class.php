@@ -33,7 +33,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     /**
      * Necessary right to edit the rights of this plugin.
      */
-    public static $rightname = 'profile';
+    public static string $rightname = 'profile';
 
     /**
      * {@inheritDoc}
