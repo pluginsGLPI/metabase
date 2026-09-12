@@ -9,10 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Fix question/dashboard extraction against current Metabase API versions (`ordered_cards` → `dashcards`, `sizeX`/`sizeY` → `size_x`/`size_y`, native question query moved to `dataset_query.stages[0].*`)
-- Fix root collection questions never matching in `getCards('root')`
-- Fix extraction AJAX URL resolving to the wrong host when `root_doc` is empty
-- Fix `embedded_token` migration not actually encrypting the value on upgrade, breaking the embedded dashboard with an `InvalidKeyProvided` exception for any site that had a token configured before updating to 1.4.2
+- Fixed Metabase compatibility with current API versions 
+- Fix `embedded-token` migration for existing configurations.
 
 ## [1.4.2] - 2026-08-04
 
