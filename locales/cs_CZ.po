@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 02:02+0000\n"
+"POT-Creation-Date: 2026-09-03 02:33+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>, 2025\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/teclib/teams/28042/cs_CZ/)\n"
@@ -58,10 +58,6 @@ msgstr "Časový limit pro odeslání dat (v milisekundách)"
 msgid "API status"
 msgstr "Stav API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Neplatný požadavek."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase sbírky"
@@ -83,6 +79,10 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Nedaří se přistupovat k datům Metabase. Zkontrolujte nastavení zásuvného "
 "modulu."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Neplatný požadavek."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -127,10 +127,6 @@ msgstr "(znovu)vytvořit datový model v Metabase"
 #: inc/config.class.php:269
 msgid "Show reports and dashboards specifications"
 msgstr "Zobrazit specifikace výkazů a přehledů"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Nástěnka Metabase"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -188,3 +184,7 @@ msgstr "Umožnit přístup ke všemu"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Znemožnit přístup ke všemu"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Nástěnka Metabase"
