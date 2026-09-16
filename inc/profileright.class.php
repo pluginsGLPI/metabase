@@ -33,7 +33,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     /**
      * Necessary right to edit the rights of this plugin.
      */
-    public static $rightname = 'profile';
+    public static string $rightname = 'profile';
 
     /**
      * {@inheritDoc}
@@ -123,7 +123,7 @@ class PluginMetabaseProfileright extends CommonDBTM
 
         foreach ($dashboards as $dashboard) {
             echo '<tr class="tab_bg_1">';
-            echo '<td>' . $dashboard['name'] . '</td>';
+            echo '<td>' . htmlspecialchars($dashboard['name'], ENT_QUOTES | ENT_HTML5) . '</td>';
             echo '<td>';
             Profile::dropdownRight(
                 sprintf('dashboard[%d]', $dashboard['id']),
