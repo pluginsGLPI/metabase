@@ -1,0 +1,33 @@
+# -------------------------------------------------------------------------
+# Metabase plugin GLPI - local test environment
+# -------------------------------------------------------------------------
+# Adds a Metabase instance, plus a one-shot sidecar that runs first-time
+# setup (dev admin account) and enables static embedding, via the Metabase
+# REST API. The plugin itself pushes the "GLPI database" connection and the
+# demo dashboards/cards from GLPI's own config page (Setup > Metabase), not
+# from this compose file.
+#
+# File is *purely additive*: declares only `metabase` and `metabase-seed`
+# services, never redefines `app` or `db`.
+# -------------------------------------------------------------------------
+services:
+  metabase:
+    image: "metabase/metabase:latest"
+    ports:
+      - "${METABASE_PORT:-3010}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: "5s"
+      timeout: "3s"
+      retries: 40
+      start_period: "30s"
+
+  metabase-seed:
+    image: "alpine:3.21"
+    depends_on:
+      metabase:
+        condition: "service_healthy"
+    volumes:
+      - "${METABASE_DEV_DIR:-.}/seed.sh:/seed.sh:ro"
+    entrypoint: ["/bin/sh", "/seed.sh"]
+    restart: "no"
