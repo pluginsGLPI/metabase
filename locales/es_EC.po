@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 02:02+0000\n"
+"POT-Creation-Date: 2026-09-03 02:33+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Soporte Infraestructura Standby, 2023\n"
 "Language-Team: Spanish (Ecuador) (https://app.transifex.com/teclib/teams/28042/es_EC/)\n"
@@ -57,10 +57,6 @@ msgstr "Tiempo de espera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estado de la API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Solicitud no válida."
-
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Colecciones de metabases"
@@ -82,6 +78,10 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "No se puede acceder a los datos de la metabase. Por favor, compruebe la "
 "configuración del plugin."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Solicitud no válida."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -126,10 +126,6 @@ msgstr "(Re)generar modelo de datos en Metabase"
 #: inc/config.class.php:269
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar especificaciones de informes y paneles"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Cuadro de mando de la metabase"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -190,3 +186,7 @@ msgstr "Permitir el acceso a todos"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "No permitir el acceso a todos"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Cuadro de mando de la metabase"
