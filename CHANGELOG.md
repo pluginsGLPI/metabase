@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
+
 ## [1.4.2] - 2026-08-04
 
 ### Fixed
