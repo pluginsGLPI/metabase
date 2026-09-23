@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 02:33+0000\n"
+"POT-Creation-Date: 2026-09-23 02:53+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Diego Nobre <diego@koruma.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/teclib/teams/28042/pt_BR/)\n"
@@ -57,6 +57,10 @@ msgstr "Tempo limite para envio de dados (em segundos)"
 msgid "API status"
 msgstr "Status da API"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Requisição inválida."
+
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Coleções Metabase"
@@ -77,10 +81,6 @@ msgstr "Extraia painéis do Metabase:"
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Incapaz de acessar os dados do Metabase. Verifique a configuração do plugin."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Requisição inválida."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -125,6 +125,10 @@ msgstr "(Re)gerar modelo de dados no Metabase"
 #: inc/config.class.php:269
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar especificações de relatórios e painéis"
+
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Painel Metabase"
 
 #: inc/apiclient.class.php:58
 msgid "API: login"
@@ -182,7 +186,3 @@ msgstr "Permitir acesso a todos"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Proibir acesso a todos"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Painel Metabase"
