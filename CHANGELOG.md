@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Use `lib` provide by core.
+
 ### Added
 
 - Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
