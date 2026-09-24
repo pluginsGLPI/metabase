@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Use `lib` provide by core.
+- Use libs provided by core.
 
 ### Added
 
