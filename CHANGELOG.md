@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Fixed Metabase compatibility with current API versions 
 - Fix `embedded-token` migration for existing configurations.
+- Use libs provided by core.
+
+### Added
+
+- Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
 
 ## [1.4.2] - 2026-08-04
 
