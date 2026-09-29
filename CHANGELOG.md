@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- Fixed Metabase compatibility with current API versions 
+- Fix `embedded-token` migration for existing configurations.
 - Use libs provided by core.
 
 ### Added
