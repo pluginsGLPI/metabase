@@ -10,6 +10,7 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "autoloader-suffix": "PluginMetabase",
         "platform": {
             "php": "8.2.99"
         },

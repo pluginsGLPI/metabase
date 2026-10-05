@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed Metabase compatibility with current API versions 
 - Fix `embedded-token` migration for existing configurations.
 - Use libs provided by core.
+- CI: fix Psalm cache directory, declare a unique composer autoloader suffix
 
 ### Added
 
