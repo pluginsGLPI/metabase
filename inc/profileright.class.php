@@ -33,7 +33,7 @@ class PluginMetabaseProfileright extends CommonDBTM
     /**
      * Necessary right to edit the rights of this plugin.
      */
-    public static $rightname = 'profile';
+    public static string $rightname = 'profile';
 
     /**
      * {@inheritDoc}
@@ -50,7 +50,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if (Profile::class === $item->getType() && Session::haveRight('profile', READ)) {
+        if (Profile::class === $item->getType() && Session::haveRight(Profile::$rightname, READ)) {
             return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
 
@@ -63,7 +63,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        if ($item instanceof Profile && Session::haveRight('profile', READ)) {
+        if ($item instanceof Profile && Session::haveRight(Profile::$rightname, READ)) {
             $profileright = new self();
             $profileright->showForm($item->fields['id']);
         }
@@ -81,7 +81,7 @@ class PluginMetabaseProfileright extends CommonDBTM
      */
     public function showForm($id, $options = [])
     {
-        if (!Session::haveRight('profile', READ)) {
+        if (!Session::haveRight(Profile::$rightname, READ)) {
             return false;
         }
 
@@ -105,7 +105,7 @@ class PluginMetabaseProfileright extends CommonDBTM
 
         echo '<input type="hidden" name="profiles_id" value="' . $id . '" />';
 
-        if (Session::haveRight('profile', UPDATE)) {
+        if (Session::haveRight(Profile::$rightname, UPDATE)) {
             echo '<tr class="tab_bg_4">';
             echo '<td colspan="2" class="center">';
             echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
@@ -123,7 +123,7 @@ class PluginMetabaseProfileright extends CommonDBTM
 
         foreach ($dashboards as $dashboard) {
             echo '<tr class="tab_bg_1">';
-            echo '<td>' . $dashboard['name'] . '</td>';
+            echo '<td>' . htmlspecialchars($dashboard['name'], ENT_QUOTES | ENT_HTML5) . '</td>';
             echo '<td>';
             Profile::dropdownRight(
                 sprintf('dashboard[%d]', $dashboard['id']),
@@ -138,7 +138,7 @@ class PluginMetabaseProfileright extends CommonDBTM
             echo '</tr>';
         }
 
-        if (Session::haveRight('profile', UPDATE)) {
+        if (Session::haveRight(Profile::$rightname, UPDATE)) {
             echo '<tr class="tab_bg_4">';
             echo '<td colspan="2" class="center">';
             echo Html::submit(_sx('button', 'Save'), [

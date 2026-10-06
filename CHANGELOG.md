@@ -7,16 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- GLPI 12 compatibility
+- Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
+
 ### Fixed
 
-- Fixed Metabase compatibility with current API versions 
+- Fixed Metabase compatibility with current API versions
 - Fix `embedded-token` migration for existing configurations.
 - Use libs provided by core.
 - CI: fix Psalm cache directory, declare a unique composer autoloader suffix
-
-### Added
-
-- Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
 
 ## [1.4.2] - 2026-08-04
 
