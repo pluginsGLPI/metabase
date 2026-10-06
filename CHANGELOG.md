@@ -5,11 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.4.3] - 2026-10-06
 
 ### Fixed
 
-- Fixed Metabase compatibility with current API versions 
+- Fixed Metabase compatibility with current API versions
 - Fix `embedded-token` migration for existing configurations.
 - Use libs provided by core.
 - CI: fix Psalm cache directory, declare a unique composer autoloader suffix
