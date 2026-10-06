@@ -29,24 +29,24 @@
  */
 
 if (isset($_REQUEST['create_database'])) {
-    Session::checkRight("config", UPDATE);
+    Session::checkRight(Config::$rightname, UPDATE);
     PluginMetabaseConfig::createGLPIDatabase();
     Html::back();
 } elseif (isset($_REQUEST['set_database'])) {
-    Session::checkRight("config", UPDATE);
+    Session::checkRight(Config::$rightname, UPDATE);
     PluginMetabaseConfig::setExistingDatabase((int) $_REQUEST['db_id']);
     Html::back();
 } elseif (isset($_REQUEST['push_json'])) {
-    Session::checkRight("config", UPDATE);
+    Session::checkRight(Config::$rightname, UPDATE);
     PluginMetabaseConfig::pushReports();
     PluginMetabaseConfig::pushDashboards();
     Html::back();
 } elseif (isset($_REQUEST['push_datamodel'])) {
-    Session::checkRight("config", UPDATE);
+    Session::checkRight(Config::$rightname, UPDATE);
     PluginMetabaseConfig::createDataModel((int) $_REQUEST['glpi_db_id']);
     Html::back();
 } else {
-    Session::checkRight("config", READ);
+    Session::checkRight(Config::$rightname, READ);
     /** @var array $CFG_GLPI */
     Html::redirect($CFG_GLPI['root_doc'] . '/front/config.form.php?forcetab=PluginMetabaseConfig$1');
 }

@@ -433,9 +433,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         if (isset($params['parameters'])) {
             foreach ($params['parameters'] as &$parameter) {
-                if (!isset($parameter['id'])) {
-                    $parameter['id'] = $this->generateUuid([8]);
-                }
+                $parameter['id'] ??= $this->generateUuid([8]);
             }
         }
 

@@ -36,7 +36,7 @@ Html::header(
     'collections',
 );
 
-Session::checkRight('config', READ);
+Session::checkRight(Config::$rightname, READ);
 
 echo '<div class="metabase_config">';
 echo '<h1>' . __s('Reports and dashboards specifications', 'metabase') . '</h1>';
