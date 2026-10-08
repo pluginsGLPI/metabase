@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:43+0000\n"
+"POT-Creation-Date: 2026-10-08 04:03+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: David Štěpán <stepand@tiscali.cz>, 2025\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/teclib/teams/28042/cs_CZ/)\n"
@@ -58,6 +58,10 @@ msgstr "Časový limit pro odeslání dat (v milisekundách)"
 msgid "API status"
 msgstr "Stav API"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Neplatný požadavek."
+
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase sbírky"
@@ -79,10 +83,6 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "Nedaří se přistupovat k datům Metabase. Zkontrolujte nastavení zásuvného "
 "modulu."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Neplatný požadavek."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -128,6 +128,10 @@ msgstr "(znovu)vytvořit datový model v Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Zobrazit specifikace výkazů a přehledů"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Nástěnka Metabase"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: přihlášení"
@@ -156,12 +160,12 @@ msgstr "Nelze načíst verzi metabáze"
 msgid "No auto-generated GLPI database found"
 msgstr "Nenalezena žádná automaticky vytvořená GLPI databáze"
 
-#: inc/apiclient.class.php:701
+#: inc/apiclient.class.php:704
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Zapnutí vestavěného zobrazení se pro nástěnku %s nezdařilo."
 
-#: inc/apiclient.class.php:890
+#: inc/apiclient.class.php:893
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -184,7 +188,3 @@ msgstr "Umožnit přístup ke všemu"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Znemožnit přístup ke všemu"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Nástěnka Metabase"

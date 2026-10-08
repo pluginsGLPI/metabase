@@ -7,13 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:43+0000\n"
-"PO-Revision-Date: 2026-09-24 02:43+0000\n"
+"POT-Creation-Date: 2026-10-08 04:03+0000\n"
+"PO-Revision-Date: 2026-10-08 04:03+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -53,6 +53,10 @@ msgstr "Timeout for sending data (in seconds)"
 msgid "API status"
 msgstr "API status"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Invalid request."
+
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase collections"
@@ -72,10 +76,6 @@ msgstr "Extract dashboards from metabase:"
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "Unable to access Metabase data. Please check plugin configuration."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Invalid request."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -121,6 +121,10 @@ msgstr "(Re)generate datamodel in Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Show reports and dashboards specifications"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase dashboard"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: login"
@@ -149,12 +153,12 @@ msgstr "Unable to retrieve Metabase version"
 msgid "No auto-generated GLPI database found"
 msgstr "No auto-generated GLPI database found"
 
-#: inc/apiclient.class.php:701
+#: inc/apiclient.class.php:704
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Enabling embedded display fails for dashboard %s."
 
-#: inc/apiclient.class.php:890
+#: inc/apiclient.class.php:893
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -177,7 +181,3 @@ msgstr "Allow access to all"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Disallow access to all"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase dashboard"
