@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:43+0000\n"
+"POT-Creation-Date: 2026-10-08 04:03+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>, 2026\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -57,6 +57,10 @@ msgstr "Istek vremena za slanje podataka (u sekundama)"
 msgid "API status"
 msgstr "Stanje API-a"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Nevaljan zahtjev."
+
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Metabase zbirke"
@@ -76,10 +80,6 @@ msgstr "Izvuci pregledne ploče iz Metabase baze podataka:"
 #: front/collections.php:105
 msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr "Nemoguć pristup Metabase podacima. Provjeri konfiguraciju dodatka."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Nevaljan zahtjev."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -125,6 +125,10 @@ msgstr "(Ponovo) generiraj datotečni model u Metabaseu"
 msgid "Show reports and dashboards specifications"
 msgstr "Prikaži specifikacije za izvještaje i nadzorne ploče"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Metabase nadzorna ploča"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: prijava"
@@ -153,12 +157,12 @@ msgstr "Nije moguće pronaći Metabase verziju"
 msgid "No auto-generated GLPI database found"
 msgstr "Nema automatki generirane GLPI baze podataka"
 
-#: inc/apiclient.class.php:701
+#: inc/apiclient.class.php:704
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "Aktiviranje ugrađenog prikaza ne uspijeva za nadzornu ploču %s."
 
-#: inc/apiclient.class.php:890
+#: inc/apiclient.class.php:893
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -181,7 +185,3 @@ msgstr "Dozvoli pristup svima"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Zabrani pristup svima"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Metabase nadzorna ploča"

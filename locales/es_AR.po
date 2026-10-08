@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 02:43+0000\n"
+"POT-Creation-Date: 2026-10-08 04:03+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Alan Lehoux, 2025\n"
 "Language-Team: Spanish (Argentina) (https://app.transifex.com/teclib/teams/28042/es_AR/)\n"
@@ -58,6 +58,10 @@ msgstr "Tiempo de espera para el envío de datos (en segundos)"
 msgid "API status"
 msgstr "Estado de API"
 
+#: front/profileright.form.php:41 front/profileright.form.php:68
+msgid "Invalid request."
+msgstr "Solicitud inválida."
+
 #: front/collections.php:32
 msgid "Metabase collections"
 msgstr "Colecciones de Metabase"
@@ -79,10 +83,6 @@ msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
 "No se puede acceder a los datos de Metabase. Por favor, revisá la "
 "configuración del complemento."
-
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Solicitud inválida."
 
 #: inc/config.class.php:40 inc/profileright.class.php:44
 msgid "Metabase"
@@ -128,6 +128,10 @@ msgstr "(Re)generar modelo de datos en Metabase"
 msgid "Show reports and dashboards specifications"
 msgstr "Mostrar especificaciones de informes y paneles"
 
+#: inc/dashboard.class.php:43
+msgid "Metabase dashboard"
+msgstr "Panel de Metabase"
+
 #: inc/apiclient.class.php:58
 msgid "API: login"
 msgstr "API: inicio de sesión"
@@ -156,12 +160,12 @@ msgstr "No se pudo obtener la versión de Metabase"
 msgid "No auto-generated GLPI database found"
 msgstr "No se encontró una base de datos de GLPI autogenerada"
 
-#: inc/apiclient.class.php:701
+#: inc/apiclient.class.php:704
 #, php-format
 msgid "Enabling embedded display fails for dashboard %s."
 msgstr "La activación de la visualización incrustada falla para el panel %s."
 
-#: inc/apiclient.class.php:890
+#: inc/apiclient.class.php:893
 msgid ""
 "Query to metabase failed because operation timed out. Maybe you should "
 "increase the timeout value in plugin configuration"
@@ -185,7 +189,3 @@ msgstr "Permitir acceso a todos"
 #: inc/profileright.class.php:118
 msgid "Disallow access to all"
 msgstr "Denegar acceso a todos"
-
-#: inc/dashboard.class.php:43
-msgid "Metabase dashboard"
-msgstr "Panel de Metabase"
