@@ -1,0 +1,76 @@
+{#
+ # -------------------------------------------------------------------------
+ # Metabase plugin for GLPI
+ # -------------------------------------------------------------------------
+ #
+ # LICENSE
+ #
+ # This file is part of Metabase.
+ #
+ # Metabase is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ #
+ # Metabase is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with Metabase. If not, see <http://www.gnu.org/licenses/>.
+ # -------------------------------------------------------------------------
+ # @copyright Copyright (C) 2018-2023 by Metabase plugin team.
+ # @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+ # @link      https://github.com/pluginsGLPI/metabase
+ # -------------------------------------------------------------------------
+ #}
+
+{% import 'components/form/fields_macros.html.twig' as fields %}
+
+{% if no_dashboard %}
+    <div class="alert alert-warning">
+        {{ __('No dashboards found in Metabase.', 'metabase') }}
+    </div>
+{% else %}
+    <form action="{{ form_url }}" method="post">
+        {{ fields.hiddenField('itemtype', itemtype) }}
+        {{ fields.hiddenField('items_id', items_id) }}
+
+        {{ fields.largeTitle(__('Rights management', 'metabase'), 'ti ti-lock') }}
+
+        {% if can_update %}
+            <div class="mb-3 d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="{{ constant('READ') }}">
+                    <i class="ti ti-check"></i>
+                    <span>{{ __('Allow access to all', 'metabase') }}</span>
+                </button>
+                <button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">
+                    <i class="ti ti-forbid"></i>
+                    <span>{{ __('Disallow access to all', 'metabase') }}</span>
+                </button>
+            </div>
+        {% endif %}
+
+        {% for dashboard in dashboards %}
+            {{ fields.dropdownArrayField(
+                'dashboard[' ~ dashboard.id ~ ']',
+                dashboard.rights,
+                right_choices,
+                dashboard.name,
+                {
+                    disabled: not can_update,
+                }
+            ) }}
+        {% endfor %}
+
+        {% if can_update %}
+            <div class="card-body mx-n2 border-top d-flex flex-row-reverse align-items-start flex-wrap">
+                <button class="btn btn-primary me-2" type="submit" name="update" value="1">
+                    <i class="ti ti-device-floppy"></i>
+                    <span>{{ _x('button', 'Save') }}</span>
+                </button>
+            </div>
+        {% endif %}
+    </form>
+{% endif %}

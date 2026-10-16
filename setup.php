@@ -88,8 +88,12 @@ function plugin_init_metabase()
     // profile rights management
     Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
 
-    // CUSTOM FORK: group / user rights management
-    Plugin::registerClass('PluginMetabaseItemright', ['addtabon' => ['Group', 'User']]);
+    // group and user rights management
+    Plugin::registerClass('PluginMetabaseItemright', ['addtabon' => [Group::class, User::class]]);
+    $PLUGIN_HOOKS['item_purge']['metabase'] = [
+        Group::class => [PluginMetabaseItemright::class, 'cleanForItem'],
+        User::class  => [PluginMetabaseItemright::class, 'cleanForItem'],
+    ];
 
     // css & js
     $PLUGIN_HOOKS['add_css']['metabase']        = 'metabase.css';

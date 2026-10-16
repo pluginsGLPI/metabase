@@ -26,19 +26,20 @@
  * @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
  * @link      https://github.com/pluginsGLPI/metabase
  * -------------------------------------------------------------------------
- *
- * CUSTOM FORK NOTICE
- * -------------------------------------------------------------------------
- * This class was added in a local fork to allow defining dashboard access
- * rights per Group and per User, in addition to the native per Profile
- * rights handled by PluginMetabaseProfileright.
- * -------------------------------------------------------------------------
  */
 
+use Glpi\Application\View\TemplateRenderer;
+
+/**
+ * Dashboard access rights granted to a Group or to a User.
+ *
+ * Works alongside PluginMetabaseProfileright: a dashboard is visible when the
+ * active profile, one of the user's groups or the user itself has READ access.
+ */
 class PluginMetabaseItemright extends CommonDBTM
 {
     /**
-     * Itemtypes supported by this "generic" right holder.
+     * Itemtypes that can receive dashboard rights.
      */
     public const SUPPORTED_ITEMTYPES = [Group::class, User::class];
 
@@ -52,20 +53,15 @@ class PluginMetabaseItemright extends CommonDBTM
     }
 
     /**
-     * Returns the GLPI right (and value) required to manage metabase
-     * dashboard rights for the given itemtype.
+     * Check whether given itemtype can receive dashboard rights.
      *
-     * @param string $itemtype Group::class or User::class
+     * @param mixed $itemtype
      *
-     * @return array{0: string, 1: int} [rightname, right value]
+     * @return bool
      */
-    private static function getRequiredRight(string $itemtype): array
+    public static function isSupportedItemtype($itemtype): bool
     {
-        return match ($itemtype) {
-            Group::class => ['group', UPDATE],
-            User::class  => ['user', UPDATE],
-            default      => ['profile', UPDATE],
-        };
+        return in_array($itemtype, self::SUPPORTED_ITEMTYPES, true);
     }
 
     /**
@@ -74,15 +70,13 @@ class PluginMetabaseItemright extends CommonDBTM
      */
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        $itemtype = $item::getType();
-
-        if (!in_array($itemtype, self::SUPPORTED_ITEMTYPES, true)) {
-            return '';
-        }
-
-        [$rightname, $rightvalue] = self::getRequiredRight($itemtype);
-        if (Session::haveRight($rightname, $rightvalue)) {
-            return self::createTabEntry(self::getTypeName(), 0, $itemtype, PluginMetabaseConfig::getIcon());
+        if (
+            $item instanceof CommonDBTM
+            && self::isSupportedItemtype($item::class)
+            && !$item->isNewItem()
+            && $item::canView()
+        ) {
+            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
 
         return '';
@@ -94,309 +88,198 @@ class PluginMetabaseItemright extends CommonDBTM
      */
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        $itemtype = $item::getType();
-
-        if (!in_array($itemtype, self::SUPPORTED_ITEMTYPES, true)) {
-            return true;
-        }
-
-        [$rightname, $rightvalue] = self::getRequiredRight($itemtype);
-        if (Session::haveRight($rightname, $rightvalue)) {
-            $itemright = new self();
-            $itemright->showRightsForm($itemtype, $item->fields['id']);
+        if (
+            $item instanceof CommonDBTM
+            && self::isSupportedItemtype($item::class)
+            && $item->can($item->getID(), READ)
+        ) {
+            self::showForItem($item);
         }
 
         return true;
     }
 
     /**
-     * Display item (group/user) rights form.
+     * Display dashboard rights matrix for given group or user.
      *
-     * @param string  $itemtype Group::class or User::class
-     * @param integer $itemsId  Group or User id
-     * @param array   $options
+     * READ right on the item is required to see the matrix,
+     * UPDATE right on the item is required to change it.
+     *
+     * @param CommonDBTM $item Group or User
      *
      * @return bool
      */
-    public function showRightsForm($itemtype, $itemsId, $options = [])
+    public static function showForItem(CommonDBTM $item): bool
     {
-        if (!in_array($itemtype, self::SUPPORTED_ITEMTYPES, true)) {
-            return false;
-        }
-
-        [$rightname, $rightvalue] = self::getRequiredRight($itemtype);
-        if (!Session::haveRight($rightname, $rightvalue)) {
-            return false;
-        }
-
         $apiclient  = new PluginMetabaseAPIClient();
         $dashboards = $apiclient->getDashboards();
 
-        if (!$dashboards) {
-            echo '<div class="alert alert-warning">' . __s('No dashboards found in Metabase.', 'metabase') . '</div>';
+        if (!is_array($dashboards) || $dashboards === []) {
+            TemplateRenderer::getInstance()->display('@metabase/itemright.html.twig', [
+                'no_dashboard' => true,
+            ]);
             return false;
         }
 
-        echo '<form method="post" action="' . self::getFormURL() . '">';
-        echo '<div class="spaced" id="tabsbody">';
-        echo '<table class="tab_cadre_fixe" id="mainformtable">';
+        $rights = self::getRightsForItem($item::class, $item->getID());
 
-        echo '<tr class="headerRow"><th colspan="2">' . self::getTypeName() . '</th></tr>';
-
-        Plugin::doHook('pre_item_form', ['item' => $this, 'options' => &$options]);
-
-        echo '<tr><th colspan="2">' . __s('Rights management', 'metabase') . '</th></tr>';
-
-        echo '<input type="hidden" name="itemtype" value="' . $itemtype . '" />';
-        echo '<input type="hidden" name="items_id" value="' . $itemsId . '" />';
-
-        echo '<tr class="tab_bg_4">';
-        echo '<td colspan="2" class="center">';
-        echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
-        . "<i class='ti ti-check'></i>"
-        . '<span>' . __s('Allow access to all', 'metabase') . '</span>'
-        . '</button>';
-        echo ' &nbsp; ';
-        echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
-        . "<i class='ti ti-forbid'></i>"
-        . '<span>' . __s('Disallow access to all', 'metabase') . '</span>'
-        . '</button>';
-        echo '</td>';
-        echo '</tr>';
-
+        $dashboards_data = [];
         foreach ($dashboards as $dashboard) {
-            echo '<tr class="tab_bg_1">';
-            echo '<td>' . $dashboard['name'] . '</td>';
-            echo '<td>';
-            Profile::dropdownRight(
-                sprintf('dashboard[%d]', $dashboard['id']),
-                [
-                    'value'   => self::getItemRightForDashboard($itemtype, $itemsId, $dashboard['id']),
-                    'nonone'  => 0,
-                    'noread'  => 0,
-                    'nowrite' => 1,
-                ],
-            );
-            echo '</td>';
-            echo '</tr>';
+            $dashboards_data[] = [
+                'id'     => (int) $dashboard['id'],
+                'name'   => $dashboard['name'],
+                'rights' => $rights[(int) $dashboard['id']] ?? 0,
+            ];
         }
 
-        echo '<tr class="tab_bg_4">';
-        echo '<td colspan="2" class="center">';
-        echo Html::submit(_sx('button', 'Save'), [
-            'name'  => 'update',
-            'icon'  => 'ti ti-device-floppy',
-            'class' => 'btn btn-primary',
+        TemplateRenderer::getInstance()->display('@metabase/itemright.html.twig', [
+            'no_dashboard'  => false,
+            'form_url'      => self::getFormURL(),
+            'itemtype'      => $item::class,
+            'items_id'      => $item->getID(),
+            'can_update'    => $item->can($item->getID(), UPDATE),
+            'dashboards'    => $dashboards_data,
+            'right_choices' => [
+                0    => __('No access'),
+                READ => __('Read'),
+            ],
         ]);
-        echo '</td>';
-        echo '</tr>';
-
-        echo '</table>';
-        echo '</div>';
-
-        Html::closeForm();
 
         return true;
     }
 
     /**
-     * Check if any group from the given list is able to view at least one dashboard.
+     * Check if the given groups or user are able to view at least one dashboard.
      *
-     * @param int[] $groupIds
+     * @param string $itemtype Group::class or User::class
+     * @param int[]  $items_ids
      *
-     * @return boolean
+     * @return bool
      */
-    public static function canGroupsViewDashboards(array $groupIds): bool
+    public static function canItemsViewDashboards(string $itemtype, array $items_ids): bool
     {
-        foreach ($groupIds as $groupId) {
-            if (self::canItemViewDashboards(Group::class, $groupId)) {
-                return true;
-            }
-        }
-
-        return false;
+        return self::countViewableRights($itemtype, $items_ids) > 0;
     }
 
     /**
-     * Check if any group from the given list is able to view the given dashboard.
+     * Check if the given groups or user are able to view given dashboard.
      *
-     * @param int[]   $groupIds
-     * @param integer $dashboardUuid
-    public static function canGroupsViewDashboards(array $groupIds): bool
+     * @param string $itemtype     Group::class or User::class
+     * @param int[]  $items_ids
+     * @param int    $dashboard_id Metabase dashboard id
+     *
+     * @return bool
+     */
+    public static function canItemsViewDashboard(string $itemtype, array $items_ids, int $dashboard_id): bool
     {
-        if (empty($groupIds)) {
-            return false;
-        }
-
-        /** @var DBmysql $DB */
-        global $DB;
-
-        $iterator = $DB->request([
-            'FROM'  => self::getTable(),
-            'WHERE' => [
-                'itemtype' => Group::class,
-                'items_id' => $groupIds,
-            ],
-        ]);
-
-        foreach ($iterator as $right) {
-            if (($right['rights'] & READ) !== 0) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public static function canGroupsViewDashboard(array $groupIds, $dashboardUuid): bool
-    {
-        if (empty($groupIds)) {
-            return false;
-        }
-
-        /** @var DBmysql $DB */
-        global $DB;
-
-        $iterator = $DB->request([
-            'FROM'  => self::getTable(),
-            'WHERE' => [
-                'itemtype'       => Group::class,
-                'items_id'       => $groupIds,
-                'dashboard_uuid' => $dashboardUuid,
-            ],
-        ]);
-
-        foreach ($iterator as $right) {
-            if (($right['rights'] & READ) !== 0) {
-                return true;
-            }
-        }
-
-        return false;
+        return self::countViewableRights($itemtype, $items_ids, $dashboard_id) > 0;
     }
 
     /**
-     * Check if item (group/user) is able to view at least one dashboard.
+     * Count rights rows granting READ access to the given items.
      *
-     * @param string  $itemtype
-     * @param integer $itemsId
+     * @param string   $itemtype
+     * @param int[]    $items_ids
+     * @param int|null $dashboard_id Restrict to this dashboard if not null
      *
-     * @return boolean
+     * @return int
      */
-    public static function canItemViewDashboards($itemtype, $itemsId): bool
+    private static function countViewableRights(string $itemtype, array $items_ids, ?int $dashboard_id = null): int
     {
-        /** @var DBmysql $DB */
-        global $DB;
-
-        if (empty($itemsId)) {
-            return false;
-        }
-
-        $iterator = $DB->request(
-            [
-                'FROM'  => self::getTable(),
-                'WHERE' => [
-                    'itemtype' => $itemtype,
-                    'items_id' => $itemsId,
-                ],
-            ],
-        );
-
-        foreach ($iterator as $right) {
-            if (($right['rights'] & READ) !== 0) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if item (group/user) is able to view given dashboard.
-     *
-     * @param string  $itemtype
-     * @param integer $itemsId
-     * @param integer $dashboardUuid
-     *
-     * @return boolean
-     */
-    public static function canItemViewDashboard($itemtype, $itemsId, $dashboardUuid): bool
-    {
-        return (self::getItemRightForDashboard($itemtype, $itemsId, $dashboardUuid) & READ) !== 0;
-    }
-
-    /**
-     * Returns item (group/user) rights for given dashboard.
-     *
-     * @param string  $itemtype
-     * @param integer $itemsId
-     * @param integer $dashboardUuid
-     *
-     * @return integer
-     */
-    private static function getItemRightForDashboard($itemtype, $itemsId, $dashboardUuid)
-    {
-        if (empty($itemsId)) {
+        $items_ids = array_values(array_filter(array_map('intval', $items_ids)));
+        if (!self::isSupportedItemtype($itemtype) || $items_ids === []) {
             return 0;
         }
 
-        $rightCriteria = [
-            'itemtype'       => $itemtype,
-            'items_id'       => $itemsId,
-            'dashboard_uuid' => $dashboardUuid,
+        $where = [
+            'itemtype' => $itemtype,
+            'items_id' => $items_ids,
+            'rights'   => ['&', READ],
         ];
-
-        $itemright = new self();
-        if ($itemright->getFromDBByCrit($rightCriteria)) {
-            return $itemright->fields['rights'];
+        if ($dashboard_id !== null) {
+            $where['dashboard_id'] = $dashboard_id;
         }
 
-        return 0;
+        return countElementsInTable(self::getTable(), $where);
     }
 
     /**
-     * Defines item (group/user) rights for dashboard.
+     * Returns rights of given item, indexed by dashboard id.
      *
-     * @param string  $itemtype
-     * @param integer $itemsId
-     * @param integer $dashboardUuid
-     * @param integer $rights
+     * @param string $itemtype
+     * @param int    $items_id
+     *
+     * @return array<int, int>
+     */
+    private static function getRightsForItem(string $itemtype, int $items_id): array
+    {
+        /** @var DBmysql $DB */
+        global $DB;
+
+        $iterator = $DB->request([
+            'SELECT' => ['dashboard_id', 'rights'],
+            'FROM'   => self::getTable(),
+            'WHERE'  => [
+                'itemtype' => $itemtype,
+                'items_id' => $items_id,
+            ],
+        ]);
+
+        $rights = [];
+        foreach ($iterator as $row) {
+            $rights[(int) $row['dashboard_id']] = (int) $row['rights'];
+        }
+
+        return $rights;
+    }
+
+    /**
+     * Defines rights of given item for given dashboard.
+     *
+     * @param string $itemtype     Group::class or User::class
+     * @param int    $items_id
+     * @param int    $dashboard_id Metabase dashboard id
+     * @param int    $rights
      *
      * @return void
      */
-    public static function setDashboardRightsForItem($itemtype, $itemsId, $dashboardUuid, $rights)
+    public static function setDashboardRightsForItem(string $itemtype, int $items_id, int $dashboard_id, int $rights): void
     {
+        $criteria = [
+            'itemtype'     => $itemtype,
+            'items_id'     => $items_id,
+            'dashboard_id' => $dashboard_id,
+        ];
+
         $itemright = new self();
-
-        $rightsExists = $itemright->getFromDBByCrit(
-            [
-                'itemtype'       => $itemtype,
-                'items_id'       => $itemsId,
-                'dashboard_uuid' => $dashboardUuid,
-            ],
-        );
-
-        if ($rightsExists) {
-            $itemright->update(
-                [
-                    'id'     => $itemright->fields['id'],
-                    'rights' => $rights,
-                ],
-            );
+        if ($itemright->getFromDBByCrit($criteria)) {
+            $itemright->update([
+                'id'     => $itemright->getID(),
+                'rights' => $rights,
+            ]);
         } else {
-            $itemright->add(
-                [
-                    'itemtype'       => $itemtype,
-                    'items_id'       => $itemsId,
-                    'dashboard_uuid' => $dashboardUuid,
-                    'rights'         => $rights,
-                ],
-            );
+            $itemright->add($criteria + ['rights' => $rights]);
         }
     }
 
     /**
-     * Install itemrights database.
+     * Remove rights of a purged group or user.
+     *
+     * @param CommonDBTM $item
+     *
+     * @return void
+     */
+    public static function cleanForItem(CommonDBTM $item): void
+    {
+        $itemright = new self();
+        $itemright->deleteByCriteria([
+            'itemtype' => $item::class,
+            'items_id' => $item->getID(),
+        ]);
+    }
+
+    /**
+     * Install item rights database.
      *
      * @param Migration $migration
      *
@@ -420,17 +303,18 @@ class PluginMetabaseItemright extends CommonDBTM
                      `id` int {$default_key_sign} NOT NULL AUTO_INCREMENT,
                      `itemtype` varchar(100) NOT NULL,
                      `items_id` int {$default_key_sign} NOT NULL,
-                     `dashboard_uuid` int NOT NULL,
+                     `dashboard_id` int NOT NULL,
                      `rights` int NOT NULL,
                      PRIMARY KEY (`id`),
-                     UNIQUE `itemtype_items_id_dashboard_uuid` (`itemtype`, `items_id`, `dashboard_uuid`)
+                     UNIQUE `unicity` (`itemtype`, `items_id`, `dashboard_id`),
+                     KEY `dashboard_id` (`dashboard_id`)
                   ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
             $DB->doQuery($query);
         }
     }
 
     /**
-     * Uninstall itemrights database.
+     * Uninstall item rights database.
      *
      * @return void
      */
