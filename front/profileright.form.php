@@ -29,7 +29,7 @@
  */
 
 if (isset($_REQUEST['update'])) {
-    Session::checkRight('profile', UPDATE);
+    Session::checkRight(Profile::$rightname, UPDATE);
 
     if (
         !array_key_exists('profiles_id', $_REQUEST)
@@ -61,7 +61,7 @@ if (isset($_REQUEST['update'])) {
     $apiclient = new PluginMetabaseAPIClient();
     $apiclient->enableDashboardsEmbeddedDisplay($viewableDashboardsUuids);
 } elseif (isset($_REQUEST['set_rights_to_all'])) {
-    Session::checkRight('profile', UPDATE);
+    Session::checkRight(Profile::$rightname, UPDATE);
 
     if (!array_key_exists('profiles_id', $_REQUEST) || empty($_REQUEST['profiles_id'])) {
         Session::addMessageAfterRedirect(

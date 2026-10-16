@@ -528,10 +528,16 @@ class PluginMetabaseConfig extends Config
             'display'                => $card['display'],
             'visualization_settings' => $card['visualization_settings'],
             'template_tags'          => [],
-            'sql'                    => $card['dataset_query']['native']['query'],
+            // Metabase MBQL 5 moved the native query out of
+            // dataset_query.native.query into dataset_query.stages[0].native.
+            'sql'                    => $card['dataset_query']['native']['query']
+                                        ?? $card['dataset_query']['stages'][0]['native'],
         ];
 
-        foreach ($card['dataset_query']['native']['template-tags'] as $tag_name => $tag) {
+        $template_tags = $card['dataset_query']['native']['template-tags']
+                        ?? $card['dataset_query']['stages'][0]['template-tags']
+                        ?? [];
+        foreach ($template_tags as $tag_name => $tag) {
             $extract['template_tags'][$tag_name] = [
                 'type'         => $tag['type'],
                 'display_name' => $tag['display-name'],
@@ -582,13 +588,21 @@ class PluginMetabaseConfig extends Config
             $parameters_id[$parameter['id']] = $parameter['slug'];
         }
 
-        foreach ($dashboard['ordered_cards'] as $card) {
+        // Metabase renamed 'ordered_cards' to 'dashcards' in newer API versions.
+        $dashcards = $dashboard['dashcards'] ?? $dashboard['ordered_cards'] ?? [];
+        foreach ($dashcards as $card) {
+            // MBQL 5 replaced the top-level dataset_query.type === 'native'
+            // flag with a dataset_query.stages[0].native structure.
+            $is_native = isset($card['card']['dataset_query']['type'])
+                ? $card['card']['dataset_query']['type'] === 'native'
+                : isset($card['card']['dataset_query']['stages'][0]['native']);
+
             if (
                 isset($card['card_id']) // only question (TODO support markdown cards)
-                && $card['card']['dataset_query']['type'] === 'native'
+                && $is_native
             ) { // only native questions
                 $key = null;
-                foreach ($_SESSION['metabase']['reports'] as $session_key => $session_report) {
+                foreach ($_SESSION['metabase']['reports'] ?? [] as $session_key => $session_report) {
                     if ($session_report['title'] === $card['card']['name']) {
                         $key = $session_key;
                     }
@@ -598,15 +612,14 @@ class PluginMetabaseConfig extends Config
                     $extract['reports'][$key] = [
                         'col'   => $card['col'],
                         'row'   => $card['row'],
-                        'sizeX' => $card['sizeX'],
-                        'sizeY' => $card['sizeY'],
+                        'sizeX' => $card['sizeX'] ?? $card['size_x'],
+                        'sizeY' => $card['sizeY'] ?? $card['size_y'],
                     ];
 
                     foreach ($card['parameter_mappings'] as $mapping) {
                         $mapping_key = $mapping['target'][1][1];
-                        $field_id    = $card['card']['dataset_query']
-                                      ['native']['template-tags']
-                                      [$mapping_key]['dimension'][1];
+                        $field_id    = $card['card']['dataset_query']['native']['template-tags'][$mapping_key]['dimension'][1]
+                                      ?? $card['card']['dataset_query']['stages'][0]['template-tags'][$mapping_key]['dimension'][1];
                         $field_name = array_search($field_id, $_SESSION['metabase']['fields']);
                         if ($field_name !== false) {
                             $extract['reports'][$key]['parameter_mappings']
@@ -618,7 +631,6 @@ class PluginMetabaseConfig extends Config
         }
 
         self::displayPrettyJson($extract);
-        Html::printCleanArray($dashboard);
     }
 
     public static function displayPrettyJson($array = [])
@@ -809,6 +821,7 @@ class PluginMetabaseConfig extends Config
         // Encrypt embedded_token, previously stored in plain text
         if (!array_key_exists('is_embedded_token_encrypted', $current_config) || !$current_config['is_embedded_token_encrypted']) {
             if (!empty($current_config['embedded_token'])) {
+                $current_config['embedded_token'] = (new GLPIKey())->encrypt($current_config['embedded_token']);
                 Config::setConfigurationValues(
                     'plugin:metabase',
                     [

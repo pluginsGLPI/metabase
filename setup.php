@@ -30,12 +30,12 @@
 
 use function Safe\define;
 
-define('PLUGIN_METABASE_VERSION', '1.4.2');
+define('PLUGIN_METABASE_VERSION', '1.5.0');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_METABASE_MIN_GLPI', '11.0.0');
+define('PLUGIN_METABASE_MIN_GLPI', '12.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_METABASE_MAX_GLPI', '11.0.99');
+define('PLUGIN_METABASE_MAX_GLPI', '12.0.99');
 
 if (!defined('PLUGINMETABASE_DIR')) {
     define('PLUGINMETABASE_DIR', __DIR__);

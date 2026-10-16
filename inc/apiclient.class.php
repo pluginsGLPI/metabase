@@ -202,8 +202,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
         global $DB;
 
         if (($data = $this->getGlpiDatabase()) === false) {
-            // try to switch to slave db
-            DBConnection::switchToSlave();
+            // try to switch to replica db
+            DBConnection::switchToReplica();
 
             // post conf for the glpi database
             $data = $this->httpQuery('database', [
@@ -223,8 +223,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
                 ],
             ], 'POST');
 
-            // switch back to master
-            DBConnection::switchToMaster();
+            // switch back to main
+            DBConnection::switchToMain();
         }
 
         return $data;
@@ -433,9 +433,7 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
         if (isset($params['parameters'])) {
             foreach ($params['parameters'] as &$parameter) {
-                if (!isset($parameter['id'])) {
-                    $parameter['id'] = $this->generateUuid([8]);
-                }
+                $parameter['id'] ??= $this->generateUuid([8]);
             }
         }
 
@@ -532,7 +530,8 @@ class PluginMetabaseAPIClient extends CommonGLPI
     {
         $data = $this->httpQuery("dashboard/$id", [], 'GET');
 
-        return $data['ordered_cards'] ?? false;
+        // Metabase renamed 'ordered_cards' to 'dashcards' in newer API versions.
+        return $data['dashcards'] ?? $data['ordered_cards'] ?? false;
     }
 
     public function createOrUpdateCard($card_name, $params = [])
@@ -657,11 +656,15 @@ class PluginMetabaseAPIClient extends CommonGLPI
             return $cards;
         }
 
+        // Metabase's API returns id:"root" for the root collection, but cards
+        // in it have collection_id: null - normalize before comparing.
+        $normalized_id = $collection_id === 'root' ? null : $collection_id;
+
         $cards = array_filter(
             $cards,
             fn($card) => is_array($card)
               && array_key_exists('collection_id', $card)
-              && $collection_id === $card['collection_id'],
+              && $normalized_id === $card['collection_id'],
         );
 
         return $cards;
