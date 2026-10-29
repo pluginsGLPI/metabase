@@ -48,5 +48,6 @@ if (isset($_REQUEST['create_database'])) {
 } else {
     Session::checkRight(Config::$rightname, READ);
     /** @var array $CFG_GLPI */
+    global $CFG_GLPI;
     Html::redirect($CFG_GLPI['root_doc'] . '/front/config.form.php?forcetab=PluginMetabaseConfig$1');
 }
