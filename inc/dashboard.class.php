@@ -125,11 +125,21 @@ class PluginMetabaseDashboard extends CommonDBTM
 
         $dashboards = $apiclient->getDashboards();
         if (is_array($dashboards)) {
+            // User and group rights are resolved once for all dashboards (single query)
+            // instead of once per dashboard inside the filter below.
+            $viewable  = PluginMetabaseItemright::getViewableDashboardIds(
+                (int) Session::getLoginUserID(),
+                $_SESSION['glpigroups'] ?? [],
+            );
+            $profileId = $_SESSION['glpiactiveprofile']['id'];
+
             $dashboards = array_filter(
                 $dashboards,
-                function ($dashboard) {
+                function ($dashboard) use ($viewable, $profileId) {
                     $isEmbeddingEnabled = $dashboard['enable_embedding'];
-                    $canView            = self::canCurrentUserViewDashboard((int) $dashboard['id']);
+                    $dashboardId        = (int) $dashboard['id'];
+                    $canView            = isset($viewable[$dashboardId])
+                        || PluginMetabaseProfileright::canProfileViewDashboard($profileId, $dashboardId) !== 0;
 
                     return $isEmbeddingEnabled && $canView;
                 },

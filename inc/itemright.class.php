@@ -74,7 +74,7 @@ class PluginMetabaseItemright extends CommonDBTM
             $item instanceof CommonDBTM
             && self::isSupportedItemtype($item::class)
             && !$item->isNewItem()
-            && $item::canView()
+            && $item->can($item->getID(), READ)
         ) {
             return self::createTabEntry(self::getTypeName(), 0, $item::getType(), PluginMetabaseConfig::getIcon());
         }
@@ -173,6 +173,53 @@ class PluginMetabaseItemright extends CommonDBTM
     public static function canItemsViewDashboard(string $itemtype, array $items_ids, int $dashboard_id): bool
     {
         return self::countViewableRights($itemtype, $items_ids, $dashboard_id) > 0;
+    }
+
+    /**
+     * Returns the ids of every dashboard readable through the given user or one of the given groups.
+     *
+     * Resolved in a single query, so callers filtering a list of dashboards
+     * do not have to query once per dashboard.
+     *
+     * @param int   $user_id
+     * @param int[] $group_ids
+     *
+     * @return array<int, true> Set of dashboard ids (dashboard id => true)
+     */
+    public static function getViewableDashboardIds(int $user_id, array $group_ids): array
+    {
+        /** @var DBmysql $DB */
+        global $DB;
+
+        $group_ids = array_values(array_filter(array_map('intval', $group_ids)));
+
+        $criteria = [];
+        if ($user_id > 0) {
+            $criteria[] = ['itemtype' => User::class, 'items_id' => $user_id];
+        }
+        if ($group_ids !== []) {
+            $criteria[] = ['itemtype' => Group::class, 'items_id' => $group_ids];
+        }
+        if ($criteria === []) {
+            return [];
+        }
+
+        $iterator = $DB->request([
+            'SELECT'   => ['dashboard_id'],
+            'DISTINCT' => true,
+            'FROM'     => self::getTable(),
+            'WHERE'    => [
+                'rights' => ['&', READ],
+                'OR'     => $criteria,
+            ],
+        ]);
+
+        $viewable = [];
+        foreach ($iterator as $row) {
+            $viewable[(int) $row['dashboard_id']] = true;
+        }
+
+        return $viewable;
     }
 
     /**

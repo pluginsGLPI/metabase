@@ -61,7 +61,19 @@ if (isset($_POST['update'])) {
         Html::back();
     }
 
+    // Only dashboards that really exist in Metabase can receive rights.
+    $apiclient  = new PluginMetabaseAPIClient();
+    $dashboards = $apiclient->getDashboards();
+    $known_ids  = [];
+    foreach (is_array($dashboards) ? $dashboards : [] as $dashboard) {
+        $known_ids[(int) $dashboard['id']] = true;
+    }
+
     foreach ($_POST['dashboard'] as $dashboard_id => $rights) {
+        if (!isset($known_ids[(int) $dashboard_id])) {
+            continue;
+        }
+
         $rights = ((int) $rights & READ) !== 0 ? READ : 0;
 
         PluginMetabaseItemright::setDashboardRightsForItem($item::class, $items_id, (int) $dashboard_id, $rights);
