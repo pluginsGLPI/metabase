@@ -106,12 +106,13 @@ function plugin_init_metabase()
 function plugin_version_metabase()
 {
     return [
-        'name'         => 'Metabase',
-        'version'      => PLUGIN_METABASE_VERSION,
-        'author'       => '<a href="http://www.teclib.com">Teclib\'</a>',
-        'license'      => 'GPLv2+',
-        'homepage'     => 'https://github.com/pluginsGLPI/metabase',
-        'requirements' => [
+        'name'          => 'Metabase',
+        'version'       => PLUGIN_METABASE_VERSION,
+        'author'        => '<a href="http://www.teclib.com">Teclib\'</a>',
+        'license'       => 'GPLv2+',
+        'homepage'      => 'https://github.com/pluginsGLPI/metabase',
+        'csp_compliant' => true,
+        'requirements'  => [
             'glpi' => [
                 'min' => PLUGIN_METABASE_MIN_GLPI,
                 'max' => PLUGIN_METABASE_MAX_GLPI,
