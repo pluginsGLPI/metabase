@@ -123,8 +123,8 @@ class PluginMetabaseDashboard extends CommonDBTM
             'current_dashboard',
             array_combine(array_column($dashboards, 'id'), array_column($dashboards, 'name')),
             [
-                'on_change' => ($is_helpdesk) ? 'location.href = location.origin+location.pathname+"?uuid="+$(this).val()' : 'reloadTab("uuid=" + $(this).val());',
-                'value'     => $currentUuid,
+                'add_data_attributes' => ['metabase-dashboard-switch' => ($is_helpdesk) ? 'helpdesk' : 'central'],
+                'value'               => $currentUuid,
             ],
         );
 
