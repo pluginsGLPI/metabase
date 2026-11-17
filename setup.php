@@ -63,8 +63,8 @@ function plugin_init_metabase()
     // add autoload for vendor
     include_once(PLUGINMETABASE_DIR . '/vendor/autoload.php');
 
-    // don't load hooks if plugin not enabled (or glpi not logged)
-    if (!Plugin::isPluginActive('metabase') || !Session::getLoginUserID()) {
+    // don't load hooks if glpi not logged
+    if (!Session::getLoginUserID()) {
         return;
     }
 
@@ -88,9 +88,16 @@ function plugin_init_metabase()
     // profile rights management
     Plugin::registerClass('PluginMetabaseProfileright', ['addtabon' => 'Profile']);
 
-    // css & js
-    $PLUGIN_HOOKS['add_css']['metabase']        = 'metabase.css';
-    $PLUGIN_HOOKS['add_javascript']['metabase'] = 'metabase.js';
+    // css & js, only on the pages displaying the plugin content
+    $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+    if (
+        str_contains($request_uri, '/front/central.php')
+        || str_contains($request_uri, '/front/config.form.php')
+        || str_contains($request_uri, Plugin::getPhpDir('metabase', false))
+    ) {
+        $PLUGIN_HOOKS['add_css']['metabase']        = 'metabase.css';
+        $PLUGIN_HOOKS['add_javascript']['metabase'] = 'metabase.js';
+    }
 
     // Encryption
     $PLUGIN_HOOKS['secured_configs']['metabase'] = ['password', 'embedded_token'];

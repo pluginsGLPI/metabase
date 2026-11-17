@@ -34,8 +34,9 @@ if (isset($_REQUEST['update'])) {
     if (
         !array_key_exists('profiles_id', $_REQUEST)
         || empty($_REQUEST['profiles_id'])
-        || !array_key_exists('dashboard', $_REQUEST)
-        || !is_array($_REQUEST['dashboard'])
+        || !array_key_exists('dashboards', $_REQUEST)
+        || !is_string($_REQUEST['dashboards'])
+        || !is_string($_REQUEST['dashboards_read'] ?? '')
     ) {
         Session::addMessageAfterRedirect(
             __s('Invalid request.', 'metabase'),
@@ -45,18 +46,25 @@ if (isset($_REQUEST['update'])) {
         Html::back();
     }
 
-    $viewableDashboardsUuids = [];
-    foreach ($_REQUEST['dashboard'] as $dashboardUuid => $rights) {
-        PluginMetabaseProfileright::setDashboardRightsForProfile(
-            $_REQUEST['profiles_id'],
-            $dashboardUuid,
-            $rights,
-        );
+    // displayed dashboards and readable ones, each sent as one comma separated field
+    $readableUuids = array_flip(array_map('intval', array_filter(explode(',', $_REQUEST['dashboards_read'] ?? ''))));
 
+    $rightsByDashboard       = [];
+    $viewableDashboardsUuids = [];
+    foreach (array_filter(explode(',', $_REQUEST['dashboards'])) as $dashboardUuid) {
+        $dashboardUuid = (int) $dashboardUuid;
+        $rights        = isset($readableUuids[$dashboardUuid]) ? READ : 0;
+
+        $rightsByDashboard[$dashboardUuid] = $rights;
         if (($rights & READ) !== 0) {
             $viewableDashboardsUuids[] = $dashboardUuid;
         }
     }
+
+    PluginMetabaseProfileright::setDashboardsRightsForProfile(
+        $_REQUEST['profiles_id'],
+        $rightsByDashboard,
+    );
 
     $apiclient = new PluginMetabaseAPIClient();
     $apiclient->enableDashboardsEmbeddedDisplay($viewableDashboardsUuids);
@@ -74,16 +82,18 @@ if (isset($_REQUEST['update'])) {
 
     $apiclient = new PluginMetabaseAPIClient();
 
+    $rightsByDashboard       = [];
     $viewableDashboardsUuids = [];
     foreach ($apiclient->getDashboards() as $dashboard) {
-        PluginMetabaseProfileright::setDashboardRightsForProfile(
-            $_REQUEST['profiles_id'],
-            $dashboard['id'],
-            $_REQUEST['set_rights_to_all'],
-        );
+        $rightsByDashboard[$dashboard['id']] = $_REQUEST['set_rights_to_all'];
 
         $viewableDashboardsUuids[] = $dashboard['id'];
     }
+
+    PluginMetabaseProfileright::setDashboardsRightsForProfile(
+        $_REQUEST['profiles_id'],
+        $rightsByDashboard,
+    );
 
     $apiclient->enableDashboardsEmbeddedDisplay($viewableDashboardsUuids);
 }

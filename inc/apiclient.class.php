@@ -97,15 +97,11 @@ class PluginMetabaseAPIClient extends CommonGLPI
 
     public function checkSession()
     {
-        // do a simple query
-        $this->getCurrentUser(true);
-
-        // check session token, if set, we still have a valid token
+        // a stored token is used as is: an expired one is renewed by httpQuery() on the 401 answer
         if (isset($_SESSION['metabase']['session_token'])) {
             return true;
         }
 
-        // so reconnect
         $this->connect();
         // check again session token, if set, we now have a valid token
         return isset($_SESSION['metabase']['session_token']);
@@ -673,6 +669,35 @@ class PluginMetabaseAPIClient extends CommonGLPI
     }
 
     /**
+     * Retrieve all cards, grouped by collection.
+     *
+     * @return false|array<int|string, array> Cards indexed by collection id ("root" for the root collection), false if an error occurs.
+     */
+    public function getCardsByCollection()
+    {
+        if (!$this->checkSession()) {
+            return false;
+        }
+
+        $cards = $this->httpQuery('card');
+
+        if (!is_array($cards)) {
+            return $cards;
+        }
+
+        // Metabase's API returns id:"root" for the root collection, but cards
+        // in it have collection_id: null.
+        $cards_by_collection = [];
+        foreach ($cards as $card) {
+            if (is_array($card) && array_key_exists('collection_id', $card)) {
+                $cards_by_collection[$card['collection_id'] ?? 'root'][] = $card;
+            }
+        }
+
+        return $cards_by_collection;
+    }
+
+    /**
      * Enable embedded display on given dashboards.
      *
      * @param integer[] $uuids
@@ -815,10 +840,12 @@ class PluginMetabaseAPIClient extends CommonGLPI
      * @param  string $method   Http verb (ex: GET, POST, etc)
      * @return array|false  data returned by the api
      */
-    public function httpQuery($resource = '', $params = [], $method = 'GET')
+    public function httpQuery($resource = '', $params = [], $method = 'GET', bool $is_retry = false)
     {
         /** @var array $CFG_GLPI */
         global $CFG_GLPI;
+
+        $query_params = $params;
 
         // declare default params
         $default_params = [
@@ -886,6 +913,11 @@ class PluginMetabaseAPIClient extends CommonGLPI
                     // session with metabase ko, unset our token
                     if ($response->getStatusCode() == 401) {
                         unset($_SESSION['metabase']['session_token']);
+
+                        // expired token: log in again and replay the query once
+                        if (!$is_retry && $resource !== 'session' && $this->connect()) {
+                            return $this->httpQuery($resource, $query_params, $method, true);
+                        }
                     }
                 }
             }

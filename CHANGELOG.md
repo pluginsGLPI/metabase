@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Fix the profile rights tab freezing the browser and failing to save with many dashboards, and the collections page querying Metabase once per collection
+
 ## [1.4.3] - 2026-10-06
 
 ### Fixed
