@@ -93,7 +93,7 @@ function plugin_init_metabase()
     if (
         str_contains($request_uri, '/front/central.php')
         || str_contains($request_uri, '/front/config.form.php')
-        || str_contains($request_uri, Plugin::getPhpDir('metabase', false))
+        || str_contains($request_uri, '/plugins/metabase/')
     ) {
         $PLUGIN_HOOKS['add_css']['metabase']        = 'metabase.css';
         $PLUGIN_HOOKS['add_javascript']['metabase'] = 'metabase.js';
