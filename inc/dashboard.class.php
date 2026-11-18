@@ -95,14 +95,12 @@ class PluginMetabaseDashboard extends CommonDBTM
 
         $dashboards = $apiclient->getDashboards();
         if (is_array($dashboards)) {
+            $rights     = PluginMetabaseProfileright::getProfileRights($_SESSION['glpiactiveprofile']['id']);
             $dashboards = array_filter(
                 $dashboards,
-                function ($dashboard) {
+                function ($dashboard) use ($rights) {
                     $isEmbeddingEnabled = $dashboard['enable_embedding'];
-                    $canView            = PluginMetabaseProfileright::canProfileViewDashboard(
-                        $_SESSION['glpiactiveprofile']['id'],
-                        $dashboard['id'],
-                    );
+                    $canView            = (($rights[$dashboard['id']] ?? 0) & READ) !== 0;
 
                     return $isEmbeddingEnabled && $canView;
                 },

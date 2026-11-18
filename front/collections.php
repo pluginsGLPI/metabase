@@ -60,8 +60,10 @@ if ($metabaseConfig::isValid() && $apiclient->getGlpiDatabase() && $apiclient->c
 
         echo '<h3>' . __s('Extract questions from metabase:', 'metabase') . '</h3>';
         echo "<ul class='metabase_collection_list'>";
+        // all cards in one query, instead of the full list once per collection
+        $cards_by_collection = $apiclient->getCardsByCollection();
         foreach ($collections as $collection) {
-            $collection_cards = $apiclient->getCards($collection['id']);
+            $collection_cards = $cards_by_collection === false ? false : ($cards_by_collection[$collection['id']] ?? []);
             if (
                 $collection_cards !== false
                 && count($collection_cards)

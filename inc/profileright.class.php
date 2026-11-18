@@ -93,7 +93,28 @@ class PluginMetabaseProfileright extends CommonDBTM
             return false;
         }
 
-        echo '<form method="post" action="' . self::getFormURL() . '">';
+        $rights = self::getProfileRights($id);
+        $rand   = mt_rand();
+
+        if (Session::haveRight('profile', UPDATE)) {
+            // own form: these buttons must not send the rights of every dashboard
+            echo '<form method="post" action="' . self::getFormURL() . '">';
+            echo '<input type="hidden" name="profiles_id" value="' . $id . '" />';
+            echo '<div class="center mb-2">';
+            echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
+            . "<i class='ti ti-check'></i>"
+            . '<span>' . __s('Allow access to all', 'metabase') . '</span>'
+            . '</button>';
+            echo ' &nbsp; ';
+            echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
+            . "<i class='ti ti-forbid'></i>"
+            . '<span>' . __s('Disallow access to all', 'metabase') . '</span>'
+            . '</button>';
+            echo '</div>';
+            Html::closeForm();
+        }
+
+        echo '<form method="post" action="' . self::getFormURL() . '" id="metabase_rights_form' . $rand . '">';
         echo '<div class="spaced" id="tabsbody">';
         echo '<table class="tab_cadre_fixe" id="mainformtable">';
 
@@ -104,36 +125,19 @@ class PluginMetabaseProfileright extends CommonDBTM
         echo '<tr><th colspan="2">' . __s('Rights management', 'metabase') . '</th></tr>';
 
         echo '<input type="hidden" name="profiles_id" value="' . $id . '" />';
-
-        if (Session::haveRight('profile', UPDATE)) {
-            echo '<tr class="tab_bg_4">';
-            echo '<td colspan="2" class="center">';
-            echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="1">'
-            . "<i class='ti ti-check'></i>"
-            . '<span>' . __s('Allow access to all', 'metabase') . '</span>'
-            . '</button>';
-            echo ' &nbsp; ';
-            echo '<button type="submit" class="btn btn-outline-secondary" name="set_rights_to_all" value="0">'
-            . "<i class='ti ti-forbid'></i>"
-            . '<span>' . __s('Disallow access to all', 'metabase') . '</span>'
-            . '</button>';
-            echo '</td>';
-            echo '</tr>';
-        }
+        // one field for all the dashboards, to stay below max_input_vars
+        echo '<input type="hidden" name="dashboards" value="' . implode(',', array_map('intval', array_column($dashboards, 'id'))) . '" />';
+        echo '<input type="hidden" name="dashboards_read" value="" />';
 
         foreach ($dashboards as $dashboard) {
+            $checked = (($rights[$dashboard['id']] ?? 0) & READ) !== 0 ? ' checked' : '';
             echo '<tr class="tab_bg_1">';
             echo '<td>' . $dashboard['name'] . '</td>';
             echo '<td>';
-            Profile::dropdownRight(
-                sprintf('dashboard[%d]', $dashboard['id']),
-                [
-                    'value'   => self::getProfileRightForDashboard($id, $dashboard['id']),
-                    'nonone'  => 0,
-                    'noread'  => 0,
-                    'nowrite' => 1,
-                ],
-            );
+            echo '<label class="form-check mb-0">';
+            echo '<input type="checkbox" class="form-check-input metabase_dashboard_read" value="' . (int) $dashboard['id'] . '"' . $checked . ' />';
+            echo '<span class="form-check-label">' . __s('Read') . '</span>';
+            echo '</label>';
             echo '</td>';
             echo '</tr>';
         }
@@ -154,6 +158,15 @@ class PluginMetabaseProfileright extends CommonDBTM
         echo '</div>';
 
         Html::closeForm();
+
+        echo Html::scriptBlock(<<<JS
+            $('#metabase_rights_form{$rand}').on('submit', function () {
+                const read = $(this).find('input.metabase_dashboard_read:checked').map(function () {
+                    return this.value;
+                }).get();
+                $(this).find('input[name=dashboards_read]').val(read.join(','));
+            });
+JS);
 
         return true;
     }
@@ -186,6 +199,84 @@ class PluginMetabaseProfileright extends CommonDBTM
         }
 
         return false;
+    }
+
+    /**
+     * Returns the rights of a profile on all dashboards.
+     *
+     * @param integer $profileId
+     *
+     * @return array<int, int> rights indexed by dashboard uuid
+     */
+    public static function getProfileRights($profileId)
+    {
+        /** @var DBmysql $DB */
+        global $DB;
+
+        $iterator = $DB->request(
+            [
+                'SELECT' => ['dashboard_uuid', 'rights'],
+                'FROM'   => self::getTable(),
+                'WHERE'  => [
+                    'profiles_id' => $profileId,
+                ],
+            ],
+        );
+
+        $rights = [];
+        foreach ($iterator as $right) {
+            $rights[(int) $right['dashboard_uuid']] = (int) $right['rights'];
+        }
+
+        return $rights;
+    }
+
+    /**
+     * Defines profile rights for several dashboards, writing only the rights that change.
+     *
+     * @param integer $profileId
+     * @param array<int, int> $rightsByDashboard rights indexed by dashboard uuid
+     *
+     * @return void
+     */
+    public static function setDashboardsRightsForProfile($profileId, array $rightsByDashboard)
+    {
+        /** @var DBmysql $DB */
+        global $DB;
+
+        $existing = [];
+        $iterator = $DB->request(
+            [
+                'SELECT' => ['id', 'dashboard_uuid', 'rights'],
+                'FROM'   => self::getTable(),
+                'WHERE'  => [
+                    'profiles_id' => $profileId,
+                ],
+            ],
+        );
+        foreach ($iterator as $right) {
+            $existing[(int) $right['dashboard_uuid']] = $right;
+        }
+
+        $profileRight = new self();
+        foreach ($rightsByDashboard as $dashboardUuid => $rights) {
+            if (!isset($existing[$dashboardUuid])) {
+                $profileRight->add(
+                    [
+                        'profiles_id'    => $profileId,
+                        'dashboard_uuid' => $dashboardUuid,
+                        'rights'         => $rights,
+                    ],
+                );
+            } elseif ((int) $existing[$dashboardUuid]['rights'] !== (int) $rights) {
+                $profileRight->update(
+                    [
+                        'id'     => $existing[$dashboardUuid]['id'],
+                        'rights' => $rights,
+                    ],
+                );
+            }
+        }
     }
 
     /**
