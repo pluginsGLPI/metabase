@@ -46,8 +46,10 @@ if ($item === null || $items_id <= 0 || !$item->getFromDB($items_id)) {
     Html::back();
 }
 
-// UPDATE right on the targeted group / user is required to change its dashboard rights.
+// UPDATE right on the targeted group / user is required to change its dashboard rights,
+// as well as the right that guards profile-based dashboard rights.
 $item->check($items_id, UPDATE);
+Session::checkRight(Profile::$rightname, UPDATE);
 
 $viewable_dashboards_ids = [];
 

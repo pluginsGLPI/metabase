@@ -100,6 +100,22 @@ class PluginMetabaseItemright extends CommonDBTM
     }
 
     /**
+     * Check whether the current user can change the dashboard rights of the given group or user.
+     *
+     * UPDATE on the targeted item is not enough on its own (e.g. technicians usually have
+     * UPDATE on users): the right that guards profile-based dashboard rights is also required.
+     *
+     * @param CommonDBTM $item Group or User
+     *
+     * @return bool
+     */
+    public static function canUpdateRightsForItem(CommonDBTM $item): bool
+    {
+        return $item->can($item->getID(), UPDATE)
+            && Session::haveRight(Profile::$rightname, UPDATE);
+    }
+
+    /**
      * Display dashboard rights matrix for given group or user.
      *
      * READ right on the item is required to see the matrix,
@@ -137,7 +153,7 @@ class PluginMetabaseItemright extends CommonDBTM
             'form_url'      => self::getFormURL(),
             'itemtype'      => $item::class,
             'items_id'      => $item->getID(),
-            'can_update'    => $item->can($item->getID(), UPDATE),
+            'can_update'    => self::canUpdateRightsForItem($item),
             'dashboards'    => $dashboards_data,
             'right_choices' => [
                 0    => __('No access'),
@@ -159,20 +175,6 @@ class PluginMetabaseItemright extends CommonDBTM
     public static function canItemsViewDashboards(string $itemtype, array $items_ids): bool
     {
         return self::countViewableRights($itemtype, $items_ids) > 0;
-    }
-
-    /**
-     * Check if the given groups or user are able to view given dashboard.
-     *
-     * @param string $itemtype     Group::class or User::class
-     * @param int[]  $items_ids
-     * @param int    $dashboard_id Metabase dashboard id
-     *
-     * @return bool
-     */
-    public static function canItemsViewDashboard(string $itemtype, array $items_ids, int $dashboard_id): bool
-    {
-        return self::countViewableRights($itemtype, $items_ids, $dashboard_id) > 0;
     }
 
     /**
@@ -225,13 +227,12 @@ class PluginMetabaseItemright extends CommonDBTM
     /**
      * Count rights rows granting READ access to the given items.
      *
-     * @param string   $itemtype
-     * @param int[]    $items_ids
-     * @param int|null $dashboard_id Restrict to this dashboard if not null
+     * @param string $itemtype
+     * @param int[]  $items_ids
      *
      * @return int
      */
-    private static function countViewableRights(string $itemtype, array $items_ids, ?int $dashboard_id = null): int
+    private static function countViewableRights(string $itemtype, array $items_ids): int
     {
         $items_ids = array_values(array_filter(array_map('intval', $items_ids)));
         if (!self::isSupportedItemtype($itemtype) || $items_ids === []) {
@@ -243,9 +244,6 @@ class PluginMetabaseItemright extends CommonDBTM
             'items_id' => $items_ids,
             'rights'   => ['&', READ],
         ];
-        if ($dashboard_id !== null) {
-            $where['dashboard_id'] = $dashboard_id;
-        }
 
         return countElementsInTable(self::getTable(), $where);
     }

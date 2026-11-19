@@ -58,22 +58,6 @@ class PluginMetabaseDashboard extends CommonDBTM
     }
 
     /**
-     * Check if the current user is able to view the given dashboard.
-     *
-     * Rights are additive (OR) across profile / groups / user.
-     *
-     * @param int $dashboardId Metabase dashboard id
-     *
-     * @return bool
-     */
-    public static function canCurrentUserViewDashboard(int $dashboardId): bool
-    {
-        return PluginMetabaseProfileright::canProfileViewDashboard($_SESSION['glpiactiveprofile']['id'], $dashboardId) !== 0
-            || PluginMetabaseItemright::canItemsViewDashboard(User::class, [Session::getLoginUserID()], $dashboardId)
-            || PluginMetabaseItemright::canItemsViewDashboard(Group::class, $_SESSION['glpigroups'] ?? [], $dashboardId);
-    }
-
-    /**
      * {@inheritDoc}
      * @see CommonGLPI::getTabNameForItem()
      */
