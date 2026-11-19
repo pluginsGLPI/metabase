@@ -10,7 +10,7 @@ It currently permits to:
 - [X] Push GLPI enumeration (tickets impacts/urgency/priority/types) in Metabase datamodel
 - [X] Push questions, collections and dashboards (if exists).
 - [X] Integrate Metabase dashboards into GLPI (on Central).
-- [X] Profiles management (dashboards publication)
+- [X] Profiles, groups and users management (dashboards publication)
 - [X] import existing questions/dashboards/collection from metabase and save them as json
 - [ ] Check sync status
 
