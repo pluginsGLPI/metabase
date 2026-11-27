@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 04:03+0000\n"
+"POT-Creation-Date: 2026-11-26 06:25+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (https://app.transifex.com/teclib/teams/28042/ko_KR/)\n"
@@ -55,31 +55,24 @@ msgstr "데이터 전송 시간 만료 (초 단위)"
 msgid "API status"
 msgstr "API 상태"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "잘못된 요청."
+#: templates/itemright.html.twig inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr ""
 
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "메타베이스 집합"
+#: templates/itemright.html.twig inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "권한 관리"
 
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "보고서와 대시보드 명세서"
+#: templates/itemright.html.twig inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "전체에 접근 허용"
 
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "메타베이스에서 질문 추출:"
+#: templates/itemright.html.twig inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "전체에 접근 금지"
 
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "메타베이스에서 대시보드 추출:"
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr "메타베이스 자료에 접근할 수 없습니다. 플러그인 구성을 확인하세요."
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/itemright.class.php:52 inc/config.class.php:40
+#: inc/profileright.class.php:44
 msgid "Metabase"
 msgstr "메타베이스"
 
@@ -166,18 +159,27 @@ msgid ""
 "increase the timeout value in plugin configuration"
 msgstr "동작 시간 만료로 메타베이스에 대한 질의가 실패했습니다. 아마 플러그인 구성에서 시간 만료 값을 증가해야 할 겁니다."
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr ""
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "메타베이스 집합"
 
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "권한 관리"
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "보고서와 대시보드 명세서"
 
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "전체에 접근 허용"
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "메타베이스에서 질문 추출:"
 
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "전체에 접근 금지"
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "메타베이스에서 대시보드 추출:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr "메타베이스 자료에 접근할 수 없습니다. 플러그인 구성을 확인하세요."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+#: front/itemright.form.php:42 front/itemright.form.php:59
+msgid "Invalid request."
+msgstr "잘못된 요청."
