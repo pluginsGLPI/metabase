@@ -55,4 +55,13 @@ $(function() {
          }
       });
    });
+
+   // jQuery event: select2 triggers change on the native select
+   $(document).on("change", "select[data-metabase-dashboard-switch]", function() {
+      if ($(this).data('metabaseDashboardSwitch') === 'helpdesk') {
+         location.href = location.origin + location.pathname + "?uuid=" + $(this).val();
+      } else {
+         reloadTab("uuid=" + $(this).val());
+      }
+   });
 });

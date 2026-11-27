@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+<<<<<<< HEAD
 ### Added
 
 - Manage dashboard access rights per Group and per User (in addition to per Profile)
@@ -17,6 +18,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - GLPI 12 compatibility
 - Local dev environment (Metabase instance + admin/embedding seeding) for plugin development
+=======
+### Changed
+
+- Make the plugin compatible with the Content Security Policy
+
+## [1.4.3] - 2026-10-06
+>>>>>>> b7ca0e2 (feat: make plugin CSP compliant (#172))
 
 ### Fixed
 
