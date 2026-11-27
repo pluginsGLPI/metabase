@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 04:03+0000\n"
+"POT-Creation-Date: 2026-11-26 06:25+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Haider López <hlopez@itsoluciones.com.co>, 2019\n"
 "Language-Team: Spanish (Colombia) (https://app.transifex.com/teclib/teams/28042/es_CO/)\n"
@@ -57,33 +57,24 @@ msgstr "Tiempo fuera para enviar datos (en segundos)"
 msgid "API status"
 msgstr "Estatus API"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "Respuesta invalida."
-
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "Colecciones de metabase"
-
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "Especificaciones de informes y cuadros de mando"
-
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "Extraer preguntas desde la metabase:"
-
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "Extraer tableros desde la metabase:"
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
+#: templates/itemright.html.twig inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
 msgstr ""
-"No se puede acceder a los datos de la metabase. Verifique la configuración "
-"del complemento."
 
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: templates/itemright.html.twig inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "Gestión de permisos"
+
+#: templates/itemright.html.twig inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Permitir acceso a todo"
+
+#: templates/itemright.html.twig inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Deshabilitar acceso a todo"
+
+#: inc/itemright.class.php:52 inc/config.class.php:40
+#: inc/profileright.class.php:44
 msgid "Metabase"
 msgstr "Metabase"
 
@@ -175,18 +166,29 @@ msgstr ""
 "debería aumentar el valor de tiempo de espera en la configuración del "
 "complemento"
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Colecciones de metabase"
+
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Especificaciones de informes y cuadros de mando"
+
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Extraer preguntas desde la metabase:"
+
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Extraer tableros desde la metabase:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
 msgstr ""
+"No se puede acceder a los datos de la metabase. Verifique la configuración "
+"del complemento."
 
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "Gestión de permisos"
-
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Permitir acceso a todo"
-
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Deshabilitar acceso a todo"
+#: front/profileright.form.php:41 front/profileright.form.php:68
+#: front/itemright.form.php:42 front/itemright.form.php:59
+msgid "Invalid request."
+msgstr "Respuesta invalida."

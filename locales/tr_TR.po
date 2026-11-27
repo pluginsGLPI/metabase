@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 04:03+0000\n"
+"POT-Creation-Date: 2026-11-26 06:25+0000\n"
 "PO-Revision-Date: 2018-08-17 13:43+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2025\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/teclib/teams/28042/tr_TR/)\n"
@@ -57,33 +57,24 @@ msgstr "Veri gönderme zaman aşımı (saniye)"
 msgid "API status"
 msgstr "API durumu"
 
-#: front/profileright.form.php:41 front/profileright.form.php:68
-msgid "Invalid request."
-msgstr "İstek geçersiz."
+#: templates/itemright.html.twig inc/profileright.class.php:92
+msgid "No dashboards found in Metabase."
+msgstr "Metabase üzerinde herhangi bir pano bulunamadı."
 
-#: front/collections.php:32
-msgid "Metabase collections"
-msgstr "Metabase derlemeleri"
+#: templates/itemright.html.twig inc/profileright.class.php:104
+msgid "Rights management"
+msgstr "İzin yönetimi"
 
-#: front/collections.php:42
-msgid "Reports and dashboards specifications"
-msgstr "Raporların ve panoların özellikleri"
+#: templates/itemright.html.twig inc/profileright.class.php:113
+msgid "Allow access to all"
+msgstr "Tümüne erişim izni ver"
 
-#: front/collections.php:61
-msgid "Extract questions from metabase:"
-msgstr "Metabase üzerinden soruları ayıkla:"
+#: templates/itemright.html.twig inc/profileright.class.php:118
+msgid "Disallow access to all"
+msgstr "Tümünden erişim iznini kaldır"
 
-#: front/collections.php:93
-msgid "Extract dashboards from metabase:"
-msgstr "Metabase üzerinden panoları ayıkla:"
-
-#: front/collections.php:105
-msgid "Unable to access Metabase data. Please check plugin configuration."
-msgstr ""
-"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
-"denetleyin."
-
-#: inc/config.class.php:40 inc/profileright.class.php:44
+#: inc/itemright.class.php:52 inc/config.class.php:40
+#: inc/profileright.class.php:44
 msgid "Metabase"
 msgstr "Metabase"
 
@@ -172,18 +163,29 @@ msgstr ""
 "İşlem zaman aşımına uğradığından Metabase sorgulanamadı. Eklenti "
 "yapılandırmasındaki zaman aşımı değerini arttırmanız işe yarayabilir."
 
-#: inc/profileright.class.php:92
-msgid "No dashboards found in Metabase."
-msgstr "Metabase üzerinde herhangi bir pano bulunamadı."
+#: front/collections.php:32
+msgid "Metabase collections"
+msgstr "Metabase derlemeleri"
 
-#: inc/profileright.class.php:104
-msgid "Rights management"
-msgstr "İzin yönetimi"
+#: front/collections.php:42
+msgid "Reports and dashboards specifications"
+msgstr "Raporların ve panoların özellikleri"
 
-#: inc/profileright.class.php:113
-msgid "Allow access to all"
-msgstr "Tümüne erişim izni ver"
+#: front/collections.php:61
+msgid "Extract questions from metabase:"
+msgstr "Metabase üzerinden soruları ayıkla:"
 
-#: inc/profileright.class.php:118
-msgid "Disallow access to all"
-msgstr "Tümünden erişim iznini kaldır"
+#: front/collections.php:93
+msgid "Extract dashboards from metabase:"
+msgstr "Metabase üzerinden panoları ayıkla:"
+
+#: front/collections.php:105
+msgid "Unable to access Metabase data. Please check plugin configuration."
+msgstr ""
+"Metabase verilerine erişilemiyor. Lütfen eklenti yapılandırmasını "
+"denetleyin."
+
+#: front/profileright.form.php:41 front/profileright.form.php:68
+#: front/itemright.form.php:42 front/itemright.form.php:59
+msgid "Invalid request."
+msgstr "İstek geçersiz."
